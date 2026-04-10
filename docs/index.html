@@ -466,6 +466,18 @@ fetch("data/manifest.json")
       networkSelect.appendChild(opt);
     });
     networkSelect.style.display = "";  // show only if manifest loaded
+    // Auto-load the first entry
+    if (manifest.length > 0) {
+      const first = manifest[0];
+      networkSelect.value = first.file;
+      document.getElementById("status-bar").textContent = "Loading\u2026";
+      fetch(first.file)
+        .then(r => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+        .then(data => loadData(data, first.file.split("/").pop()))
+        .catch(err => {
+          document.getElementById("status-bar").textContent = "Failed to load: " + err.message;
+        });
+    }
   })
   .catch(() => {
     networkSelect.style.display = "none";  // hide if no server / no manifest
