@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Bipartite Network</title>
+<link rel="stylesheet" href="network.css">
+</head>
+<body>
+
+<header class="header">
+  <h1 class="header__title">&#x2B23; Bipartite Network</h1>
+
+  <div class="controls">
+
+    <div class="control-group">
+      <label class="control-group__label">SPREAD</label>
+      <span class="control-group__hint"
+            title="Repulsion between all nodes — higher values push nodes further apart (Fruchterman-Reingold repulsive force)">?</span>
+      <input type="range" class="slider" id="sl-spread" min="10" max="400" step="5" value="100">
+      <span class="control-group__value" id="vl-spread">100</span>
+    </div>
+
+    <div class="control-group">
+      <label class="control-group__label">EDGE LENGTH</label>
+      <span class="control-group__hint"
+            title="Preferred distance between connected nodes — the rest length of the spring pulling them together">?</span>
+      <input type="range" class="slider" id="sl-edgelen" min="10" max="100" step="2" value="10">
+      <span class="control-group__value" id="vl-edgelen">10</span>
+    </div>
+
+    <div class="control-group">
+      <label class="control-group__label">ATTRACTION</label>
+      <span class="control-group__hint"
+            title="How strongly edges pull connected nodes toward each other — higher values create tighter clusters">?</span>
+      <input type="range" class="slider" id="sl-attract" min="0" max="1" step="0.02" value="0.75">
+      <span class="control-group__value" id="vl-attract">0.75</span>
+    </div>
+
+    <div class="divider"></div>
+
+    <button class="btn" id="btn-reset">&#x21BA; Reset</button>
+    <button class="btn" id="btn-freeze">&#x23F8; Freeze</button>
+    <button class="btn" id="btn-labels">Labels off</button>
+    <button class="btn" id="btn-size">Stmt size by degree</button>
+
+    <div class="divider"></div>
+
+    <select class="btn network-select" id="network-select" title="Load a network from the server">
+      <option value="">&#x1F5A5; Select network&hellip;</option>
+    </select>
+
+    <label class="btn btn--file-label" title="Load a local JSON file from your computer">
+      &#x23CF; Local JSON
+      <input type="file" id="file-input" accept=".json" style="display:none">
+    </label>
+
+    <span class="loaded-filename" id="loaded-name"></span>
+
+  </div>
+
+  <div class="legend">
+    <div class="legend__item">
+      <div class="legend__dot" style="background:var(--color-agent)"></div>
+      <span>Agents (<span id="count-agents">0</span>)</span>
+    </div>
+    <div class="legend__item">
+      <div class="legend__dot" style="background:var(--color-stmt)"></div>
+      <span>Statements (<span id="count-stmts">0</span>)</span>
+    </div>
+  </div>
+</header>
+
+<div class="canvas-wrapper" id="canvas-wrapper">
+  <svg class="graph-svg" id="graph"></svg>
+
+  <!-- Small cursor tooltip: shows on hover for statements and brief agent info -->
+  <div class="cursor-tooltip" id="cursor-tooltip"></div>
+
+  <!-- Worldview pane: opens on agent click, lists connected statements -->
+  <div class="worldview-pane" id="worldview-pane">
+    <div class="worldview-pane__header">
+      <div class="worldview-pane__title" id="worldview-title"></div>
+      <button class="worldview-pane__close" id="worldview-close">&#x2715;</button>
+    </div>
+    <div class="worldview-pane__list" id="worldview-list"></div>
+  </div>
+
+  <!-- Click info panel -->
+  <div class="info-panel" id="info-panel">
+    <button class="info-panel__close" id="info-panel-close">&#x2715;</button>
+    <h2 class="info-panel__title"     id="info-panel-title"></h2>
+    <div                              id="info-panel-fields"></div>
+  </div>
+
+  <div class="status-bar" id="status-bar">Initialising&hellip;</div>
+</div>
+
+<!-- Unconnected statements parking panel -->
+<div class="parking-panel parking-panel--empty" id="parking-panel">
+  <div class="parking-panel__title">&#x25CB; Unconnected statements</div>
+  <div class="parking-panel__list"  id="parking-list"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script>
+const DATA = {"nodes":[{"id":"A1","type":"agent","label":"Agent 1","group":"GroupC","score":11.1,"topic":"","support_pct":""},{"id":"A2","type":"agent","label":"Agent 2","group":"GroupC","score":27.5,"topic":"","support_pct":""},{"id":"A3","type":"agent","label":"Agent 3","group":"GroupA","score":14.0,"topic":"","support_pct":""},{"id":"A4","type":"agent","label":"Agent 4","group":"GroupA","score":67.7,"topic":"","support_pct":""},{"id":"A5","type":"agent","label":"Agent 5","group":"GroupC","score":8.7,"topic":"","support_pct":""},{"id":"A6","type":"agent","label":"Agent 6","group":"GroupB","score":3.2,"topic":"","support_pct":""},{"id":"A7","type":"agent","label":"Agent 7","group":"GroupA","score":21.9,"topic":"","support_pct":""},{"id":"A8","type":"agent","label":"Agent 8","group":"GroupC","score":60.2,"topic":"","support_pct":""},{"id":"A9","type":"agent","label":"Agent 9","group":"GroupC","score":19.9,"topic":"","support_pct":""},{"id":"A10","type":"agent","label":"Agent 10","group":"GroupC","score":70.1,"topic":"","support_pct":""},{"id":"A11","type":"agent","label":"Agent 11","group":"GroupB","score":22.0,"topic":"","support_pct":""},{"id":"A12","type":"agent","label":"Agent 12","group":"GroupC","score":27.8,"topic":"","support_pct":""},{"id":"A13","type":"agent","label":"Agent 13","group":"GroupA","score":75.9,"topic":"","support_pct":""},{"id":"A14","type":"agent","label":"Agent 14","group":"GroupA","score":69.8,"topic":"","support_pct":""},{"id":"A15","type":"agent","label":"Agent 15","group":"GroupB","score":27.8,"topic":"","support_pct":""},{"id":"A16","type":"agent","label":"Agent 16","group":"GroupA","score":95.7,"topic":"","support_pct":""},{"id":"A17","type":"agent","label":"Agent 17","group":"GroupB","score":10.2,"topic":"","support_pct":""},{"id":"A18","type":"agent","label":"Agent 18","group":"GroupB","score":9.7,"topic":"","support_pct":""},{"id":"A19","type":"agent","label":"Agent 19","group":"GroupB","score":60.4,"topic":"","support_pct":""},{"id":"A20","type":"agent","label":"Agent 20","group":"GroupA","score":73.0,"topic":"","support_pct":""},{"id":"A21","type":"agent","label":"Agent 21","group":"GroupC","score":12.5,"topic":"","support_pct":""},{"id":"A22","type":"agent","label":"Agent 22","group":"GroupB","score":7.9,"topic":"","support_pct":""},{"id":"A23","type":"agent","label":"Agent 23","group":"GroupB","score":82.9,"topic":"","support_pct":""},{"id":"A24","type":"agent","label":"Agent 24","group":"GroupC","score":88.5,"topic":"","support_pct":""},{"id":"A25","type":"agent","label":"Agent 25","group":"GroupB","score":57.7,"topic":"","support_pct":""},{"id":"A26","type":"agent","label":"Agent 26","group":"GroupC","score":7.0,"topic":"","support_pct":""},{"id":"A27","type":"agent","label":"Agent 27","group":"GroupC","score":22.8,"topic":"","support_pct":""},{"id":"A28","type":"agent","label":"Agent 28","group":"GroupB","score":98.5,"topic":"","support_pct":""},{"id":"A29","type":"agent","label":"Agent 29","group":"GroupA","score":86.6,"topic":"","support_pct":""},{"id":"A30","type":"agent","label":"Agent 30","group":"GroupB","score":27.8,"topic":"","support_pct":""},{"id":"A31","type":"agent","label":"Agent 31","group":"GroupC","score":83.4,"topic":"","support_pct":""},{"id":"A32","type":"agent","label":"Agent 32","group":"GroupA","score":37.0,"topic":"","support_pct":""},{"id":"A33","type":"agent","label":"Agent 33","group":"GroupA","score":67.0,"topic":"","support_pct":""},{"id":"A34","type":"agent","label":"Agent 34","group":"GroupC","score":93.7,"topic":"","support_pct":""},{"id":"A35","type":"agent","label":"Agent 35","group":"GroupC","score":7.1,"topic":"","support_pct":""},{"id":"A36","type":"agent","label":"Agent 36","group":"GroupC","score":17.1,"topic":"","support_pct":""},{"id":"A37","type":"agent","label":"Agent 37","group":"GroupC","score":24.5,"topic":"","support_pct":""},{"id":"A38","type":"agent","label":"Agent 38","group":"GroupB","score":37.9,"topic":"","support_pct":""},{"id":"A39","type":"agent","label":"Agent 39","group":"GroupC","score":68.8,"topic":"","support_pct":""},{"id":"A40","type":"agent","label":"Agent 40","group":"GroupA","score":68.5,"topic":"","support_pct":""},{"id":"A41","type":"agent","label":"Agent 41","group":"GroupA","score":22.9,"topic":"","support_pct":""},{"id":"A42","type":"agent","label":"Agent 42","group":"GroupA","score":80.5,"topic":"","support_pct":""},{"id":"A43","type":"agent","label":"Agent 43","group":"GroupB","score":26.8,"topic":"","support_pct":""},{"id":"A44","type":"agent","label":"Agent 44","group":"GroupA","score":91.3,"topic":"","support_pct":""},{"id":"A45","type":"agent","label":"Agent 45","group":"GroupC","score":87.6,"topic":"","support_pct":""},{"id":"A46","type":"agent","label":"Agent 46","group":"GroupB","score":21.3,"topic":"","support_pct":""},{"id":"A47","type":"agent","label":"Agent 47","group":"GroupB","score":39.6,"topic":"","support_pct":""},{"id":"A48","type":"agent","label":"Agent 48","group":"GroupC","score":45.9,"topic":"","support_pct":""},{"id":"A49","type":"agent","label":"Agent 49","group":"GroupB","score":14.0,"topic":"","support_pct":""},{"id":"A50","type":"agent","label":"Agent 50","group":"GroupC","score":56.1,"topic":"","support_pct":""},{"id":"A51","type":"agent","label":"Agent 51","group":"GroupB","score":74.7,"topic":"","support_pct":""},{"id":"A52","type":"agent","label":"Agent 52","group":"GroupB","score":89.8,"topic":"","support_pct":""},{"id":"A53","type":"agent","label":"Agent 53","group":"GroupB","score":36.2,"topic":"","support_pct":""},{"id":"A54","type":"agent","label":"Agent 54","group":"GroupA","score":51.0,"topic":"","support_pct":""},{"id":"A55","type":"agent","label":"Agent 55","group":"GroupA","score":75.6,"topic":"","support_pct":""},{"id":"A56","type":"agent","label":"Agent 56","group":"GroupA","score":15.3,"topic":"","support_pct":""},{"id":"A57","type":"agent","label":"Agent 57","group":"GroupA","score":79.2,"topic":"","support_pct":""},{"id":"A58","type":"agent","label":"Agent 58","group":"GroupB","score":59.6,"topic":"","support_pct":""},{"id":"A59","type":"agent","label":"Agent 59","group":"GroupB","score":38.2,"topic":"","support_pct":""},{"id":"A60","type":"agent","label":"Agent 60","group":"GroupB","score":52.9,"topic":"","support_pct":""},{"id":"A61","type":"agent","label":"Agent 61","group":"GroupC","score":86.1,"topic":"","support_pct":""},{"id":"A62","type":"agent","label":"Agent 62","group":"GroupA","score":68.0,"topic":"","support_pct":""},{"id":"A63","type":"agent","label":"Agent 63","group":"GroupA","score":68.2,"topic":"","support_pct":""},{"id":"A64","type":"agent","label":"Agent 64","group":"GroupC","score":75.1,"topic":"","support_pct":""},{"id":"A65","type":"agent","label":"Agent 65","group":"GroupC","score":34.0,"topic":"","support_pct":""},{"id":"A66","type":"agent","label":"Agent 66","group":"GroupB","score":43.5,"topic":"","support_pct":""},{"id":"A67","type":"agent","label":"Agent 67","group":"GroupB","score":0.3,"topic":"","support_pct":""},{"id":"A68","type":"agent","label":"Agent 68","group":"GroupC","score":87.6,"topic":"","support_pct":""},{"id":"A69","type":"agent","label":"Agent 69","group":"GroupB","score":97.2,"topic":"","support_pct":""},{"id":"A70","type":"agent","label":"Agent 70","group":"GroupA","score":50.8,"topic":"","support_pct":""},{"id":"A71","type":"agent","label":"Agent 71","group":"GroupA","score":87.1,"topic":"","support_pct":""},{"id":"A72","type":"agent","label":"Agent 72","group":"GroupB","score":84.2,"topic":"","support_pct":""},{"id":"A73","type":"agent","label":"Agent 73","group":"GroupC","score":60.9,"topic":"","support_pct":""},{"id":"A74","type":"agent","label":"Agent 74","group":"GroupA","score":37.4,"topic":"","support_pct":""},{"id":"A75","type":"agent","label":"Agent 75","group":"GroupA","score":53.9,"topic":"","support_pct":""},{"id":"A76","type":"agent","label":"Agent 76","group":"GroupC","score":91.8,"topic":"","support_pct":""},{"id":"A77","type":"agent","label":"Agent 77","group":"GroupC","score":32.4,"topic":"","support_pct":""},{"id":"A78","type":"agent","label":"Agent 78","group":"GroupA","score":11.2,"topic":"","support_pct":""},{"id":"A79","type":"agent","label":"Agent 79","group":"GroupB","score":87.9,"topic":"","support_pct":""},{"id":"A80","type":"agent","label":"Agent 80","group":"GroupB","score":23.9,"topic":"","support_pct":""},{"id":"S1","type":"statement","label":"Statement 1","group":"","score":"","topic":"Health","support_pct":80.2},{"id":"S2","type":"statement","label":"Statement 2","group":"","score":"","topic":"Economy","support_pct":16.9},{"id":"S3","type":"statement","label":"Statement 3","group":"","score":"","topic":"Security","support_pct":75.3},{"id":"S4","type":"statement","label":"Statement 4","group":"","score":"","topic":"Health","support_pct":20.3},{"id":"S5","type":"statement","label":"Statement 5","group":"","score":"","topic":"Security","support_pct":85.7},{"id":"S6","type":"statement","label":"Statement 6","group":"","score":"","topic":"Health","support_pct":31.2},{"id":"S7","type":"statement","label":"Statement 7","group":"","score":"","topic":"Security","support_pct":87.1},{"id":"S8","type":"statement","label":"Statement 8","group":"","score":"","topic":"Health","support_pct":67.0},{"id":"S9","type":"statement","label":"Statement 9","group":"","score":"","topic":"Security","support_pct":89.6},{"id":"S10","type":"statement","label":"Statement 10","group":"","score":"","topic":"Environment","support_pct":45.0},{"id":"S11","type":"statement","label":"Statement 11","group":"","score":"","topic":"Security","support_pct":19.7},{"id":"S12","type":"statement","label":"Statement 12","group":"","score":"","topic":"Health","support_pct":15.1},{"id":"S13","type":"statement","label":"Statement 13","group":"","score":"","topic":"Economy","support_pct":57.1},{"id":"S14","type":"statement","label":"Statement 14","group":"","score":"","topic":"Health","support_pct":57.1},{"id":"S15","type":"statement","label":"Statement 15","group":"","score":"","topic":"Economy","support_pct":15.7},{"id":"S16","type":"statement","label":"Statement 16","group":"","score":"","topic":"Economy","support_pct":28.3},{"id":"S17","type":"statement","label":"Statement 17","group":"","score":"","topic":"Economy","support_pct":78.8},{"id":"S18","type":"statement","label":"Statement 18","group":"","score":"","topic":"Economy","support_pct":51.1},{"id":"S19","type":"statement","label":"Statement 19","group":"","score":"","topic":"Environment","support_pct":63.5},{"id":"S20","type":"statement","label":"Statement 20","group":"","score":"","topic":"Health","support_pct":53.1}],"links":[{"source":"A2","target":"S11"},{"source":"A2","target":"S20"},{"source":"A4","target":"S10"},{"source":"A5","target":"S4"},{"source":"A7","target":"S13"},{"source":"A8","target":"S1"},{"source":"A9","target":"S6"},{"source":"A10","target":"S4"},{"source":"A10","target":"S9"},{"source":"A16","target":"S9"},{"source":"A18","target":"S17"},{"source":"A20","target":"S15"},{"source":"A22","target":"S19"},{"source":"A24","target":"S18"},{"source":"A26","target":"S19"},{"source":"A28","target":"S11"},{"source":"A28","target":"S16"},{"source":"A29","target":"S19"},{"source":"A30","target":"S6"},{"source":"A30","target":"S20"},{"source":"A31","target":"S5"},{"source":"A32","target":"S11"},{"source":"A34","target":"S5"},{"source":"A35","target":"S15"},{"source":"A37","target":"S13"},{"source":"A37","target":"S16"},{"source":"A38","target":"S16"},{"source":"A38","target":"S18"},{"source":"A41","target":"S9"},{"source":"A44","target":"S9"},{"source":"A45","target":"S6"},{"source":"A48","target":"S20"},{"source":"A54","target":"S15"},{"source":"A55","target":"S19"},{"source":"A57","target":"S20"},{"source":"A61","target":"S16"},{"source":"A62","target":"S4"},{"source":"A63","target":"S4"},{"source":"A63","target":"S15"},{"source":"A64","target":"S20"},{"source":"A65","target":"S9"},{"source":"A67","target":"S13"},{"source":"A68","target":"S2"},{"source":"A68","target":"S13"},{"source":"A73","target":"S7"},{"source":"A75","target":"S20"},{"source":"A77","target":"S7"},{"source":"A78","target":"S5"}]};
+
+// ── Empty state ───────────────────────────────────────────────────
+if (!DATA.nodes || DATA.nodes.length === 0) {
+  document.getElementById("status-bar").textContent =
+    "No network loaded \u2014 select one from the dropdown or use \u201C\u23CF Local JSON\u201D.";
+}
+
+// ── Helpers ───────────────────────────────────────────────────────
+// Safely extract string id from a D3 link endpoint (may be mutated to object)
+function eid(x) { return (x !== null && typeof x === "object") ? x.id : x; }
+
+// ── Build neighbour index from current DATA ───────────────────────
+const degree     = {};
+const neighbours = {};
+let   nodeById   = {};
+
+function buildIndex() {
+  Object.keys(degree).forEach(k => delete degree[k]);
+  Object.keys(neighbours).forEach(k => delete neighbours[k]);
+  nodeById = {};
+  DATA.nodes.forEach(n => {
+    degree[n.id]     = 0;
+    neighbours[n.id] = new Set();
+    nodeById[n.id]   = n;
+  });
+  DATA.links.forEach(l => {
+    // Use raw string ids from source/target — before D3 mutates them
+    // We store original string ids in l._s / l._t at load time
+    const s = l._s, t = l._t;
+    if (s === undefined || t === undefined) return;
+    degree[s] = (degree[s] || 0) + 1;
+    degree[t] = (degree[t] || 0) + 1;
+    neighbours[s].add(t);
+    neighbours[t].add(s);
+  });
+}
+
+// Tag each link with immutable string ids before D3 can mutate them
+function tagLinks() {
+  DATA.links.forEach(l => {
+    l._s = eid(l.source);
+    l._t = eid(l.target);
+  });
+}
+
+if (DATA.nodes && DATA.nodes.length > 0) {
+  tagLinks();
+  buildIndex();
+}
+
+// ── Node radius ───────────────────────────────────────────────────
+const AGENT_R      = 5;
+const STMT_BASE_R  = 7;
+
+function nodeR(d, byDeg) {
+  if (d.type === "agent") return AGENT_R;   // agents always fixed size
+  if (!byDeg) return STMT_BASE_R;
+  // Area proportional to degree → radius proportional to sqrt(degree)
+  const deg = degree[d.id] || 0;
+  return deg === 0 ? STMT_BASE_R : Math.max(4, Math.min(Math.sqrt(deg) * 5, 30));
+}
+
+// ── DOM refs ──────────────────────────────────────────────────────
+const wrap          = document.getElementById("canvas-wrapper");
+const cursorTip     = document.getElementById("cursor-tooltip");
+const worldviewPane = document.getElementById("worldview-pane");
+const worldviewTitle= document.getElementById("worldview-title");
+const worldviewList = document.getElementById("worldview-list");
+const infoPanel     = document.getElementById("info-panel");
+const statusBar     = document.getElementById("status-bar");
+const parkingPanel  = document.getElementById("parking-panel");
+const parkingList   = document.getElementById("parking-list");
+
+// ── SVG setup ─────────────────────────────────────────────────────
+const svg  = d3.select("#graph");
+const root = svg.append("g");
+
+svg.call(d3.zoom().scaleExtent([0.04, 10]).on("zoom", e => root.attr("transform", e.transform)))
+   .on("dblclick.zoom", null);
+svg.on("click", () => infoPanel.classList.remove("info-panel--open"));
+
+const linkGroup = root.append("g");
+const nodeGroup = root.append("g");
+
+let linkSel, nodeSel, circles;
+
+// ── Simulation ────────────────────────────────────────────────────
+let sim;
+let frozen    = false;
+let labelsOn  = true;
+let sizeByDeg = false;
+
+function sv(id) { return +document.getElementById(id).value; }
+function wh()   { return [wrap.clientWidth, wrap.clientHeight]; }
+
+function buildSim() {
+  const [W, H] = wh();
+  if (sim) sim.stop();
+  sim = d3.forceSimulation(DATA.nodes)
+    .force("link",    d3.forceLink(DATA.links).id(d => d.id)
+                        .distance(sv("sl-edgelen")).strength(sv("sl-attract")))
+    .force("charge",  d3.forceManyBody().strength(-sv("sl-spread")))
+    .force("center",  d3.forceCenter(W / 2, H / 2))
+    .force("collide", d3.forceCollide(d => nodeR(d, sizeByDeg) + 2))
+    .on("tick", onTick)
+    .on("end",  () => { statusBar.textContent = "Converged."; });
+  statusBar.textContent = "Simulating\u2026";
+}
+
+function onTick() {
+  linkSel.attr("x1", d => d.source.x).attr("y1", d => d.source.y)
+         .attr("x2", d => d.target.x).attr("y2", d => d.target.y);
+  nodeSel.attr("transform", d => "translate(" + d.x + "," + d.y + ")");
+}
+
+// ── Draw / redraw ─────────────────────────────────────────────────
+function updateLegend() {
+  const nAgents = DATA.nodes.filter(n => n.type === "agent").length;
+  const nStmts  = DATA.nodes.filter(n => n.type === "statement").length;
+  document.getElementById("count-agents").textContent = nAgents;
+  document.getElementById("count-stmts").textContent  = nStmts;
+}
+
+function updateParking() {
+  const unconnected = DATA.nodes.filter(n => n.type === "statement" && degree[n.id] === 0);
+  nodeSel.classed("node--unconnected", d => d.type === "statement" && degree[d.id] === 0);
+  if (unconnected.length > 0) {
+    parkingPanel.classList.remove("parking-panel--empty");
+    parkingList.innerHTML = unconnected
+      .sort((a, b) => a.id.localeCompare(b.id, undefined, {numeric: true}))
+      .map(n => '<div class="parking-panel__item">' + n.label + '</div>')
+      .join("");
+  } else {
+    parkingPanel.classList.add("parking-panel--empty");
+    parkingList.innerHTML = "";
+  }
+}
+
+function redraw() {
+  linkGroup.selectAll("line").remove();
+  nodeGroup.selectAll("g").remove();
+
+  linkSel = linkGroup.selectAll("line")
+    .data(DATA.links)
+    .join("line")
+    .attr("class", "edge");
+
+  // Key function uses the stable _s/_t tags, not the (possibly mutated) source/target
+  nodeSel = nodeGroup.selectAll("g")
+    .data(DATA.nodes, d => d.id)
+    .join("g")
+    .attr("class", "node")
+    .call(d3.drag()
+      .on("start", (e,d) => { if(!e.active) sim.alphaTarget(0.3).restart(); d.fx=d.x; d.fy=d.y; })
+      .on("drag",  (e,d) => { d.fx=e.x; d.fy=e.y; })
+      .on("end",   (e,d) => { if(!e.active) sim.alphaTarget(0); d.fx=null; d.fy=null; })
+    )
+    .on("mouseover", onHover)
+    .on("mousemove", onMove)
+    .on("mouseout",  onOut)
+    .on("click",     onClick);
+
+  circles = nodeSel.append("circle")
+    .attr("class",  "node__circle")
+    .attr("r",      d => nodeR(d, sizeByDeg))
+    .attr("fill",   d => d.type === "agent" ? "var(--color-agent)" : "var(--color-stmt)")
+    .attr("stroke", d => d.type === "agent" ? "var(--color-agent-stroke)" : "var(--color-stmt-stroke)");
+
+  nodeSel.append("text")
+    .attr("class", "node__label")
+    .attr("dy", d => d.type === "agent" ? -8 : -10)
+    .attr("text-anchor", "middle")
+    .text(d => d.label);
+
+  if (!labelsOn) nodeSel.classed("node--labels-hidden", true);
+
+  updateParking();
+  updateLegend();
+}
+
+// ── Initial draw ──────────────────────────────────────────────────
+if (DATA.nodes && DATA.nodes.length > 0) {
+  redraw();
+  buildSim();
+}
+
+// ── Sliders ───────────────────────────────────────────────────────
+function bindSlider(slId, vlId, dec, fn) {
+  const sl = document.getElementById(slId);
+  const vl = document.getElementById(vlId);
+  sl.addEventListener("input", () => { vl.textContent = (+sl.value).toFixed(dec); fn(+sl.value); });
+}
+bindSlider("sl-spread",  "vl-spread",  0, v => {
+  sim.force("charge", d3.forceManyBody().strength(-v)); sim.alpha(0.4).restart(); });
+bindSlider("sl-edgelen", "vl-edgelen", 0, v => {
+  sim.force("link").distance(v); sim.alpha(0.4).restart(); });
+bindSlider("sl-attract", "vl-attract", 2, v => {
+  sim.force("link").strength(v); sim.alpha(0.4).restart(); });
+
+// ── Buttons ───────────────────────────────────────────────────────
+document.getElementById("btn-reset").addEventListener("click", () => {
+  frozen = false;
+  document.getElementById("btn-freeze").textContent = "\u23F8 Freeze";
+  DATA.nodes.forEach(d => { d.x=undefined; d.y=undefined; d.vx=0; d.vy=0; d.fx=null; d.fy=null; });
+  buildSim();
+  sim.alpha(1).restart();
+});
+
+document.getElementById("btn-freeze").addEventListener("click", function() {
+  frozen = !frozen;
+  if (frozen) { sim.stop(); this.textContent = "\u25B6 Unfreeze"; }
+  else        { sim.alpha(0.3).restart(); this.textContent = "\u23F8 Freeze"; }
+});
+
+document.getElementById("btn-labels").addEventListener("click", function() {
+  labelsOn = !labelsOn;
+  nodeSel.classed("node--labels-hidden", !labelsOn);
+  this.textContent = labelsOn ? "Labels off" : "Labels on";
+  this.classList.toggle("btn--active", !labelsOn);
+});
+
+document.getElementById("btn-size").addEventListener("click", function() {
+  sizeByDeg = !sizeByDeg;
+  this.classList.toggle("btn--active", sizeByDeg);
+  this.textContent = sizeByDeg ? "Stmt size: uniform" : "Stmt size by degree";
+  // Only statement circles change; agents stay fixed
+  circles.filter(d => d.type === "statement")
+    .transition().duration(400)
+    .attr("r", d => nodeR(d, sizeByDeg));
+  sim.force("collide", d3.forceCollide(d => nodeR(d, sizeByDeg) + 2));
+  sim.alpha(0.15).restart();
+});
+
+// ── Hover ─────────────────────────────────────────────────────────
+function onHover(event, d) {
+  const nb = new Set([d.id, ...(neighbours[d.id] || [])]);
+  linkSel.classed("edge--highlighted", l => l._s === d.id || l._t === d.id);
+  nodeSel.classed("node--highlighted", n =>  nb.has(n.id))
+         .classed("node--dimmed",      n => !nb.has(n.id));
+
+  if (d.type === "agent") {
+    const count = (neighbours[d.id] || new Set()).size;
+    cursorTip.textContent = d.label + " \u00B7 " + count + " stmt" + (count !== 1 ? "s" : "");
+  } else {
+    const deg = (neighbours[d.id] || new Set()).size;
+    cursorTip.textContent = d.label
+      + (d.topic ? " \u00B7 " + d.topic : "")
+      + " \u00B7 " + deg + " agent" + (deg !== 1 ? "s" : "");
+    // Highlight matching row in open worldview pane
+    worldviewList.querySelectorAll(".worldview-pane__item").forEach(el =>
+      el.classList.toggle("worldview-pane__item--highlighted", el.dataset.id === d.id)
+    );
+  }
+  cursorTip.style.display = "block";
+}
+
+function onMove(event) {
+  const r  = wrap.getBoundingClientRect();
+  const tw = cursorTip.offsetWidth;
+  const th = cursorTip.offsetHeight;
+  let x = event.clientX - r.left + 16;
+  let y = event.clientY - r.top  - 10;
+  if (x + tw > wrap.clientWidth  - 10) x -= tw + 32;
+  if (y + th > wrap.clientHeight - 10) y  = wrap.clientHeight - th - 10;
+  cursorTip.style.left = x + "px";
+  cursorTip.style.top  = y + "px";
+}
+
+function onOut() {
+  cursorTip.style.display = "none";
+  linkSel.classed("edge--highlighted", false);
+  nodeSel.classed("node--highlighted", false).classed("node--dimmed", false);
+  worldviewList.querySelectorAll(".worldview-pane__item").forEach(el =>
+    el.classList.remove("worldview-pane__item--highlighted")
+  );
+}
+
+// ── Click: worldview for agents, info panel for statements ────────
+function openWorldview(d) {
+  const stmts = Array.from(neighbours[d.id] || [])
+    .map(id => nodeById[id])
+    .filter(n => n && n.type === "statement")
+    .sort((a, b) => a.id.localeCompare(b.id, undefined, {numeric: true}));
+
+  worldviewTitle.textContent = d.label + "\u2019s Worldview";
+  worldviewList.innerHTML = stmts.length === 0
+    ? '<div class="worldview-pane__empty">No connections</div>'
+    : stmts.map(n => {
+        const sub = n.topic
+          ? ' <span class="worldview-pane__item-sub">' + n.topic + '</span>' : '';
+        return '<div class="worldview-pane__item" data-id="' + n.id + '">'
+             + '<span class="worldview-pane__item-dot"></span>'
+             + n.label + sub + '</div>';
+      }).join("");
+
+  // Hover over item in pane highlights that statement node in graph
+  worldviewList.querySelectorAll(".worldview-pane__item").forEach(el => {
+    el.addEventListener("mouseenter", () => {
+      const sid = el.dataset.id;
+      nodeSel.classed("node--highlighted", n => n.id === sid || n.id === d.id)
+             .classed("node--dimmed",      n => n.id !== sid && n.id !== d.id);
+      linkSel.classed("edge--highlighted", l =>
+        (l._s === d.id && l._t === sid) || (l._t === d.id && l._s === sid));
+    });
+    el.addEventListener("mouseleave", () => {
+      nodeSel.classed("node--highlighted", false).classed("node--dimmed", false);
+      linkSel.classed("edge--highlighted", false);
+    });
+  });
+
+  worldviewPane.classList.add("worldview-pane--visible");
+}
+
+function onClick(event, d) {
+  event.stopPropagation();
+  if (d.type === "agent") {
+    infoPanel.classList.remove("info-panel--open");
+    openWorldview(d);
+  } else {
+    worldviewPane.classList.remove("worldview-pane--visible");
+    document.getElementById("info-panel-title").textContent = d.label;
+    const skip = new Set(["id","label","index","x","y","vx","vy","fx","fy","_s","_t"]);
+    const rows = [["connections", degree[d.id] || 0]]
+      .concat(Object.entries(d).filter(([k, v]) => !skip.has(k) && v !== ""))
+      .map(([k, v]) =>
+        '<div class="info-panel__field">'
+        + '<span class="info-panel__field-key">'  + k + '</span>'
+        + '<span class="info-panel__field-value">' + v + '</span>'
+        + '</div>'
+      ).join("");
+    document.getElementById("info-panel-fields").innerHTML = rows;
+    infoPanel.classList.add("info-panel--open");
+  }
+}
+
+document.getElementById("worldview-close").addEventListener("click", e => {
+  e.stopPropagation();
+  worldviewPane.classList.remove("worldview-pane--visible");
+  nodeSel.classed("node--highlighted", false).classed("node--dimmed", false);
+  linkSel.classed("edge--highlighted", false);
+});
+document.getElementById("info-panel-close").addEventListener("click", e => {
+  e.stopPropagation();
+  infoPanel.classList.remove("info-panel--open");
+});
+
+// ── Server network loader (manifest.json) ────────────────────────
+// Fetches data/manifest.json on load. Silently does nothing if not found
+// (so the file works locally without a server too).
+// manifest.json format: [{"label": "t=0", "file": "data/network_t0.json"}, ...]
+const networkSelect = document.getElementById("network-select");
+
+fetch("data/manifest.json")
+  .then(r => { if (!r.ok) throw new Error("No manifest"); return r.json(); })
+  .then(manifest => {
+    manifest.forEach(entry => {
+      const opt = document.createElement("option");
+      opt.value       = entry.file;
+      opt.textContent = entry.label;
+      networkSelect.appendChild(opt);
+    });
+    networkSelect.style.display = "";  // show only if manifest loaded
+    // Auto-load the first entry
+    if (manifest.length > 0) {
+      const first = manifest[0];
+      networkSelect.value = first.file;
+      document.getElementById("status-bar").textContent = "Loading\u2026";
+      fetch(first.file)
+        .then(r => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+        .then(data => loadData(data, first.file.split("/").pop()))
+        .catch(err => {
+          document.getElementById("status-bar").textContent = "Failed to load: " + err.message;
+        });
+    }
+  })
+  .catch(() => {
+    networkSelect.style.display = "none";  // hide if no server / no manifest
+  });
+
+networkSelect.addEventListener("change", function() {
+  const url = this.value;
+  if (!url) return;
+  document.getElementById("status-bar").textContent = "Loading\u2026";
+  fetch(url)
+    .then(r => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+    .then(data => {
+      loadData(data, url.split("/").pop());
+      this.blur();
+    })
+    .catch(err => {
+      document.getElementById("status-bar").textContent = "Failed to load: " + err.message;
+      this.value = "";
+    });
+});
+
+// ── Local file loader ─────────────────────────────────────────────
+document.getElementById("file-input").addEventListener("change", function() {
+  const file = this.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      loadData(JSON.parse(e.target.result), file.name);
+    } catch(err) {
+      alert("Could not parse JSON: " + err.message);
+    }
+  };
+  reader.readAsText(file);
+  this.value = "";
+});
+
+function loadData(newData, filename) {
+  DATA.nodes = newData.nodes;
+  DATA.links = newData.links;
+  tagLinks();
+  buildIndex();
+  // Show filename, reset whichever loader wasn't used
+  document.getElementById("loaded-name").textContent = filename.replace(/\.json$/i, "");
+  infoPanel.classList.remove("info-panel--open");
+  worldviewPane.classList.remove("worldview-pane--visible");
+  frozen = false;
+  document.getElementById("btn-freeze").textContent = "\u23F8 Freeze";
+  DATA.nodes.forEach(d => { d.x=undefined; d.y=undefined; d.vx=0; d.vy=0; d.fx=null; d.fy=null; });
+  redraw();
+  buildSim();
+  sim.alpha(1).restart();
+}
+
+// ── Resize ────────────────────────────────────────────────────────
+window.addEventListener("resize", () => {
+  if (!frozen) {
+    const [W, H] = wh();
+    sim.force("center", d3.forceCenter(W / 2, H / 2));
+    sim.alpha(0.2).restart();
+  }
+});
+</script>
+</body>
+</html>
