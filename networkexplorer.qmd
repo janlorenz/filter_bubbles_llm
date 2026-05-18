@@ -1,21 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8"/>
-<title>Bipartite Network</title>
-<link rel="stylesheet" href="network.css">
-</head>
-<body>
+---
+title: "Network Explorer"
+page-layout: article        # removes the content column margins
+margin-left: "0px"
+margin-right: "0px"
+---
+
+```{=html}
+<div id="network-root">
+<link rel="stylesheet" href="network-scoped.css">
+
+<style>
+  #network-root {
+    height: calc(100vh - 80px); /* 60px = Quarto navbar, adjust if needed */
+  }
+</style>
 
 <header class="header">
-  <h1 class="header__title">&#x2B23; Bipartite Network</h1>
 
   <div class="controls">
 
     <div class="control-group">
       <label class="control-group__label">SPREAD</label>
       <span class="control-group__hint"
-            title="Repulsion between all nodes — higher values push nodes further apart (Fruchterman-Reingold repulsive force)">?</span>
+            title="Repulsion between all nodes: Higher values push nodes further apart (Fruchterman-Reingold repulsive force).">?</span>
       <input type="range" class="slider" id="sl-spread" min="10" max="400" step="5" value="100">
       <span class="control-group__value" id="vl-spread">100</span>
     </div>
@@ -23,7 +30,7 @@
     <div class="control-group">
       <label class="control-group__label">EDGE LENGTH</label>
       <span class="control-group__hint"
-            title="Preferred distance between connected nodes — the rest length of the spring pulling them together">?</span>
+            title="Preferred distance between connected nodes: The rest length of the spring pulling them together.">?</span>
       <input type="range" class="slider" id="sl-edgelen" min="10" max="100" step="2" value="10">
       <span class="control-group__value" id="vl-edgelen">10</span>
     </div>
@@ -31,19 +38,32 @@
     <div class="control-group">
       <label class="control-group__label">ATTRACTION</label>
       <span class="control-group__hint"
-            title="How strongly edges pull connected nodes toward each other — higher values create tighter clusters">?</span>
+            title="How strongly edges pull connected nodes toward each other: Higher values create tighter clusters.">?</span>
       <input type="range" class="slider" id="sl-attract" min="0" max="1" step="0.02" value="0.75">
       <span class="control-group__value" id="vl-attract">0.75</span>
     </div>
 
-    <div class="divider"></div>
-
+    <div class="controls__linebreak"></div>
+    
     <button class="btn" id="btn-reset">&#x21BA; Reset</button>
     <button class="btn" id="btn-freeze">&#x23F8; Freeze</button>
     <button class="btn" id="btn-labels">Labels off</button>
-    <button class="btn" id="btn-size">Stmt size by degree</button>
+    <button class="btn" id="btn-size">Statement size by degree</button>
 
     <div class="divider"></div>
+
+    <div class="legend">
+      <div class="legend__item">
+        <div class="legend__dot" style="background:var(--color-agent)"></div>
+        <span>Agents (<span id="count-agents">0</span>)</span>
+      </div>
+      <div class="legend__item">
+        <div class="legend__dot" style="background:var(--color-stmt)"></div>
+        <span>Statements (<span id="count-stmts">0</span>)</span>
+      </div>
+    </div>
+
+    <div class="controls__linebreak"></div>
 
     <select class="btn network-select" id="network-select" title="Load a network from the server">
       <option value="">&#x1F5A5; Select network&hellip;</option>
@@ -58,16 +78,6 @@
 
   </div>
 
-  <div class="legend">
-    <div class="legend__item">
-      <div class="legend__dot" style="background:var(--color-agent)"></div>
-      <span>Agents (<span id="count-agents">0</span>)</span>
-    </div>
-    <div class="legend__item">
-      <div class="legend__dot" style="background:var(--color-stmt)"></div>
-      <span>Statements (<span id="count-stmts">0</span>)</span>
-    </div>
-  </div>
 </header>
 
 <div class="canvas-wrapper" id="canvas-wrapper">
@@ -100,6 +110,26 @@
   <div class="parking-panel__title">&#x25CB; Unconnected statements</div>
   <div class="parking-panel__list"  id="parking-list"></div>
 </div>
+
+<style>
+  /* Let Quarto's body/main have no extra padding */
+  main.content { padding: 0 !important; }
+
+  /* Make canvas-wrapper fill whatever remains below the header */
+  #canvas-wrapper {
+    height: calc(100vh - var(--quarto-navbar-height, 60px) - var(--header-height, 0px));
+  }
+</style>
+
+<script>
+  // Measure the actual .header height and set it as a CSS variable
+  document.addEventListener('DOMContentLoaded', () => {
+    const h = document.querySelector('.header');
+    if (h) {
+      document.documentElement.style.setProperty('--header-height', h.offsetHeight + 'px');
+    }
+  });
+</script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
 <script>
@@ -346,7 +376,7 @@ function onHover(event, d) {
 
   if (d.type === "agent") {
     const count = (neighbours[d.id] || new Set()).size;
-    cursorTip.textContent = d.label + " \u00B7 " + count + " stmt" + (count !== 1 ? "s" : "");
+    cursorTip.textContent = d.label + " \u00B7 " + count + " statement" + (count !== 1 ? "s" : "");
   } else {
     const deg = (neighbours[d.id] || new Set()).size;
     cursorTip.textContent = d.label
@@ -456,7 +486,7 @@ document.getElementById("info-panel-close").addEventListener("click", e => {
 // manifest.json format: [{"label": "t=0", "file": "data/network_t0.json"}, ...]
 const networkSelect = document.getElementById("network-select");
 
-fetch("data/manifest.json")
+fetch("networkjson/manifest.json")
   .then(r => { if (!r.ok) throw new Error("No manifest"); return r.json(); })
   .then(manifest => {
     manifest.forEach(entry => {
@@ -541,5 +571,6 @@ window.addEventListener("resize", () => {
   }
 });
 </script>
-</body>
-</html>
+</div>
+
+```

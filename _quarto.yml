@@ -1,0 +1,29 @@
+project:
+  type: website
+  resources:
+    - networkjson/
+
+website:
+  title: "Filter Bubbles ABM with LLM Agents"
+  navbar:
+    left:
+      - text: Outline
+        href: index.qmd
+      - networkexplorer.qmd
+
+bibliography: ABM-LLM.bib
+
+format:
+  html:
+    echo: true
+    code-fold: true
+    theme:
+      - cosmo
+      - brand
+    css: styles.css
+    toc: true
+    number-sections: true
+
+
+
+
