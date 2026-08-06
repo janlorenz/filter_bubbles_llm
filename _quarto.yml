@@ -2,6 +2,7 @@ project:
   type: website
   resources:
     - networkjson/
+    - manifest.json
 
 website:
   title: "Filter Bubbles ABM with LLM Agents"

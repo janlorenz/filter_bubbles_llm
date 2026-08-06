@@ -5,6 +5,19 @@ margin-left: "0px"
 margin-right: "0px"
 ---
 
+```{r}
+#| include: false
+
+library(tidyverse)
+library(jsonlite)
+# create manifest.json
+manifest <- tibble(
+  label = dir("networkjson/") |> str_remove(".json$"),
+  file = paste0("networkjson/", dir("networkjson/"))
+)
+write(toJSON(manifest, auto_unbox = TRUE), "manifest.json")
+```
+
 ```{=html}
 <div id="network-root">
 <link rel="stylesheet" href="network-scoped.css">
@@ -481,12 +494,10 @@ document.getElementById("info-panel-close").addEventListener("click", e => {
 });
 
 // ── Server network loader (manifest.json) ────────────────────────
-// Fetches data/manifest.json on load. Silently does nothing if not found
-// (so the file works locally without a server too).
-// manifest.json format: [{"label": "t=0", "file": "data/network_t0.json"}, ...]
+// Fetches manifest.json on load. 
 const networkSelect = document.getElementById("network-select");
 
-fetch("networkjson/manifest.json")
+fetch("manifest.json")
   .then(r => { if (!r.ok) throw new Error("No manifest"); return r.json(); })
   .then(manifest => {
     manifest.forEach(entry => {
@@ -572,5 +583,4 @@ window.addEventListener("resize", () => {
 });
 </script>
 </div>
-
 ```
