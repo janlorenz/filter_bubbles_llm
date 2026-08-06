@@ -608,12 +608,10 @@ document.getElementById("info-panel-close").addEventListener("click", e => {
 });
 
 // ── Server network loader (manifest.json) ────────────────────────
-// Fetches data/manifest.json on load. Silently does nothing if not found
-// (so the file works locally without a server too).
-// manifest.json format: [{"label": "t=0", "file": "data/network_t0.json"}, ...]
+// Fetches manifest.json on load. 
 const networkSelect = document.getElementById("network-select");
 
-fetch("networkjson/manifest.json")
+fetch("manifest.json")
   .then(r => { if (!r.ok) throw new Error("No manifest"); return r.json(); })
   .then(manifest => {
     manifest.forEach(entry => {
@@ -699,7 +697,6 @@ window.addEventListener("resize", () => {
 });
 </script>
 </div>
-
 
 
 
