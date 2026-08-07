@@ -150,22 +150,19 @@ ul.task-list li input[type="checkbox"] {
   <div class="controls">
 
     <div class="control-group">
-      <label class="control-group__label">SPREAD</label>
-      <span class="control-group__hint" title="Repulsion between all nodes: Higher values push nodes further apart (Fruchterman-Reingold repulsive force).">?</span>
+      <label class="control-group__label" title="Repulsion between all nodes: Higher values push nodes further apart (Fruchterman-Reingold repulsive force).">SPREAD</label>
       <input type="range" class="slider" id="sl-spread" min="10" max="400" step="5" value="100">
       <span class="control-group__value" id="vl-spread">100</span>
     </div>
 
     <div class="control-group">
-      <label class="control-group__label">EDGE LENGTH</label>
-      <span class="control-group__hint" title="Preferred distance between connected nodes: The rest length of the spring pulling them together.">?</span>
+      <label class="control-group__label" title="Preferred distance between connected nodes: The rest length of the spring pulling them together.">EDGE LENGTH</label>
       <input type="range" class="slider" id="sl-edgelen" min="10" max="100" step="2" value="10">
       <span class="control-group__value" id="vl-edgelen">10</span>
     </div>
 
     <div class="control-group">
-      <label class="control-group__label">ATTRACTION</label>
-      <span class="control-group__hint" title="How strongly edges pull connected nodes toward each other: Higher values create tighter clusters.">?</span>
+      <label class="control-group__label" title="How strongly edges pull connected nodes toward each other: Higher values create tighter clusters.">ATTRACTION</label>
       <input type="range" class="slider" id="sl-attract" min="0" max="1" step="0.02" value="0.75">
       <span class="control-group__value" id="vl-attract">0.75</span>
     </div>
@@ -176,6 +173,7 @@ ul.task-list li input[type="checkbox"] {
     <button class="btn" id="btn-freeze">⏸ Freeze</button>
     <button class="btn" id="btn-labels">Labels off</button>
     <button class="btn" id="btn-size">Statement size by degree</button>
+    <button class="btn" id="btn-defaults">Default Controls</button>
 
     <div class="divider"></div>
 
@@ -260,7 +258,7 @@ ul.task-list li input[type="checkbox"] {
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
 <script>
-const DATA = {"nodes":[{"id":"A1","type":"agent","label":"Agent 1","group":"GroupC","score":11.1,"topic":"","support_pct":""},{"id":"A2","type":"agent","label":"Agent 2","group":"GroupC","score":27.5,"topic":"","support_pct":""},{"id":"A3","type":"agent","label":"Agent 3","group":"GroupA","score":14.0,"topic":"","support_pct":""},{"id":"A4","type":"agent","label":"Agent 4","group":"GroupA","score":67.7,"topic":"","support_pct":""},{"id":"A5","type":"agent","label":"Agent 5","group":"GroupC","score":8.7,"topic":"","support_pct":""},{"id":"A6","type":"agent","label":"Agent 6","group":"GroupB","score":3.2,"topic":"","support_pct":""},{"id":"A7","type":"agent","label":"Agent 7","group":"GroupA","score":21.9,"topic":"","support_pct":""},{"id":"A8","type":"agent","label":"Agent 8","group":"GroupC","score":60.2,"topic":"","support_pct":""},{"id":"A9","type":"agent","label":"Agent 9","group":"GroupC","score":19.9,"topic":"","support_pct":""},{"id":"A10","type":"agent","label":"Agent 10","group":"GroupC","score":70.1,"topic":"","support_pct":""},{"id":"A11","type":"agent","label":"Agent 11","group":"GroupB","score":22.0,"topic":"","support_pct":""},{"id":"A12","type":"agent","label":"Agent 12","group":"GroupC","score":27.8,"topic":"","support_pct":""},{"id":"A13","type":"agent","label":"Agent 13","group":"GroupA","score":75.9,"topic":"","support_pct":""},{"id":"A14","type":"agent","label":"Agent 14","group":"GroupA","score":69.8,"topic":"","support_pct":""},{"id":"A15","type":"agent","label":"Agent 15","group":"GroupB","score":27.8,"topic":"","support_pct":""},{"id":"A16","type":"agent","label":"Agent 16","group":"GroupA","score":95.7,"topic":"","support_pct":""},{"id":"A17","type":"agent","label":"Agent 17","group":"GroupB","score":10.2,"topic":"","support_pct":""},{"id":"A18","type":"agent","label":"Agent 18","group":"GroupB","score":9.7,"topic":"","support_pct":""},{"id":"A19","type":"agent","label":"Agent 19","group":"GroupB","score":60.4,"topic":"","support_pct":""},{"id":"A20","type":"agent","label":"Agent 20","group":"GroupA","score":73.0,"topic":"","support_pct":""},{"id":"A21","type":"agent","label":"Agent 21","group":"GroupC","score":12.5,"topic":"","support_pct":""},{"id":"A22","type":"agent","label":"Agent 22","group":"GroupB","score":7.9,"topic":"","support_pct":""},{"id":"A23","type":"agent","label":"Agent 23","group":"GroupB","score":82.9,"topic":"","support_pct":""},{"id":"A24","type":"agent","label":"Agent 24","group":"GroupC","score":88.5,"topic":"","support_pct":""},{"id":"A25","type":"agent","label":"Agent 25","group":"GroupB","score":57.7,"topic":"","support_pct":""},{"id":"A26","type":"agent","label":"Agent 26","group":"GroupC","score":7.0,"topic":"","support_pct":""},{"id":"A27","type":"agent","label":"Agent 27","group":"GroupC","score":22.8,"topic":"","support_pct":""},{"id":"A28","type":"agent","label":"Agent 28","group":"GroupB","score":98.5,"topic":"","support_pct":""},{"id":"A29","type":"agent","label":"Agent 29","group":"GroupA","score":86.6,"topic":"","support_pct":""},{"id":"A30","type":"agent","label":"Agent 30","group":"GroupB","score":27.8,"topic":"","support_pct":""},{"id":"A31","type":"agent","label":"Agent 31","group":"GroupC","score":83.4,"topic":"","support_pct":""},{"id":"A32","type":"agent","label":"Agent 32","group":"GroupA","score":37.0,"topic":"","support_pct":""},{"id":"A33","type":"agent","label":"Agent 33","group":"GroupA","score":67.0,"topic":"","support_pct":""},{"id":"A34","type":"agent","label":"Agent 34","group":"GroupC","score":93.7,"topic":"","support_pct":""},{"id":"A35","type":"agent","label":"Agent 35","group":"GroupC","score":7.1,"topic":"","support_pct":""},{"id":"A36","type":"agent","label":"Agent 36","group":"GroupC","score":17.1,"topic":"","support_pct":""},{"id":"A37","type":"agent","label":"Agent 37","group":"GroupC","score":24.5,"topic":"","support_pct":""},{"id":"A38","type":"agent","label":"Agent 38","group":"GroupB","score":37.9,"topic":"","support_pct":""},{"id":"A39","type":"agent","label":"Agent 39","group":"GroupC","score":68.8,"topic":"","support_pct":""},{"id":"A40","type":"agent","label":"Agent 40","group":"GroupA","score":68.5,"topic":"","support_pct":""},{"id":"A41","type":"agent","label":"Agent 41","group":"GroupA","score":22.9,"topic":"","support_pct":""},{"id":"A42","type":"agent","label":"Agent 42","group":"GroupA","score":80.5,"topic":"","support_pct":""},{"id":"A43","type":"agent","label":"Agent 43","group":"GroupB","score":26.8,"topic":"","support_pct":""},{"id":"A44","type":"agent","label":"Agent 44","group":"GroupA","score":91.3,"topic":"","support_pct":""},{"id":"A45","type":"agent","label":"Agent 45","group":"GroupC","score":87.6,"topic":"","support_pct":""},{"id":"A46","type":"agent","label":"Agent 46","group":"GroupB","score":21.3,"topic":"","support_pct":""},{"id":"A47","type":"agent","label":"Agent 47","group":"GroupB","score":39.6,"topic":"","support_pct":""},{"id":"A48","type":"agent","label":"Agent 48","group":"GroupC","score":45.9,"topic":"","support_pct":""},{"id":"A49","type":"agent","label":"Agent 49","group":"GroupB","score":14.0,"topic":"","support_pct":""},{"id":"A50","type":"agent","label":"Agent 50","group":"GroupC","score":56.1,"topic":"","support_pct":""},{"id":"A51","type":"agent","label":"Agent 51","group":"GroupB","score":74.7,"topic":"","support_pct":""},{"id":"A52","type":"agent","label":"Agent 52","group":"GroupB","score":89.8,"topic":"","support_pct":""},{"id":"A53","type":"agent","label":"Agent 53","group":"GroupB","score":36.2,"topic":"","support_pct":""},{"id":"A54","type":"agent","label":"Agent 54","group":"GroupA","score":51.0,"topic":"","support_pct":""},{"id":"A55","type":"agent","label":"Agent 55","group":"GroupA","score":75.6,"topic":"","support_pct":""},{"id":"A56","type":"agent","label":"Agent 56","group":"GroupA","score":15.3,"topic":"","support_pct":""},{"id":"A57","type":"agent","label":"Agent 57","group":"GroupA","score":79.2,"topic":"","support_pct":""},{"id":"A58","type":"agent","label":"Agent 58","group":"GroupB","score":59.6,"topic":"","support_pct":""},{"id":"A59","type":"agent","label":"Agent 59","group":"GroupB","score":38.2,"topic":"","support_pct":""},{"id":"A60","type":"agent","label":"Agent 60","group":"GroupB","score":52.9,"topic":"","support_pct":""},{"id":"A61","type":"agent","label":"Agent 61","group":"GroupC","score":86.1,"topic":"","support_pct":""},{"id":"A62","type":"agent","label":"Agent 62","group":"GroupA","score":68.0,"topic":"","support_pct":""},{"id":"A63","type":"agent","label":"Agent 63","group":"GroupA","score":68.2,"topic":"","support_pct":""},{"id":"A64","type":"agent","label":"Agent 64","group":"GroupC","score":75.1,"topic":"","support_pct":""},{"id":"A65","type":"agent","label":"Agent 65","group":"GroupC","score":34.0,"topic":"","support_pct":""},{"id":"A66","type":"agent","label":"Agent 66","group":"GroupB","score":43.5,"topic":"","support_pct":""},{"id":"A67","type":"agent","label":"Agent 67","group":"GroupB","score":0.3,"topic":"","support_pct":""},{"id":"A68","type":"agent","label":"Agent 68","group":"GroupC","score":87.6,"topic":"","support_pct":""},{"id":"A69","type":"agent","label":"Agent 69","group":"GroupB","score":97.2,"topic":"","support_pct":""},{"id":"A70","type":"agent","label":"Agent 70","group":"GroupA","score":50.8,"topic":"","support_pct":""},{"id":"A71","type":"agent","label":"Agent 71","group":"GroupA","score":87.1,"topic":"","support_pct":""},{"id":"A72","type":"agent","label":"Agent 72","group":"GroupB","score":84.2,"topic":"","support_pct":""},{"id":"A73","type":"agent","label":"Agent 73","group":"GroupC","score":60.9,"topic":"","support_pct":""},{"id":"A74","type":"agent","label":"Agent 74","group":"GroupA","score":37.4,"topic":"","support_pct":""},{"id":"A75","type":"agent","label":"Agent 75","group":"GroupA","score":53.9,"topic":"","support_pct":""},{"id":"A76","type":"agent","label":"Agent 76","group":"GroupC","score":91.8,"topic":"","support_pct":""},{"id":"A77","type":"agent","label":"Agent 77","group":"GroupC","score":32.4,"topic":"","support_pct":""},{"id":"A78","type":"agent","label":"Agent 78","group":"GroupA","score":11.2,"topic":"","support_pct":""},{"id":"A79","type":"agent","label":"Agent 79","group":"GroupB","score":87.9,"topic":"","support_pct":""},{"id":"A80","type":"agent","label":"Agent 80","group":"GroupB","score":23.9,"topic":"","support_pct":""},{"id":"S1","type":"statement","label":"Statement 1","group":"","score":"","topic":"Health","support_pct":80.2},{"id":"S2","type":"statement","label":"Statement 2","group":"","score":"","topic":"Economy","support_pct":16.9},{"id":"S3","type":"statement","label":"Statement 3","group":"","score":"","topic":"Security","support_pct":75.3},{"id":"S4","type":"statement","label":"Statement 4","group":"","score":"","topic":"Health","support_pct":20.3},{"id":"S5","type":"statement","label":"Statement 5","group":"","score":"","topic":"Security","support_pct":85.7},{"id":"S6","type":"statement","label":"Statement 6","group":"","score":"","topic":"Health","support_pct":31.2},{"id":"S7","type":"statement","label":"Statement 7","group":"","score":"","topic":"Security","support_pct":87.1},{"id":"S8","type":"statement","label":"Statement 8","group":"","score":"","topic":"Health","support_pct":67.0},{"id":"S9","type":"statement","label":"Statement 9","group":"","score":"","topic":"Security","support_pct":89.6},{"id":"S10","type":"statement","label":"Statement 10","group":"","score":"","topic":"Environment","support_pct":45.0},{"id":"S11","type":"statement","label":"Statement 11","group":"","score":"","topic":"Security","support_pct":19.7},{"id":"S12","type":"statement","label":"Statement 12","group":"","score":"","topic":"Health","support_pct":15.1},{"id":"S13","type":"statement","label":"Statement 13","group":"","score":"","topic":"Economy","support_pct":57.1},{"id":"S14","type":"statement","label":"Statement 14","group":"","score":"","topic":"Health","support_pct":57.1},{"id":"S15","type":"statement","label":"Statement 15","group":"","score":"","topic":"Economy","support_pct":15.7},{"id":"S16","type":"statement","label":"Statement 16","group":"","score":"","topic":"Economy","support_pct":28.3},{"id":"S17","type":"statement","label":"Statement 17","group":"","score":"","topic":"Economy","support_pct":78.8},{"id":"S18","type":"statement","label":"Statement 18","group":"","score":"","topic":"Economy","support_pct":51.1},{"id":"S19","type":"statement","label":"Statement 19","group":"","score":"","topic":"Environment","support_pct":63.5},{"id":"S20","type":"statement","label":"Statement 20","group":"","score":"","topic":"Health","support_pct":53.1}],"links":[{"source":"A2","target":"S11"},{"source":"A2","target":"S20"},{"source":"A4","target":"S10"},{"source":"A5","target":"S4"},{"source":"A7","target":"S13"},{"source":"A8","target":"S1"},{"source":"A9","target":"S6"},{"source":"A10","target":"S4"},{"source":"A10","target":"S9"},{"source":"A16","target":"S9"},{"source":"A18","target":"S17"},{"source":"A20","target":"S15"},{"source":"A22","target":"S19"},{"source":"A24","target":"S18"},{"source":"A26","target":"S19"},{"source":"A28","target":"S11"},{"source":"A28","target":"S16"},{"source":"A29","target":"S19"},{"source":"A30","target":"S6"},{"source":"A30","target":"S20"},{"source":"A31","target":"S5"},{"source":"A32","target":"S11"},{"source":"A34","target":"S5"},{"source":"A35","target":"S15"},{"source":"A37","target":"S13"},{"source":"A37","target":"S16"},{"source":"A38","target":"S16"},{"source":"A38","target":"S18"},{"source":"A41","target":"S9"},{"source":"A44","target":"S9"},{"source":"A45","target":"S6"},{"source":"A48","target":"S20"},{"source":"A54","target":"S15"},{"source":"A55","target":"S19"},{"source":"A57","target":"S20"},{"source":"A61","target":"S16"},{"source":"A62","target":"S4"},{"source":"A63","target":"S4"},{"source":"A63","target":"S15"},{"source":"A64","target":"S20"},{"source":"A65","target":"S9"},{"source":"A67","target":"S13"},{"source":"A68","target":"S2"},{"source":"A68","target":"S13"},{"source":"A73","target":"S7"},{"source":"A75","target":"S20"},{"source":"A77","target":"S7"},{"source":"A78","target":"S5"}]};
+const DATA = { nodes: [], links: [] };
 
 // ── Empty state ───────────────────────────────────────────────────
 if (!DATA.nodes || DATA.nodes.length === 0) {
@@ -350,7 +348,7 @@ let linkSel, nodeSel, circles;
 // ── Simulation ────────────────────────────────────────────────────
 let sim;
 let frozen    = false;
-let labelsOn  = true;
+let labelsOn  = false;
 let sizeByDeg = false;
 
 function sv(id) { return +document.getElementById(id).value; }
@@ -414,9 +412,28 @@ function redraw() {
     .join("g")
     .attr("class", "node")
     .call(d3.drag()
-      .on("start", (e,d) => { if(!e.active) sim.alphaTarget(0.3).restart(); d.fx=d.x; d.fy=d.y; })
-      .on("drag",  (e,d) => { d.fx=e.x; d.fy=e.y; })
-      .on("end",   (e,d) => { if(!e.active) sim.alphaTarget(0); d.fx=null; d.fy=null; })
+      .on("start", (e,d) => {
+        if(!frozen) {
+          d._didDrag = false;
+          d.fx = d.x; d.fy = d.y;
+        }
+      })
+      .on("drag",  (e,d) => {
+        if(!frozen) {
+          if (!d._didDrag) {
+            sim.alphaTarget(0.3).restart();
+            d._didDrag = true;
+          }
+          d.fx = e.x; d.fy = e.y;
+        }
+      })
+      .on("end",   (e,d) => {
+        if(!frozen) {
+          if (!e.active) sim.alphaTarget(0);
+          d.fx = null; d.fy = null;
+          delete d._didDrag;
+        }
+      })
     )
     .on("mouseover", onHover)
     .on("mousemove", onMove)
@@ -436,6 +453,11 @@ function redraw() {
     .text(d => d.label);
 
   if (!labelsOn) nodeSel.classed("node--labels-hidden", true);
+
+  // Set initial button state for labels
+  const btnLabels = document.getElementById("btn-labels");
+  btnLabels.textContent = labelsOn ? "Labels off" : "Labels on";
+  btnLabels.classList.toggle("btn--active", !labelsOn);
 
   updateParking();
   updateLegend();
@@ -492,6 +514,19 @@ document.getElementById("btn-size").addEventListener("click", function() {
     .attr("r", d => nodeR(d, sizeByDeg));
   sim.force("collide", d3.forceCollide(d => nodeR(d, sizeByDeg) + 2));
   sim.alpha(0.15).restart();
+});
+
+document.getElementById("btn-defaults").addEventListener("click", () => {
+  document.getElementById("sl-spread").value = 100;
+  document.getElementById("vl-spread").textContent = "100";
+  document.getElementById("sl-edgelen").value = 10;
+  document.getElementById("vl-edgelen").textContent = "10";
+  document.getElementById("sl-attract").value = 0.75;
+  document.getElementById("vl-attract").textContent = "0.75";
+  // Update simulation with default values
+  sim.force("charge", d3.forceManyBody().strength(-100));
+  sim.force("link").distance(10).strength(0.75);
+  sim.alpha(0.4).restart();
 });
 
 // ── Hover ─────────────────────────────────────────────────────────
@@ -556,6 +591,18 @@ function openWorldview(d) {
              + n.label + sub + '</div>';
       }).join("");
 
+  // Hover over agent title highlights agent and all connected statements
+  worldviewTitle.addEventListener("mouseenter", () => {
+    const nb = new Set([d.id, ...(neighbours[d.id] || [])]);
+    nodeSel.classed("node--highlighted", n =>  nb.has(n.id))
+           .classed("node--dimmed",      n => !nb.has(n.id));
+    linkSel.classed("edge--highlighted", l => l._s === d.id || l._t === d.id);
+  });
+  worldviewTitle.addEventListener("mouseleave", () => {
+    nodeSel.classed("node--highlighted", false).classed("node--dimmed", false);
+    linkSel.classed("edge--highlighted", false);
+  });
+
   // Hover over item in pane highlights that statement node in graph
   worldviewList.querySelectorAll(".worldview-pane__item").forEach(el => {
     el.addEventListener("mouseenter", () => {
@@ -581,8 +628,10 @@ function onClick(event, d) {
     openWorldview(d);
   } else {
     worldviewPane.classList.remove("worldview-pane--visible");
-    document.getElementById("info-panel-title").textContent = d.label;
-    const skip = new Set(["id","label","index","x","y","vx","vy","fx","fy","_s","_t"]);
+    document.getElementById("info-panel-title").innerHTML = 
+      '<span class="info-panel__title-prefix">Statement:</span> ' +
+      '<span class="info-panel__title-text">' + d.label + '</span>';
+    const skip = new Set(["id","label","type","index","x","y","vx","vy","fx","fy","_s","_t"]);
     const rows = [["connections", degree[d.id] || 0]]
       .concat(Object.entries(d).filter(([k, v]) => !skip.has(k) && v !== ""))
       .map(([k, v]) =>
@@ -592,6 +641,21 @@ function onClick(event, d) {
         + '</div>'
       ).join("");
     document.getElementById("info-panel-fields").innerHTML = rows;
+    
+    // Add hover behavior to statement title: highlight statement node and connected agents
+    const titleEl = document.querySelector(".info-panel__title-text");
+    titleEl.addEventListener("mouseenter", () => {
+      const agentNeighbours = Array.from(neighbours[d.id] || []).filter(id => nodeById[id].type === "agent");
+      const nb = new Set([d.id, ...agentNeighbours]);
+      nodeSel.classed("node--highlighted", n => nb.has(n.id))
+             .classed("node--dimmed",      n => !nb.has(n.id));
+      linkSel.classed("edge--highlighted", l => l._s === d.id || l._t === d.id);
+    });
+    titleEl.addEventListener("mouseleave", () => {
+      nodeSel.classed("node--highlighted", false).classed("node--dimmed", false);
+      linkSel.classed("edge--highlighted", false);
+    });
+    
     infoPanel.classList.add("info-panel--open");
   }
 }
@@ -601,10 +665,14 @@ document.getElementById("worldview-close").addEventListener("click", e => {
   worldviewPane.classList.remove("worldview-pane--visible");
   nodeSel.classed("node--highlighted", false).classed("node--dimmed", false);
   linkSel.classed("edge--highlighted", false);
+  // Unlock all nodes when closing panel
+  DATA.nodes.forEach(d => { d.fx = null; d.fy = null; });
 });
 document.getElementById("info-panel-close").addEventListener("click", e => {
   e.stopPropagation();
   infoPanel.classList.remove("info-panel--open");
+  // Unlock all nodes when closing panel
+  DATA.nodes.forEach(d => { d.fx = null; d.fy = null; });
 });
 
 // ── Server network loader (manifest.json) ────────────────────────
