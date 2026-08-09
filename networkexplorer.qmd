@@ -134,7 +134,6 @@ write(toJSON(manifest, auto_unbox = TRUE), "manifest.json")
   <div class="worldview-pane" id="statement-pane">
     <div class="worldview-pane__header">
       <div class="worldview-pane__title" id="statement-title"></div>
-      <button class="worldview-pane__close" id="statement-close">&#x2715;</button>
     </div>
     <div class="worldview-pane__list" id="statement-list"></div>
   </div>
@@ -538,43 +537,47 @@ function openStatementPane(d) {
     .filter(n => n && n.type === "agent")
     .sort((a, b) => a.id.localeCompare(b.id, undefined, {numeric: true}));
 
-  document.getElementById("statement-title").textContent = d.label + "\u2019s Agents";
+  // Update title with statement text in statement color
+  const titleEl = document.getElementById("statement-title");
+  titleEl.innerHTML = '<span class="statement-text">' + d.label + '</span>';
+  
+  // Add agent count info below title
   const statementList = document.getElementById("statement-list");
-  statementList.innerHTML = agents.length === 0
+  const countInfo = agents.length === 0
+    ? '<div class="statement-agents-info">0 agents connected</div>'
+    : '<div class="statement-agents-info">' + agents.length + ' agents connected</div>';
+  
+  statementList.innerHTML = countInfo + (agents.length === 0
     ? '<div class="worldview-pane__empty">No connections</div>'
-    : agents.map(n => {
-        return '<div class="worldview-pane__item" data-id="' + n.id + '">'
-             + '<span class="worldview-pane__item-id">' + n.id + '</span>'
-             + '<span class="worldview-pane__item-text">' + n.label + '</span>'
-             + '</div>';
-      }).join("");
+    : '<div class="statement-agents-list">' + agents.map(n => {
+        return '<span class="agent-id" data-agent-id="' + n.id + '">' + n.id + '</span>';
+      }).join('') + '</div>');
 
   // Hover over statement title highlights statement and all connected agents
-  const titleEl = document.getElementById("statement-title");
-  titleEl.addEventListener("mouseenter", () => {
+  titleEl.onmouseenter = () => {
     const nb = new Set([d.id, ...(neighbours[d.id] || [])]);
     nodeSel.classed("node--highlighted", n =>  nb.has(n.id))
            .classed("node--dimmed",      n => !nb.has(n.id));
     linkSel.classed("edge--highlighted", l => l._s === d.id || l._t === d.id);
-  });
-  titleEl.addEventListener("mouseleave", () => {
+  };
+  titleEl.onmouseleave = () => {
     nodeSel.classed("node--highlighted", false).classed("node--dimmed", false);
     linkSel.classed("edge--highlighted", false);
-  });
+  };
 
-  // Hover over item in pane highlights that agent node in graph
-  statementList.querySelectorAll(".worldview-pane__item").forEach(el => {
-    el.addEventListener("mouseenter", () => {
-      const aid = el.dataset.id;
-      nodeSel.classed("node--highlighted", n => n.id === aid || n.id === d.id)
-             .classed("node--dimmed",      n => n.id !== aid && n.id !== d.id);
+  // Hover over agent ids highlights that agent node in graph
+  statementList.querySelectorAll(".agent-id").forEach(el => {
+    el.onmouseenter = () => {
+      const agentId = el.dataset.agentId;
+      nodeSel.classed("node--highlighted", n => n.id === agentId || n.id === d.id)
+             .classed("node--dimmed",      n => n.id !== agentId && n.id !== d.id);
       linkSel.classed("edge--highlighted", l =>
-        (l._s === d.id && l._t === aid) || (l._t === d.id && l._s === aid));
-    });
-    el.addEventListener("mouseleave", () => {
+        (l._s === d.id && l._t === agentId) || (l._t === d.id && l._s === agentId));
+    };
+    el.onmouseleave = () => {
       nodeSel.classed("node--highlighted", false).classed("node--dimmed", false);
       linkSel.classed("edge--highlighted", false);
-    });
+    };
   });
 
   document.getElementById("statement-pane").classList.add("worldview-pane--visible");
@@ -594,14 +597,6 @@ function onClick(event, d) {
 document.getElementById("worldview-close").addEventListener("click", e => {
   e.stopPropagation();
   worldviewPane.classList.remove("worldview-pane--visible");
-  nodeSel.classed("node--highlighted", false).classed("node--dimmed", false);
-  linkSel.classed("edge--highlighted", false);
-  // Unlock all nodes when closing panel
-  DATA.nodes.forEach(d => { d.fx = null; d.fy = null; });
-});
-document.getElementById("statement-close").addEventListener("click", e => {
-  e.stopPropagation();
-  document.getElementById("statement-pane").classList.remove("worldview-pane--visible");
   nodeSel.classed("node--highlighted", false).classed("node--dimmed", false);
   linkSel.classed("edge--highlighted", false);
   // Unlock all nodes when closing panel
