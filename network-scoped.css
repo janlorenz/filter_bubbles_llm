@@ -7,23 +7,26 @@
 
 /* ── Tokens (scoped to root, not :root) ──────────────────── */
 #network-root {
-  --color-bg:             #0e1117;
-  --color-surface:        #161b27;
-  --color-border:         #252d3d;
-  --color-agent:          #4fc3f7;
-  --color-agent-stroke:   #0b5f7a;
-  --color-stmt:           #f06292;
-  --color-stmt-stroke:    #8b1040;
-  --color-edge:           #2d3f55;
-  --color-edge-hi:        #94a3b8;
-  --color-text:           #e2e8f0;
-  --color-muted:          #64748b;
-  --color-accent:         #38bdf8;
-  --color-panel-bg:       rgba(18, 24, 38, 0.97);
-  --color-parking-bg:     rgba(12, 8, 18, 0.92);
-  --color-parking-border: #2a1530;
-  --color-parking-text:   #6b3355;
-  --color-parking-title:  #5a2545;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  overflow: hidden;
+  --color-bg:             #ffffff;
+  --color-surface:        #f8f9fa;
+  --color-border:         #dee2e6;
+  --color-agent:          #0077b6;
+  --color-agent-stroke:   #023e8a;
+  --color-stmt:           #d81b60;
+  --color-stmt-stroke:    #880e4f;
+  --color-edge:           #adb5bd;
+  --color-edge-hi:        #495057;
+  --color-text:           #212529;
+  --color-muted:          #6c757d;
+  --color-accent:         #0077b6;
+  --color-panel-bg:       rgba(255, 255, 255, 0.97);
+  --color-parking-bg:     rgba(248, 249, 250, 0.92);
+  --color-parking-border: #dee2e6;
+  --color-parking-text:   #495057;
+  --color-parking-title:  #212529;
 
   /* ── Reset & layout ── */
   box-sizing: border-box;
@@ -32,7 +35,6 @@
   font-family: "IBM Plex Sans", sans-serif;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   /* Height is set inline via JS to account for Quarto navbar */
 }
 
@@ -235,7 +237,7 @@
 }
 
 #network-root .node--labels-hidden .node__label { display: none; }
-#network-root .node--highlighted .node__circle  { stroke: #fff !important; stroke-width: 2.5px; }
+#network-root .node--highlighted .node__circle  { !important; stroke-width: 2.5px; }
 #network-root .node--dimmed .node__circle       { opacity: .12; }
 #network-root .node--dimmed .node__label        { opacity: .12; }
 #network-root .node--unconnected                { display: none; }
@@ -285,7 +287,10 @@
   font-size: 11px;
   font-weight: 600;
   color: var(--color-accent);
+  cursor: pointer;
+  transition: opacity .15s;
 }
+#network-root .worldview-pane__title:hover { opacity: 0.75; }
 #network-root .worldview-pane__close {
   position: absolute;
   top: 6px;
@@ -310,24 +315,30 @@
 
 #network-root .worldview-pane__item {
   font-size: 10px;
-  /* font-family: "IBM Plex Mono", monospace; */
   color: var(--color-text);
   padding: 3px 4px;
   display: flex;
-  align-items: baseline;
-  gap: 6px;
+  flex-direction: column;
+  gap: 0;
   border-radius: 3px;
   cursor: default;
   border-bottom: 1px solid rgba(255,255,255,.03);
 }
 #network-root .worldview-pane__item:hover            { background: rgba(255,255,255,.05); }
 #network-root .worldview-pane__item--highlighted     { background: rgba(56,189,248,.08); color: var(--color-accent); }
-#network-root .worldview-pane__item-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--color-stmt);
+
+#network-root .worldview-pane__item-id {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 9px;
+  color: var(--color-stmt);
+  font-weight: 600;
   flex-shrink: 0;
+}
+
+#network-root .worldview-pane__item-text {
+  font-weight: 300;
+  margin-left: 14px;
+  display: block;
 }
 #network-root .worldview-pane__item-sub  { color: var(--color-muted); font-size: 9px; }
 #network-root .worldview-pane__empty {
@@ -335,7 +346,7 @@
   /* font-family: "IBM Plex Mono", monospace; */
   color: var(--color-muted);
   padding: 4px 0;
-}
+}x
 
 /* ── Info panel ──────────────────────────────────────────── */
 #network-root .info-panel {
@@ -370,11 +381,24 @@
   /* font-family: "IBM Plex Mono", monospace; */
   font-size: 12px;
   font-weight: 600;
-  color: var(--color-accent);
   margin-bottom: 10px;
   word-break: normal;
   overflow-wrap: break-word;
   padding-right: 18px;
+}
+
+#network-root .info-panel__title-prefix {
+  color: var(--color-muted);
+}
+
+#network-root .info-panel__title-text {
+  color: var(--color-stmt);
+  cursor: pointer;
+  transition: opacity .15s;
+}
+
+#network-root .info-panel__title-text:hover {
+  opacity: 0.75;
 }
 
 #network-root .info-panel__field {
