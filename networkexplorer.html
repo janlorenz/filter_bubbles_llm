@@ -220,11 +220,12 @@ ul.task-list li input[type="checkbox"] {
     <div class="worldview-pane__list" id="worldview-list"></div>
   </div>
 
-  <!-- Click info panel -->
-  <div class="info-panel" id="info-panel">
-    <button class="info-panel__close" id="info-panel-close">✕</button>
-    <h2 class="info-panel__title anchored" id="info-panel-title"></h2>
-    <div id="info-panel-fields"></div>
+  <!-- Statement pane: opens on statement click, lists connected agents -->
+  <div class="worldview-pane" id="statement-pane">
+    <div class="worldview-pane__header">
+      <div class="worldview-pane__title" id="statement-title"></div>
+    </div>
+    <div class="worldview-pane__list" id="statement-list"></div>
   </div>
 
   <div class="status-bar" id="status-bar">Initialising…</div>
@@ -327,7 +328,6 @@ const cursorTip     = document.getElementById("cursor-tooltip");
 const worldviewPane = document.getElementById("worldview-pane");
 const worldviewTitle= document.getElementById("worldview-title");
 const worldviewList = document.getElementById("worldview-list");
-const infoPanel     = document.getElementById("info-panel");
 const statusBar     = document.getElementById("status-bar");
 const parkingPanel  = document.getElementById("parking-panel");
 const parkingList   = document.getElementById("parking-list");
@@ -338,7 +338,6 @@ const root = svg.append("g");
 
 svg.call(d3.zoom().scaleExtent([0.04, 10]).on("zoom", e => root.attr("transform", e.transform)))
    .on("dblclick.zoom", null);
-svg.on("click", () => infoPanel.classList.remove("info-panel--open"));
 
 const linkGroup = root.append("g");
 const nodeGroup = root.append("g");
@@ -587,8 +586,9 @@ function openWorldview(d) {
         const sub = n.topic
           ? ' <span class="worldview-pane__item-sub">' + n.topic + '</span>' : '';
         return '<div class="worldview-pane__item" data-id="' + n.id + '">'
-             + '<span class="worldview-pane__item-dot"></span>'
-             + n.label + sub + '</div>';
+             + '<span class="worldview-pane__item-id">' + n.id + '</span>'
+             + '<span class="worldview-pane__item-text">' + n.label + sub + '</span>'
+             + '</div>';
       }).join("");
 
   // Hover over agent title highlights agent and all connected statements
@@ -621,42 +621,66 @@ function openWorldview(d) {
   worldviewPane.classList.add("worldview-pane--visible");
 }
 
+function openStatementPane(d) {
+  const agents = Array.from(neighbours[d.id] || [])
+    .map(id => nodeById[id])
+    .filter(n => n && n.type === "agent")
+    .sort((a, b) => a.id.localeCompare(b.id, undefined, {numeric: true}));
+
+  // Update title with statement text in statement color
+  const titleEl = document.getElementById("statement-title");
+  titleEl.innerHTML = '<span class="statement-text">' + d.label + '</span>';
+  
+  // Add agent count info below title
+  const statementList = document.getElementById("statement-list");
+  const countInfo = agents.length === 0
+    ? '<div class="statement-agents-info">0 agents connected</div>'
+    : '<div class="statement-agents-info">' + agents.length + ' agents connected</div>';
+  
+  statementList.innerHTML = countInfo + (agents.length === 0
+    ? '<div class="worldview-pane__empty">No connections</div>'
+    : '<div class="statement-agents-list">' + agents.map(n => {
+        return '<span class="agent-id" data-agent-id="' + n.id + '">' + n.id + '</span>';
+      }).join('') + '</div>');
+
+  // Hover over statement title highlights statement and all connected agents
+  titleEl.onmouseenter = () => {
+    const nb = new Set([d.id, ...(neighbours[d.id] || [])]);
+    nodeSel.classed("node--highlighted", n =>  nb.has(n.id))
+           .classed("node--dimmed",      n => !nb.has(n.id));
+    linkSel.classed("edge--highlighted", l => l._s === d.id || l._t === d.id);
+  };
+  titleEl.onmouseleave = () => {
+    nodeSel.classed("node--highlighted", false).classed("node--dimmed", false);
+    linkSel.classed("edge--highlighted", false);
+  };
+
+  // Hover over agent ids highlights that agent node in graph
+  statementList.querySelectorAll(".agent-id").forEach(el => {
+    el.onmouseenter = () => {
+      const agentId = el.dataset.agentId;
+      nodeSel.classed("node--highlighted", n => n.id === agentId || n.id === d.id)
+             .classed("node--dimmed",      n => n.id !== agentId && n.id !== d.id);
+      linkSel.classed("edge--highlighted", l =>
+        (l._s === d.id && l._t === agentId) || (l._t === d.id && l._s === agentId));
+    };
+    el.onmouseleave = () => {
+      nodeSel.classed("node--highlighted", false).classed("node--dimmed", false);
+      linkSel.classed("edge--highlighted", false);
+    };
+  });
+
+  document.getElementById("statement-pane").classList.add("worldview-pane--visible");
+}
+
 function onClick(event, d) {
   event.stopPropagation();
   if (d.type === "agent") {
-    infoPanel.classList.remove("info-panel--open");
+    document.getElementById("statement-pane").classList.remove("worldview-pane--visible");
     openWorldview(d);
   } else {
     worldviewPane.classList.remove("worldview-pane--visible");
-    document.getElementById("info-panel-title").innerHTML = 
-      '<span class="info-panel__title-prefix">Statement:</span> ' +
-      '<span class="info-panel__title-text">' + d.label + '</span>';
-    const skip = new Set(["id","label","type","index","x","y","vx","vy","fx","fy","_s","_t"]);
-    const rows = [["connections", degree[d.id] || 0]]
-      .concat(Object.entries(d).filter(([k, v]) => !skip.has(k) && v !== ""))
-      .map(([k, v]) =>
-        '<div class="info-panel__field">'
-        + '<span class="info-panel__field-key">'  + k + '</span>'
-        + '<span class="info-panel__field-value">' + v + '</span>'
-        + '</div>'
-      ).join("");
-    document.getElementById("info-panel-fields").innerHTML = rows;
-    
-    // Add hover behavior to statement title: highlight statement node and connected agents
-    const titleEl = document.querySelector(".info-panel__title-text");
-    titleEl.addEventListener("mouseenter", () => {
-      const agentNeighbours = Array.from(neighbours[d.id] || []).filter(id => nodeById[id].type === "agent");
-      const nb = new Set([d.id, ...agentNeighbours]);
-      nodeSel.classed("node--highlighted", n => nb.has(n.id))
-             .classed("node--dimmed",      n => !nb.has(n.id));
-      linkSel.classed("edge--highlighted", l => l._s === d.id || l._t === d.id);
-    });
-    titleEl.addEventListener("mouseleave", () => {
-      nodeSel.classed("node--highlighted", false).classed("node--dimmed", false);
-      linkSel.classed("edge--highlighted", false);
-    });
-    
-    infoPanel.classList.add("info-panel--open");
+    openStatementPane(d);
   }
 }
 
@@ -665,12 +689,6 @@ document.getElementById("worldview-close").addEventListener("click", e => {
   worldviewPane.classList.remove("worldview-pane--visible");
   nodeSel.classed("node--highlighted", false).classed("node--dimmed", false);
   linkSel.classed("edge--highlighted", false);
-  // Unlock all nodes when closing panel
-  DATA.nodes.forEach(d => { d.fx = null; d.fy = null; });
-});
-document.getElementById("info-panel-close").addEventListener("click", e => {
-  e.stopPropagation();
-  infoPanel.classList.remove("info-panel--open");
   // Unlock all nodes when closing panel
   DATA.nodes.forEach(d => { d.fx = null; d.fy = null; });
 });
@@ -745,8 +763,8 @@ function loadData(newData, filename) {
   buildIndex();
   // Show filename, reset whichever loader wasn't used
   document.getElementById("loaded-name").textContent = filename.replace(/\.json$/i, "");
-  infoPanel.classList.remove("info-panel--open");
   worldviewPane.classList.remove("worldview-pane--visible");
+  document.getElementById("statement-pane").classList.remove("worldview-pane--visible");
   frozen = false;
   document.getElementById("btn-freeze").textContent = "\u23F8 Freeze";
   DATA.nodes.forEach(d => { d.x=undefined; d.y=undefined; d.vx=0; d.vy=0; d.fx=null; d.fy=null; });

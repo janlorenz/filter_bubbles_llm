@@ -21,17 +21,10 @@
     "text": "2.2 Data\nTo do."
   },
   {
-    "objectID": "networkexplorer_BU.html",
-    "href": "networkexplorer_BU.html",
-    "title": "Network Explorer",
-    "section": "",
-    "text": "SPREAD\n      ?\n      \n      100\n    \n\n    \n      EDGE LENGTH\n      ?\n      \n      10\n    \n\n    \n      ATTRACTION\n      ?\n      \n      0.75\n    \n\n    \n\n    ↺ Reset\n    ⏸ Freeze\n    Labels off\n    Stmt size by degree\n\n    \n\n    \n      🖥 Select network…\n    \n\n    \n      ⏏ Local JSON\n      \n    \n\n    \n\n  \n\n  \n    \n      \n      Agents (0)\n    \n    \n      \n      Statements (0)\n    \n  \n\n\n\n  \n\n  \n  \n\n  \n  \n    \n      \n      ✕\n    \n    \n  \n\n  \n  \n    ✕\n    \n    \n  \n\n  Initialising…\n\n\n\n\n  ○ Unconnected statements"
-  },
-  {
     "objectID": "networkexplorer.html",
     "href": "networkexplorer.html",
     "title": "Network Explorer",
     "section": "",
-    "text": "SPREAD\n      \n      100\n    \n\n    \n      EDGE LENGTH\n      \n      10\n    \n\n    \n      ATTRACTION\n      \n      0.75\n    \n\n    \n    \n    ↺ Reset\n    ⏸ Freeze\n    Labels off\n    Statement size by degree\n    Default Controls\n\n    \n\n    \n      \n        \n        Agents (0)\n      \n      \n        \n        Statements (0)\n      \n    \n\n    \n\n    \n      🖥 Select network…\n    \n\n    \n      ⏏ Local JSON\n      \n    \n\n    \n\n  \n\n\n\n\n  \n\n  \n  \n\n  \n  \n    \n      \n      ✕\n    \n    \n  \n\n  \n  \n    ✕\n    \n    \n  \n\n  Initialising…\n\n\n\n\n  ○ Unconnected statements"
+    "text": "SPREAD\n      \n      100\n    \n\n    \n      EDGE LENGTH\n      \n      10\n    \n\n    \n      ATTRACTION\n      \n      0.75\n    \n\n    \n    \n    ↺ Reset\n    ⏸ Freeze\n    Labels off\n    Statement size by degree\n    Default Controls\n\n    \n\n    \n      \n        \n        Agents (0)\n      \n      \n        \n        Statements (0)\n      \n    \n\n    \n\n    \n      🖥 Select network…\n    \n\n    \n      ⏏ Local JSON\n      \n    \n\n    \n\n  \n\n\n\n\n  \n\n  \n  \n\n  \n  \n    \n      \n      ✕\n    \n    \n  \n\n  \n  \n    \n      \n    \n    \n  \n\n  Initialising…\n\n\n\n\n  ○ Unconnected statements"
   }
 ]
