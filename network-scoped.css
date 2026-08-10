@@ -177,6 +177,42 @@
 #network-root .network-select:focus  { outline: none; border-color: var(--color-accent); }
 #network-root .network-select option { background: var(--color-surface); color: var(--color-text); }
 
+/* ── Filter menus ────────────────────────────────────────── */
+#network-root .filter-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-right: 8px;
+}
+
+#network-root .filter-label {
+  font-size: 10px;
+  color: var(--color-muted);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+#network-root .filter-select {
+  font-size: 10px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  padding: 3px 6px;
+  border-radius: 3px;
+  cursor: pointer;
+  min-width: 60px;
+  max-width: 100px;
+}
+#network-root .filter-select:hover  { border-color: var(--color-muted); }
+#network-root .filter-select:focus  { outline: none; border-color: var(--color-accent); }
+#network-root .filter-select option { background: var(--color-surface); color: var(--color-text); }
+
+#network-root .filter-status {
+  font-size: 9px;
+  color: #888;
+  margin-top: 4px;
+}
+
 /* ── Legend ──────────────────────────────────────────────── */
 #network-root .legend {
   display: flex;
