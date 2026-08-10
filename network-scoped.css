@@ -111,6 +111,7 @@
 
 #network-root .slider {
   -webkit-appearance: none;
+  appearance: none;
   width: 90px;
   height: 3px;
   background: var(--color-border);
@@ -120,6 +121,7 @@
 }
 #network-root .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
+  appearance: none;
   width: 12px;
   height: 12px;
   border-radius: 50%;
@@ -237,7 +239,7 @@
 }
 
 #network-root .node--labels-hidden .node__label { display: none; }
-#network-root .node--highlighted .node__circle  { !important; stroke-width: 2.5px; }
+#network-root .node--highlighted .node__circle  { stroke-width: 2.5px !important; }
 #network-root .node--dimmed .node__circle       { opacity: .12; }
 #network-root .node--dimmed .node__label        { opacity: .12; }
 #network-root .node--unconnected                { display: none; }
