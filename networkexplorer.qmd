@@ -5,46 +5,6 @@ margin-left: "0px"
 margin-right: "0px"
 ---
 
-```{r}
-#| include: false
-
-library(tidyverse)
-library(jsonlite)
-library(glue)
-
-# create manifest.json
-manifest <- tibble(
-  label = dir("networkjson/") |> str_remove(".json$"),
-  file = paste0("networkjson/", dir("networkjson/"))
-)
-manifest2 <- read_csv("runs_config.csv") |>
-  select(
-    timestamp,
-    N = num_agents,
-    open = open_mindedness_level,
-    M = max_memory_per_agent,
-    t = num_time_steps,
-    seed = random_seed,
-    model = model_name
-  ) |>
-  mutate(
-    timestamp = str_sub(timestamp, 3, nchar(timestamp) - 2),
-    model = case_when(
-      model == "google/gemini-2.0-flash-001" ~ "gemini",
-      model == "openai/gpt-oss-20b" ~ "gpt",
-      TRUE ~ model
-    )
-  ) |>
-  mutate(
-    label = glue(
-      "{timestamp}_A{N}_M{M}_t{t}_op{open}_seed{seed}_{model}"
-    ) |>
-      as.character()
-  ) |>
-  right_join(manifest)
-write(toJSON(manifest, auto_unbox = TRUE), "manifest.json")
-```
-
 ```{=html}
 <div id="network-root">
 <link rel="stylesheet" href="network-scoped.css">
@@ -100,9 +60,51 @@ write(toJSON(manifest, auto_unbox = TRUE), "manifest.json")
 
     <div class="controls__linebreak"></div>
 
-    <select class="btn network-select" id="network-select" title="Load a network from the server">
-      <option value="">&#x1F5A5; Select network&hellip;</option>
-    </select>
+    <!-- Parameter filter menus -->
+    <div class="filter-group">
+      <label for="filter-N" class="filter-label">N:</label>
+      <select id="filter-N" class="filter-select"></select>
+    </div>
+
+    <div class="filter-group">
+      <label for="filter-M" class="filter-label">M:</label>
+      <select id="filter-M" class="filter-select"></select>
+    </div>
+
+    <div class="filter-group">
+      <label for="filter-openmindedness" class="filter-label">Open:</label>
+      <select id="filter-openmindedness" class="filter-select"></select>
+    </div>
+
+    <div class="filter-group">
+      <label for="filter-social_posting" class="filter-label">Post:</label>
+      <select id="filter-social_posting" class="filter-select">
+        <option value="">any</option>
+        <option value="true">ON</option>
+        <option value="false">OFF</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label for="filter-seed" class="filter-label">Seed:</label>
+      <select id="filter-seed" class="filter-select"></select>
+    </div>
+
+    <div class="filter-group">
+      <label for="filter-t" class="filter-label">t:</label>
+      <select id="filter-t" class="filter-select"></select>
+    </div>
+
+    <div class="filter-group">
+      <label for="filter-run" class="filter-label">Run:</label>
+      <select id="filter-run" class="filter-select" style="min-width:110px;"></select>
+    </div>
+
+    <div class="filter-status" id="filter-status" style="font-size:0.9em; color:#888; margin-top:4px; padding-left:0;">No files</div>
+
+    <div class="controls__linebreak"></div>
+
+    <button class="btn" id="btn-load-selected" title="Load the selected configuration" style="display:none;">Load Selected</button>
 
     <label class="btn btn--file-label" title="Load a local JSON file from your computer">
       &#x23CF; Local JSON
@@ -603,51 +605,133 @@ document.getElementById("worldview-close").addEventListener("click", e => {
   DATA.nodes.forEach(d => { d.fx = null; d.fy = null; });
 });
 
-// ── Server network loader (manifest.json) ────────────────────────
-// Fetches manifest.json on load. 
-const networkSelect = document.getElementById("network-select");
+// ── Filter menu logic ─────────────────────────────────────────────
+let allManifestEntries = [];
 
+// Load manifest.json at runtime to populate filter dropdowns
 fetch("manifest.json")
-  .then(r => { if (!r.ok) throw new Error("No manifest"); return r.json(); })
-  .then(manifest => {
-    manifest.forEach(entry => {
-      const opt = document.createElement("option");
-      opt.value       = entry.file;
-      opt.textContent = entry.label;
-      networkSelect.appendChild(opt);
-    });
-    networkSelect.style.display = "";  // show only if manifest loaded
-    // Auto-load the first entry
-    if (manifest.length > 0) {
-      const first = manifest[0];
-      networkSelect.value = first.file;
-      document.getElementById("status-bar").textContent = "Loading\u2026";
-      fetch(first.file)
-        .then(r => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
-        .then(data => loadData(data, first.file.split("/").pop()))
-        .catch(err => {
-          document.getElementById("status-bar").textContent = "Failed to load: " + err.message;
-        });
+  .then(r => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+  .then(data => {
+    allManifestEntries = Array.isArray(data) ? data : [];
+    if (allManifestEntries.length === 0) {
+      document.getElementById("filter-status").textContent = "Manifest is empty.";
+    } else {
+      populateFilters();
     }
   })
-  .catch(() => {
-    networkSelect.style.display = "none";  // hide if no server / no manifest
+  .catch(err => {
+    document.getElementById("filter-status").textContent = "Manifest failed to load: " + err.message;
   });
 
-networkSelect.addEventListener("change", function() {
-  const url = this.value;
-  if (!url) return;
+function fillSelect(id, values, current) {
+  const sel = document.getElementById(id);
+  sel.innerHTML = "";
+  values.forEach(val => {
+    const opt = document.createElement("option");
+    opt.value = val;
+    opt.textContent = val;
+    sel.appendChild(opt);
+  });
+  // Keep current value if still valid, otherwise pick first
+  if (current !== null && values.includes(current)) sel.value = current;
+  else if (values.length > 0) sel.value = values[0];
+  return sel.value;
+}
+
+function populateFilters() {
+  const uniq = key => [...new Set(allManifestEntries.map(e => e[key]))].sort((a, b) => a - b);
+
+  fillSelect("filter-N",              uniq("N"),              null);
+  fillSelect("filter-M",              uniq("M"),              null);
+  fillSelect("filter-openmindedness", uniq("openmindedness"), null);
+  fillSelect("filter-seed",           uniq("seed"),           null);
+  fillSelect("filter-t",              uniq("t"),              null);
+
+  // social_posting is pre-populated in HTML; just pick first meaningful option
+  const postSel = document.getElementById("filter-social_posting");
+  // default to "any" — updateRunOptions will refine
+  postSel.value = "";
+
+  // Attach listeners: top-6 filters repopulate Run then auto-load
+  ["filter-N", "filter-M", "filter-openmindedness", "filter-social_posting",
+   "filter-seed", "filter-t"].forEach(id => {
+    document.getElementById(id).addEventListener("change", updateRunOptions);
+  });
+
+  // Run filter: user choosing a run triggers load
+  document.getElementById("filter-run").addEventListener("change", tryAutoLoad);
+
+  // Initial population of Run + first auto-load
+  updateRunOptions();
+}
+
+function getTopFilters() {
+  const v = id => document.getElementById(id).value;
+  return { N: v("filter-N"), M: v("filter-M"), open: v("filter-openmindedness"),
+           post: v("filter-social_posting"), seed: v("filter-seed"), t: v("filter-t") };
+}
+
+function matchesTopFilters(e, f) {
+  return (f.N    === "" || e.N              == f.N)    &&
+         (f.M    === "" || e.M              == f.M)    &&
+         (f.open === "" || e.openmindedness == f.open) &&
+         (f.post === "" || (f.post === "true" ? e.social_posting : !e.social_posting)) &&
+         (f.seed === "" || e.seed           == f.seed) &&
+         (f.t    === "" || e.t              == f.t);
+}
+
+function updateRunOptions() {
+  const f = getTopFilters();
+
+  // All entries matching the top 6 filters
+  const candidates = allManifestEntries.filter(e => matchesTopFilters(e, f));
+
+  // Unique timestamps among candidates, sorted
+  const runs = [...new Set(candidates.map(e => e.timestamp))].sort();
+
+  const runSel = document.getElementById("filter-run");
+  const prev   = runSel.value;
+  fillSelect("filter-run", runs, prev);
+
+  const statusEl = document.getElementById("filter-status");
+  if (candidates.length === 0) {
+    statusEl.textContent = "No files found";
+    statusEl.style.color = "#d00";
+  } else {
+    statusEl.textContent = `${runs.length} run${runs.length !== 1 ? "s" : ""} available`;
+    statusEl.style.color = "#888";
+  }
+
+  tryAutoLoad();
+}
+
+function resolveEntry() {
+  const f   = getTopFilters();
+  const run = document.getElementById("filter-run").value;
+  return allManifestEntries.find(e => matchesTopFilters(e, f) && e.timestamp === run) || null;
+}
+
+function fetchAndLoad(entry) {
   document.getElementById("status-bar").textContent = "Loading\u2026";
-  fetch(url)
+  fetch(entry.file)
     .then(r => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
-    .then(data => {
-      loadData(data, url.split("/").pop());
-      this.blur();
-    })
+    .then(data => loadData(data, entry.file.split("/").pop()))
     .catch(err => {
       document.getElementById("status-bar").textContent = "Failed to load: " + err.message;
-      this.value = "";
     });
+}
+
+function tryAutoLoad() {
+  const entry = resolveEntry();
+  if (entry) fetchAndLoad(entry);
+}
+
+// Load button is now a fallback / manual trigger (should rarely be needed)
+document.getElementById("btn-load-selected").style.display = "none";
+document.getElementById("btn-load-selected").addEventListener("click", () => {
+  const entry = resolveEntry();
+  if (entry) fetchAndLoad(entry);
+  else alert("No matching file found.");
 });
 
 // ── Local file loader ─────────────────────────────────────────────

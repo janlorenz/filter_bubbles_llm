@@ -25,7 +25,7 @@ runs <- read_csv("rawdata/experiments/runs_config.csv") |>
       "{timestamp}_A{N}_M{M}_tmax{tmax}_op{openmindedness}_seed{seed}_{model_short}"
     )
   )
-runs_core <- runs |> filter(datetime >= "2026-06-30")
+runs_core <- runs |> filter(datetime >= "2026-03-25", model_short == "gpt")
 
 # Make csvs of decisions, memory, and social networks
 runs_core |>
@@ -127,8 +127,30 @@ for (id in runs_core$run_id) {
   }
 }
 
+# Generate manifest by scanning actual JSON files and extracting parameters from filenames
+# Pattern: {timestamp}_A{N}_M{M}_tmax{tmax}_op{openmindedness}_seed{seed}_{model}_t{t}.json
+
+json_files <- dir("networkjson/", full.names = FALSE)
+
 manifest <- tibble(
-  label = dir("json/") |> str_remove(".json$"),
-  file = paste0("networkjson/", dir("json/"))
-)
-write(toJSON(manifest, auto_unbox = TRUE), "manifest.json")
+  filename = json_files,
+  file = paste0("networkjson/", json_files)
+) |>
+  mutate(
+    # Extract parameters from filename using regex
+    timestamp = str_extract(filename, "^[0-9]{6}-[0-9]{4}"),
+    N = as.numeric(str_extract(filename, "(?<=_A)\\d+")),
+    M = as.numeric(str_extract(filename, "(?<=_M)\\d+(?=_)")),
+    tmax = as.numeric(str_extract(filename, "(?<=tmax)\\d+")),
+    openmindedness = as.numeric(str_extract(filename, "(?<=op)\\d+")),
+    seed = as.numeric(str_extract(filename, "(?<=seed)\\d+")),
+    model = str_extract(filename, "(?<=_)[a-z]+(?=_t)"),
+    t = as.numeric(str_extract(filename, "(?<=_t)\\d+(?=\\.json)"))
+  ) |>
+  select(file, timestamp, N, M, tmax, openmindedness, seed, model, t) |>
+  mutate(
+    social_posting = TRUE # All current runs have this as TRUE
+  ) |>
+  arrange(timestamp, N, M, openmindedness, seed, t)
+
+write(toJSON(manifest, auto_unbox = TRUE, pretty = TRUE), "manifest.json")

@@ -6,3 +6,5 @@ air.toml
 networkjson/
 rawdata/
 parquet/
+
+/.quarto/
