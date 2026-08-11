@@ -1,5 +1,8 @@
 project:
   type: website
+  render:
+    - "*.qmd"
+    - "!AGENTS.md"
   resources:
     - networkjson/
     - manifest.json

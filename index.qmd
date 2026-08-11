@@ -100,8 +100,8 @@ The implementation of the agent-based model using LLMs for agent's worldview int
 # library(arrow)
 # wvs_meta <- read_sheet("1xsOx7D2nhp0AnnZZxat9BHodBEMLELqIB8Tv_rbSPKc") |>
 #     filter(Selection_2_Jan == 1) |>
-#     select(Questionaire_Section, Question_ID, Worldview_Statement, max_approval, min_approval) 
-# write_parquet(wvs_meta, "wvs_statements.parquet")    
+#     select(Questionaire_Section, Question_ID, Worldview_Statement, max_approval, min_approval)
+# write_parquet(wvs_meta, "wvs_statements.parquet")
 ```
 
 *To do.*

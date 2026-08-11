@@ -136,6 +136,16 @@
   flex-shrink: 0;
 }
 
+#network-root .zoom-controls {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  z-index: 15;
+}
+
 #network-root .btn {
   /* font-family: "IBM Plex Mono", monospace; */
   font-size: 10px;
@@ -151,6 +161,7 @@
 #network-root .btn:hover        { color: var(--color-text);   border-color: var(--color-muted); }
 #network-root .btn--active      { color: var(--color-accent); border-color: var(--color-accent); }
 #network-root .btn--file-label  { display: inline-block; }
+#network-root .btn--zoom        { font-size: 12px; padding: 2px 7px; font-weight: 600; min-width: 24px; }
 
 #network-root .loaded-filename {
   /* font-family: "IBM Plex Mono", monospace; */
@@ -412,6 +423,14 @@
   color: var(--color-stmt);
   font-weight: 600;
   flex-shrink: 0;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  border-radius: 2px;
+  padding: 1px 3px;
+}
+#network-root .worldview-pane__item-id:hover {
+  opacity: 0.8;
+  background-color: rgba(216, 27, 96, 0.1);
 }
 
 #network-root .worldview-pane__item-text {
