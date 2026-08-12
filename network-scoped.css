@@ -75,6 +75,31 @@
   flex-wrap: wrap;
 }
 
+#network-root .control-section-title {
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--color-text);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  padding: 3px 8px;
+  border-radius: 3px;
+  /* flex-basis: 100%; */
+}
+
+/* Color the title backgrounds to indicate sections */
+#network-root .controls > .control-section-title:nth-of-type(1) {
+  background-color: rgba(207, 226, 243, 0.3);
+}
+
+#network-root .controls > .control-section-title:nth-of-type(2) {
+  background-color: rgba(245, 224, 142, 0.3);
+}
+
+#network-root .controls > .control-section-title:nth-of-type(3) {
+  background-color: rgba(200, 230, 201, 0.3);
+}
+
 #network-root .control-group {
   display: flex;
   align-items: center;
@@ -128,6 +153,8 @@
   background: var(--color-accent);
   cursor: pointer;
 }
+#network-root .slider:disabled                { opacity: 0.35; cursor: not-allowed; }
+#network-root .slider:disabled::-webkit-slider-thumb { cursor: not-allowed; }
 
 #network-root .divider {
   width: 1px;
@@ -160,6 +187,8 @@
 }
 #network-root .btn:hover        { color: var(--color-text);   border-color: var(--color-muted); }
 #network-root .btn--active      { color: var(--color-accent); border-color: var(--color-accent); }
+#network-root .btn:disabled     { opacity: 0.35; cursor: not-allowed; }
+#network-root .btn:disabled:hover { color: var(--color-muted); border-color: var(--color-border); }
 #network-root .btn--file-label  { display: inline-block; }
 #network-root .btn--zoom        { font-size: 12px; padding: 2px 7px; font-weight: 600; min-width: 24px; }
 

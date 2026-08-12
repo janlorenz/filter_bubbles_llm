@@ -18,52 +18,8 @@ margin-right: "0px"
 <header class="header">
 
   <div class="controls">
-
-    <div class="control-group">
-      <label class="control-group__label" title="Repulsion between all nodes: Higher values push nodes further apart (Fruchterman-Reingold repulsive force).">SPREAD</label>
-      <input type="range" class="slider" id="sl-spread" min="10" max="400" step="5" value="100">
-      <span class="control-group__value" id="vl-spread">100</span>
-    </div>
-
-    <div class="control-group">
-      <label class="control-group__label" title="Preferred distance between connected nodes: The rest length of the spring pulling them together.">EDGE LENGTH</label>
-      <input type="range" class="slider" id="sl-edgelen" min="10" max="100" step="2" value="10">
-      <span class="control-group__value" id="vl-edgelen">10</span>
-    </div>
-
-    <div class="control-group">
-      <label class="control-group__label" title="How strongly edges pull connected nodes toward each other: Higher values create tighter clusters.">ATTRACTION</label>
-      <input type="range" class="slider" id="sl-attract" min="0" max="1" step="0.02" value="0.75">
-      <span class="control-group__value" id="vl-attract">0.75</span>
-    </div>
-
-    <div class="controls__linebreak"></div>
-    
-    <button class="btn" id="btn-reset">&#x21BA; Reset</button>
-    <button class="btn" id="btn-defaults">Default Controls</button>
-
-    <div class="divider"></div>
-
-    <button class="btn" id="btn-freeze">&#x23F8; Freeze</button>
-    <button class="btn" id="btn-labels">Labels off</button>
-    <button class="btn" id="btn-size">Statement size: uniform</button>
-
-    <div class="divider"></div>
-
-    <div class="legend">
-      <div class="legend__item">
-        <div class="legend__dot" style="background:var(--color-agent)"></div>
-        <span>Agents (<span id="count-agents">0</span>)</span>
-      </div>
-      <div class="legend__item">
-        <div class="legend__dot" style="background:var(--color-stmt)"></div>
-        <span>Statements (<span id="count-stmts">0</span>)</span>
-      </div>
-    </div>
-
-    <div class="controls__linebreak"></div>
-
-    <!-- Parameter filter menus -->
+    <!-- Simulated Data (lines 1-2) -->
+    <span class="control-section-title">Simulated Data</span>
     <div class="filter-group">
       <label for="filter-N" class="filter-label">N:</label>
       <select id="filter-N" class="filter-select"></select>
@@ -110,10 +66,65 @@ margin-right: "0px"
        <span class="loaded-filename" id="loaded-name"></span>
     </div>
 
-    <!-- <label class="btn btn--file-label" title="Load a local JSON file from your computer">
-      &#x23CF; Local JSON
-      <input type="file" id="file-input" accept=".json" style="display:none">
-    </label> -->
+    <div class="legend">
+      <div class="legend__item" id="legend-agents">
+        <div class="legend__dot" style="background:var(--color-agent)"></div>
+        <span>Agents (<span id="count-agents">0</span>)</span>
+      </div>
+      <div class="legend__item" id="legend-stmts">
+        <div class="legend__dot" style="background:var(--color-stmt)"></div>
+        <span>Statements (<span id="count-stmts">0</span>)</span>
+      </div>
+    </div>
+
+    <div class="controls__linebreak"></div>
+  
+    <span class="control-section-title">Network Type</span>
+    <div class="filter-group" style="display:inline-flex;align-items:center;">
+      <select id="filter-nettype" class="filter-select" style="min-width:175px;">
+        <option value="AS">Agent–Statement</option>
+        <option value="AA">Projection: Agents</option>
+        <option value="SS">Projection: Statements</option>
+      </select>
+    </div>
+
+    <button class="btn" id="btn-weight-forces" disabled title="Use edge weight to scale attraction force (projection networks only)">Weight forces: off</button>
+
+    <div class="control-group">
+      <label class="control-group__label" title="Hide links with weight below this threshold (projection networks only).">MIN WEIGHT</label>
+      <input type="range" class="slider" id="sl-minweight" min="1" max="10" step="1" value="1" disabled>
+      <span class="control-group__value" id="vl-minweight">1</span>
+    </div>
+
+    <div class="controls__linebreak"></div>
+
+    <span class="control-section-title">Dynamic Layout</span>
+    <div class="control-group">
+      <label class="control-group__label" title="Repulsion between all nodes: Higher values push nodes further apart (Fruchterman-Reingold repulsive force).">SPREAD</label>
+      <input type="range" class="slider" id="sl-spread" min="10" max="400" step="5" value="100">
+      <span class="control-group__value" id="vl-spread">100</span>
+    </div>
+
+    <div class="control-group">
+      <label class="control-group__label" title="Preferred distance between connected nodes: The rest length of the spring pulling them together.">EDGE LENGTH</label>
+      <input type="range" class="slider" id="sl-edgelen" min="10" max="100" step="2" value="10">
+      <span class="control-group__value" id="vl-edgelen">10</span>
+    </div>
+
+    <div class="control-group">
+      <label class="control-group__label" title="How strongly edges pull connected nodes toward each other: Higher values create tighter clusters.">ATTRACTION</label>
+      <input type="range" class="slider" id="sl-attract" min="0" max="1" step="0.02" value="0.75">
+      <span class="control-group__value" id="vl-attract">0.75</span>
+    </div>
+
+    <button class="btn" id="btn-reset">&#x21BA; Reset</button>
+    <button class="btn" id="btn-defaults">Default Controls</button>
+
+    <div class="divider"></div>
+
+    <button class="btn" id="btn-freeze">&#x23F8; Freeze</button>
+    <button class="btn" id="btn-labels">Labels off</button>
+    <button class="btn" id="btn-size">Statement size: uniform</button>
 
   </div>
 
@@ -263,16 +274,35 @@ let sim;
 let frozen    = false;
 let labelsOn  = false;
 let sizeByDeg = false;
+let netType               = "AS";
+let rawData               = { nodes: [], links: [] };
+let weightedForces        = false;
+let attractBeforeWeightOn = null;
+let minWeight             = 1;
+
+const NET_DEFAULTS = {
+  AS: { spread: 100,  edgelen: 10,  attract: 0.75  },
+  AA: { spread: 200,  edgelen: 30,  attract: 0.075 },
+  SS: { spread: 200,  edgelen: 30,  attract: 0.075 },
+};
 
 function sv(id) { return +document.getElementById(id).value; }
 function wh()   { return [wrap.clientWidth, wrap.clientHeight]; }
+
+// Returns a scalar or per-link function for forceLink.strength()
+function linkStrength() {
+  const base = sv("sl-attract");
+  if (!weightedForces || netType === "AS") return base;
+  const maxW = d3.max(DATA.links, l => l.weight || 1) || 1;
+  return d => Math.min((d.weight || 1) / maxW, 1) * base;
+}
 
 function buildSim() {
   const [W, H] = wh();
   if (sim) sim.stop();
   sim = d3.forceSimulation(DATA.nodes)
     .force("link",    d3.forceLink(DATA.links).id(d => d.id)
-                        .distance(sv("sl-edgelen")).strength(sv("sl-attract")))
+                        .distance(sv("sl-edgelen")).strength(linkStrength()))
     .force("charge",  d3.forceManyBody().strength(-sv("sl-spread")))
     .force("center",  d3.forceCenter(W / 2, H / 2))
     .force("collide", d3.forceCollide(d => nodeR(d, sizeByDeg) + 2))
@@ -293,16 +323,27 @@ function updateLegend() {
   const nStmts  = DATA.nodes.filter(n => n.type === "statement").length;
   document.getElementById("count-agents").textContent = nAgents;
   document.getElementById("count-stmts").textContent  = nStmts;
+  document.getElementById("legend-agents").style.display = netType === "SS" ? "none" : "";
+  document.getElementById("legend-stmts").style.display  = netType === "AA" ? "none" : "";
 }
 
-function redraw() {
+function redrawLinks() {
   linkGroup.selectAll("line").remove();
-  nodeGroup.selectAll("g").remove();
-
   linkSel = linkGroup.selectAll("line")
     .data(DATA.links)
     .join("line")
-    .attr("class", "edge");
+    .attr("class", "edge")
+    // .style() overrides the CSS rule; .attr() would be overridden by it
+    .style("stroke-width", d =>
+      netType !== "AS" && d.weight != null
+        ? Math.max(0.5, Math.min(Math.sqrt(d.weight) * 1.5, 12)) + "px"
+        : null   // null removes inline style → CSS .edge rule takes over
+    );
+}
+
+function redraw() {
+  redrawLinks();
+  nodeGroup.selectAll("g").remove();
 
   // Key function uses the stable _s/_t tags, not the (possibly mutated) source/target
   nodeSel = nodeGroup.selectAll("g")
@@ -376,8 +417,10 @@ bindSlider("sl-spread",  "vl-spread",  0, v => {
   sim.force("charge", d3.forceManyBody().strength(-v)); sim.alpha(0.4).restart(); });
 bindSlider("sl-edgelen", "vl-edgelen", 0, v => {
   sim.force("link").distance(v); sim.alpha(0.4).restart(); });
-bindSlider("sl-attract", "vl-attract", 2, v => {
-  sim.force("link").strength(v); sim.alpha(0.4).restart(); });
+bindSlider("sl-attract", "vl-attract", 2, () => {
+  sim.force("link").strength(linkStrength()); sim.alpha(0.4).restart(); });
+bindSlider("sl-minweight", "vl-minweight", 0, () => {
+  if (netType !== "AS") applyWeightFilter(); });
 
 // ── Buttons ───────────────────────────────────────────────────────
 document.getElementById("btn-reset").addEventListener("click", () => {
@@ -413,16 +456,35 @@ document.getElementById("btn-size").addEventListener("click", function() {
   sim.alpha(0.15).restart();
 });
 
+document.getElementById("filter-nettype").addEventListener("change", applyNetType);
+
+document.getElementById("btn-weight-forces").addEventListener("click", function() {
+  weightedForces = !weightedForces;
+  this.textContent = weightedForces ? "Weight forces: on" : "Weight forces: off";
+  this.classList.toggle("btn--active", weightedForces);
+  // Scale attraction by ×4 when enabling; restore previous value when disabling
+  if (weightedForces) {
+    attractBeforeWeightOn = sv("sl-attract");
+    const newA = Math.min(sv("sl-attract") * 4, 1);
+    document.getElementById("sl-attract").value = newA;
+    document.getElementById("vl-attract").textContent = newA.toFixed(3).replace(/\.?0+$/, "");
+  } else {
+    const restoreA = attractBeforeWeightOn !== null ? attractBeforeWeightOn : sv("sl-attract") / 4;
+    attractBeforeWeightOn = null;
+    document.getElementById("sl-attract").value = restoreA;
+    document.getElementById("vl-attract").textContent = restoreA.toFixed(3).replace(/\.?0+$/, "");
+  }
+  sim.force("link").strength(linkStrength());
+  sim.alpha(0.4).restart();
+});
+
 document.getElementById("btn-defaults").addEventListener("click", () => {
-  document.getElementById("sl-spread").value = 100;
-  document.getElementById("vl-spread").textContent = "100";
-  document.getElementById("sl-edgelen").value = 10;
-  document.getElementById("vl-edgelen").textContent = "10";
-  document.getElementById("sl-attract").value = 0.75;
-  document.getElementById("vl-attract").textContent = "0.75";
-  // Update simulation with default values
-  sim.force("charge", d3.forceManyBody().strength(-100));
-  sim.force("link").distance(10).strength(0.75);
+  const d = NET_DEFAULTS[netType] || NET_DEFAULTS.AS;
+  const attract = weightedForces ? Math.min(d.attract * 4, 1) : d.attract;
+  setSliders({ ...d, attract });
+  attractBeforeWeightOn = weightedForces ? d.attract : null;
+  sim.force("charge", d3.forceManyBody().strength(-d.spread));
+  sim.force("link").distance(d.edgelen).strength(linkStrength());
   sim.alpha(0.4).restart();
 });
 
@@ -439,17 +501,18 @@ document.getElementById("btn-zoom-out").addEventListener("click", () => {
 function onHover(event, d) {
   const nb = new Set([d.id, ...(neighbours[d.id] || [])]);
   linkSel.classed("edge--highlighted", l => l._s === d.id || l._t === d.id);
+  linkSel.filter(function() { return d3.select(this).classed("edge--highlighted"); }).raise();
   nodeSel.classed("node--highlighted", n =>  nb.has(n.id))
          .classed("node--dimmed",      n => !nb.has(n.id));
 
   if (d.type === "agent") {
     const count = (neighbours[d.id] || new Set()).size;
-    cursorTip.textContent = d.label + " \u00B7 " + count + " statement" + (count !== 1 ? "s" : "");
+    cursorTip.textContent = d.label + " \u00B7 " + count + " link" + (count !== 1 ? "s" : "");
   } else {
     const deg = (neighbours[d.id] || new Set()).size;
     cursorTip.innerHTML = '<span class="cursor-tip-id">' + d.id + '</span> ' + d.label
       + (d.topic ? " \u00B7 " + d.topic : "")
-      + " \u00B7 " + deg + " agent" + (deg !== 1 ? "s" : "");
+      + " \u00B7 " + deg + " link" + (deg !== 1 ? "s" : "");
     // Highlight matching row in open worldview pane
     worldviewList.querySelectorAll(".worldview-pane__item").forEach(el =>
       el.classList.toggle("worldview-pane__item--highlighted", el.dataset.id === d.id)
@@ -504,6 +567,7 @@ function openWorldview(d) {
     nodeSel.classed("node--highlighted", n =>  nb.has(n.id))
            .classed("node--dimmed",      n => !nb.has(n.id));
     linkSel.classed("edge--highlighted", l => l._s === d.id || l._t === d.id);
+    linkSel.filter(function() { return d3.select(this).classed("edge--highlighted"); }).raise();
   });
   worldviewTitle.addEventListener("mouseleave", () => {
     nodeSel.classed("node--highlighted", false).classed("node--dimmed", false);
@@ -518,6 +582,7 @@ function openWorldview(d) {
              .classed("node--dimmed",      n => n.id !== sid && n.id !== d.id);
       linkSel.classed("edge--highlighted", l =>
         (l._s === d.id && l._t === sid) || (l._t === d.id && l._s === sid));
+      linkSel.filter(function() { return d3.select(this).classed("edge--highlighted"); }).raise();
     });
     el.addEventListener("mouseleave", () => {
       nodeSel.classed("node--highlighted", false).classed("node--dimmed", false);
@@ -569,6 +634,7 @@ function openStatementPane(d) {
     nodeSel.classed("node--highlighted", n =>  nb.has(n.id))
            .classed("node--dimmed",      n => !nb.has(n.id));
     linkSel.classed("edge--highlighted", l => l._s === d.id || l._t === d.id);
+    linkSel.filter(function() { return d3.select(this).classed("edge--highlighted"); }).raise();
   };
   titleEl.onmouseleave = () => {
     nodeSel.classed("node--highlighted", false).classed("node--dimmed", false);
@@ -583,6 +649,7 @@ function openStatementPane(d) {
              .classed("node--dimmed",      n => n.id !== agentId && n.id !== d.id);
       linkSel.classed("edge--highlighted", l =>
         (l._s === d.id && l._t === agentId) || (l._t === d.id && l._s === agentId));
+      linkSel.filter(function() { return d3.select(this).classed("edge--highlighted"); }).raise();
     };
     el.onmouseleave = () => {
       nodeSel.classed("node--highlighted", false).classed("node--dimmed", false);
@@ -605,6 +672,7 @@ function openStatementPane(d) {
 
 function onClick(event, d) {
   event.stopPropagation();
+  if (netType !== "AS") return;
   if (d.type === "agent") {
     document.getElementById("statement-pane").classList.remove("worldview-pane--visible");
     openWorldview(d);
@@ -777,21 +845,83 @@ document.getElementById("file-input").addEventListener("change", function() {
   this.value = "";
 });
 
-function loadData(newData, filename) {
-  DATA.nodes = newData.nodes;
-  DATA.links = newData.links;
+function setSliders(d) {
+  document.getElementById("sl-spread").value  = d.spread;
+  document.getElementById("vl-spread").textContent = d.spread;
+  document.getElementById("sl-edgelen").value = d.edgelen;
+  document.getElementById("vl-edgelen").textContent = d.edgelen;
+  document.getElementById("sl-attract").value = d.attract;
+  document.getElementById("vl-attract").textContent = d.attract.toFixed(3).replace(/\.?0+$/, "");
+}
+
+function applyWeightFilter() {
+  minWeight = sv("sl-minweight");
+  const typeFilter = netType === "AA" ? l => l.type === "AA" : l => l.type === "SS";
+  DATA.links = (rawData.links || []).filter(typeFilter).filter(l => (l.weight || 1) >= minWeight);
   tagLinks();
   buildIndex();
-  // Show filename, reset whichever loader wasn't used
+  redrawLinks();
+  // Replace link force with new link set, preserving node positions
+  sim.force("link", d3.forceLink(DATA.links).id(d => d.id)
+    .distance(sv("sl-edgelen")).strength(linkStrength()));
+  sim.alpha(0.3).restart();
+}
+
+function applyNetType() {
+  netType = document.getElementById("filter-nettype").value;
+  // Sync projection-only controls
+  const wfBtn    = document.getElementById("btn-weight-forces");
+  const mwSlider = document.getElementById("sl-minweight");
+  const mwLabel  = document.getElementById("vl-minweight");
+  minWeight = 1;
+  mwSlider.value = 1;
+  mwLabel.textContent = "1";
+  if (netType === "AS") {
+    weightedForces = false;
+    wfBtn.disabled = true;
+    wfBtn.classList.remove("btn--active");
+    wfBtn.textContent = "Weight forces: off";
+    mwSlider.disabled = true;
+  } else {
+    wfBtn.disabled = false;
+    mwSlider.disabled = false;
+  }
+  if (netType === "AS") {
+    DATA.nodes = rawData.nodes ? rawData.nodes.slice() : [];
+    DATA.links = rawData.links ? rawData.links.filter(l => !l.type || l.type === "AS") : [];
+  } else if (netType === "AA") {
+    DATA.nodes = rawData.nodes ? rawData.nodes.filter(n => n.type === "agent") : [];
+    DATA.links = rawData.links ? rawData.links.filter(l => l.type === "AA" && (l.weight || 1) >= minWeight) : [];
+  } else { // SS
+    DATA.nodes = rawData.nodes ? rawData.nodes.filter(n => n.type === "statement") : [];
+    DATA.links = rawData.links ? rawData.links.filter(l => l.type === "SS" && (l.weight || 1) >= minWeight) : [];
+  }
+  // Close side panes when switching away from bipartite view
+  if (netType !== "AS") {
+    worldviewPane.classList.remove("worldview-pane--visible");
+    document.getElementById("statement-pane").classList.remove("worldview-pane--visible");
+  }
+  // Apply layout defaults for this network type
+  setSliders(NET_DEFAULTS[netType]);
+  tagLinks();
+  buildIndex();
+  DATA.nodes.forEach(d => { d.x=undefined; d.y=undefined; d.vx=0; d.vy=0; d.fx=null; d.fy=null; });
+  redraw();
+  buildSim();
+  sim.alpha(1).restart();
+}
+
+function loadData(newData, filename) {
+  rawData = newData;
+  // Show filename
   document.getElementById("loaded-name").textContent = filename.replace(/\.json$/i, "");
   worldviewPane.classList.remove("worldview-pane--visible");
   document.getElementById("statement-pane").classList.remove("worldview-pane--visible");
   frozen = false;
   document.getElementById("btn-freeze").textContent = "\u23F8 Freeze";
-  DATA.nodes.forEach(d => { d.x=undefined; d.y=undefined; d.vx=0; d.vy=0; d.fx=null; d.fy=null; });
-  redraw();
-  buildSim();
-  sim.alpha(1).restart();
+  // Reset to bipartite view on new file load
+  document.getElementById("filter-nettype").value = "AS";
+  applyNetType();
 }
 
 // ── Resize ────────────────────────────────────────────────────────

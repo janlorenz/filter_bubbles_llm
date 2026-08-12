@@ -116,13 +116,39 @@ for (id in runs_core$run_id) {
     agents_run <- agents |>
       filter(id %in% paste0("A", unique(memory_run$A_id))) |>
       mutate(label = id)
+    # Overlap links for Statement and Agent projection networks
+    overlap_agents_run <- memory_run |>
+      select(S_id, A_id) |>
+      inner_join(memory_run, by = "S_id", relationship = "many-to-many") |>
+      filter(A_id.x < A_id.y) |> # avoid self-pairs & duplicate (a,b)/(b,a)
+      count(A_id.x, A_id.y, name = "weight") |>
+      mutate(
+        source = paste0("A", A_id.x),
+        target = paste0("A", A_id.y),
+        type = "AA",
+        weight,
+        .keep = "none"
+      )
+    overlap_statements_run <- memory_run |>
+      select(S_id, A_id) |>
+      inner_join(memory_run, by = "A_id", relationship = "many-to-many") |>
+      filter(S_id.x < S_id.y) |> # avoid self-pairs & duplicate (a,b)/(b,a), this also works for character via lexicographic ordering
+      count(S_id.x, S_id.y, name = "weight") |>
+      rename(source = S_id.x, target = S_id.y) |>
+      mutate(type = "SS")
     # ---- 2. PREPARE NODES AND EDGES -------------------------------
     nodes <- bind_rows(agents_run, statements_run) |>
       mutate(across(everything(), as.character)) |>
       mutate(across(everything(), \(x) replace_na(x, "")))
     edges <- memory_run |>
-      mutate(source = paste0("A", A_id), target = S_id) |>
-      select(source, target)
+      mutate(
+        source = paste0("A", A_id),
+        target = S_id,
+        type = "AS",
+        weight = 1,
+        .keep = "none"
+      ) |>
+      rbind(overlap_agents_run, overlap_statements_run)
     message(
       "Nodes: ",
       nrow(nodes),
@@ -146,7 +172,6 @@ for (id in runs_core$run_id) {
 # Pattern: {timestamp}_A{N}_M{M}_tmax{tmax}_op{openmindedness}_seed{seed}_{model}_t{t}.json
 
 json_files <- dir("networkjson/", full.names = FALSE)
-
 manifest <- tibble(
   filename = json_files,
   file = paste0("networkjson/", json_files)
