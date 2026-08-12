@@ -40,10 +40,13 @@ margin-right: "0px"
     <div class="controls__linebreak"></div>
     
     <button class="btn" id="btn-reset">&#x21BA; Reset</button>
+    <button class="btn" id="btn-defaults">Default Controls</button>
+
+    <div class="divider"></div>
+
     <button class="btn" id="btn-freeze">&#x23F8; Freeze</button>
     <button class="btn" id="btn-labels">Labels off</button>
-    <button class="btn" id="btn-size">Statement size by degree</button>
-    <button class="btn" id="btn-defaults">Default Controls</button>
+    <button class="btn" id="btn-size">Statement size: uniform</button>
 
     <div class="divider"></div>
 
@@ -95,23 +98,22 @@ margin-right: "0px"
       <select id="filter-t" class="filter-select"></select>
     </div>
 
+    <div class="filter-status" id="filter-status">No files</div>   
+
     <div class="filter-group">
       <label for="filter-run" class="filter-label">Run:</label>
       <select id="filter-run" class="filter-select" style="min-width:110px;"></select>
     </div>
 
-    <div class="filter-status" id="filter-status" style="font-size:0.9em; color:#888; margin-top:4px; padding-left:0;">No files</div>
+    <div class="loaded-filename">
+      File:
+       <span class="loaded-filename" id="loaded-name"></span>
+    </div>
 
-    <div class="controls__linebreak"></div>
-
-    <button class="btn" id="btn-load-selected" title="Load the selected configuration" style="display:none;">Load Selected</button>
-
-    <label class="btn btn--file-label" title="Load a local JSON file from your computer">
+    <!-- <label class="btn btn--file-label" title="Load a local JSON file from your computer">
       &#x23CF; Local JSON
       <input type="file" id="file-input" accept=".json" style="display:none">
-    </label>
-
-    <span class="loaded-filename" id="loaded-name"></span>
+    </label> -->
 
   </div>
 
@@ -346,15 +348,15 @@ function redraw() {
     .attr("class", "node__label")
     .attr("dy", d => d.type === "agent" ? -8 : -10)
     .attr("text-anchor", "middle")
-    .text(d => d.label);
+    .html(d => {
+      if (d.type === "statement") {
+        return '<tspan class="node__label-id">' + d.id + '</tspan> ' + d.label;
+      }
+      return d.label;
+    });
 
-  if (!labelsOn) nodeSel.classed("node--labels-hidden", true);
-
-  // Set initial button state for labels
-  const btnLabels = document.getElementById("btn-labels");
-  btnLabels.textContent = labelsOn ? "Labels off" : "Labels on";
-  btnLabels.classList.toggle("btn--active", !labelsOn);
-
+  // Apply current label visibility state to freshly created nodes
+  nodeSel.classed("node--labels-hidden", !labelsOn);
   updateLegend();
 }
 
@@ -395,14 +397,14 @@ document.getElementById("btn-freeze").addEventListener("click", function() {
 document.getElementById("btn-labels").addEventListener("click", function() {
   labelsOn = !labelsOn;
   nodeSel.classed("node--labels-hidden", !labelsOn);
-  this.textContent = labelsOn ? "Labels off" : "Labels on";
-  this.classList.toggle("btn--active", !labelsOn);
+  this.textContent = labelsOn ? "Labels on" : "Labels off";
+  this.classList.toggle("btn--active", labelsOn);
 });
 
 document.getElementById("btn-size").addEventListener("click", function() {
   sizeByDeg = !sizeByDeg;
   this.classList.toggle("btn--active", sizeByDeg);
-  this.textContent = sizeByDeg ? "Stmt size: uniform" : "Stmt size by degree";
+  this.textContent = sizeByDeg ? "Statement size: degree" : "Statement size: uniform";
   // Only statement circles change; agents stay fixed
   circles.filter(d => d.type === "statement")
     .transition().duration(400)
@@ -445,7 +447,7 @@ function onHover(event, d) {
     cursorTip.textContent = d.label + " \u00B7 " + count + " statement" + (count !== 1 ? "s" : "");
   } else {
     const deg = (neighbours[d.id] || new Set()).size;
-    cursorTip.textContent = d.label
+    cursorTip.innerHTML = '<span class="cursor-tip-id">' + d.id + '</span> ' + d.label
       + (d.topic ? " \u00B7 " + d.topic : "")
       + " \u00B7 " + deg + " agent" + (deg !== 1 ? "s" : "");
     // Highlight matching row in open worldview pane
@@ -545,9 +547,9 @@ function openStatementPane(d) {
     .filter(n => n && n.type === "agent")
     .sort((a, b) => a.id.localeCompare(b.id, undefined, {numeric: true}));
 
-  // Update title with statement text in statement color
+  // Update title with statement ID and text in statement color
   const titleEl = document.getElementById("statement-title");
-  titleEl.innerHTML = '<span class="statement-text">' + d.label + '</span>';
+  titleEl.innerHTML = '<span class="statement-id">' + d.id + '</span> <span class="statement-text">' + d.label + '</span>';
   
   // Add agent count info below title
   const statementList = document.getElementById("statement-list");

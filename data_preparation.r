@@ -25,7 +25,22 @@ runs <- read_csv("rawdata/experiments/runs_config.csv") |>
       "{timestamp}_A{N}_M{M}_tmax{tmax}_op{openmindedness}_seed{seed}_{model_short}"
     )
   )
-runs_core <- runs |> filter(datetime >= "2026-03-25", model_short == "gpt")
+runs_core <- runs |>
+  filter(datetime >= "2026-03-25", model_short == "gpt") |>
+  select(
+    run_id_desc,
+    run_id,
+    N,
+    M,
+    openmindedness,
+    social_posting,
+    seed,
+    timestamp,
+    model_name,
+    run_folder,
+    datetime
+  )
+runs_core |> write_parquet("parquet/runs_core.parquet")
 
 # Make csvs of decisions, memory, and social networks
 runs_core |>
