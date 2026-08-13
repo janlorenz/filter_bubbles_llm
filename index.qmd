@@ -160,7 +160,7 @@ Agent dropped: "The government should not monitor emails and Internet communicat
 
 We acknowledge the support of the European City Squared project, funded by the European Union's Horizon Europe research and innovation programme under grant agreement DOI: [10.3030/101178170](https://doi.org/10.3030/101178170). We also thank our colleagues in the project for their valuable feedback and discussions on this work.
 
-We thank Alua Aldaniyaz and Asmae Naikb for their enlightening data analysis of World Value Survey data with the goal of quantifying worldviews of individuals in their student project on Visual Communication and Data Storytelling at Constructor University. Their work also built the basis of the selection of statements from the World Value Survey questionnaire for our model.
+We thank Alua Aldaniyaz and Asmae Nakib for their enlightening data analysis of World Value Survey data with the goal of quantifying worldviews of individuals in their student project on Visual Communication and Data Storytelling at Constructor University. Their work also built the basis of the selection of statements from the World Value Survey questionnaire for our model.
 
 We thank Betül Yurtman for her work on assessing the empirical plausibility of emerging worldviews in the LLM-based agent-based model.  
 
