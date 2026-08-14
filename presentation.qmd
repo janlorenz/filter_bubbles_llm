@@ -1,0 +1,97 @@
+---
+title: "When LLMs Deliberate"
+date: "2026-08-17"
+author:
+  - name: Jan Lorenz
+    id: jl
+    orcid: 0000-0002-5547-7848
+    email: jlorenz@constructor.university
+    affiliation: 
+      - name: Constructor University
+        city: Bremen
+        state: Germany
+        url: https://www.constructor.university
+  - name: Erkan Gunes
+    id: eg
+    orcid: 0009-0005-8106-3314
+    email: eguenes@constructor.university
+    affiliation: 
+      - name: Constructor University
+        city: Bremen
+        state: Germany
+        url: https://www.constructor.university
+thanks: "Special thanks to Tiancheng Hu"
+format: 
+  revealjs:
+    include-in-header:
+      text: |
+        <style>
+        #title-slide::after {
+          content: "Thanks to Tiancheng Hu for help on design and prompting strategies.";
+          position: absolute;
+          bottom: -50px; /* Pulls it down below the flex container boundary */
+          left: 5%;
+          width: 90%;
+          font-size: 0.55em;
+          opacity: 0.6;
+          text-align: center;
+        }
+        </style>
+---
+
+## Network Example: t=100
+
+```{=html}
+<div id="network-root" class="network-mode--embedded" style="width: 100%; height: 500px;">
+  <link rel="stylesheet" href="network-scoped.css">
+
+  <div class="canvas-wrapper" id="canvas-wrapper">
+    <svg class="graph-svg" id="graph"></svg>
+
+    <div class="zoom-controls" id="zoom-controls">
+      <button class="btn btn--zoom" id="btn-zoom-in" title="Zoom in">+</button>
+      <button class="btn btn--zoom" id="btn-zoom-out" title="Zoom out">−</button>
+    </div>
+
+    <div class="cursor-tooltip" id="cursor-tooltip"></div>
+
+    <div class="worldview-pane" id="worldview-pane">
+      <div class="worldview-pane__header">
+        <div class="worldview-pane__title" id="worldview-title"></div>
+        <button class="worldview-pane__close" id="worldview-close">&#x2715;</button>
+      </div>
+      <div class="worldview-pane__list" id="worldview-list"></div>
+    </div>
+
+    <div class="worldview-pane" id="statement-pane">
+      <div class="worldview-pane__header">
+        <div class="worldview-pane__title" id="statement-title"></div>
+        <button class="worldview-pane__close" id="statement-close">&#x2715;</button>
+      </div>
+      <div class="worldview-pane__list" id="statement-list"></div>
+    </div>
+
+    <div class="status-bar" id="status-bar">Initialising…</div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="network-core.js"></script>
+<script src="network-embedded.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  initEmbedded('canvas-wrapper', {
+    file: 'networkjson/260328-1219_A100_M10_tmax100_op1_FS_seed400_gpt_t100.json',
+    type: 'AS',
+    zoom: 1.5,
+    layout: { spread: 100, edgelen: 10, attract: 0.75 }
+  });
+});
+</script>
+```
+
+A bipartite network showing agent-statement relationships at time step 100.
+
+::: notes
+This is a simplified embedded network visualization showing how networks can be embedded directly in reveal.js slides using the refactored modules.
+:::

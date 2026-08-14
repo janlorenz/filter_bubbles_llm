@@ -11,6 +11,7 @@ runs <- read_csv("rawdata/experiments/runs_config.csv") |>
     M = max_memory_per_agent,
     openmindedness = open_mindedness_level,
     tmax = num_time_steps,
+    feed_posting,
     social_posting,
     model_name,
     run_id,
@@ -19,10 +20,14 @@ runs <- read_csv("rawdata/experiments/runs_config.csv") |>
   mutate(
     model_short = word(model_name, sep = "/", start = 2) |>
       word(sep = "-", start = 1),
+    post = paste0(
+      ifelse(feed_posting == TRUE, "F", ""),
+      ifelse(social_posting == TRUE, "S", "")
+    ),
     timestamp = str_sub(timestamp, 3, 13),
     datetime = as.POSIXct(timestamp, format = "%y%m%d-%H%M", tz = "UTC"),
     run_id_desc = glue(
-      "{timestamp}_A{N}_M{M}_tmax{tmax}_op{openmindedness}_seed{seed}_{model_short}"
+      "{timestamp}_A{N}_M{M}_tmax{tmax}_op{openmindedness}_{post}_seed{seed}_{model_short}"
     )
   )
 runs_core <- runs |>
@@ -33,7 +38,7 @@ runs_core <- runs |>
     N,
     M,
     openmindedness,
-    social_posting,
+    post,
     seed,
     timestamp,
     model_name,
@@ -183,14 +188,12 @@ manifest <- tibble(
     M = as.numeric(str_extract(filename, "(?<=_M)\\d+(?=_)")),
     tmax = as.numeric(str_extract(filename, "(?<=tmax)\\d+")),
     openmindedness = as.numeric(str_extract(filename, "(?<=op)\\d+")),
+    post = str_extract(filename, "(?<=_)(FS|F|S)(?=_)"),
     seed = as.numeric(str_extract(filename, "(?<=seed)\\d+")),
     model = str_extract(filename, "(?<=_)[a-z]+(?=_t)"),
     t = as.numeric(str_extract(filename, "(?<=_t)\\d+(?=\\.json)"))
   ) |>
-  select(file, timestamp, N, M, tmax, openmindedness, seed, model, t) |>
-  mutate(
-    social_posting = TRUE # All current runs have this as TRUE
-  ) |>
-  arrange(timestamp, N, M, openmindedness, seed, t)
+  select(file, timestamp, N, M, tmax, openmindedness, post, seed, model, t) |>
+  arrange(timestamp, N, M, openmindedness, post, seed, t)
 
 write(toJSON(manifest, auto_unbox = TRUE, pretty = TRUE), "manifest.json")

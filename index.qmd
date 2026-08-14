@@ -150,6 +150,80 @@ Agent dropped: "The government should not monitor emails and Internet communicat
 
 
 
+Example network:
+
+::: {#fig-network fig-cap="Interactive bipartite network"}
+```{=html}
+<div id="network-root" class="network-mode--embedded" style="height: 500px;">
+<link rel="stylesheet" href="network-scoped.css">
+
+<div class="canvas-wrapper" id="canvas-wrapper">
+  <svg class="graph-svg" id="graph"></svg>
+
+  <!-- Zoom controls: positioned top-left -->
+  <div class="zoom-controls" id="zoom-controls">
+    <button class="btn btn--zoom" id="btn-zoom-in" title="Zoom in">+</button>
+    <button class="btn btn--zoom" id="btn-zoom-out" title="Zoom out">−</button>
+  </div>
+
+  <!-- Small cursor tooltip: shows on hover for statements and brief agent info -->
+  <div class="cursor-tooltip" id="cursor-tooltip"></div>
+
+  <!-- Worldview pane: opens on agent click, lists connected statements -->
+  <div class="worldview-pane" id="worldview-pane">
+    <div class="worldview-pane__header">
+      <div class="worldview-pane__title" id="worldview-title"></div>
+      <button class="worldview-pane__close" id="worldview-close">&#x2715;</button>
+    </div>
+    <div class="worldview-pane__list" id="worldview-list"></div>
+  </div>
+
+  <!-- Statement pane: opens on statement click, lists connected agents -->
+  <div class="worldview-pane" id="statement-pane">
+    <div class="worldview-pane__header">
+      <div class="worldview-pane__title" id="statement-title"></div>
+      <button class="worldview-pane__close" id="statement-close">&#x2715;</button>
+    </div>
+    <div class="worldview-pane__list" id="statement-list"></div>
+  </div>
+
+  <div class="status-bar" id="status-bar">Initialising…</div>
+</div>
+
+<!-- Load D3 from CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+
+<!-- Load core visualization module -->
+<script src="network-core.js"></script>
+
+<!-- Load embedded initialization module -->
+<script src="network-embedded.js"></script>
+
+<!-- Initialize embedded network on page load -->
+<script>
+// ── CONFIGURATION: Modify this to specify which network to display ──
+const NETWORK_CONFIG = {
+  file: "networkjson/260630-1208_A100_M5_tmax100_op1_FS_seed354_gpt_t100.json",
+  type: "AS",  // "AS" (bipartite), "AA" (agent projection), or "SS" (statement projection)
+  layout: {
+    spread: 100,    // Repulsion force
+    edgelen: 10,    // Edge/spring rest distance
+    attract: 0.75   // Attraction force strength
+  }
+};
+// ────────────────────────────────────────────────────────────────────
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Initialize embedded network
+  initEmbedded('canvas-wrapper', NETWORK_CONFIG);
+});
+</script>
+</div>
+```
+:::
+
+
+
 
 # Conclusion
 

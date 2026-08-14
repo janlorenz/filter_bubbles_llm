@@ -1,5 +1,22 @@
 # Filter Bubbles LLM — Project Memory
 
+## Recent Changes (August 2026)
+
+**REFACTORED network explorer for modularity:**
+- Created `network-core.js`: Core visualization logic (NetworkViz class)
+- Created `network-controls.js`: Interactive controls (filters, buttons, sliders, manifest loading)
+- Created `network-embedded.js`: Minimal embedding interface for figures/presentations
+- Refactored `networkexplorer.qmd`: Now uses three external JS modules instead of 800+ lines of inline code
+- Updated `network-scoped.css`: Added `.network-mode--embedded` class for minimal UI
+- Created `network-figure.qmd`: Template for embedding networks in presentations/reports
+- Updated `presentation.qmd`: Added example slide with embedded network
+
+**Benefits:**
+- Code is now modular and reusable
+- Networks can easily be embedded in reveal.js slides or HTML figures
+- Reduced networkexplorer.qmd from 999 lines to ~200 lines
+- No breaking changes: explorer works exactly as before
+
 ## Research Overview
 
 Agent-based model of opinion dynamics using LLMs. Agents hold a **worldview** (a list of up to `M` textual statements from the World Values Survey). In each time step, agents receive new statements and use an LLM prompt to decide whether to integrate or reject them (optionally dropping an existing statement). The research question: do **filter bubbles** emerge from this process, analogous to numerical opinion dynamics models?

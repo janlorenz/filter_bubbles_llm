@@ -14,6 +14,8 @@ website:
       - text: Outline
         href: index.qmd
       - networkexplorer.qmd
+      - href: presentation.qmd
+        text: Presentation
 
 bibliography: ABM-LLM.bib
 
