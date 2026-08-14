@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://janlorenz.github.io/filter_bubbles_llm/networkexplorer.html</loc>
-    <lastmod>2026-08-13T10:24:35.447Z</lastmod>
+    <loc>https://janlorenz.github.io/filter_bubbles_llm/presentation.html</loc>
+    <lastmod>2026-08-14T10:23:09.287Z</lastmod>
   </url>
   <url>
     <loc>https://janlorenz.github.io/filter_bubbles_llm/index.html</loc>
     <lastmod>2026-08-12T18:27:37.252Z</lastmod>
+  </url>
+  <url>
+    <loc>https://janlorenz.github.io/filter_bubbles_llm/networkexplorer.html</loc>
+    <lastmod>2026-08-14T10:30:58.576Z</lastmod>
   </url>
 </urlset>

@@ -1,12 +1,5 @@
 [
   {
-    "objectID": "networkexplorer.html",
-    "href": "networkexplorer.html",
-    "title": "Network Explorer",
-    "section": "",
-    "text": "Simulated Data\n    \n      N:\n      \n    \n\n    \n      M:\n      \n    \n\n    \n      Open:\n      \n    \n\n    \n      Post:\n      \n        any\n        ON\n        OFF\n      \n    \n\n    \n      Seed:\n      \n    \n\n    \n      t:\n      \n    \n\n    No files   \n\n    \n      Run:\n      \n    \n\n    \n      File:\n       \n    \n\n    \n      \n        \n        Agents (0)\n      \n      \n        \n        Statements (0)\n      \n    \n\n    \n  \n\n    \n    Network Type\n    \n      \n        Agent–Statement\n        Projection: Agents\n        Projection: Statements\n      \n    \n\n    Weight forces: off\n\n    \n      MIN WEIGHT\n      \n      1\n    \n\n    \n\n    \n    Dynamic Layout\n    \n      SPREAD\n      \n      100\n    \n\n    \n      EDGE LENGTH\n      \n      10\n    \n\n    \n      ATTRACTION\n      \n      0.75\n    \n\n    ↺ Reset\n    Default Controls\n\n    \n\n    ⏸ Freeze\n    Labels off\n    Statement size: uniform\n\n  \n\n\n\n\n  \n\n  \n  \n    +\n    −\n  \n\n  \n  \n\n  \n  \n    \n      \n      ✕\n    \n    \n  \n\n  \n  \n    \n      \n      ✕\n    \n    \n  \n\n  Initialising…"
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Worldviews and filter bubbles generated from World Value Survey statements by interacting agents using LLMs",
@@ -26,5 +19,12 @@
     "title": "Worldviews and filter bubbles generated from World Value Survey statements by interacting agents using LLMs",
     "section": "2.2 Data",
     "text": "2.2 Data\nTo do."
+  },
+  {
+    "objectID": "networkexplorer.html",
+    "href": "networkexplorer.html",
+    "title": "Network Explorer",
+    "section": "",
+    "text": "Simulated Data\n    \n      N:\n      \n    \n\n    \n      M:\n      \n    \n\n    \n      Open:\n      \n    \n\n    \n      Post:\n      \n        Feed\n        Social\n        Both\n      \n    \n\n    \n      Seed:\n      \n    \n\n    \n      t:\n      \n    \n\n    No files   \n\n    \n      Run:\n      \n    \n\n    \n      File:\n       \n    \n\n    \n      \n        \n        Agents (0)\n      \n      \n        \n        Statements (0)\n      \n    \n\n    \n  \n\n    \n    Network Type\n    \n      \n        Agent–Statement\n        Projection: Agents\n        Projection: Statements\n      \n    \n\n    Weight forces: off\n\n    \n      MIN WEIGHT\n      \n      1\n    \n\n    \n\n    \n    Dynamic Layout\n    \n      SPREAD\n      \n      100\n    \n\n    \n      EDGE LENGTH\n      \n      10\n    \n\n    \n      ATTRACTION\n      \n      0.75\n    \n\n    \n    \n    ↺ Reset\n    Default Controls\n\n    \n\n    ⏸ Freeze\n    Labels off\n    Statement size: uniform\n\n  \n\n\n\n\n  \n\n  \n  \n    +\n    −\n  \n\n  \n  \n\n  \n  \n    \n      \n      ✕\n    \n    \n  \n\n  \n  \n    \n      \n      ✕\n    \n    \n  \n\n  Initialising…"
   }
 ]
