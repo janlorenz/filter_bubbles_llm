@@ -1,10 +1,17 @@
 [
   {
+    "objectID": "presentation.html#agent-based-opinion-dynamics-model-with-llms",
+    "href": "presentation.html#agent-based-opinion-dynamics-model-with-llms",
+    "title": "When LLMs Deliberate",
+    "section": "Agent-based Opinion Dynamics Model with LLMs",
+    "text": "Agent-based Opinion Dynamics Model with LLMs\n\n\n\nNumerical Model \\(\\to\\)\nAbstract numerical opinion space \\(\\to\\) list of statements\nMake artifical agent interact\nUse LLMs to mimic cognitive reasoning"
+  },
+  {
     "objectID": "presentation.html#ai-augmented-deliberation",
     "href": "presentation.html#ai-augmented-deliberation",
     "title": "When LLMs Deliberate",
     "section": "AI Augmented Deliberation",
-    "text": "AI Augmented Deliberation\n\nThe vision of deliberative democracy: People with different preferences, beliefs and values exchange arguments \\(\\to\\) better solutions for societal problem.\nLLM Agents could help: Summary/Evaluation of Arguments, Negotiation, Finding common ground, …\nAnother Vision: Citizens have a digital twins doing deliberation work for them\n\n\nPeople deliberate \\(\\to\\) interaction \\(\\to\\) also beliefs and values (their worldview) may change\n\n\nSimulate worldview formation with statements relatable to the World Value Survey"
+    "text": "AI Augmented Deliberation\n\n\nThe vision of deliberative democracy \nLLM Agents could help: Summary/Evaluation of Arguments, Negotiation, Finding common ground, …\nAnother Vision: Citizens have a digital twin doing deliberation work for them\n\n\n\nPeople deliberate \\(\\to\\) interaction \\(\\to\\) also beliefs and values (their worldview) may change\n\n\nSimulate worldview formation with statements relatable to the World Value Survey"
   },
   {
     "objectID": "presentation.html#building-the-simulation",
@@ -81,7 +88,7 @@
     "href": "presentation.html#preliminary-conclusions",
     "title": "When LLMs Deliberate",
     "section": "Preliminary Conclusions",
-    "text": "Preliminary Conclusions\n\nFilter bubble formation occurs with LLM agents\nWe find clear tendencies for two bubbles: A conservative and a progressive\nThey can both exists and separate or only one wins\nThese bubbles emerge consistently with almost the same popular statements\nProgressive/conservative differs from the first PC in WVS PCA\n\n\nMore systematic simulation and WVS validation needed."
+    "text": "Preliminary Conclusions\n\nAlso LLM agents form filter bubbles\nEmergence of two bubbles\nBoth bubbles can exists separately or only one wins\nBubbles emerge consistently with the same core statements\nProgressive/conservative differs from the first PC in WVS PCA\n\n\nMore systematic simulation and WVS validation needed. [Many systematic extension are on our list.]"
   },
   {
     "objectID": "index.html",

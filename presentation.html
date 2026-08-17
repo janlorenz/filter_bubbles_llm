@@ -129,7 +129,7 @@
   </style>
   <style>
   #title-slide::after {
-    content: "Thanks to Tiancheng Hu for help on design and prompting strategies.";
+    content: "Thanks to Tiancheng Hu for help on design and prompting strategies. ";
     position: absolute;
     bottom: -50px; /* Pulls it down below the flex container boundary */
     left: 5%;
@@ -179,13 +179,29 @@ Erkan Gunes <a href="https://orcid.org/0009-0005-8106-3314" class="quarto-title-
 
   <p class="date">2026-08-17</p>
 </section>
+<section id="agent-based-opinion-dynamics-model-with-llms" class="slide level2">
+<h2>Agent-based Opinion Dynamics Model with LLMs</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li><p>Numerical Model <span class="math inline">\(\to\)</span></p></li>
+<li><p>Abstract numerical opinion space <span class="math inline">\(\to\)</span> <strong>list of statements</strong></p></li>
+<li><p>Make artifical agent interact</p></li>
+<li><p>Use <strong>LLMs</strong> to mimic <strong>cognitive reasoning</strong></p></li>
+</ul>
+</div><div class="column">
+<p><img data-src="img/GeschkeEtAl_Snapshot.png"></p>
+</div></div>
+</section>
 <section id="ai-augmented-deliberation" class="slide level2">
 <h2>AI Augmented Deliberation</h2>
+<div>
 <ul>
-<li class="fragment">The vision of <strong>deliberative democracy</strong>: People with different preferences, <em>beliefs</em> and <em>values</em> exchange arguments <span class="math inline">\(\to\)</span> better solutions for societal problem.</li>
-<li class="fragment">LLM Agents could help: Summary/Evaluation of Arguments, Negotiation, Finding common ground, …</li>
-<li class="fragment">Another Vision: Citizens have a digital twins doing deliberation work for them</li>
+<li>The vision of <strong>deliberative democracy</strong> <!-- : People with different preferences, *beliefs* and *values* exchange arguments $\to$ better solutions for societal problem. --></li>
+<li>LLM Agents could help: Summary/Evaluation of Arguments, Negotiation, Finding common ground, …</li>
+<li>Another Vision: <strong>Citizens have a digital twin doing deliberation work for them</strong></li>
 </ul>
+</div>
 <div class="fragment">
 <p>People deliberate <span class="math inline">\(\to\)</span> interaction <span class="math inline">\(\to\)</span> also <em>beliefs</em> and <em>values</em> (their <strong>worldview</strong>) may change</p>
 </div>
@@ -266,22 +282,23 @@ In color: Progressive/Conservative coding by an LLM (not the simulation yet).</p
 <section id="preliminary-conclusions" class="slide level2">
 <h2>Preliminary Conclusions</h2>
 <ul>
-<li class="fragment">Filter bubble formation occurs with LLM agents</li>
-<li class="fragment">We find clear tendencies for two bubbles: A conservative and a progressive</li>
-<li class="fragment">They can both exists and separate or only one wins</li>
-<li class="fragment">These bubbles emerge consistently with almost the same popular statements</li>
+<li class="fragment">Also LLM agents form filter bubbles</li>
+<li class="fragment">Emergence of two bubbles</li>
+<li class="fragment">Both bubbles can exists separately or only one wins</li>
+<li class="fragment">Bubbles emerge consistently with the same core statements</li>
 <li class="fragment">Progressive/conservative differs from the first PC in WVS PCA</li>
 </ul>
 <div class="fragment">
-<p><span class="text-red">More systematic simulation and WVS validation needed.</span></p>
+<p><span class="text-red">More systematic simulation and WVS validation needed.</span> [Many systematic extension are on our list.]</p>
 
 
 </div>
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="img/2logos.png" class="slide-logo"></p>
 <div class="footer footer-default">
-
+<p>Part of the Horizon Europe Project EuropeanCitySquared <img data-src="img/EC2logo.png"></p>
 </div>
 </div></div>
 
@@ -314,7 +331,7 @@ In color: Progressive/Conservative coding by an LLM (not the simulation yet).</p
 'autoAnimateUnmatched': true,
 'jumpToSlide': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'smaller': true,
+'smaller': false,
  
         // Display controls in the bottom right corner
         controls: false,
