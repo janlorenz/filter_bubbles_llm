@@ -3,7 +3,7 @@
    (all rules confined to #network-root)
    ============================================================ */
 
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;500&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;500&display=swap"); */
 
 /* ── Tokens (scoped to root, not :root) ──────────────────── */
 #network-root {
@@ -22,17 +22,12 @@
   --color-text:           #212529;
   --color-muted:          #6c757d;
   --color-accent:         #0077b6;
-  --color-panel-bg:       rgba(255, 255, 255, 0.97);
-  --color-parking-bg:     rgba(248, 249, 250, 0.92);
-  --color-parking-border: #dee2e6;
-  --color-parking-text:   #495057;
-  --color-parking-title:  #212529;
+  --color-panel-bg:       #ffffff;
 
   /* ── Reset & layout ── */
   box-sizing: border-box;
   background: var(--color-bg);
   color: var(--color-text);
-  font-family: "IBM Plex Sans", sans-serif;
   display: flex;
   flex-direction: column;
   /* Height is set inline via JS to account for Quarto navbar */
@@ -57,7 +52,6 @@
 }
 
 #network-root .header__title {
-  font-family: "IBM Plex Mono", monospace;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: .15em;
@@ -112,21 +106,18 @@
 #network-root .control-group__label {
   font-size: 10px;
   color: var(--color-muted);
-  font-family: "IBM Plex Mono", monospace;
   white-space: nowrap;
 }
 
 #network-root .control-group__hint {
   font-size: 12px;
   color: var(--color-accent);
-  font-family: "IBM Plex Mono", monospace;
   cursor: help;
 }
 
 #network-root .control-group__value {
   font-size: 10px;
   color: var(--color-text);
-  font-family: "IBM Plex Mono", monospace;
   min-width: 32px;
   text-align: right;
 }
@@ -171,7 +162,6 @@
 }
 
 #network-root .btn {
-  /* font-family: "IBM Plex Mono", monospace; */
   font-size: 10px;
   background: transparent;
   color: var(--color-muted);
@@ -187,10 +177,9 @@
 #network-root .btn:disabled     { opacity: 0.35; cursor: not-allowed; }
 #network-root .btn:disabled:hover { color: var(--color-muted); border-color: var(--color-border); }
 #network-root .btn--file-label  { display: inline-block; }
-#network-root .btn--zoom        { font-size: 12px; padding: 2px 7px; font-weight: 600; min-width: 24px; }
+#network-root .btn--zoom        { font-size: 13px; padding: 1px 4px; font-weight: 700; min-width: 20px; background: var(--color-bg); }
 
 #network-root .loaded-filename {
-  /* font-family: "IBM Plex Mono", monospace; */
   font-size: 10px;
   color: var(--color-muted);
   white-space: nowrap;
@@ -199,7 +188,6 @@
 }
 
 #network-root .network-select {
-  /* font-family: "IBM Plex Mono", monospace; */
   font-size: 10px;
   background: var(--color-surface);
   color: var(--color-muted);
@@ -263,7 +251,6 @@
   gap: 5px;
   font-size: 10px;
   color: var(--color-muted);
-  /* font-family: "IBM Plex Mono", monospace; */
 }
 
 #network-root .legend__dot {
@@ -307,7 +294,6 @@
   font-size: 8px;
   fill: var(--color-muted);
   pointer-events: none;
-  /* font-family: "IBM Plex Mono", monospace; */
 }
 
 #network-root .node__label-id {
@@ -332,7 +318,6 @@
   border-radius: 4px;
   padding: 5px 9px;
   font-size: 11px;
-  /* font-family: "IBM Plex Mono", monospace; */
   color: var(--color-text);
   white-space: normal;
   word-wrap: break-word;
@@ -372,7 +357,6 @@
   position: relative;
 }
 #network-root .worldview-pane__title {
-  /* font-family: "IBM Plex Mono", monospace; */
   font-size: 11px;
   font-weight: 600;
   color: var(--color-accent);
@@ -430,7 +414,6 @@
 }
 
 #network-root .agent-id {
-  font-family: "IBM Plex Mono", monospace;
   font-size: 10px;
   font-weight: 600;
   color: var(--color-agent);
@@ -451,11 +434,9 @@
 #network-root .worldview-pane__item {
   font-size: 10px;
   color: var(--color-text);
-  padding: 3px 4px;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  border-radius: 3px;
+  padding: 1px 1px;
+  display: block;      /* Change from flex to block so content flows naturally */
+  border-radius: 2px;
   cursor: default;
   border-bottom: 1px solid rgba(255,255,255,.03);
 }
@@ -463,15 +444,12 @@
 #network-root .worldview-pane__item--highlighted     { background: rgba(56,189,248,.08); color: var(--color-accent); }
 
 #network-root .worldview-pane__item-id {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 9px;
   color: var(--color-stmt);
-  font-weight: 600;
-  flex-shrink: 0;
+  font-weight: 700;
   cursor: pointer;
   transition: opacity 0.15s;
-  border-radius: 2px;
-  padding: 1px 3px;
+  border-radius: 1px;
+  display: inline;     /* Keep ID inline so it stays with text if it fits */
 }
 #network-root .worldview-pane__item-id:hover {
   opacity: 0.8;
@@ -479,17 +457,18 @@
 }
 
 #network-root .worldview-pane__item-text {
-  font-weight: 300;
-  margin-left: 14px;
-  display: block;
+  font-weight: 400;
+  display: inline;                    /* Keep it completely inline so it never breaks early */
+  padding-left: 5px;                 /* The indent size for wrapped lines */
+  box-decoration-break: clone;        /* Tells the browser to apply padding to wrapped chunks */
+  -webkit-box-decoration-break: clone; /* Vendor prefix for Safari/Chrome support */
 }
 #network-root .worldview-pane__item-sub  { color: var(--color-muted); font-size: 9px; }
 #network-root .worldview-pane__empty {
   font-size: 10px;
-  /* font-family: "IBM Plex Mono", monospace; */
   color: var(--color-muted);
   padding: 4px 0;
-}x
+}
 
 /* ── Info panel ──────────────────────────────────────────── */
 #network-root .info-panel {
@@ -521,7 +500,6 @@
 #network-root .info-panel__close:hover { color: var(--color-text); }
 
 #network-root .info-panel__title {
-  /* font-family: "IBM Plex Mono", monospace; */
   font-size: 12px;
   font-weight: 600;
   margin-bottom: 10px;
@@ -556,57 +534,9 @@
 #network-root .info-panel__field:last-child  { border-bottom: none; }
 #network-root .info-panel__field-key        { 
   color: var(--color-muted); 
-  /* font-family: "IBM Plex Mono", monospace; */
   flex-shrink: 0; 
 }
 #network-root .info-panel__field-value      { color: var(--color-text); font-weight: 500; text-align: right; word-break: normal; overflow-wrap: break-word; }
-
-/* ── Parking panel ───────────────────────────────────────── */
-#network-root .parking-panel {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  width: 160px;
-  max-height: 40vh;
-  background: var(--color-parking-bg);
-  border-top: 1px solid var(--color-parking-border);
-  border-left: 1px solid var(--color-parking-border);
-  border-radius: 6px 0 0 0;
-  display: flex;
-  flex-direction: column;
-  z-index: 50;
-  pointer-events: none;
-  transition: opacity .3s;
-}
-#network-root .parking-panel--empty { opacity: 0; }
-
-#network-root .parking-panel__title {
-  padding: 5px 9px 4px;
-  /* font-family: "IBM Plex Mono", monospace; */
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--color-parking-title);
-  border-bottom: 1px solid #1e0e22;
-  flex-shrink: 0;
-}
-#network-root .parking-panel__list {
-  overflow-y: auto;
-  padding: 4px 8px 6px;
-  flex: 1;
-}
-#network-root .parking-panel__list::-webkit-scrollbar       { width: 3px; }
-#network-root .parking-panel__list::-webkit-scrollbar-thumb { background: var(--color-parking-border); border-radius: 2px; }
-#network-root .parking-panel__item {
-  /* font-family: "IBM Plex Mono", monospace; */
-  font-size: 9px;
-  color: var(--color-parking-text);
-  padding: 1px 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
 
 /* ── Status bar ──────────────────────────────────────────── */
 #network-root .status-bar {
@@ -614,7 +544,29 @@
   bottom: 10px;
   left: 14px;
   font-size: 9px;
-  /* font-family: "IBM Plex Mono", monospace; */
   color: var(--color-border);
   pointer-events: none;
+}
+
+/* ── Embedded mode: minimal UI for figures/presentations ──── */
+#network-root.network-mode--embedded {
+  border: none;
+  border-radius: 0;
+}
+
+#network-root.network-mode--embedded .header {
+  display: none;
+}
+
+#network-root.network-mode--embedded .controls {
+  display: none;
+}
+
+#network-root.network-mode--embedded .zoom-controls {
+  display: flex !important;
+  gap: 4px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 100;
 }

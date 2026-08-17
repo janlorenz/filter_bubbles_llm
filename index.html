@@ -8,7 +8,7 @@
 
 <meta name="author" content="Jan Lorenz">
 <meta name="author" content="Erkan Gunes">
-<meta name="dcterms.date" content="2026-08-14">
+<meta name="dcterms.date" content="2026-08-17">
 <meta name="keywords" content="agent-based models, large-language models, filter bubbles, opinion dynamics, political space, polarization">
 
 <title>Worldviews and filter bubbles generated from World Value Survey statements by interacting agents using LLMs – Filter Bubbles ABM with LLM Agents</title>
@@ -197,7 +197,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 14, 2026</p>
+      <p class="date">August 17, 2026</p>
     </div>
   </div>
   
@@ -299,6 +299,81 @@ div.csl-indent {
 <p>This particular prompt resulted in the outcome:</p>
 <p>Agent selected: “Science and technology are making our lives healthier, easier, and more comfortable”<br>
 Agent dropped: “The government should not monitor emails and Internet communication”</p>
+<p>Example network:</p>
+<div id="fig-network" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-network-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="network-root" class="network-mode--embedded" style="height: 500px;">
+<link rel="stylesheet" href="network-scoped.css">
+
+<div class="canvas-wrapper" id="canvas-wrapper">
+  <svg class="graph-svg" id="graph"></svg>
+
+  <!-- Zoom controls: positioned top-left -->
+  <div class="zoom-controls" id="zoom-controls">
+    <button class="btn btn--zoom" id="btn-zoom-in" title="Zoom in">+</button>
+    <button class="btn btn--zoom" id="btn-zoom-out" title="Zoom out">−</button>
+  </div>
+
+  <!-- Small cursor tooltip: shows on hover for statements and brief agent info -->
+  <div class="cursor-tooltip" id="cursor-tooltip"></div>
+
+  <!-- Worldview pane: opens on agent click, lists connected statements -->
+  <div class="worldview-pane" id="worldview-pane">
+    <div class="worldview-pane__header">
+      <div class="worldview-pane__title" id="worldview-title"></div>
+      <button class="worldview-pane__close" id="worldview-close">✕</button>
+    </div>
+    <div class="worldview-pane__list" id="worldview-list"></div>
+  </div>
+
+  <!-- Statement pane: opens on statement click, lists connected agents -->
+  <div class="worldview-pane" id="statement-pane">
+    <div class="worldview-pane__header">
+      <div class="worldview-pane__title" id="statement-title"></div>
+      <button class="worldview-pane__close" id="statement-close">✕</button>
+    </div>
+    <div class="worldview-pane__list" id="statement-list"></div>
+  </div>
+
+  <div class="status-bar" id="status-bar">Initialising…</div>
+</div>
+
+<!-- Load D3 from CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+
+<!-- Load core visualization module -->
+<script src="network-core.js"></script>
+
+<!-- Load embedded initialization module -->
+<script src="network-embedded.js"></script>
+
+<!-- Initialize embedded network on page load -->
+<script>
+// ── CONFIGURATION: Modify this to specify which network to display ──
+const NETWORK_CONFIG = {
+  file: "networkjson/260630-1208_A100_M5_tmax100_op1_FS_seed354_gpt_t100.json",
+  type: "AS",  // "AS" (bipartite), "AA" (agent projection), or "SS" (statement projection)
+  layout: {
+    spread: 100,    // Repulsion force
+    edgelen: 10,    // Edge/spring rest distance
+    attract: 0.75   // Attraction force strength
+  }
+};
+// ────────────────────────────────────────────────────────────────────
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Initialize embedded network
+  initEmbedded('canvas-wrapper', NETWORK_CONFIG);
+});
+</script>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-network-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Interactive bipartite network
+</figcaption>
+</figure>
+</div>
 </section>
 <section id="conclusion" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Conclusion</h1>

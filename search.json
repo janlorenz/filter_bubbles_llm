@@ -1,5 +1,89 @@
 [
   {
+    "objectID": "presentation.html#ai-augmented-deliberation",
+    "href": "presentation.html#ai-augmented-deliberation",
+    "title": "When LLMs Deliberate",
+    "section": "AI Augmented Deliberation",
+    "text": "AI Augmented Deliberation\n\nThe vision of deliberative democracy: People with different preferences, beliefs and values exchange arguments \\(\\to\\) better solutions for societal problem.\nLLM Agents could help: Summary/Evaluation of Arguments, Negotiation, Finding common ground, …\nAnother Vision: Citizens have a digital twins doing deliberation work for them\n\n\nPeople deliberate \\(\\to\\) interaction \\(\\to\\) also beliefs and values (their worldview) may change\n\n\nSimulate worldview formation with statements relatable to the World Value Survey"
+  },
+  {
+    "objectID": "presentation.html#building-the-simulation",
+    "href": "presentation.html#building-the-simulation",
+    "title": "When LLMs Deliberate",
+    "section": "Building the Simulation",
+    "text": "Building the Simulation"
+  },
+  {
+    "objectID": "presentation.html#statements-from-the-wvs-top-50",
+    "href": "presentation.html#statements-from-the-wvs-top-50",
+    "title": "When LLMs Deliberate",
+    "section": "100 Statements from the WVS (Top 50)",
+    "text": "100 Statements from the WVS (Top 50)\n\n\n\n\n\n\n\n\n\n\n\nFirst principle components off all 97,220 WVS respondents 2018.\nIn color: Progressive/Conservative coding by an LLM (not the simulation yet)."
+  },
+  {
+    "objectID": "presentation.html#statements-from-the-wvs-cont.",
+    "href": "presentation.html#statements-from-the-wvs-cont.",
+    "title": "When LLMs Deliberate",
+    "section": "100 Statements from the WVS (cont.)",
+    "text": "100 Statements from the WVS (cont.)\n\n\n\n\n\n\n\n\n\n\n\nFirst principle components off all 97,220 WVS respondents 2018.\nIn color: Progressive/Conservative coding by an LLM (not the simulation yet)."
+  },
+  {
+    "objectID": "presentation.html#network-example-t5",
+    "href": "presentation.html#network-example-t5",
+    "title": "When LLMs Deliberate",
+    "section": "Network Example: t=5",
+    "text": "Network Example: t=5"
+  },
+  {
+    "objectID": "presentation.html#network-example-t10",
+    "href": "presentation.html#network-example-t10",
+    "title": "When LLMs Deliberate",
+    "section": "Network Example: t=10",
+    "text": "Network Example: t=10"
+  },
+  {
+    "objectID": "presentation.html#network-example-t100",
+    "href": "presentation.html#network-example-t100",
+    "title": "When LLMs Deliberate",
+    "section": "Network Example: t=100",
+    "text": "Network Example: t=100"
+  },
+  {
+    "objectID": "presentation.html#new-example-smaller-memory",
+    "href": "presentation.html#new-example-smaller-memory",
+    "title": "When LLMs Deliberate",
+    "section": "New example: Smaller Memory",
+    "text": "New example: Smaller Memory"
+  },
+  {
+    "objectID": "presentation.html#new-run-same-seed-only-progressive",
+    "href": "presentation.html#new-run-same-seed-only-progressive",
+    "title": "When LLMs Deliberate",
+    "section": "New run, same seed: Only Progressive",
+    "text": "New run, same seed: Only Progressive"
+  },
+  {
+    "objectID": "presentation.html#again-now-mostly-conservative",
+    "href": "presentation.html#again-now-mostly-conservative",
+    "title": "When LLMs Deliberate",
+    "section": "Again: Now mostly Conservative",
+    "text": "Again: Now mostly Conservative"
+  },
+  {
+    "objectID": "presentation.html#statement-popularity",
+    "href": "presentation.html#statement-popularity",
+    "title": "When LLMs Deliberate",
+    "section": "Statement Popularity",
+    "text": "Statement Popularity"
+  },
+  {
+    "objectID": "presentation.html#preliminary-conclusions",
+    "href": "presentation.html#preliminary-conclusions",
+    "title": "When LLMs Deliberate",
+    "section": "Preliminary Conclusions",
+    "text": "Preliminary Conclusions\n\nFilter bubble formation occurs with LLM agents\nWe find clear tendencies for two bubbles: A conservative and a progressive\nThey can both exists and separate or only one wins\nThese bubbles emerge consistently with almost the same popular statements\nProgressive/conservative differs from the first PC in WVS PCA\n\n\nMore systematic simulation and WVS validation needed."
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Worldviews and filter bubbles generated from World Value Survey statements by interacting agents using LLMs",
