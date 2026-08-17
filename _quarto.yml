@@ -6,6 +6,10 @@ project:
   resources:
     - networkjson/
     - manifest.json
+    - network-embed.html
+    - network-core.js
+    - network-embedded.js
+    - network-scoped.css
 
 website:
   title: "Filter Bubbles ABM with LLM Agents"
