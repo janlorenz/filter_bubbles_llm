@@ -1,5 +1,6 @@
 ---
 title: "When LLMs Deliberate"
+subtitle: "Workshop: Augmented Democracies @ IJCAI2026, Bremen"
 date: "2026-08-17"
 author:
   - name: Jan Lorenz
@@ -23,6 +24,7 @@ author:
 thanks: "Special thanks to Tiancheng Hu"
 format: 
   revealjs:
+    smaller: true
     include-in-header:
       text: |
         <style>
@@ -37,7 +39,72 @@ format:
           text-align: center;
         }
         </style>
+    css: styles.css
 ---
+
+```{r}
+#| echo: false
+#| messages: false
+library(tidyverse)
+library(arrow)
+```
+
+## AI Augmented Deliberation
+
+::: {.incremental}
+- The vision of **deliberative democracy**: People with different preferences, *beliefs* and *values* exchange arguments $\to$ better solutions for societal problem.
+- LLM Agents could help: Summary/Evaluation of Arguments, Negotiation, Finding common ground, ...
+- Another Vision: Citizens have a digital twins doing deliberation work for them
+:::
+
+. . .
+
+People deliberate $\to$ interaction $\to$ also *beliefs* and *values* (their **worldview**) may change 
+
+. . .
+
+[Simulate **worldview formation** with statements relatable to the **World Value Survey**]{.text-red}
+
+## Building the Simulation
+
+![](img/filter_bubbles_llm_abm_diagram.png)
+
+## 100 Statements from the WVS (Top 50)
+
+```{r}
+read_parquet("sttmts.parquet") |>
+  arrange(desc(WVS_PC1)) |>
+  mutate(Worldview_Statement = fct_inorder(Worldview_Statement)) |>
+  slice(51:100) |>
+  ggplot(aes(WVS_PC1, Worldview_Statement, fill = worldview)) +
+  geom_col() +
+  labs(x = "", y = "") +
+  theme_minimal(base_size = 8)
+```
+
+::: aside
+First principle components off all 97,220 WVS respondents 2018.   
+In color: Progressive/Conservative coding by an LLM (not the simulation yet). 
+:::
+
+## 100 Statements from the WVS (cont.)
+
+```{r}
+read_parquet("sttmts.parquet") |>
+  arrange(desc(WVS_PC1)) |>
+  mutate(Worldview_Statement = fct_inorder(Worldview_Statement)) |>
+  slice(1:50) |>
+  ggplot(aes(WVS_PC1, Worldview_Statement, fill = worldview)) +
+  geom_col() +
+  labs(x = "", y = "") +
+  theme_minimal(base_size = 8)
+```
+
+::: aside
+First principle components off all 97,220 WVS respondents 2018.   
+In color: Progressive/Conservative coding by an LLM (not the simulation yet). 
+:::
+
 
 ## Network Example: t=100
 
@@ -90,8 +157,20 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 ```
 
-A bipartite network showing agent-statement relationships at time step 100.
+## Statement Popularity
 
-::: notes
-This is a simplified embedded network visualization showing how networks can be embedded directly in reveal.js slides using the refactored modules.
-:::
+```{r}
+read_parquet("stats_pop.parquet") |>
+  pivot_wider(names_from = M, values_from = popularity) |>
+  mutate(Total_pop = `5` + `10`) |>
+  arrange(desc(Total_pop)) |>
+  select(-Total_pop) |>
+  slice(1:15) |>
+  pivot_longer(c(`5`, `10`)) |>
+  mutate(name = paste("Memory", name)) |>
+  ggplot(aes(value, Worldview_Statement, fill = worldview)) +
+  geom_col() +
+  facet_wrap(~name) +
+  labs(y = "", x = "") +
+  theme_minimal()
+```
