@@ -14,13 +14,6 @@
     "text": "AI Augmented Deliberation\n\n\nThe vision of deliberative democracy \nLLM Agents could help: Summary/Evaluation of Arguments, Negotiation, Finding common ground, …\nAnother Vision: Citizens have a digital twin doing deliberation work for them\n\n\n\nPeople deliberate \\(\\to\\) interaction \\(\\to\\) also beliefs and values (their worldview) may change\n\n\nSimulate worldview formation with statements relatable to the World Value Survey"
   },
   {
-    "objectID": "presentation.html#building-the-simulation",
-    "href": "presentation.html#building-the-simulation",
-    "title": "When LLMs Deliberate",
-    "section": "Building the Simulation",
-    "text": "Building the Simulation"
-  },
-  {
     "objectID": "presentation.html#statements-from-the-wvs-top-50",
     "href": "presentation.html#statements-from-the-wvs-top-50",
     "title": "When LLMs Deliberate",
@@ -33,6 +26,13 @@
     "title": "When LLMs Deliberate",
     "section": "100 Statements from the WVS (cont.)",
     "text": "100 Statements from the WVS (cont.)\n\n\n\n\n\n\n\n\n\n\n\nFirst principle components off all 97,220 WVS respondents 2018.\nIn color: Progressive/Conservative coding by an LLM (not the simulation yet)."
+  },
+  {
+    "objectID": "presentation.html#building-the-simulation",
+    "href": "presentation.html#building-the-simulation",
+    "title": "When LLMs Deliberate",
+    "section": "Building the Simulation",
+    "text": "Building the Simulation"
   },
   {
     "objectID": "presentation.html#network-example-t5",
@@ -88,7 +88,7 @@
     "href": "presentation.html#preliminary-conclusions",
     "title": "When LLMs Deliberate",
     "section": "Preliminary Conclusions",
-    "text": "Preliminary Conclusions\n\nAlso LLM agents form filter bubbles\nEmergence of two bubbles\nBoth bubbles can exists separately or only one wins\nBubbles emerge consistently with the same core statements\nProgressive/conservative differs from the first PC in WVS PCA\n\n\nMore systematic simulation and WVS validation needed. [Many systematic extension are on our list.]"
+    "text": "Preliminary Conclusions\n\nAlso LLM agents form filter bubbles\nEmergence of two bubbles\nBoth bubbles can exists separately or only one wins\nBubbles emerge consistently with the same core statements\nProgressive/conservative differs from the first PC in WVS PCA\n\n\nMore systematic simulation and WVS validation needed.\nMany systematic extension are on our list."
   },
   {
     "objectID": "index.html",
