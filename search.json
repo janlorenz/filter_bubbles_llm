@@ -77,13 +77,6 @@
     "text": "Again: Now mostly Conservative"
   },
   {
-    "objectID": "presentation.html#statement-popularity",
-    "href": "presentation.html#statement-popularity",
-    "title": "When LLMs Deliberate",
-    "section": "Statement Popularity",
-    "text": "Statement Popularity"
-  },
-  {
     "objectID": "presentation.html#preliminary-conclusions",
     "href": "presentation.html#preliminary-conclusions",
     "title": "When LLMs Deliberate",
@@ -109,7 +102,7 @@
     "href": "index.html#data",
     "title": "Worldviews and filter bubbles generated from World Value Survey statements by interacting agents using LLMs",
     "section": "2.2 Data",
-    "text": "2.2 Data\nTo do."
+    "text": "2.2 Data\nTo do.\nWorld Value Survey (WVS) data (Haerpfer et al. 2022)"
   },
   {
     "objectID": "networkexplorer.html",
