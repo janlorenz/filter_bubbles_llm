@@ -3,102 +3,7 @@ library(jsonlite)
 library(arrow)
 library(glue)
 
-runs <- read_csv("rawdata/experiments/runs_config.csv") |>
-  select(
-    timestamp,
-    seed = random_seed,
-    N = num_agents,
-    M = max_memory_per_agent,
-    openmindedness = open_mindedness_level,
-    tmax = num_time_steps,
-    feed_posting,
-    social_posting,
-    model_name,
-    run_id,
-    run_folder
-  ) |>
-  mutate(
-    model_short = word(model_name, sep = "/", start = 2) |>
-      word(sep = "-", start = 1),
-    post = paste0(
-      ifelse(feed_posting == TRUE, "F", ""),
-      ifelse(social_posting == TRUE, "S", "")
-    ),
-    timestamp = str_sub(timestamp, 3, 13),
-    datetime = as.POSIXct(timestamp, format = "%y%m%d-%H%M", tz = "UTC"),
-    run_id_desc = glue(
-      "{timestamp}_A{N}_M{M}_tmax{tmax}_op{openmindedness}_{post}_seed{seed}_{model_short}"
-    )
-  )
-runs_core <- runs |>
-  filter(datetime >= "2026-03-25", model_short == "gpt") |>
-  select(
-    run_id_desc,
-    run_id,
-    N,
-    M,
-    openmindedness,
-    post,
-    seed,
-    timestamp,
-    model_name,
-    run_folder,
-    datetime
-  )
-runs_core |> write_parquet("parquet/runs_core.parquet")
-
-# Make csvs of decisions, memory, and social networks
-runs_core |>
-  mutate(
-    decisions = map(run_folder, \(f) {
-      read_csv(
-        glue("rawdata/experiments/{f}/decisions.csv"),
-        show_col_types = FALSE
-      ) |>
-        mutate(source_statement = as.character(source_statement))
-    })
-  ) |>
-  pull(decisions) |>
-  reduce(bind_rows) |>
-  write_parquet("parquet/decisions.parquet")
-runs_core |>
-  mutate(
-    memory = map(run_folder, \(f) {
-      read_csv(
-        glue("rawdata/experiments/{f}/memory.csv"),
-        show_col_types = FALSE
-      )
-    })
-  ) |>
-  pull(memory) |>
-  reduce(bind_rows) |>
-  write_parquet("parquet/memory.parquet")
-runs_core |>
-  mutate(
-    social_network = map(run_folder, \(f) {
-      read_csv(
-        glue("rawdata/experiments/{f}/social_network.csv"),
-        show_col_types = FALSE
-      )
-    })
-  ) |>
-  pull(social_network) |>
-  reduce(bind_rows) |>
-  write_parquet("parquet/social_network.parquet")
-runs_core |>
-  mutate(
-    statements = map(run_folder, \(f) {
-      read_csv(
-        glue("rawdata/experiments/{f}/statements.csv"),
-        show_col_types = FALSE
-      ) |>
-        mutate(text = as.character(text))
-    })
-  ) |>
-  pull(statements) |>
-  reduce(bind_rows) |>
-  write_parquet("parquet/statements.parquet")
-
+## Network Data in json
 memory <- read_parquet("parquet/memory.parquet")
 statements <- read_parquet("parquet/statements.parquet") |>
   filter(run_id %in% runs_core$run_id[nrow(runs_core)]) |>
@@ -109,7 +14,6 @@ agents <- tibble(
   id = paste0("A", 1:max(memory$A_id)),
   type = "agent",
 )
-
 for (id in runs_core$run_id) {
   for (t in c(5, 10, 20, 50, 100)) {
     memory_run <- memory |> filter(run_id == id, .data$t == {{ t }})
