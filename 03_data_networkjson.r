@@ -87,7 +87,7 @@ manifest <- tibble(
 ) |>
   mutate(
     # Extract parameters from filename using regex
-    timestamp = str_extract(filename, "^[0-9]{6}-[0-9]{4}"),
+    timestamp = str_extract(filename, "^[0-9]{6}-[0-9]{6}"),
     N = as.numeric(str_extract(filename, "(?<=_A)\\d+")),
     M = as.numeric(str_extract(filename, "(?<=_M)\\d+(?=_)")),
     tmax = as.numeric(str_extract(filename, "(?<=tmax)\\d+")),

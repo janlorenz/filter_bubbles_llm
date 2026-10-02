@@ -26,8 +26,8 @@ runs <- read_csv("rawdata/experiments/runs_config.csv") |>
       ifelse(feed_posting == TRUE, "F", ""),
       ifelse(social_posting == TRUE, "S", "")
     ),
-    timestamp = str_sub(timestamp, 3, 13),
-    datetime = as.POSIXct(timestamp, format = "%y%m%d-%H%M", tz = "UTC"),
+    timestamp = str_sub(timestamp, 3, 15),
+    datetime = as.POSIXct(timestamp, format = "%y%m%d-%H%M%S", tz = "UTC"),
     run_id_desc = glue(
       "{timestamp}_A{N}_M{M}_tmax{tmax}_op{openmindedness}_{post}_seed{seed}_{model_short}"
     )
