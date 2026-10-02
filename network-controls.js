@@ -7,6 +7,270 @@
  * Requires: NetworkViz instance (passed as `viz` parameter)
  */
 
+// ── SVG Download ────────────────────────────────────────────────────
+function downloadSVG(viz) {
+  const svgEl = viz.svg.node();
+  if (!svgEl) return;
+
+  const root = document.getElementById("network-root");
+  const rs = getComputedStyle(root);
+  function cv(name) { return rs.getPropertyValue(name).trim(); }
+
+  const colorMap = {
+    "--color-agent": cv("--color-agent"),
+    "--color-agent-stroke": cv("--color-agent-stroke"),
+    "--color-stmt": cv("--color-stmt"),
+    "--color-stmt-stroke": cv("--color-stmt-stroke"),
+    "--color-edge": cv("--color-edge"),
+    "--color-edge-hi": cv("--color-edge-hi"),
+    "--color-muted": cv("--color-muted"),
+    "--color-text": cv("--color-text"),
+    "--color-accent": cv("--color-accent"),
+    "--color-border": cv("--color-border"),
+    "--color-panel-bg": cv("--color-panel-bg"),
+  };
+
+  // ── Compute tight bounding box of the network content in SVG coords ──
+  // The root <g> has a transform from zoom/pan. We need the bounding box
+  // of the content in screen pixels, then convert to a viewBox.
+  const rootG = viz.root.node();
+  const contentBBox = rootG.getBBox();
+  // Get the current zoom transform
+  const transform = d3.zoomTransform(svgEl);
+  // Map content bbox through the zoom transform to screen coords
+  const pad = 20; // padding around network content
+  const netX = transform.applyX(contentBBox.x) - pad;
+  const netY = transform.applyY(contentBBox.y) - pad;
+  const netW = contentBBox.width * transform.k + 2 * pad;
+  const netH = contentBBox.height * transform.k + 2 * pad;
+
+  // ── Check for active pane ──
+  const worldviewPane = document.getElementById("worldview-pane");
+  const statementPane = document.getElementById("statement-pane");
+  const activePane = worldviewPane?.classList.contains("worldview-pane--visible")
+    ? worldviewPane
+    : statementPane?.classList.contains("worldview-pane--visible")
+      ? statementPane
+      : null;
+
+  // Measure pane position relative to the canvas wrapper (same coord space as the SVG)
+  let paneRect = null;
+  let canvasRect = null;
+  if (activePane) {
+    canvasRect = svgEl.getBoundingClientRect();
+    paneRect = activePane.getBoundingClientRect();
+  }
+
+  // ── Build the output viewBox ──
+  // Crop tightly around all visible content (network + pane if open).
+  let vbX, vbY, vbW, vbH;
+
+  if (paneRect && canvasRect) {
+    const paneLeft = paneRect.left - canvasRect.left;
+    const paneTop = paneRect.top - canvasRect.top;
+    const paneBorderPx = parseFloat(getComputedStyle(activePane).borderTopWidth) +
+                         parseFloat(getComputedStyle(activePane).borderBottomWidth);
+    const paneH = Math.max(paneRect.height, activePane.scrollHeight + paneBorderPx);
+
+    vbX = Math.min(netX, paneLeft);
+    vbY = Math.min(netY, paneTop);
+    vbW = Math.max(netX + netW, paneLeft + paneRect.width) - vbX;
+    vbH = Math.max(netY + netH, paneTop + paneH) - vbY;
+  } else {
+    vbX = netX;
+    vbY = netY;
+    vbW = netW;
+    vbH = netH;
+  }
+
+  // ── Clone the SVG ──
+  const clone = svgEl.cloneNode(true);
+  clone.removeAttribute("id");
+  clone.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+  clone.setAttribute("xmlns:xlink", "http://www.w3.org/1999/xlink");
+  clone.setAttribute("viewBox", `${vbX} ${vbY} ${vbW} ${vbH}`);
+  clone.setAttribute("width", vbW);
+  clone.setAttribute("height", vbH);
+
+  // White background covering the viewBox
+  const bg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+  bg.setAttribute("x", vbX);
+  bg.setAttribute("y", vbY);
+  bg.setAttribute("width", vbW);
+  bg.setAttribute("height", vbH);
+  bg.setAttribute("fill", cv("--color-bg") || "#ffffff");
+  clone.insertBefore(bg, clone.firstChild);
+
+  // ── Inline styles on network elements ──
+  // Resolve fill/stroke CSS variables on circles
+  clone.querySelectorAll(".node__circle").forEach(c => {
+    const fill = c.getAttribute("fill") || "";
+    const stroke = c.getAttribute("stroke") || "";
+    for (const [varName, val] of Object.entries(colorMap)) {
+      if (fill.includes(varName)) c.setAttribute("fill", val);
+      if (stroke.includes(varName)) c.setAttribute("stroke", val);
+    }
+  });
+
+  // Edges
+  clone.querySelectorAll(".edge").forEach(line => {
+    const isHi = line.classList.contains("edge--highlighted");
+    line.setAttribute("stroke", isHi ? colorMap["--color-edge-hi"] : colorMap["--color-edge"]);
+    line.setAttribute("stroke-opacity", isHi ? "1" : "0.55");
+    line.setAttribute("stroke-width", isHi
+      ? (line.style.strokeWidth || "1.8px")
+      : (line.style.strokeWidth || "1px"));
+  });
+
+  // Labels
+  clone.querySelectorAll(".node__label").forEach(t => {
+    t.setAttribute("fill", colorMap["--color-muted"]);
+    t.setAttribute("font-size", "8px");
+  });
+  clone.querySelectorAll(".node__label-id").forEach(t => {
+    t.setAttribute("fill", colorMap["--color-stmt"]);
+  });
+
+  // Highlighted/dimmed nodes (persistent selection state)
+  clone.querySelectorAll(".node--highlighted .node__circle").forEach(c => {
+    c.setAttribute("stroke-width", "2.5px");
+  });
+  clone.querySelectorAll(".node--dimmed .node__circle").forEach(c => {
+    c.setAttribute("opacity", "0.12");
+  });
+  clone.querySelectorAll(".node--dimmed .node__label").forEach(t => {
+    t.setAttribute("opacity", "0.12");
+  });
+
+  // Hidden labels
+  clone.querySelectorAll(".node--labels-hidden .node__label").forEach(t => {
+    t.setAttribute("display", "none");
+  });
+
+  // Unconnected nodes
+  clone.querySelectorAll(".node--unconnected").forEach(g => {
+    g.setAttribute("display", "none");
+  });
+
+  // ── Add pane as foreignObject at its actual screen position ──
+  if (activePane && paneRect && canvasRect) {
+    const paneLeft = paneRect.left - canvasRect.left;
+    const paneTop = paneRect.top - canvasRect.top;
+    // Use the larger of rendered height (includes border) and scroll content height + border
+    const paneBorder = parseFloat(getComputedStyle(activePane).borderTopWidth) +
+                       parseFloat(getComputedStyle(activePane).borderBottomWidth);
+    const paneFullH = Math.max(paneRect.height, activePane.scrollHeight + paneBorder);
+
+    // Oversized foreignObject so it never clips; viewBox handles tight crop
+    const foBuffer = 40;
+    const fo = document.createElementNS("http://www.w3.org/2000/svg", "foreignObject");
+    fo.setAttribute("x", paneLeft);
+    fo.setAttribute("y", paneTop);
+    fo.setAttribute("width", paneRect.width + foBuffer);
+    fo.setAttribute("height", paneFullH + foBuffer);
+
+    const paneClone = activePane.cloneNode(true);
+    paneClone.setAttribute("xmlns", "http://www.w3.org/1999/xhtml");
+    paneClone.style.cssText = `
+      display: flex; flex-direction: column; position: static;
+      width: ${paneRect.width}px;
+      box-sizing: border-box;
+      overflow: visible; margin: 0; padding: 0;
+      background: ${colorMap["--color-panel-bg"]};
+      border: 1px solid ${colorMap["--color-border"]};
+      border-radius: 6px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: ${colorMap["--color-text"]};
+    `;
+
+    // Remove close button
+    const closeBtn = paneClone.querySelector(".worldview-pane__close");
+    if (closeBtn) closeBtn.remove();
+
+    // Inline styles on pane children
+    const header = paneClone.querySelector(".worldview-pane__header");
+    if (header) {
+      header.style.cssText = `
+        padding: 8px 12px 6px; border-bottom: 1px solid ${colorMap["--color-border"]};
+        flex-shrink: 0;
+      `;
+    }
+    const title = paneClone.querySelector(".worldview-pane__title");
+    if (title) {
+      const isStatement = activePane.id === "statement-pane";
+      title.style.cssText = `
+        font-size: 11px; font-weight: 600;
+        color: ${isStatement ? colorMap["--color-text"] : colorMap["--color-accent"]};
+      `;
+      paneClone.querySelectorAll(".statement-id, .statement-text").forEach(s => {
+        s.style.color = colorMap["--color-stmt"];
+        s.style.fontWeight = "400";
+      });
+    }
+    const list = paneClone.querySelector(".worldview-pane__list");
+    if (list) {
+      list.style.cssText = `
+        overflow: visible; padding: 8px 10px 12px; flex: 1; min-height: 0;
+      `;
+    }
+    paneClone.querySelectorAll(".worldview-pane__item").forEach(item => {
+      item.style.cssText = `
+        font-size: 10px; color: ${colorMap["--color-text"]};
+        padding: 1px 1px; display: block;
+      `;
+    });
+    paneClone.querySelectorAll(".worldview-pane__item-id").forEach(el => {
+      el.style.cssText = `
+        color: ${colorMap["--color-stmt"]}; font-weight: 700; display: inline;
+      `;
+    });
+    paneClone.querySelectorAll(".worldview-pane__item-text").forEach(el => {
+      el.style.cssText = `
+        font-weight: 400; display: inline; padding-left: 5px;
+      `;
+    });
+    paneClone.querySelectorAll(".agent-id").forEach(el => {
+      el.style.cssText = `
+        font-size: 10px; font-weight: 600; color: ${colorMap["--color-agent"]};
+        padding: 2px 6px; border-radius: 3px; white-space: nowrap; display: inline-block;
+      `;
+    });
+    paneClone.querySelectorAll(".statement-agents-info").forEach(el => {
+      el.style.cssText = `
+        font-size: 10px; color: ${colorMap["--color-muted"]};
+        padding: 0 0 8px 0; margin-bottom: 4px;
+        border-bottom: 1px solid ${colorMap["--color-border"]};
+      `;
+    });
+    paneClone.querySelectorAll(".statement-agents-list").forEach(el => {
+      el.style.cssText = `display: flex; flex-wrap: wrap; gap: 6px;`;
+    });
+
+    fo.appendChild(paneClone);
+    clone.appendChild(fo);
+  }
+
+  // ── Serialize and trigger download ──
+  const serializer = new XMLSerializer();
+  let svgStr = serializer.serializeToString(clone);
+  if (!svgStr.startsWith("<?xml")) {
+    svgStr = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>\n' + svgStr;
+  }
+  const blob = new Blob([svgStr], { type: "image/svg+xml;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+
+  const loadedName = document.getElementById("loaded-name");
+  const fname = loadedName?.textContent?.trim().replace(/[^a-zA-Z0-9_\-]/g, "_") || "network";
+  a.download = fname + ".svg";
+
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
 // Configuration: Initial network selection
 const INITIAL_NETWORK_FILTERS = {
   N: 100,
@@ -412,6 +676,12 @@ function setupButtons() {
     });
   }
 
+  // Download SVG
+  const btnDownload = document.getElementById("btn-download-svg");
+  if (btnDownload) {
+    btnDownload.addEventListener("click", () => downloadSVG(viz));
+  }
+
   // Worldview pane close
   const worldviewClose = document.getElementById("worldview-close");
   if (worldviewClose) {
@@ -419,10 +689,7 @@ function setupButtons() {
       e.stopPropagation();
       const worldviewPane = document.getElementById("worldview-pane");
       if (worldviewPane) worldviewPane.classList.remove("worldview-pane--visible");
-      if (viz.nodeSel) {
-        viz.nodeSel.classed("node--highlighted", false).classed("node--dimmed", false);
-      }
-      if (viz.linkSel) viz.linkSel.classed("edge--highlighted", false);
+      viz.clearSelection();
       viz.DATA.nodes.forEach(d => {
         d.fx = null;
         d.fy = null;
@@ -437,10 +704,7 @@ function setupButtons() {
       e.stopPropagation();
       const statementPane = document.getElementById("statement-pane");
       if (statementPane) statementPane.classList.remove("worldview-pane--visible");
-      if (viz.nodeSel) {
-        viz.nodeSel.classed("node--highlighted", false).classed("node--dimmed", false);
-      }
-      if (viz.linkSel) viz.linkSel.classed("edge--highlighted", false);
+      viz.clearSelection();
       viz.DATA.nodes.forEach(d => {
         d.fx = null;
         d.fy = null;

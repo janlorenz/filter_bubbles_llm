@@ -1,7 +1,7 @@
 [
   {
-    "file": "networkjson/260325-1249_A100_M10_tmax100_op1_FS_seed354_gpt_t5.json",
-    "timestamp": "260325-1249",
+    "file": "networkjson/260325-124922_A100_M10_tmax100_op1_FS_seed354_gpt_t5.json",
+    "timestamp": "260325-124922",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -12,8 +12,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260325-1249_A100_M10_tmax100_op1_FS_seed354_gpt_t10.json",
-    "timestamp": "260325-1249",
+    "file": "networkjson/260325-124922_A100_M10_tmax100_op1_FS_seed354_gpt_t10.json",
+    "timestamp": "260325-124922",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -24,8 +24,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260325-1249_A100_M10_tmax100_op1_FS_seed354_gpt_t20.json",
-    "timestamp": "260325-1249",
+    "file": "networkjson/260325-124922_A100_M10_tmax100_op1_FS_seed354_gpt_t20.json",
+    "timestamp": "260325-124922",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -36,8 +36,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260325-1249_A100_M10_tmax100_op1_FS_seed354_gpt_t50.json",
-    "timestamp": "260325-1249",
+    "file": "networkjson/260325-124922_A100_M10_tmax100_op1_FS_seed354_gpt_t50.json",
+    "timestamp": "260325-124922",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -48,8 +48,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260325-1249_A100_M10_tmax100_op1_FS_seed354_gpt_t100.json",
-    "timestamp": "260325-1249",
+    "file": "networkjson/260325-124922_A100_M10_tmax100_op1_FS_seed354_gpt_t100.json",
+    "timestamp": "260325-124922",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -60,8 +60,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260325-1852_A100_M10_tmax100_op1_FS_seed354_gpt_t5.json",
-    "timestamp": "260325-1852",
+    "file": "networkjson/260325-185213_A100_M10_tmax100_op1_FS_seed354_gpt_t5.json",
+    "timestamp": "260325-185213",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -72,8 +72,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260325-1852_A100_M10_tmax100_op1_FS_seed354_gpt_t10.json",
-    "timestamp": "260325-1852",
+    "file": "networkjson/260325-185213_A100_M10_tmax100_op1_FS_seed354_gpt_t10.json",
+    "timestamp": "260325-185213",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -84,8 +84,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260325-1852_A100_M10_tmax100_op1_FS_seed354_gpt_t20.json",
-    "timestamp": "260325-1852",
+    "file": "networkjson/260325-185213_A100_M10_tmax100_op1_FS_seed354_gpt_t20.json",
+    "timestamp": "260325-185213",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -96,8 +96,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260325-1852_A100_M10_tmax100_op1_FS_seed354_gpt_t50.json",
-    "timestamp": "260325-1852",
+    "file": "networkjson/260325-185213_A100_M10_tmax100_op1_FS_seed354_gpt_t50.json",
+    "timestamp": "260325-185213",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -108,8 +108,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260325-1852_A100_M10_tmax100_op1_FS_seed354_gpt_t100.json",
-    "timestamp": "260325-1852",
+    "file": "networkjson/260325-185213_A100_M10_tmax100_op1_FS_seed354_gpt_t100.json",
+    "timestamp": "260325-185213",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -120,8 +120,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260325-2304_A100_M10_tmax100_op1_FS_seed354_gpt_t5.json",
-    "timestamp": "260325-2304",
+    "file": "networkjson/260325-230411_A100_M10_tmax100_op1_FS_seed354_gpt_t5.json",
+    "timestamp": "260325-230411",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -132,8 +132,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260325-2304_A100_M10_tmax100_op1_FS_seed354_gpt_t10.json",
-    "timestamp": "260325-2304",
+    "file": "networkjson/260325-230411_A100_M10_tmax100_op1_FS_seed354_gpt_t10.json",
+    "timestamp": "260325-230411",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -144,8 +144,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260325-2304_A100_M10_tmax100_op1_FS_seed354_gpt_t20.json",
-    "timestamp": "260325-2304",
+    "file": "networkjson/260325-230411_A100_M10_tmax100_op1_FS_seed354_gpt_t20.json",
+    "timestamp": "260325-230411",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -156,8 +156,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260325-2304_A100_M10_tmax100_op1_FS_seed354_gpt_t50.json",
-    "timestamp": "260325-2304",
+    "file": "networkjson/260325-230411_A100_M10_tmax100_op1_FS_seed354_gpt_t50.json",
+    "timestamp": "260325-230411",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -168,8 +168,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260325-2304_A100_M10_tmax100_op1_FS_seed354_gpt_t100.json",
-    "timestamp": "260325-2304",
+    "file": "networkjson/260325-230411_A100_M10_tmax100_op1_FS_seed354_gpt_t100.json",
+    "timestamp": "260325-230411",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -180,8 +180,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260326-1121_A100_M10_tmax100_op1_FS_seed355_gpt_t5.json",
-    "timestamp": "260326-1121",
+    "file": "networkjson/260326-112135_A100_M10_tmax100_op1_FS_seed355_gpt_t5.json",
+    "timestamp": "260326-112135",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -192,8 +192,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260326-1121_A100_M10_tmax100_op1_FS_seed355_gpt_t10.json",
-    "timestamp": "260326-1121",
+    "file": "networkjson/260326-112135_A100_M10_tmax100_op1_FS_seed355_gpt_t10.json",
+    "timestamp": "260326-112135",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -204,8 +204,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260326-1121_A100_M10_tmax100_op1_FS_seed355_gpt_t20.json",
-    "timestamp": "260326-1121",
+    "file": "networkjson/260326-112135_A100_M10_tmax100_op1_FS_seed355_gpt_t20.json",
+    "timestamp": "260326-112135",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -216,8 +216,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260326-1121_A100_M10_tmax100_op1_FS_seed355_gpt_t50.json",
-    "timestamp": "260326-1121",
+    "file": "networkjson/260326-112135_A100_M10_tmax100_op1_FS_seed355_gpt_t50.json",
+    "timestamp": "260326-112135",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -228,8 +228,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260326-1121_A100_M10_tmax100_op1_FS_seed355_gpt_t100.json",
-    "timestamp": "260326-1121",
+    "file": "networkjson/260326-112135_A100_M10_tmax100_op1_FS_seed355_gpt_t100.json",
+    "timestamp": "260326-112135",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -240,8 +240,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260327-1106_A100_M10_tmax100_op1_FS_seed355_gpt_t5.json",
-    "timestamp": "260327-1106",
+    "file": "networkjson/260327-110650_A100_M10_tmax100_op1_FS_seed355_gpt_t5.json",
+    "timestamp": "260327-110650",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -252,8 +252,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260327-1106_A100_M10_tmax100_op1_FS_seed355_gpt_t10.json",
-    "timestamp": "260327-1106",
+    "file": "networkjson/260327-110650_A100_M10_tmax100_op1_FS_seed355_gpt_t10.json",
+    "timestamp": "260327-110650",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -264,8 +264,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260327-1106_A100_M10_tmax100_op1_FS_seed355_gpt_t20.json",
-    "timestamp": "260327-1106",
+    "file": "networkjson/260327-110650_A100_M10_tmax100_op1_FS_seed355_gpt_t20.json",
+    "timestamp": "260327-110650",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -276,8 +276,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260327-1106_A100_M10_tmax100_op1_FS_seed355_gpt_t50.json",
-    "timestamp": "260327-1106",
+    "file": "networkjson/260327-110650_A100_M10_tmax100_op1_FS_seed355_gpt_t50.json",
+    "timestamp": "260327-110650",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -288,8 +288,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260327-1106_A100_M10_tmax100_op1_FS_seed355_gpt_t100.json",
-    "timestamp": "260327-1106",
+    "file": "networkjson/260327-110650_A100_M10_tmax100_op1_FS_seed355_gpt_t100.json",
+    "timestamp": "260327-110650",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -300,8 +300,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260327-1428_A100_M10_tmax100_op1_FS_seed355_gpt_t5.json",
-    "timestamp": "260327-1428",
+    "file": "networkjson/260327-142835_A100_M10_tmax100_op1_FS_seed355_gpt_t5.json",
+    "timestamp": "260327-142835",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -312,8 +312,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260327-1428_A100_M10_tmax100_op1_FS_seed355_gpt_t10.json",
-    "timestamp": "260327-1428",
+    "file": "networkjson/260327-142835_A100_M10_tmax100_op1_FS_seed355_gpt_t10.json",
+    "timestamp": "260327-142835",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -324,8 +324,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260327-1428_A100_M10_tmax100_op1_FS_seed355_gpt_t20.json",
-    "timestamp": "260327-1428",
+    "file": "networkjson/260327-142835_A100_M10_tmax100_op1_FS_seed355_gpt_t20.json",
+    "timestamp": "260327-142835",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -336,8 +336,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260327-1428_A100_M10_tmax100_op1_FS_seed355_gpt_t50.json",
-    "timestamp": "260327-1428",
+    "file": "networkjson/260327-142835_A100_M10_tmax100_op1_FS_seed355_gpt_t50.json",
+    "timestamp": "260327-142835",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -348,8 +348,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260327-1428_A100_M10_tmax100_op1_FS_seed355_gpt_t100.json",
-    "timestamp": "260327-1428",
+    "file": "networkjson/260327-142835_A100_M10_tmax100_op1_FS_seed355_gpt_t100.json",
+    "timestamp": "260327-142835",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -360,8 +360,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260328-1219_A100_M10_tmax100_op1_FS_seed400_gpt_t5.json",
-    "timestamp": "260328-1219",
+    "file": "networkjson/260328-121923_A100_M10_tmax100_op1_FS_seed400_gpt_t5.json",
+    "timestamp": "260328-121923",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -372,8 +372,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260328-1219_A100_M10_tmax100_op1_FS_seed400_gpt_t10.json",
-    "timestamp": "260328-1219",
+    "file": "networkjson/260328-121923_A100_M10_tmax100_op1_FS_seed400_gpt_t10.json",
+    "timestamp": "260328-121923",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -384,8 +384,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260328-1219_A100_M10_tmax100_op1_FS_seed400_gpt_t20.json",
-    "timestamp": "260328-1219",
+    "file": "networkjson/260328-121923_A100_M10_tmax100_op1_FS_seed400_gpt_t20.json",
+    "timestamp": "260328-121923",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -396,8 +396,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260328-1219_A100_M10_tmax100_op1_FS_seed400_gpt_t50.json",
-    "timestamp": "260328-1219",
+    "file": "networkjson/260328-121923_A100_M10_tmax100_op1_FS_seed400_gpt_t50.json",
+    "timestamp": "260328-121923",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -408,8 +408,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260328-1219_A100_M10_tmax100_op1_FS_seed400_gpt_t100.json",
-    "timestamp": "260328-1219",
+    "file": "networkjson/260328-121923_A100_M10_tmax100_op1_FS_seed400_gpt_t100.json",
+    "timestamp": "260328-121923",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -420,8 +420,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260330-1351_A100_M10_tmax100_op1_FS_seed400_gpt_t5.json",
-    "timestamp": "260330-1351",
+    "file": "networkjson/260330-135131_A100_M10_tmax100_op1_FS_seed400_gpt_t5.json",
+    "timestamp": "260330-135131",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -432,8 +432,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260330-1351_A100_M10_tmax100_op1_FS_seed400_gpt_t10.json",
-    "timestamp": "260330-1351",
+    "file": "networkjson/260330-135131_A100_M10_tmax100_op1_FS_seed400_gpt_t10.json",
+    "timestamp": "260330-135131",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -444,8 +444,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260330-1351_A100_M10_tmax100_op1_FS_seed400_gpt_t20.json",
-    "timestamp": "260330-1351",
+    "file": "networkjson/260330-135131_A100_M10_tmax100_op1_FS_seed400_gpt_t20.json",
+    "timestamp": "260330-135131",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -456,8 +456,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260330-1351_A100_M10_tmax100_op1_FS_seed400_gpt_t50.json",
-    "timestamp": "260330-1351",
+    "file": "networkjson/260330-135131_A100_M10_tmax100_op1_FS_seed400_gpt_t50.json",
+    "timestamp": "260330-135131",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -468,8 +468,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260330-1351_A100_M10_tmax100_op1_FS_seed400_gpt_t100.json",
-    "timestamp": "260330-1351",
+    "file": "networkjson/260330-135131_A100_M10_tmax100_op1_FS_seed400_gpt_t100.json",
+    "timestamp": "260330-135131",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -480,8 +480,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260331-1115_A100_M10_tmax100_op1_FS_seed400_gpt_t5.json",
-    "timestamp": "260331-1115",
+    "file": "networkjson/260331-111500_A100_M10_tmax100_op1_FS_seed400_gpt_t5.json",
+    "timestamp": "260331-111500",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -492,8 +492,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260331-1115_A100_M10_tmax100_op1_FS_seed400_gpt_t10.json",
-    "timestamp": "260331-1115",
+    "file": "networkjson/260331-111500_A100_M10_tmax100_op1_FS_seed400_gpt_t10.json",
+    "timestamp": "260331-111500",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -504,8 +504,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260331-1115_A100_M10_tmax100_op1_FS_seed400_gpt_t20.json",
-    "timestamp": "260331-1115",
+    "file": "networkjson/260331-111500_A100_M10_tmax100_op1_FS_seed400_gpt_t20.json",
+    "timestamp": "260331-111500",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -516,8 +516,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260331-1115_A100_M10_tmax100_op1_FS_seed400_gpt_t50.json",
-    "timestamp": "260331-1115",
+    "file": "networkjson/260331-111500_A100_M10_tmax100_op1_FS_seed400_gpt_t50.json",
+    "timestamp": "260331-111500",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -528,8 +528,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260331-1115_A100_M10_tmax100_op1_FS_seed400_gpt_t100.json",
-    "timestamp": "260331-1115",
+    "file": "networkjson/260331-111500_A100_M10_tmax100_op1_FS_seed400_gpt_t100.json",
+    "timestamp": "260331-111500",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -540,8 +540,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260331-1428_A100_M10_tmax100_op3_FS_seed354_gpt_t5.json",
-    "timestamp": "260331-1428",
+    "file": "networkjson/260331-142805_A100_M10_tmax100_op3_FS_seed354_gpt_t5.json",
+    "timestamp": "260331-142805",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -552,8 +552,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260331-1428_A100_M10_tmax100_op3_FS_seed354_gpt_t10.json",
-    "timestamp": "260331-1428",
+    "file": "networkjson/260331-142805_A100_M10_tmax100_op3_FS_seed354_gpt_t10.json",
+    "timestamp": "260331-142805",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -564,8 +564,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260331-1428_A100_M10_tmax100_op3_FS_seed354_gpt_t20.json",
-    "timestamp": "260331-1428",
+    "file": "networkjson/260331-142805_A100_M10_tmax100_op3_FS_seed354_gpt_t20.json",
+    "timestamp": "260331-142805",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -576,8 +576,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260331-1428_A100_M10_tmax100_op3_FS_seed354_gpt_t50.json",
-    "timestamp": "260331-1428",
+    "file": "networkjson/260331-142805_A100_M10_tmax100_op3_FS_seed354_gpt_t50.json",
+    "timestamp": "260331-142805",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -588,8 +588,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260331-1428_A100_M10_tmax100_op3_FS_seed354_gpt_t100.json",
-    "timestamp": "260331-1428",
+    "file": "networkjson/260331-142805_A100_M10_tmax100_op3_FS_seed354_gpt_t100.json",
+    "timestamp": "260331-142805",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -600,8 +600,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260331-1723_A100_M10_tmax100_op3_FS_seed354_gpt_t5.json",
-    "timestamp": "260331-1723",
+    "file": "networkjson/260331-172339_A100_M10_tmax100_op3_FS_seed354_gpt_t5.json",
+    "timestamp": "260331-172339",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -612,8 +612,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260331-1723_A100_M10_tmax100_op3_FS_seed354_gpt_t10.json",
-    "timestamp": "260331-1723",
+    "file": "networkjson/260331-172339_A100_M10_tmax100_op3_FS_seed354_gpt_t10.json",
+    "timestamp": "260331-172339",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -624,8 +624,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260331-1723_A100_M10_tmax100_op3_FS_seed354_gpt_t20.json",
-    "timestamp": "260331-1723",
+    "file": "networkjson/260331-172339_A100_M10_tmax100_op3_FS_seed354_gpt_t20.json",
+    "timestamp": "260331-172339",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -636,8 +636,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260331-1723_A100_M10_tmax100_op3_FS_seed354_gpt_t50.json",
-    "timestamp": "260331-1723",
+    "file": "networkjson/260331-172339_A100_M10_tmax100_op3_FS_seed354_gpt_t50.json",
+    "timestamp": "260331-172339",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -648,8 +648,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260331-1723_A100_M10_tmax100_op3_FS_seed354_gpt_t100.json",
-    "timestamp": "260331-1723",
+    "file": "networkjson/260331-172339_A100_M10_tmax100_op3_FS_seed354_gpt_t100.json",
+    "timestamp": "260331-172339",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -660,8 +660,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260331-1951_A100_M10_tmax100_op3_FS_seed354_gpt_t5.json",
-    "timestamp": "260331-1951",
+    "file": "networkjson/260331-195133_A100_M10_tmax100_op3_FS_seed354_gpt_t5.json",
+    "timestamp": "260331-195133",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -672,8 +672,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260331-1951_A100_M10_tmax100_op3_FS_seed354_gpt_t10.json",
-    "timestamp": "260331-1951",
+    "file": "networkjson/260331-195133_A100_M10_tmax100_op3_FS_seed354_gpt_t10.json",
+    "timestamp": "260331-195133",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -684,8 +684,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260331-1951_A100_M10_tmax100_op3_FS_seed354_gpt_t20.json",
-    "timestamp": "260331-1951",
+    "file": "networkjson/260331-195133_A100_M10_tmax100_op3_FS_seed354_gpt_t20.json",
+    "timestamp": "260331-195133",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -696,8 +696,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260331-1951_A100_M10_tmax100_op3_FS_seed354_gpt_t50.json",
-    "timestamp": "260331-1951",
+    "file": "networkjson/260331-195133_A100_M10_tmax100_op3_FS_seed354_gpt_t50.json",
+    "timestamp": "260331-195133",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -708,8 +708,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260331-1951_A100_M10_tmax100_op3_FS_seed354_gpt_t100.json",
-    "timestamp": "260331-1951",
+    "file": "networkjson/260331-195133_A100_M10_tmax100_op3_FS_seed354_gpt_t100.json",
+    "timestamp": "260331-195133",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -720,8 +720,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260401-0955_A100_M10_tmax100_op3_FS_seed355_gpt_t5.json",
-    "timestamp": "260401-0955",
+    "file": "networkjson/260401-095524_A100_M10_tmax100_op3_FS_seed355_gpt_t5.json",
+    "timestamp": "260401-095524",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -732,8 +732,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260401-0955_A100_M10_tmax100_op3_FS_seed355_gpt_t10.json",
-    "timestamp": "260401-0955",
+    "file": "networkjson/260401-095524_A100_M10_tmax100_op3_FS_seed355_gpt_t10.json",
+    "timestamp": "260401-095524",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -744,8 +744,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260401-0955_A100_M10_tmax100_op3_FS_seed355_gpt_t20.json",
-    "timestamp": "260401-0955",
+    "file": "networkjson/260401-095524_A100_M10_tmax100_op3_FS_seed355_gpt_t20.json",
+    "timestamp": "260401-095524",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -756,8 +756,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260401-0955_A100_M10_tmax100_op3_FS_seed355_gpt_t50.json",
-    "timestamp": "260401-0955",
+    "file": "networkjson/260401-095524_A100_M10_tmax100_op3_FS_seed355_gpt_t50.json",
+    "timestamp": "260401-095524",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -768,8 +768,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260401-0955_A100_M10_tmax100_op3_FS_seed355_gpt_t100.json",
-    "timestamp": "260401-0955",
+    "file": "networkjson/260401-095524_A100_M10_tmax100_op3_FS_seed355_gpt_t100.json",
+    "timestamp": "260401-095524",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -780,8 +780,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260401-1321_A100_M10_tmax100_op3_FS_seed355_gpt_t5.json",
-    "timestamp": "260401-1321",
+    "file": "networkjson/260401-132142_A100_M10_tmax100_op3_FS_seed355_gpt_t5.json",
+    "timestamp": "260401-132142",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -792,8 +792,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260401-1321_A100_M10_tmax100_op3_FS_seed355_gpt_t10.json",
-    "timestamp": "260401-1321",
+    "file": "networkjson/260401-132142_A100_M10_tmax100_op3_FS_seed355_gpt_t10.json",
+    "timestamp": "260401-132142",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -804,8 +804,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260401-1321_A100_M10_tmax100_op3_FS_seed355_gpt_t20.json",
-    "timestamp": "260401-1321",
+    "file": "networkjson/260401-132142_A100_M10_tmax100_op3_FS_seed355_gpt_t20.json",
+    "timestamp": "260401-132142",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -816,8 +816,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260401-1321_A100_M10_tmax100_op3_FS_seed355_gpt_t50.json",
-    "timestamp": "260401-1321",
+    "file": "networkjson/260401-132142_A100_M10_tmax100_op3_FS_seed355_gpt_t50.json",
+    "timestamp": "260401-132142",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -828,8 +828,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260401-1321_A100_M10_tmax100_op3_FS_seed355_gpt_t100.json",
-    "timestamp": "260401-1321",
+    "file": "networkjson/260401-132142_A100_M10_tmax100_op3_FS_seed355_gpt_t100.json",
+    "timestamp": "260401-132142",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -840,8 +840,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260401-1702_A100_M10_tmax100_op3_FS_seed355_gpt_t5.json",
-    "timestamp": "260401-1702",
+    "file": "networkjson/260401-170256_A100_M10_tmax100_op3_FS_seed355_gpt_t5.json",
+    "timestamp": "260401-170256",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -852,8 +852,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260401-1702_A100_M10_tmax100_op3_FS_seed355_gpt_t10.json",
-    "timestamp": "260401-1702",
+    "file": "networkjson/260401-170256_A100_M10_tmax100_op3_FS_seed355_gpt_t10.json",
+    "timestamp": "260401-170256",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -864,8 +864,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260401-1702_A100_M10_tmax100_op3_FS_seed355_gpt_t20.json",
-    "timestamp": "260401-1702",
+    "file": "networkjson/260401-170256_A100_M10_tmax100_op3_FS_seed355_gpt_t20.json",
+    "timestamp": "260401-170256",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -876,8 +876,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260401-1702_A100_M10_tmax100_op3_FS_seed355_gpt_t50.json",
-    "timestamp": "260401-1702",
+    "file": "networkjson/260401-170256_A100_M10_tmax100_op3_FS_seed355_gpt_t50.json",
+    "timestamp": "260401-170256",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -888,8 +888,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260401-1702_A100_M10_tmax100_op3_FS_seed355_gpt_t100.json",
-    "timestamp": "260401-1702",
+    "file": "networkjson/260401-170256_A100_M10_tmax100_op3_FS_seed355_gpt_t100.json",
+    "timestamp": "260401-170256",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -900,8 +900,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260402-1020_A100_M10_tmax100_op3_FS_seed400_gpt_t5.json",
-    "timestamp": "260402-1020",
+    "file": "networkjson/260402-102000_A100_M10_tmax100_op3_FS_seed400_gpt_t5.json",
+    "timestamp": "260402-102000",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -912,8 +912,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260402-1020_A100_M10_tmax100_op3_FS_seed400_gpt_t10.json",
-    "timestamp": "260402-1020",
+    "file": "networkjson/260402-102000_A100_M10_tmax100_op3_FS_seed400_gpt_t10.json",
+    "timestamp": "260402-102000",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -924,8 +924,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260402-1020_A100_M10_tmax100_op3_FS_seed400_gpt_t20.json",
-    "timestamp": "260402-1020",
+    "file": "networkjson/260402-102000_A100_M10_tmax100_op3_FS_seed400_gpt_t20.json",
+    "timestamp": "260402-102000",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -936,8 +936,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260402-1020_A100_M10_tmax100_op3_FS_seed400_gpt_t50.json",
-    "timestamp": "260402-1020",
+    "file": "networkjson/260402-102000_A100_M10_tmax100_op3_FS_seed400_gpt_t50.json",
+    "timestamp": "260402-102000",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -948,8 +948,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260402-1020_A100_M10_tmax100_op3_FS_seed400_gpt_t100.json",
-    "timestamp": "260402-1020",
+    "file": "networkjson/260402-102000_A100_M10_tmax100_op3_FS_seed400_gpt_t100.json",
+    "timestamp": "260402-102000",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -960,8 +960,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260407-1027_A100_M10_tmax100_op3_FS_seed400_gpt_t5.json",
-    "timestamp": "260407-1027",
+    "file": "networkjson/260407-102737_A100_M10_tmax100_op3_FS_seed400_gpt_t5.json",
+    "timestamp": "260407-102737",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -972,8 +972,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260407-1027_A100_M10_tmax100_op3_FS_seed400_gpt_t10.json",
-    "timestamp": "260407-1027",
+    "file": "networkjson/260407-102737_A100_M10_tmax100_op3_FS_seed400_gpt_t10.json",
+    "timestamp": "260407-102737",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -984,8 +984,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260407-1027_A100_M10_tmax100_op3_FS_seed400_gpt_t20.json",
-    "timestamp": "260407-1027",
+    "file": "networkjson/260407-102737_A100_M10_tmax100_op3_FS_seed400_gpt_t20.json",
+    "timestamp": "260407-102737",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -996,8 +996,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260407-1027_A100_M10_tmax100_op3_FS_seed400_gpt_t50.json",
-    "timestamp": "260407-1027",
+    "file": "networkjson/260407-102737_A100_M10_tmax100_op3_FS_seed400_gpt_t50.json",
+    "timestamp": "260407-102737",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -1008,8 +1008,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260407-1027_A100_M10_tmax100_op3_FS_seed400_gpt_t100.json",
-    "timestamp": "260407-1027",
+    "file": "networkjson/260407-102737_A100_M10_tmax100_op3_FS_seed400_gpt_t100.json",
+    "timestamp": "260407-102737",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -1020,8 +1020,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260407-1030_A100_M10_tmax100_op3_FS_seed400_gpt_t5.json",
-    "timestamp": "260407-1030",
+    "file": "networkjson/260407-103002_A100_M10_tmax100_op3_FS_seed400_gpt_t5.json",
+    "timestamp": "260407-103002",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -1032,8 +1032,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260407-1030_A100_M10_tmax100_op3_FS_seed400_gpt_t10.json",
-    "timestamp": "260407-1030",
+    "file": "networkjson/260407-103002_A100_M10_tmax100_op3_FS_seed400_gpt_t10.json",
+    "timestamp": "260407-103002",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -1044,8 +1044,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260407-1030_A100_M10_tmax100_op3_FS_seed400_gpt_t20.json",
-    "timestamp": "260407-1030",
+    "file": "networkjson/260407-103002_A100_M10_tmax100_op3_FS_seed400_gpt_t20.json",
+    "timestamp": "260407-103002",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -1056,8 +1056,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260407-1030_A100_M10_tmax100_op3_FS_seed400_gpt_t50.json",
-    "timestamp": "260407-1030",
+    "file": "networkjson/260407-103002_A100_M10_tmax100_op3_FS_seed400_gpt_t50.json",
+    "timestamp": "260407-103002",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -1068,8 +1068,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260407-1030_A100_M10_tmax100_op3_FS_seed400_gpt_t100.json",
-    "timestamp": "260407-1030",
+    "file": "networkjson/260407-103002_A100_M10_tmax100_op3_FS_seed400_gpt_t100.json",
+    "timestamp": "260407-103002",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -1080,8 +1080,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260630-1019_A100_M5_tmax100_op1_FS_seed354_gpt_t5.json",
-    "timestamp": "260630-1019",
+    "file": "networkjson/260630-101930_A100_M5_tmax100_op1_FS_seed354_gpt_t5.json",
+    "timestamp": "260630-101930",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1092,8 +1092,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260630-1019_A100_M5_tmax100_op1_FS_seed354_gpt_t10.json",
-    "timestamp": "260630-1019",
+    "file": "networkjson/260630-101930_A100_M5_tmax100_op1_FS_seed354_gpt_t10.json",
+    "timestamp": "260630-101930",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1104,8 +1104,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260630-1019_A100_M5_tmax100_op1_FS_seed354_gpt_t20.json",
-    "timestamp": "260630-1019",
+    "file": "networkjson/260630-101930_A100_M5_tmax100_op1_FS_seed354_gpt_t20.json",
+    "timestamp": "260630-101930",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1116,8 +1116,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260630-1019_A100_M5_tmax100_op1_FS_seed354_gpt_t50.json",
-    "timestamp": "260630-1019",
+    "file": "networkjson/260630-101930_A100_M5_tmax100_op1_FS_seed354_gpt_t50.json",
+    "timestamp": "260630-101930",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1128,8 +1128,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260630-1019_A100_M5_tmax100_op1_FS_seed354_gpt_t100.json",
-    "timestamp": "260630-1019",
+    "file": "networkjson/260630-101930_A100_M5_tmax100_op1_FS_seed354_gpt_t100.json",
+    "timestamp": "260630-101930",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1140,8 +1140,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260630-1208_A100_M5_tmax100_op1_FS_seed354_gpt_t5.json",
-    "timestamp": "260630-1208",
+    "file": "networkjson/260630-120838_A100_M5_tmax100_op1_FS_seed354_gpt_t5.json",
+    "timestamp": "260630-120838",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1152,8 +1152,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260630-1208_A100_M5_tmax100_op1_FS_seed354_gpt_t10.json",
-    "timestamp": "260630-1208",
+    "file": "networkjson/260630-120838_A100_M5_tmax100_op1_FS_seed354_gpt_t10.json",
+    "timestamp": "260630-120838",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1164,8 +1164,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260630-1208_A100_M5_tmax100_op1_FS_seed354_gpt_t20.json",
-    "timestamp": "260630-1208",
+    "file": "networkjson/260630-120838_A100_M5_tmax100_op1_FS_seed354_gpt_t20.json",
+    "timestamp": "260630-120838",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1176,8 +1176,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260630-1208_A100_M5_tmax100_op1_FS_seed354_gpt_t50.json",
-    "timestamp": "260630-1208",
+    "file": "networkjson/260630-120838_A100_M5_tmax100_op1_FS_seed354_gpt_t50.json",
+    "timestamp": "260630-120838",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1188,8 +1188,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260630-1208_A100_M5_tmax100_op1_FS_seed354_gpt_t100.json",
-    "timestamp": "260630-1208",
+    "file": "networkjson/260630-120838_A100_M5_tmax100_op1_FS_seed354_gpt_t100.json",
+    "timestamp": "260630-120838",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1200,8 +1200,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260630-1410_A100_M5_tmax100_op1_FS_seed354_gpt_t5.json",
-    "timestamp": "260630-1410",
+    "file": "networkjson/260630-141000_A100_M5_tmax100_op1_FS_seed354_gpt_t5.json",
+    "timestamp": "260630-141000",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1212,8 +1212,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260630-1410_A100_M5_tmax100_op1_FS_seed354_gpt_t10.json",
-    "timestamp": "260630-1410",
+    "file": "networkjson/260630-141000_A100_M5_tmax100_op1_FS_seed354_gpt_t10.json",
+    "timestamp": "260630-141000",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1224,8 +1224,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260630-1410_A100_M5_tmax100_op1_FS_seed354_gpt_t20.json",
-    "timestamp": "260630-1410",
+    "file": "networkjson/260630-141000_A100_M5_tmax100_op1_FS_seed354_gpt_t20.json",
+    "timestamp": "260630-141000",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1236,8 +1236,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260630-1410_A100_M5_tmax100_op1_FS_seed354_gpt_t50.json",
-    "timestamp": "260630-1410",
+    "file": "networkjson/260630-141000_A100_M5_tmax100_op1_FS_seed354_gpt_t50.json",
+    "timestamp": "260630-141000",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1248,8 +1248,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260630-1410_A100_M5_tmax100_op1_FS_seed354_gpt_t100.json",
-    "timestamp": "260630-1410",
+    "file": "networkjson/260630-141000_A100_M5_tmax100_op1_FS_seed354_gpt_t100.json",
+    "timestamp": "260630-141000",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1260,8 +1260,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260630-1609_A100_M5_tmax100_op1_FS_seed355_gpt_t5.json",
-    "timestamp": "260630-1609",
+    "file": "networkjson/260630-160932_A100_M5_tmax100_op1_FS_seed355_gpt_t5.json",
+    "timestamp": "260630-160932",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1272,8 +1272,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260630-1609_A100_M5_tmax100_op1_FS_seed355_gpt_t10.json",
-    "timestamp": "260630-1609",
+    "file": "networkjson/260630-160932_A100_M5_tmax100_op1_FS_seed355_gpt_t10.json",
+    "timestamp": "260630-160932",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1284,8 +1284,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260630-1609_A100_M5_tmax100_op1_FS_seed355_gpt_t20.json",
-    "timestamp": "260630-1609",
+    "file": "networkjson/260630-160932_A100_M5_tmax100_op1_FS_seed355_gpt_t20.json",
+    "timestamp": "260630-160932",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1296,8 +1296,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260630-1609_A100_M5_tmax100_op1_FS_seed355_gpt_t50.json",
-    "timestamp": "260630-1609",
+    "file": "networkjson/260630-160932_A100_M5_tmax100_op1_FS_seed355_gpt_t50.json",
+    "timestamp": "260630-160932",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1308,8 +1308,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260630-1609_A100_M5_tmax100_op1_FS_seed355_gpt_t100.json",
-    "timestamp": "260630-1609",
+    "file": "networkjson/260630-160932_A100_M5_tmax100_op1_FS_seed355_gpt_t100.json",
+    "timestamp": "260630-160932",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1320,8 +1320,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260701-1020_A100_M5_tmax100_op1_FS_seed355_gpt_t5.json",
-    "timestamp": "260701-1020",
+    "file": "networkjson/260701-102054_A100_M5_tmax100_op1_FS_seed355_gpt_t5.json",
+    "timestamp": "260701-102054",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1332,8 +1332,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260701-1020_A100_M5_tmax100_op1_FS_seed355_gpt_t10.json",
-    "timestamp": "260701-1020",
+    "file": "networkjson/260701-102054_A100_M5_tmax100_op1_FS_seed355_gpt_t10.json",
+    "timestamp": "260701-102054",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1344,8 +1344,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260701-1020_A100_M5_tmax100_op1_FS_seed355_gpt_t20.json",
-    "timestamp": "260701-1020",
+    "file": "networkjson/260701-102054_A100_M5_tmax100_op1_FS_seed355_gpt_t20.json",
+    "timestamp": "260701-102054",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1356,8 +1356,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260701-1020_A100_M5_tmax100_op1_FS_seed355_gpt_t50.json",
-    "timestamp": "260701-1020",
+    "file": "networkjson/260701-102054_A100_M5_tmax100_op1_FS_seed355_gpt_t50.json",
+    "timestamp": "260701-102054",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1368,8 +1368,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260701-1020_A100_M5_tmax100_op1_FS_seed355_gpt_t100.json",
-    "timestamp": "260701-1020",
+    "file": "networkjson/260701-102054_A100_M5_tmax100_op1_FS_seed355_gpt_t100.json",
+    "timestamp": "260701-102054",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1380,8 +1380,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260701-1255_A100_M5_tmax100_op1_FS_seed355_gpt_t5.json",
-    "timestamp": "260701-1255",
+    "file": "networkjson/260701-125531_A100_M5_tmax100_op1_FS_seed355_gpt_t5.json",
+    "timestamp": "260701-125531",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1392,8 +1392,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260701-1255_A100_M5_tmax100_op1_FS_seed355_gpt_t10.json",
-    "timestamp": "260701-1255",
+    "file": "networkjson/260701-125531_A100_M5_tmax100_op1_FS_seed355_gpt_t10.json",
+    "timestamp": "260701-125531",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1404,8 +1404,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260701-1255_A100_M5_tmax100_op1_FS_seed355_gpt_t20.json",
-    "timestamp": "260701-1255",
+    "file": "networkjson/260701-125531_A100_M5_tmax100_op1_FS_seed355_gpt_t20.json",
+    "timestamp": "260701-125531",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1416,8 +1416,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260701-1255_A100_M5_tmax100_op1_FS_seed355_gpt_t50.json",
-    "timestamp": "260701-1255",
+    "file": "networkjson/260701-125531_A100_M5_tmax100_op1_FS_seed355_gpt_t50.json",
+    "timestamp": "260701-125531",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1428,8 +1428,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260701-1255_A100_M5_tmax100_op1_FS_seed355_gpt_t100.json",
-    "timestamp": "260701-1255",
+    "file": "networkjson/260701-125531_A100_M5_tmax100_op1_FS_seed355_gpt_t100.json",
+    "timestamp": "260701-125531",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1440,8 +1440,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260701-1513_A100_M5_tmax100_op1_FS_seed400_gpt_t5.json",
-    "timestamp": "260701-1513",
+    "file": "networkjson/260701-151353_A100_M5_tmax100_op1_FS_seed400_gpt_t5.json",
+    "timestamp": "260701-151353",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1452,8 +1452,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260701-1513_A100_M5_tmax100_op1_FS_seed400_gpt_t10.json",
-    "timestamp": "260701-1513",
+    "file": "networkjson/260701-151353_A100_M5_tmax100_op1_FS_seed400_gpt_t10.json",
+    "timestamp": "260701-151353",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1464,8 +1464,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260701-1513_A100_M5_tmax100_op1_FS_seed400_gpt_t20.json",
-    "timestamp": "260701-1513",
+    "file": "networkjson/260701-151353_A100_M5_tmax100_op1_FS_seed400_gpt_t20.json",
+    "timestamp": "260701-151353",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1476,8 +1476,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260701-1513_A100_M5_tmax100_op1_FS_seed400_gpt_t50.json",
-    "timestamp": "260701-1513",
+    "file": "networkjson/260701-151353_A100_M5_tmax100_op1_FS_seed400_gpt_t50.json",
+    "timestamp": "260701-151353",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1488,8 +1488,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260701-1513_A100_M5_tmax100_op1_FS_seed400_gpt_t100.json",
-    "timestamp": "260701-1513",
+    "file": "networkjson/260701-151353_A100_M5_tmax100_op1_FS_seed400_gpt_t100.json",
+    "timestamp": "260701-151353",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1500,8 +1500,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260702-1020_A100_M5_tmax100_op1_FS_seed400_gpt_t5.json",
-    "timestamp": "260702-1020",
+    "file": "networkjson/260702-102002_A100_M5_tmax100_op1_FS_seed400_gpt_t5.json",
+    "timestamp": "260702-102002",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1512,8 +1512,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260702-1020_A100_M5_tmax100_op1_FS_seed400_gpt_t10.json",
-    "timestamp": "260702-1020",
+    "file": "networkjson/260702-102002_A100_M5_tmax100_op1_FS_seed400_gpt_t10.json",
+    "timestamp": "260702-102002",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1524,8 +1524,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260702-1020_A100_M5_tmax100_op1_FS_seed400_gpt_t20.json",
-    "timestamp": "260702-1020",
+    "file": "networkjson/260702-102002_A100_M5_tmax100_op1_FS_seed400_gpt_t20.json",
+    "timestamp": "260702-102002",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1536,8 +1536,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260702-1020_A100_M5_tmax100_op1_FS_seed400_gpt_t50.json",
-    "timestamp": "260702-1020",
+    "file": "networkjson/260702-102002_A100_M5_tmax100_op1_FS_seed400_gpt_t50.json",
+    "timestamp": "260702-102002",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1548,8 +1548,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260702-1020_A100_M5_tmax100_op1_FS_seed400_gpt_t100.json",
-    "timestamp": "260702-1020",
+    "file": "networkjson/260702-102002_A100_M5_tmax100_op1_FS_seed400_gpt_t100.json",
+    "timestamp": "260702-102002",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1560,8 +1560,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260702-1319_A100_M5_tmax100_op1_FS_seed400_gpt_t5.json",
-    "timestamp": "260702-1319",
+    "file": "networkjson/260702-131958_A100_M5_tmax100_op1_FS_seed400_gpt_t5.json",
+    "timestamp": "260702-131958",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1572,8 +1572,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260702-1319_A100_M5_tmax100_op1_FS_seed400_gpt_t10.json",
-    "timestamp": "260702-1319",
+    "file": "networkjson/260702-131958_A100_M5_tmax100_op1_FS_seed400_gpt_t10.json",
+    "timestamp": "260702-131958",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1584,8 +1584,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260702-1319_A100_M5_tmax100_op1_FS_seed400_gpt_t20.json",
-    "timestamp": "260702-1319",
+    "file": "networkjson/260702-131958_A100_M5_tmax100_op1_FS_seed400_gpt_t20.json",
+    "timestamp": "260702-131958",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1596,8 +1596,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260702-1319_A100_M5_tmax100_op1_FS_seed400_gpt_t50.json",
-    "timestamp": "260702-1319",
+    "file": "networkjson/260702-131958_A100_M5_tmax100_op1_FS_seed400_gpt_t50.json",
+    "timestamp": "260702-131958",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1608,8 +1608,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260702-1319_A100_M5_tmax100_op1_FS_seed400_gpt_t100.json",
-    "timestamp": "260702-1319",
+    "file": "networkjson/260702-131958_A100_M5_tmax100_op1_FS_seed400_gpt_t100.json",
+    "timestamp": "260702-131958",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1620,8 +1620,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260703-1124_A100_M5_tmax100_op3_FS_seed354_gpt_t5.json",
-    "timestamp": "260703-1124",
+    "file": "networkjson/260703-112429_A100_M5_tmax100_op3_FS_seed354_gpt_t5.json",
+    "timestamp": "260703-112429",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1632,8 +1632,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260703-1124_A100_M5_tmax100_op3_FS_seed354_gpt_t10.json",
-    "timestamp": "260703-1124",
+    "file": "networkjson/260703-112429_A100_M5_tmax100_op3_FS_seed354_gpt_t10.json",
+    "timestamp": "260703-112429",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1644,8 +1644,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260703-1124_A100_M5_tmax100_op3_FS_seed354_gpt_t20.json",
-    "timestamp": "260703-1124",
+    "file": "networkjson/260703-112429_A100_M5_tmax100_op3_FS_seed354_gpt_t20.json",
+    "timestamp": "260703-112429",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1656,8 +1656,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260703-1124_A100_M5_tmax100_op3_FS_seed354_gpt_t50.json",
-    "timestamp": "260703-1124",
+    "file": "networkjson/260703-112429_A100_M5_tmax100_op3_FS_seed354_gpt_t50.json",
+    "timestamp": "260703-112429",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1668,8 +1668,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260703-1124_A100_M5_tmax100_op3_FS_seed354_gpt_t100.json",
-    "timestamp": "260703-1124",
+    "file": "networkjson/260703-112429_A100_M5_tmax100_op3_FS_seed354_gpt_t100.json",
+    "timestamp": "260703-112429",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1680,8 +1680,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260720-1138_A100_M5_tmax100_op3_FS_seed354_gpt_t5.json",
-    "timestamp": "260720-1138",
+    "file": "networkjson/260720-113848_A100_M5_tmax100_op3_FS_seed354_gpt_t5.json",
+    "timestamp": "260720-113848",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1692,8 +1692,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260720-1138_A100_M5_tmax100_op3_FS_seed354_gpt_t10.json",
-    "timestamp": "260720-1138",
+    "file": "networkjson/260720-113848_A100_M5_tmax100_op3_FS_seed354_gpt_t10.json",
+    "timestamp": "260720-113848",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1704,8 +1704,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260720-1138_A100_M5_tmax100_op3_FS_seed354_gpt_t20.json",
-    "timestamp": "260720-1138",
+    "file": "networkjson/260720-113848_A100_M5_tmax100_op3_FS_seed354_gpt_t20.json",
+    "timestamp": "260720-113848",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1716,8 +1716,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260720-1138_A100_M5_tmax100_op3_FS_seed354_gpt_t50.json",
-    "timestamp": "260720-1138",
+    "file": "networkjson/260720-113848_A100_M5_tmax100_op3_FS_seed354_gpt_t50.json",
+    "timestamp": "260720-113848",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1728,8 +1728,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260720-1138_A100_M5_tmax100_op3_FS_seed354_gpt_t100.json",
-    "timestamp": "260720-1138",
+    "file": "networkjson/260720-113848_A100_M5_tmax100_op3_FS_seed354_gpt_t100.json",
+    "timestamp": "260720-113848",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1740,8 +1740,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260720-1430_A100_M5_tmax100_op3_FS_seed354_gpt_t5.json",
-    "timestamp": "260720-1430",
+    "file": "networkjson/260720-143004_A100_M5_tmax100_op3_FS_seed354_gpt_t5.json",
+    "timestamp": "260720-143004",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1752,8 +1752,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260720-1430_A100_M5_tmax100_op3_FS_seed354_gpt_t10.json",
-    "timestamp": "260720-1430",
+    "file": "networkjson/260720-143004_A100_M5_tmax100_op3_FS_seed354_gpt_t10.json",
+    "timestamp": "260720-143004",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1764,8 +1764,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260720-1430_A100_M5_tmax100_op3_FS_seed354_gpt_t20.json",
-    "timestamp": "260720-1430",
+    "file": "networkjson/260720-143004_A100_M5_tmax100_op3_FS_seed354_gpt_t20.json",
+    "timestamp": "260720-143004",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1776,8 +1776,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260720-1430_A100_M5_tmax100_op3_FS_seed354_gpt_t50.json",
-    "timestamp": "260720-1430",
+    "file": "networkjson/260720-143004_A100_M5_tmax100_op3_FS_seed354_gpt_t50.json",
+    "timestamp": "260720-143004",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1788,8 +1788,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260720-1430_A100_M5_tmax100_op3_FS_seed354_gpt_t100.json",
-    "timestamp": "260720-1430",
+    "file": "networkjson/260720-143004_A100_M5_tmax100_op3_FS_seed354_gpt_t100.json",
+    "timestamp": "260720-143004",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1800,8 +1800,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260721-1036_A100_M5_tmax100_op3_FS_seed355_gpt_t5.json",
-    "timestamp": "260721-1036",
+    "file": "networkjson/260721-103638_A100_M5_tmax100_op3_FS_seed355_gpt_t5.json",
+    "timestamp": "260721-103638",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1812,8 +1812,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260721-1036_A100_M5_tmax100_op3_FS_seed355_gpt_t10.json",
-    "timestamp": "260721-1036",
+    "file": "networkjson/260721-103638_A100_M5_tmax100_op3_FS_seed355_gpt_t10.json",
+    "timestamp": "260721-103638",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1824,8 +1824,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260721-1036_A100_M5_tmax100_op3_FS_seed355_gpt_t20.json",
-    "timestamp": "260721-1036",
+    "file": "networkjson/260721-103638_A100_M5_tmax100_op3_FS_seed355_gpt_t20.json",
+    "timestamp": "260721-103638",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1836,8 +1836,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260721-1036_A100_M5_tmax100_op3_FS_seed355_gpt_t50.json",
-    "timestamp": "260721-1036",
+    "file": "networkjson/260721-103638_A100_M5_tmax100_op3_FS_seed355_gpt_t50.json",
+    "timestamp": "260721-103638",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1848,8 +1848,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260721-1036_A100_M5_tmax100_op3_FS_seed355_gpt_t100.json",
-    "timestamp": "260721-1036",
+    "file": "networkjson/260721-103638_A100_M5_tmax100_op3_FS_seed355_gpt_t100.json",
+    "timestamp": "260721-103638",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1860,8 +1860,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260722-1159_A100_M5_tmax100_op3_FS_seed355_gpt_t5.json",
-    "timestamp": "260722-1159",
+    "file": "networkjson/260722-115919_A100_M5_tmax100_op3_FS_seed355_gpt_t5.json",
+    "timestamp": "260722-115919",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1872,8 +1872,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260722-1159_A100_M5_tmax100_op3_FS_seed355_gpt_t10.json",
-    "timestamp": "260722-1159",
+    "file": "networkjson/260722-115919_A100_M5_tmax100_op3_FS_seed355_gpt_t10.json",
+    "timestamp": "260722-115919",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1884,8 +1884,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260722-1159_A100_M5_tmax100_op3_FS_seed355_gpt_t20.json",
-    "timestamp": "260722-1159",
+    "file": "networkjson/260722-115919_A100_M5_tmax100_op3_FS_seed355_gpt_t20.json",
+    "timestamp": "260722-115919",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1896,8 +1896,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260722-1159_A100_M5_tmax100_op3_FS_seed355_gpt_t50.json",
-    "timestamp": "260722-1159",
+    "file": "networkjson/260722-115919_A100_M5_tmax100_op3_FS_seed355_gpt_t50.json",
+    "timestamp": "260722-115919",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1908,8 +1908,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260722-1159_A100_M5_tmax100_op3_FS_seed355_gpt_t100.json",
-    "timestamp": "260722-1159",
+    "file": "networkjson/260722-115919_A100_M5_tmax100_op3_FS_seed355_gpt_t100.json",
+    "timestamp": "260722-115919",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1920,8 +1920,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260722-1448_A100_M5_tmax100_op3_FS_seed355_gpt_t5.json",
-    "timestamp": "260722-1448",
+    "file": "networkjson/260722-144804_A100_M5_tmax100_op3_FS_seed355_gpt_t5.json",
+    "timestamp": "260722-144804",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1932,8 +1932,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260722-1448_A100_M5_tmax100_op3_FS_seed355_gpt_t10.json",
-    "timestamp": "260722-1448",
+    "file": "networkjson/260722-144804_A100_M5_tmax100_op3_FS_seed355_gpt_t10.json",
+    "timestamp": "260722-144804",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1944,8 +1944,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260722-1448_A100_M5_tmax100_op3_FS_seed355_gpt_t20.json",
-    "timestamp": "260722-1448",
+    "file": "networkjson/260722-144804_A100_M5_tmax100_op3_FS_seed355_gpt_t20.json",
+    "timestamp": "260722-144804",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1956,8 +1956,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260722-1448_A100_M5_tmax100_op3_FS_seed355_gpt_t50.json",
-    "timestamp": "260722-1448",
+    "file": "networkjson/260722-144804_A100_M5_tmax100_op3_FS_seed355_gpt_t50.json",
+    "timestamp": "260722-144804",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1968,8 +1968,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260722-1448_A100_M5_tmax100_op3_FS_seed355_gpt_t100.json",
-    "timestamp": "260722-1448",
+    "file": "networkjson/260722-144804_A100_M5_tmax100_op3_FS_seed355_gpt_t100.json",
+    "timestamp": "260722-144804",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1980,8 +1980,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260723-1135_A100_M5_tmax100_op3_FS_seed400_gpt_t5.json",
-    "timestamp": "260723-1135",
+    "file": "networkjson/260723-113515_A100_M5_tmax100_op3_FS_seed400_gpt_t5.json",
+    "timestamp": "260723-113515",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -1992,8 +1992,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260723-1135_A100_M5_tmax100_op3_FS_seed400_gpt_t10.json",
-    "timestamp": "260723-1135",
+    "file": "networkjson/260723-113515_A100_M5_tmax100_op3_FS_seed400_gpt_t10.json",
+    "timestamp": "260723-113515",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2004,8 +2004,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260723-1135_A100_M5_tmax100_op3_FS_seed400_gpt_t20.json",
-    "timestamp": "260723-1135",
+    "file": "networkjson/260723-113515_A100_M5_tmax100_op3_FS_seed400_gpt_t20.json",
+    "timestamp": "260723-113515",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2016,8 +2016,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260723-1135_A100_M5_tmax100_op3_FS_seed400_gpt_t50.json",
-    "timestamp": "260723-1135",
+    "file": "networkjson/260723-113515_A100_M5_tmax100_op3_FS_seed400_gpt_t50.json",
+    "timestamp": "260723-113515",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2028,8 +2028,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260723-1135_A100_M5_tmax100_op3_FS_seed400_gpt_t100.json",
-    "timestamp": "260723-1135",
+    "file": "networkjson/260723-113515_A100_M5_tmax100_op3_FS_seed400_gpt_t100.json",
+    "timestamp": "260723-113515",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2040,8 +2040,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260723-1435_A100_M5_tmax100_op3_FS_seed400_gpt_t5.json",
-    "timestamp": "260723-1435",
+    "file": "networkjson/260723-143556_A100_M5_tmax100_op3_FS_seed400_gpt_t5.json",
+    "timestamp": "260723-143556",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2052,8 +2052,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260723-1435_A100_M5_tmax100_op3_FS_seed400_gpt_t10.json",
-    "timestamp": "260723-1435",
+    "file": "networkjson/260723-143556_A100_M5_tmax100_op3_FS_seed400_gpt_t10.json",
+    "timestamp": "260723-143556",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2064,8 +2064,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260723-1435_A100_M5_tmax100_op3_FS_seed400_gpt_t20.json",
-    "timestamp": "260723-1435",
+    "file": "networkjson/260723-143556_A100_M5_tmax100_op3_FS_seed400_gpt_t20.json",
+    "timestamp": "260723-143556",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2076,8 +2076,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260723-1435_A100_M5_tmax100_op3_FS_seed400_gpt_t50.json",
-    "timestamp": "260723-1435",
+    "file": "networkjson/260723-143556_A100_M5_tmax100_op3_FS_seed400_gpt_t50.json",
+    "timestamp": "260723-143556",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2088,8 +2088,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260723-1435_A100_M5_tmax100_op3_FS_seed400_gpt_t100.json",
-    "timestamp": "260723-1435",
+    "file": "networkjson/260723-143556_A100_M5_tmax100_op3_FS_seed400_gpt_t100.json",
+    "timestamp": "260723-143556",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2100,8 +2100,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260723-1723_A100_M5_tmax100_op3_FS_seed400_gpt_t5.json",
-    "timestamp": "260723-1723",
+    "file": "networkjson/260723-172356_A100_M5_tmax100_op3_FS_seed400_gpt_t5.json",
+    "timestamp": "260723-172356",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2112,8 +2112,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260723-1723_A100_M5_tmax100_op3_FS_seed400_gpt_t10.json",
-    "timestamp": "260723-1723",
+    "file": "networkjson/260723-172356_A100_M5_tmax100_op3_FS_seed400_gpt_t10.json",
+    "timestamp": "260723-172356",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2124,8 +2124,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260723-1723_A100_M5_tmax100_op3_FS_seed400_gpt_t20.json",
-    "timestamp": "260723-1723",
+    "file": "networkjson/260723-172356_A100_M5_tmax100_op3_FS_seed400_gpt_t20.json",
+    "timestamp": "260723-172356",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2136,8 +2136,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260723-1723_A100_M5_tmax100_op3_FS_seed400_gpt_t50.json",
-    "timestamp": "260723-1723",
+    "file": "networkjson/260723-172356_A100_M5_tmax100_op3_FS_seed400_gpt_t50.json",
+    "timestamp": "260723-172356",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2148,8 +2148,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260723-1723_A100_M5_tmax100_op3_FS_seed400_gpt_t100.json",
-    "timestamp": "260723-1723",
+    "file": "networkjson/260723-172356_A100_M5_tmax100_op3_FS_seed400_gpt_t100.json",
+    "timestamp": "260723-172356",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2160,8 +2160,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260810-1045_A100_M5_tmax100_op3_F_seed354_gpt_t5.json",
-    "timestamp": "260810-1045",
+    "file": "networkjson/260810-104556_A100_M5_tmax100_op3_F_seed354_gpt_t5.json",
+    "timestamp": "260810-104556",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2172,8 +2172,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260810-1045_A100_M5_tmax100_op3_F_seed354_gpt_t10.json",
-    "timestamp": "260810-1045",
+    "file": "networkjson/260810-104556_A100_M5_tmax100_op3_F_seed354_gpt_t10.json",
+    "timestamp": "260810-104556",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2184,8 +2184,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260810-1045_A100_M5_tmax100_op3_F_seed354_gpt_t20.json",
-    "timestamp": "260810-1045",
+    "file": "networkjson/260810-104556_A100_M5_tmax100_op3_F_seed354_gpt_t20.json",
+    "timestamp": "260810-104556",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2196,8 +2196,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260810-1045_A100_M5_tmax100_op3_F_seed354_gpt_t50.json",
-    "timestamp": "260810-1045",
+    "file": "networkjson/260810-104556_A100_M5_tmax100_op3_F_seed354_gpt_t50.json",
+    "timestamp": "260810-104556",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2208,8 +2208,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260810-1045_A100_M5_tmax100_op3_F_seed354_gpt_t100.json",
-    "timestamp": "260810-1045",
+    "file": "networkjson/260810-104556_A100_M5_tmax100_op3_F_seed354_gpt_t100.json",
+    "timestamp": "260810-104556",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2220,8 +2220,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260810-1215_A100_M5_tmax100_op3_F_seed354_gpt_t5.json",
-    "timestamp": "260810-1215",
+    "file": "networkjson/260810-121535_A100_M5_tmax100_op3_F_seed354_gpt_t5.json",
+    "timestamp": "260810-121535",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2232,8 +2232,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260810-1215_A100_M5_tmax100_op3_F_seed354_gpt_t10.json",
-    "timestamp": "260810-1215",
+    "file": "networkjson/260810-121535_A100_M5_tmax100_op3_F_seed354_gpt_t10.json",
+    "timestamp": "260810-121535",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2244,8 +2244,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260810-1215_A100_M5_tmax100_op3_F_seed354_gpt_t20.json",
-    "timestamp": "260810-1215",
+    "file": "networkjson/260810-121535_A100_M5_tmax100_op3_F_seed354_gpt_t20.json",
+    "timestamp": "260810-121535",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2256,8 +2256,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260810-1215_A100_M5_tmax100_op3_F_seed354_gpt_t50.json",
-    "timestamp": "260810-1215",
+    "file": "networkjson/260810-121535_A100_M5_tmax100_op3_F_seed354_gpt_t50.json",
+    "timestamp": "260810-121535",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2268,8 +2268,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260810-1215_A100_M5_tmax100_op3_F_seed354_gpt_t100.json",
-    "timestamp": "260810-1215",
+    "file": "networkjson/260810-121535_A100_M5_tmax100_op3_F_seed354_gpt_t100.json",
+    "timestamp": "260810-121535",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2280,8 +2280,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260811-1011_A100_M5_tmax100_op3_F_seed354_gpt_t5.json",
-    "timestamp": "260811-1011",
+    "file": "networkjson/260811-101141_A100_M5_tmax100_op3_F_seed354_gpt_t5.json",
+    "timestamp": "260811-101141",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2292,8 +2292,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260811-1011_A100_M5_tmax100_op3_F_seed354_gpt_t10.json",
-    "timestamp": "260811-1011",
+    "file": "networkjson/260811-101141_A100_M5_tmax100_op3_F_seed354_gpt_t10.json",
+    "timestamp": "260811-101141",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2304,8 +2304,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260811-1011_A100_M5_tmax100_op3_F_seed354_gpt_t20.json",
-    "timestamp": "260811-1011",
+    "file": "networkjson/260811-101141_A100_M5_tmax100_op3_F_seed354_gpt_t20.json",
+    "timestamp": "260811-101141",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2316,8 +2316,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260811-1011_A100_M5_tmax100_op3_F_seed354_gpt_t50.json",
-    "timestamp": "260811-1011",
+    "file": "networkjson/260811-101141_A100_M5_tmax100_op3_F_seed354_gpt_t50.json",
+    "timestamp": "260811-101141",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2328,8 +2328,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260811-1011_A100_M5_tmax100_op3_F_seed354_gpt_t100.json",
-    "timestamp": "260811-1011",
+    "file": "networkjson/260811-101141_A100_M5_tmax100_op3_F_seed354_gpt_t100.json",
+    "timestamp": "260811-101141",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2340,8 +2340,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260811-1115_A100_M5_tmax100_op3_F_seed355_gpt_t5.json",
-    "timestamp": "260811-1115",
+    "file": "networkjson/260811-111520_A100_M5_tmax100_op3_F_seed355_gpt_t5.json",
+    "timestamp": "260811-111520",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2352,8 +2352,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260811-1115_A100_M5_tmax100_op3_F_seed355_gpt_t10.json",
-    "timestamp": "260811-1115",
+    "file": "networkjson/260811-111520_A100_M5_tmax100_op3_F_seed355_gpt_t10.json",
+    "timestamp": "260811-111520",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2364,8 +2364,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260811-1115_A100_M5_tmax100_op3_F_seed355_gpt_t20.json",
-    "timestamp": "260811-1115",
+    "file": "networkjson/260811-111520_A100_M5_tmax100_op3_F_seed355_gpt_t20.json",
+    "timestamp": "260811-111520",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2376,8 +2376,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260811-1115_A100_M5_tmax100_op3_F_seed355_gpt_t50.json",
-    "timestamp": "260811-1115",
+    "file": "networkjson/260811-111520_A100_M5_tmax100_op3_F_seed355_gpt_t50.json",
+    "timestamp": "260811-111520",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2388,8 +2388,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260811-1115_A100_M5_tmax100_op3_F_seed355_gpt_t100.json",
-    "timestamp": "260811-1115",
+    "file": "networkjson/260811-111520_A100_M5_tmax100_op3_F_seed355_gpt_t100.json",
+    "timestamp": "260811-111520",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2400,8 +2400,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260811-1214_A100_M5_tmax100_op3_F_seed355_gpt_t5.json",
-    "timestamp": "260811-1214",
+    "file": "networkjson/260811-121420_A100_M5_tmax100_op3_F_seed355_gpt_t5.json",
+    "timestamp": "260811-121420",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2412,8 +2412,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260811-1214_A100_M5_tmax100_op3_F_seed355_gpt_t10.json",
-    "timestamp": "260811-1214",
+    "file": "networkjson/260811-121420_A100_M5_tmax100_op3_F_seed355_gpt_t10.json",
+    "timestamp": "260811-121420",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2424,8 +2424,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260811-1214_A100_M5_tmax100_op3_F_seed355_gpt_t20.json",
-    "timestamp": "260811-1214",
+    "file": "networkjson/260811-121420_A100_M5_tmax100_op3_F_seed355_gpt_t20.json",
+    "timestamp": "260811-121420",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2436,8 +2436,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260811-1214_A100_M5_tmax100_op3_F_seed355_gpt_t50.json",
-    "timestamp": "260811-1214",
+    "file": "networkjson/260811-121420_A100_M5_tmax100_op3_F_seed355_gpt_t50.json",
+    "timestamp": "260811-121420",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2448,8 +2448,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260811-1214_A100_M5_tmax100_op3_F_seed355_gpt_t100.json",
-    "timestamp": "260811-1214",
+    "file": "networkjson/260811-121420_A100_M5_tmax100_op3_F_seed355_gpt_t100.json",
+    "timestamp": "260811-121420",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2460,8 +2460,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260811-1307_A100_M5_tmax100_op3_F_seed355_gpt_t5.json",
-    "timestamp": "260811-1307",
+    "file": "networkjson/260811-130757_A100_M5_tmax100_op3_F_seed355_gpt_t5.json",
+    "timestamp": "260811-130757",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2472,8 +2472,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260811-1307_A100_M5_tmax100_op3_F_seed355_gpt_t10.json",
-    "timestamp": "260811-1307",
+    "file": "networkjson/260811-130757_A100_M5_tmax100_op3_F_seed355_gpt_t10.json",
+    "timestamp": "260811-130757",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2484,8 +2484,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260811-1307_A100_M5_tmax100_op3_F_seed355_gpt_t20.json",
-    "timestamp": "260811-1307",
+    "file": "networkjson/260811-130757_A100_M5_tmax100_op3_F_seed355_gpt_t20.json",
+    "timestamp": "260811-130757",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2496,8 +2496,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260811-1307_A100_M5_tmax100_op3_F_seed355_gpt_t50.json",
-    "timestamp": "260811-1307",
+    "file": "networkjson/260811-130757_A100_M5_tmax100_op3_F_seed355_gpt_t50.json",
+    "timestamp": "260811-130757",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2508,8 +2508,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260811-1307_A100_M5_tmax100_op3_F_seed355_gpt_t100.json",
-    "timestamp": "260811-1307",
+    "file": "networkjson/260811-130757_A100_M5_tmax100_op3_F_seed355_gpt_t100.json",
+    "timestamp": "260811-130757",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2520,8 +2520,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260811-1513_A100_M5_tmax100_op3_F_seed400_gpt_t5.json",
-    "timestamp": "260811-1513",
+    "file": "networkjson/260811-151305_A100_M5_tmax100_op3_F_seed400_gpt_t5.json",
+    "timestamp": "260811-151305",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2532,8 +2532,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260811-1513_A100_M5_tmax100_op3_F_seed400_gpt_t10.json",
-    "timestamp": "260811-1513",
+    "file": "networkjson/260811-151305_A100_M5_tmax100_op3_F_seed400_gpt_t10.json",
+    "timestamp": "260811-151305",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2544,8 +2544,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260811-1513_A100_M5_tmax100_op3_F_seed400_gpt_t20.json",
-    "timestamp": "260811-1513",
+    "file": "networkjson/260811-151305_A100_M5_tmax100_op3_F_seed400_gpt_t20.json",
+    "timestamp": "260811-151305",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2556,8 +2556,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260811-1513_A100_M5_tmax100_op3_F_seed400_gpt_t50.json",
-    "timestamp": "260811-1513",
+    "file": "networkjson/260811-151305_A100_M5_tmax100_op3_F_seed400_gpt_t50.json",
+    "timestamp": "260811-151305",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2568,8 +2568,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260811-1513_A100_M5_tmax100_op3_F_seed400_gpt_t100.json",
-    "timestamp": "260811-1513",
+    "file": "networkjson/260811-151305_A100_M5_tmax100_op3_F_seed400_gpt_t100.json",
+    "timestamp": "260811-151305",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2580,8 +2580,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260811-1827_A100_M5_tmax100_op3_F_seed400_gpt_t5.json",
-    "timestamp": "260811-1827",
+    "file": "networkjson/260811-182734_A100_M5_tmax100_op3_F_seed400_gpt_t5.json",
+    "timestamp": "260811-182734",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2592,8 +2592,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260811-1827_A100_M5_tmax100_op3_F_seed400_gpt_t10.json",
-    "timestamp": "260811-1827",
+    "file": "networkjson/260811-182734_A100_M5_tmax100_op3_F_seed400_gpt_t10.json",
+    "timestamp": "260811-182734",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2604,8 +2604,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260811-1827_A100_M5_tmax100_op3_F_seed400_gpt_t20.json",
-    "timestamp": "260811-1827",
+    "file": "networkjson/260811-182734_A100_M5_tmax100_op3_F_seed400_gpt_t20.json",
+    "timestamp": "260811-182734",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2616,8 +2616,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260811-1827_A100_M5_tmax100_op3_F_seed400_gpt_t50.json",
-    "timestamp": "260811-1827",
+    "file": "networkjson/260811-182734_A100_M5_tmax100_op3_F_seed400_gpt_t50.json",
+    "timestamp": "260811-182734",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2628,8 +2628,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260811-1827_A100_M5_tmax100_op3_F_seed400_gpt_t100.json",
-    "timestamp": "260811-1827",
+    "file": "networkjson/260811-182734_A100_M5_tmax100_op3_F_seed400_gpt_t100.json",
+    "timestamp": "260811-182734",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2640,8 +2640,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260811-2145_A100_M5_tmax100_op3_F_seed400_gpt_t5.json",
-    "timestamp": "260811-2145",
+    "file": "networkjson/260811-214519_A100_M5_tmax100_op3_F_seed400_gpt_t5.json",
+    "timestamp": "260811-214519",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2652,8 +2652,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260811-2145_A100_M5_tmax100_op3_F_seed400_gpt_t10.json",
-    "timestamp": "260811-2145",
+    "file": "networkjson/260811-214519_A100_M5_tmax100_op3_F_seed400_gpt_t10.json",
+    "timestamp": "260811-214519",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2664,8 +2664,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260811-2145_A100_M5_tmax100_op3_F_seed400_gpt_t20.json",
-    "timestamp": "260811-2145",
+    "file": "networkjson/260811-214519_A100_M5_tmax100_op3_F_seed400_gpt_t20.json",
+    "timestamp": "260811-214519",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2676,8 +2676,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260811-2145_A100_M5_tmax100_op3_F_seed400_gpt_t50.json",
-    "timestamp": "260811-2145",
+    "file": "networkjson/260811-214519_A100_M5_tmax100_op3_F_seed400_gpt_t50.json",
+    "timestamp": "260811-214519",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2688,8 +2688,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260811-2145_A100_M5_tmax100_op3_F_seed400_gpt_t100.json",
-    "timestamp": "260811-2145",
+    "file": "networkjson/260811-214519_A100_M5_tmax100_op3_F_seed400_gpt_t100.json",
+    "timestamp": "260811-214519",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2700,8 +2700,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260812-1022_A100_M5_tmax100_op1_F_seed354_gpt_t5.json",
-    "timestamp": "260812-1022",
+    "file": "networkjson/260812-102221_A100_M5_tmax100_op1_F_seed354_gpt_t5.json",
+    "timestamp": "260812-102221",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2712,8 +2712,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260812-1022_A100_M5_tmax100_op1_F_seed354_gpt_t10.json",
-    "timestamp": "260812-1022",
+    "file": "networkjson/260812-102221_A100_M5_tmax100_op1_F_seed354_gpt_t10.json",
+    "timestamp": "260812-102221",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2724,8 +2724,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260812-1022_A100_M5_tmax100_op1_F_seed354_gpt_t20.json",
-    "timestamp": "260812-1022",
+    "file": "networkjson/260812-102221_A100_M5_tmax100_op1_F_seed354_gpt_t20.json",
+    "timestamp": "260812-102221",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2736,8 +2736,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260812-1022_A100_M5_tmax100_op1_F_seed354_gpt_t50.json",
-    "timestamp": "260812-1022",
+    "file": "networkjson/260812-102221_A100_M5_tmax100_op1_F_seed354_gpt_t50.json",
+    "timestamp": "260812-102221",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2748,8 +2748,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260812-1022_A100_M5_tmax100_op1_F_seed354_gpt_t100.json",
-    "timestamp": "260812-1022",
+    "file": "networkjson/260812-102221_A100_M5_tmax100_op1_F_seed354_gpt_t100.json",
+    "timestamp": "260812-102221",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2760,8 +2760,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260812-1152_A100_M5_tmax100_op1_F_seed354_gpt_t5.json",
-    "timestamp": "260812-1152",
+    "file": "networkjson/260812-115200_A100_M5_tmax100_op1_F_seed354_gpt_t5.json",
+    "timestamp": "260812-115200",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2772,8 +2772,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260812-1152_A100_M5_tmax100_op1_F_seed354_gpt_t10.json",
-    "timestamp": "260812-1152",
+    "file": "networkjson/260812-115200_A100_M5_tmax100_op1_F_seed354_gpt_t10.json",
+    "timestamp": "260812-115200",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2784,8 +2784,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260812-1152_A100_M5_tmax100_op1_F_seed354_gpt_t20.json",
-    "timestamp": "260812-1152",
+    "file": "networkjson/260812-115200_A100_M5_tmax100_op1_F_seed354_gpt_t20.json",
+    "timestamp": "260812-115200",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2796,8 +2796,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260812-1152_A100_M5_tmax100_op1_F_seed354_gpt_t50.json",
-    "timestamp": "260812-1152",
+    "file": "networkjson/260812-115200_A100_M5_tmax100_op1_F_seed354_gpt_t50.json",
+    "timestamp": "260812-115200",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2808,8 +2808,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260812-1152_A100_M5_tmax100_op1_F_seed354_gpt_t100.json",
-    "timestamp": "260812-1152",
+    "file": "networkjson/260812-115200_A100_M5_tmax100_op1_F_seed354_gpt_t100.json",
+    "timestamp": "260812-115200",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2820,8 +2820,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260812-1403_A100_M5_tmax100_op1_F_seed354_gpt_t5.json",
-    "timestamp": "260812-1403",
+    "file": "networkjson/260812-140309_A100_M5_tmax100_op1_F_seed354_gpt_t5.json",
+    "timestamp": "260812-140309",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2832,8 +2832,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260812-1403_A100_M5_tmax100_op1_F_seed354_gpt_t10.json",
-    "timestamp": "260812-1403",
+    "file": "networkjson/260812-140309_A100_M5_tmax100_op1_F_seed354_gpt_t10.json",
+    "timestamp": "260812-140309",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2844,8 +2844,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260812-1403_A100_M5_tmax100_op1_F_seed354_gpt_t20.json",
-    "timestamp": "260812-1403",
+    "file": "networkjson/260812-140309_A100_M5_tmax100_op1_F_seed354_gpt_t20.json",
+    "timestamp": "260812-140309",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2856,8 +2856,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260812-1403_A100_M5_tmax100_op1_F_seed354_gpt_t50.json",
-    "timestamp": "260812-1403",
+    "file": "networkjson/260812-140309_A100_M5_tmax100_op1_F_seed354_gpt_t50.json",
+    "timestamp": "260812-140309",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2868,8 +2868,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260812-1403_A100_M5_tmax100_op1_F_seed354_gpt_t100.json",
-    "timestamp": "260812-1403",
+    "file": "networkjson/260812-140309_A100_M5_tmax100_op1_F_seed354_gpt_t100.json",
+    "timestamp": "260812-140309",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2880,8 +2880,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260812-1539_A100_M5_tmax100_op1_F_seed355_gpt_t5.json",
-    "timestamp": "260812-1539",
+    "file": "networkjson/260812-153936_A100_M5_tmax100_op1_F_seed355_gpt_t5.json",
+    "timestamp": "260812-153936",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2892,8 +2892,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260812-1539_A100_M5_tmax100_op1_F_seed355_gpt_t10.json",
-    "timestamp": "260812-1539",
+    "file": "networkjson/260812-153936_A100_M5_tmax100_op1_F_seed355_gpt_t10.json",
+    "timestamp": "260812-153936",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2904,8 +2904,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260812-1539_A100_M5_tmax100_op1_F_seed355_gpt_t20.json",
-    "timestamp": "260812-1539",
+    "file": "networkjson/260812-153936_A100_M5_tmax100_op1_F_seed355_gpt_t20.json",
+    "timestamp": "260812-153936",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2916,8 +2916,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260812-1539_A100_M5_tmax100_op1_F_seed355_gpt_t50.json",
-    "timestamp": "260812-1539",
+    "file": "networkjson/260812-153936_A100_M5_tmax100_op1_F_seed355_gpt_t50.json",
+    "timestamp": "260812-153936",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2928,8 +2928,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260812-1539_A100_M5_tmax100_op1_F_seed355_gpt_t100.json",
-    "timestamp": "260812-1539",
+    "file": "networkjson/260812-153936_A100_M5_tmax100_op1_F_seed355_gpt_t100.json",
+    "timestamp": "260812-153936",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2940,8 +2940,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260812-1813_A100_M5_tmax100_op1_F_seed355_gpt_t5.json",
-    "timestamp": "260812-1813",
+    "file": "networkjson/260812-181327_A100_M5_tmax100_op1_F_seed355_gpt_t5.json",
+    "timestamp": "260812-181327",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2952,8 +2952,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260812-1813_A100_M5_tmax100_op1_F_seed355_gpt_t10.json",
-    "timestamp": "260812-1813",
+    "file": "networkjson/260812-181327_A100_M5_tmax100_op1_F_seed355_gpt_t10.json",
+    "timestamp": "260812-181327",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2964,8 +2964,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260812-1813_A100_M5_tmax100_op1_F_seed355_gpt_t20.json",
-    "timestamp": "260812-1813",
+    "file": "networkjson/260812-181327_A100_M5_tmax100_op1_F_seed355_gpt_t20.json",
+    "timestamp": "260812-181327",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2976,8 +2976,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260812-1813_A100_M5_tmax100_op1_F_seed355_gpt_t50.json",
-    "timestamp": "260812-1813",
+    "file": "networkjson/260812-181327_A100_M5_tmax100_op1_F_seed355_gpt_t50.json",
+    "timestamp": "260812-181327",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -2988,8 +2988,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260812-1813_A100_M5_tmax100_op1_F_seed355_gpt_t100.json",
-    "timestamp": "260812-1813",
+    "file": "networkjson/260812-181327_A100_M5_tmax100_op1_F_seed355_gpt_t100.json",
+    "timestamp": "260812-181327",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -3000,8 +3000,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260812-2032_A100_M5_tmax100_op1_F_seed355_gpt_t5.json",
-    "timestamp": "260812-2032",
+    "file": "networkjson/260812-203222_A100_M5_tmax100_op1_F_seed355_gpt_t5.json",
+    "timestamp": "260812-203222",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -3012,8 +3012,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260812-2032_A100_M5_tmax100_op1_F_seed355_gpt_t10.json",
-    "timestamp": "260812-2032",
+    "file": "networkjson/260812-203222_A100_M5_tmax100_op1_F_seed355_gpt_t10.json",
+    "timestamp": "260812-203222",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -3024,8 +3024,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260812-2032_A100_M5_tmax100_op1_F_seed355_gpt_t20.json",
-    "timestamp": "260812-2032",
+    "file": "networkjson/260812-203222_A100_M5_tmax100_op1_F_seed355_gpt_t20.json",
+    "timestamp": "260812-203222",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -3036,8 +3036,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260812-2032_A100_M5_tmax100_op1_F_seed355_gpt_t50.json",
-    "timestamp": "260812-2032",
+    "file": "networkjson/260812-203222_A100_M5_tmax100_op1_F_seed355_gpt_t50.json",
+    "timestamp": "260812-203222",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -3048,8 +3048,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260812-2032_A100_M5_tmax100_op1_F_seed355_gpt_t100.json",
-    "timestamp": "260812-2032",
+    "file": "networkjson/260812-203222_A100_M5_tmax100_op1_F_seed355_gpt_t100.json",
+    "timestamp": "260812-203222",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -3060,8 +3060,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260813-1018_A100_M5_tmax100_op1_F_seed400_gpt_t5.json",
-    "timestamp": "260813-1018",
+    "file": "networkjson/260813-101835_A100_M5_tmax100_op1_F_seed400_gpt_t5.json",
+    "timestamp": "260813-101835",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -3072,8 +3072,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260813-1018_A100_M5_tmax100_op1_F_seed400_gpt_t10.json",
-    "timestamp": "260813-1018",
+    "file": "networkjson/260813-101835_A100_M5_tmax100_op1_F_seed400_gpt_t10.json",
+    "timestamp": "260813-101835",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -3084,8 +3084,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260813-1018_A100_M5_tmax100_op1_F_seed400_gpt_t20.json",
-    "timestamp": "260813-1018",
+    "file": "networkjson/260813-101835_A100_M5_tmax100_op1_F_seed400_gpt_t20.json",
+    "timestamp": "260813-101835",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -3096,8 +3096,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260813-1018_A100_M5_tmax100_op1_F_seed400_gpt_t50.json",
-    "timestamp": "260813-1018",
+    "file": "networkjson/260813-101835_A100_M5_tmax100_op1_F_seed400_gpt_t50.json",
+    "timestamp": "260813-101835",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -3108,8 +3108,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260813-1018_A100_M5_tmax100_op1_F_seed400_gpt_t100.json",
-    "timestamp": "260813-1018",
+    "file": "networkjson/260813-101835_A100_M5_tmax100_op1_F_seed400_gpt_t100.json",
+    "timestamp": "260813-101835",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -3120,8 +3120,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260813-1059_A100_M5_tmax100_op1_F_seed400_gpt_t5.json",
-    "timestamp": "260813-1059",
+    "file": "networkjson/260813-105951_A100_M5_tmax100_op1_F_seed400_gpt_t5.json",
+    "timestamp": "260813-105951",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -3132,8 +3132,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260813-1059_A100_M5_tmax100_op1_F_seed400_gpt_t10.json",
-    "timestamp": "260813-1059",
+    "file": "networkjson/260813-105951_A100_M5_tmax100_op1_F_seed400_gpt_t10.json",
+    "timestamp": "260813-105951",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -3144,8 +3144,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260813-1059_A100_M5_tmax100_op1_F_seed400_gpt_t20.json",
-    "timestamp": "260813-1059",
+    "file": "networkjson/260813-105951_A100_M5_tmax100_op1_F_seed400_gpt_t20.json",
+    "timestamp": "260813-105951",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -3156,8 +3156,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260813-1059_A100_M5_tmax100_op1_F_seed400_gpt_t50.json",
-    "timestamp": "260813-1059",
+    "file": "networkjson/260813-105951_A100_M5_tmax100_op1_F_seed400_gpt_t50.json",
+    "timestamp": "260813-105951",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -3168,8 +3168,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260813-1059_A100_M5_tmax100_op1_F_seed400_gpt_t100.json",
-    "timestamp": "260813-1059",
+    "file": "networkjson/260813-105951_A100_M5_tmax100_op1_F_seed400_gpt_t100.json",
+    "timestamp": "260813-105951",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -3180,8 +3180,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260813-1253_A100_M5_tmax100_op1_F_seed400_gpt_t5.json",
-    "timestamp": "260813-1253",
+    "file": "networkjson/260813-125355_A100_M5_tmax100_op1_F_seed400_gpt_t5.json",
+    "timestamp": "260813-125355",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -3192,8 +3192,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260813-1253_A100_M5_tmax100_op1_F_seed400_gpt_t10.json",
-    "timestamp": "260813-1253",
+    "file": "networkjson/260813-125355_A100_M5_tmax100_op1_F_seed400_gpt_t10.json",
+    "timestamp": "260813-125355",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -3204,8 +3204,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260813-1253_A100_M5_tmax100_op1_F_seed400_gpt_t20.json",
-    "timestamp": "260813-1253",
+    "file": "networkjson/260813-125355_A100_M5_tmax100_op1_F_seed400_gpt_t20.json",
+    "timestamp": "260813-125355",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -3216,8 +3216,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260813-1253_A100_M5_tmax100_op1_F_seed400_gpt_t50.json",
-    "timestamp": "260813-1253",
+    "file": "networkjson/260813-125355_A100_M5_tmax100_op1_F_seed400_gpt_t50.json",
+    "timestamp": "260813-125355",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -3228,8 +3228,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260813-1253_A100_M5_tmax100_op1_F_seed400_gpt_t100.json",
-    "timestamp": "260813-1253",
+    "file": "networkjson/260813-125355_A100_M5_tmax100_op1_F_seed400_gpt_t100.json",
+    "timestamp": "260813-125355",
     "N": 100,
     "M": 5,
     "tmax": 100,
@@ -3240,8 +3240,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260813-1518_A100_M10_tmax100_op1_F_seed354_gpt_t5.json",
-    "timestamp": "260813-1518",
+    "file": "networkjson/260813-151858_A100_M10_tmax100_op1_F_seed354_gpt_t5.json",
+    "timestamp": "260813-151858",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3252,8 +3252,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260813-1518_A100_M10_tmax100_op1_F_seed354_gpt_t10.json",
-    "timestamp": "260813-1518",
+    "file": "networkjson/260813-151858_A100_M10_tmax100_op1_F_seed354_gpt_t10.json",
+    "timestamp": "260813-151858",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3264,8 +3264,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260813-1518_A100_M10_tmax100_op1_F_seed354_gpt_t20.json",
-    "timestamp": "260813-1518",
+    "file": "networkjson/260813-151858_A100_M10_tmax100_op1_F_seed354_gpt_t20.json",
+    "timestamp": "260813-151858",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3276,8 +3276,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260813-1518_A100_M10_tmax100_op1_F_seed354_gpt_t50.json",
-    "timestamp": "260813-1518",
+    "file": "networkjson/260813-151858_A100_M10_tmax100_op1_F_seed354_gpt_t50.json",
+    "timestamp": "260813-151858",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3288,8 +3288,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260813-1518_A100_M10_tmax100_op1_F_seed354_gpt_t100.json",
-    "timestamp": "260813-1518",
+    "file": "networkjson/260813-151858_A100_M10_tmax100_op1_F_seed354_gpt_t100.json",
+    "timestamp": "260813-151858",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3300,8 +3300,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260813-1729_A100_M10_tmax100_op1_F_seed354_gpt_t5.json",
-    "timestamp": "260813-1729",
+    "file": "networkjson/260813-172911_A100_M10_tmax100_op1_F_seed354_gpt_t5.json",
+    "timestamp": "260813-172911",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3312,8 +3312,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260813-1729_A100_M10_tmax100_op1_F_seed354_gpt_t10.json",
-    "timestamp": "260813-1729",
+    "file": "networkjson/260813-172911_A100_M10_tmax100_op1_F_seed354_gpt_t10.json",
+    "timestamp": "260813-172911",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3324,8 +3324,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260813-1729_A100_M10_tmax100_op1_F_seed354_gpt_t20.json",
-    "timestamp": "260813-1729",
+    "file": "networkjson/260813-172911_A100_M10_tmax100_op1_F_seed354_gpt_t20.json",
+    "timestamp": "260813-172911",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3336,8 +3336,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260813-1729_A100_M10_tmax100_op1_F_seed354_gpt_t50.json",
-    "timestamp": "260813-1729",
+    "file": "networkjson/260813-172911_A100_M10_tmax100_op1_F_seed354_gpt_t50.json",
+    "timestamp": "260813-172911",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3348,8 +3348,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260813-1729_A100_M10_tmax100_op1_F_seed354_gpt_t100.json",
-    "timestamp": "260813-1729",
+    "file": "networkjson/260813-172911_A100_M10_tmax100_op1_F_seed354_gpt_t100.json",
+    "timestamp": "260813-172911",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3360,8 +3360,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260813-1940_A100_M10_tmax100_op1_F_seed354_gpt_t5.json",
-    "timestamp": "260813-1940",
+    "file": "networkjson/260813-194043_A100_M10_tmax100_op1_F_seed354_gpt_t5.json",
+    "timestamp": "260813-194043",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3372,8 +3372,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260813-1940_A100_M10_tmax100_op1_F_seed354_gpt_t10.json",
-    "timestamp": "260813-1940",
+    "file": "networkjson/260813-194043_A100_M10_tmax100_op1_F_seed354_gpt_t10.json",
+    "timestamp": "260813-194043",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3384,8 +3384,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260813-1940_A100_M10_tmax100_op1_F_seed354_gpt_t20.json",
-    "timestamp": "260813-1940",
+    "file": "networkjson/260813-194043_A100_M10_tmax100_op1_F_seed354_gpt_t20.json",
+    "timestamp": "260813-194043",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3396,8 +3396,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260813-1940_A100_M10_tmax100_op1_F_seed354_gpt_t50.json",
-    "timestamp": "260813-1940",
+    "file": "networkjson/260813-194043_A100_M10_tmax100_op1_F_seed354_gpt_t50.json",
+    "timestamp": "260813-194043",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3408,8 +3408,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260813-1940_A100_M10_tmax100_op1_F_seed354_gpt_t100.json",
-    "timestamp": "260813-1940",
+    "file": "networkjson/260813-194043_A100_M10_tmax100_op1_F_seed354_gpt_t100.json",
+    "timestamp": "260813-194043",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3420,8 +3420,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260814-1046_A100_M10_tmax100_op1_F_seed355_gpt_t5.json",
-    "timestamp": "260814-1046",
+    "file": "networkjson/260814-104605_A100_M10_tmax100_op1_F_seed355_gpt_t5.json",
+    "timestamp": "260814-104605",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3432,8 +3432,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260814-1046_A100_M10_tmax100_op1_F_seed355_gpt_t10.json",
-    "timestamp": "260814-1046",
+    "file": "networkjson/260814-104605_A100_M10_tmax100_op1_F_seed355_gpt_t10.json",
+    "timestamp": "260814-104605",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3444,8 +3444,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260814-1046_A100_M10_tmax100_op1_F_seed355_gpt_t20.json",
-    "timestamp": "260814-1046",
+    "file": "networkjson/260814-104605_A100_M10_tmax100_op1_F_seed355_gpt_t20.json",
+    "timestamp": "260814-104605",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3456,8 +3456,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260814-1046_A100_M10_tmax100_op1_F_seed355_gpt_t50.json",
-    "timestamp": "260814-1046",
+    "file": "networkjson/260814-104605_A100_M10_tmax100_op1_F_seed355_gpt_t50.json",
+    "timestamp": "260814-104605",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3468,8 +3468,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260814-1046_A100_M10_tmax100_op1_F_seed355_gpt_t100.json",
-    "timestamp": "260814-1046",
+    "file": "networkjson/260814-104605_A100_M10_tmax100_op1_F_seed355_gpt_t100.json",
+    "timestamp": "260814-104605",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3480,8 +3480,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260814-1227_A100_M10_tmax100_op1_F_seed355_gpt_t5.json",
-    "timestamp": "260814-1227",
+    "file": "networkjson/260814-122712_A100_M10_tmax100_op1_F_seed355_gpt_t5.json",
+    "timestamp": "260814-122712",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3492,8 +3492,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260814-1227_A100_M10_tmax100_op1_F_seed355_gpt_t10.json",
-    "timestamp": "260814-1227",
+    "file": "networkjson/260814-122712_A100_M10_tmax100_op1_F_seed355_gpt_t10.json",
+    "timestamp": "260814-122712",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3504,8 +3504,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260814-1227_A100_M10_tmax100_op1_F_seed355_gpt_t20.json",
-    "timestamp": "260814-1227",
+    "file": "networkjson/260814-122712_A100_M10_tmax100_op1_F_seed355_gpt_t20.json",
+    "timestamp": "260814-122712",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3516,8 +3516,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260814-1227_A100_M10_tmax100_op1_F_seed355_gpt_t50.json",
-    "timestamp": "260814-1227",
+    "file": "networkjson/260814-122712_A100_M10_tmax100_op1_F_seed355_gpt_t50.json",
+    "timestamp": "260814-122712",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3528,8 +3528,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260814-1227_A100_M10_tmax100_op1_F_seed355_gpt_t100.json",
-    "timestamp": "260814-1227",
+    "file": "networkjson/260814-122712_A100_M10_tmax100_op1_F_seed355_gpt_t100.json",
+    "timestamp": "260814-122712",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3540,8 +3540,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260814-1404_A100_M10_tmax100_op1_F_seed355_gpt_t5.json",
-    "timestamp": "260814-1404",
+    "file": "networkjson/260814-140424_A100_M10_tmax100_op1_F_seed355_gpt_t5.json",
+    "timestamp": "260814-140424",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3552,8 +3552,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260814-1404_A100_M10_tmax100_op1_F_seed355_gpt_t10.json",
-    "timestamp": "260814-1404",
+    "file": "networkjson/260814-140424_A100_M10_tmax100_op1_F_seed355_gpt_t10.json",
+    "timestamp": "260814-140424",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3564,8 +3564,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260814-1404_A100_M10_tmax100_op1_F_seed355_gpt_t20.json",
-    "timestamp": "260814-1404",
+    "file": "networkjson/260814-140424_A100_M10_tmax100_op1_F_seed355_gpt_t20.json",
+    "timestamp": "260814-140424",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3576,8 +3576,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260814-1404_A100_M10_tmax100_op1_F_seed355_gpt_t50.json",
-    "timestamp": "260814-1404",
+    "file": "networkjson/260814-140424_A100_M10_tmax100_op1_F_seed355_gpt_t50.json",
+    "timestamp": "260814-140424",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3588,8 +3588,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260814-1404_A100_M10_tmax100_op1_F_seed355_gpt_t100.json",
-    "timestamp": "260814-1404",
+    "file": "networkjson/260814-140424_A100_M10_tmax100_op1_F_seed355_gpt_t100.json",
+    "timestamp": "260814-140424",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3600,8 +3600,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260814-1650_A100_M10_tmax100_op1_F_seed400_gpt_t5.json",
-    "timestamp": "260814-1650",
+    "file": "networkjson/260814-165024_A100_M10_tmax100_op1_F_seed400_gpt_t5.json",
+    "timestamp": "260814-165024",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3612,8 +3612,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260814-1650_A100_M10_tmax100_op1_F_seed400_gpt_t10.json",
-    "timestamp": "260814-1650",
+    "file": "networkjson/260814-165024_A100_M10_tmax100_op1_F_seed400_gpt_t10.json",
+    "timestamp": "260814-165024",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3624,8 +3624,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260814-1650_A100_M10_tmax100_op1_F_seed400_gpt_t20.json",
-    "timestamp": "260814-1650",
+    "file": "networkjson/260814-165024_A100_M10_tmax100_op1_F_seed400_gpt_t20.json",
+    "timestamp": "260814-165024",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3636,8 +3636,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260814-1650_A100_M10_tmax100_op1_F_seed400_gpt_t50.json",
-    "timestamp": "260814-1650",
+    "file": "networkjson/260814-165024_A100_M10_tmax100_op1_F_seed400_gpt_t50.json",
+    "timestamp": "260814-165024",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3648,8 +3648,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260814-1650_A100_M10_tmax100_op1_F_seed400_gpt_t100.json",
-    "timestamp": "260814-1650",
+    "file": "networkjson/260814-165024_A100_M10_tmax100_op1_F_seed400_gpt_t100.json",
+    "timestamp": "260814-165024",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3660,8 +3660,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260814-1822_A100_M10_tmax100_op1_F_seed400_gpt_t5.json",
-    "timestamp": "260814-1822",
+    "file": "networkjson/260814-182201_A100_M10_tmax100_op1_F_seed400_gpt_t5.json",
+    "timestamp": "260814-182201",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3672,8 +3672,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260814-1822_A100_M10_tmax100_op1_F_seed400_gpt_t10.json",
-    "timestamp": "260814-1822",
+    "file": "networkjson/260814-182201_A100_M10_tmax100_op1_F_seed400_gpt_t10.json",
+    "timestamp": "260814-182201",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3684,8 +3684,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260814-1822_A100_M10_tmax100_op1_F_seed400_gpt_t20.json",
-    "timestamp": "260814-1822",
+    "file": "networkjson/260814-182201_A100_M10_tmax100_op1_F_seed400_gpt_t20.json",
+    "timestamp": "260814-182201",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3696,8 +3696,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260814-1822_A100_M10_tmax100_op1_F_seed400_gpt_t50.json",
-    "timestamp": "260814-1822",
+    "file": "networkjson/260814-182201_A100_M10_tmax100_op1_F_seed400_gpt_t50.json",
+    "timestamp": "260814-182201",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3708,8 +3708,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260814-1822_A100_M10_tmax100_op1_F_seed400_gpt_t100.json",
-    "timestamp": "260814-1822",
+    "file": "networkjson/260814-182201_A100_M10_tmax100_op1_F_seed400_gpt_t100.json",
+    "timestamp": "260814-182201",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3720,8 +3720,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260814-2057_A100_M10_tmax100_op1_F_seed400_gpt_t5.json",
-    "timestamp": "260814-2057",
+    "file": "networkjson/260814-205742_A100_M10_tmax100_op1_F_seed400_gpt_t5.json",
+    "timestamp": "260814-205742",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3732,8 +3732,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260814-2057_A100_M10_tmax100_op1_F_seed400_gpt_t10.json",
-    "timestamp": "260814-2057",
+    "file": "networkjson/260814-205742_A100_M10_tmax100_op1_F_seed400_gpt_t10.json",
+    "timestamp": "260814-205742",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3744,8 +3744,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260814-2057_A100_M10_tmax100_op1_F_seed400_gpt_t20.json",
-    "timestamp": "260814-2057",
+    "file": "networkjson/260814-205742_A100_M10_tmax100_op1_F_seed400_gpt_t20.json",
+    "timestamp": "260814-205742",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3756,8 +3756,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260814-2057_A100_M10_tmax100_op1_F_seed400_gpt_t50.json",
-    "timestamp": "260814-2057",
+    "file": "networkjson/260814-205742_A100_M10_tmax100_op1_F_seed400_gpt_t50.json",
+    "timestamp": "260814-205742",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3768,8 +3768,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260814-2057_A100_M10_tmax100_op1_F_seed400_gpt_t100.json",
-    "timestamp": "260814-2057",
+    "file": "networkjson/260814-205742_A100_M10_tmax100_op1_F_seed400_gpt_t100.json",
+    "timestamp": "260814-205742",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3780,8 +3780,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260818-1014_A100_M10_tmax100_op3_F_seed354_gpt_t5.json",
-    "timestamp": "260818-1014",
+    "file": "networkjson/260818-101421_A100_M10_tmax100_op3_F_seed354_gpt_t5.json",
+    "timestamp": "260818-101421",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3792,8 +3792,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260818-1014_A100_M10_tmax100_op3_F_seed354_gpt_t10.json",
-    "timestamp": "260818-1014",
+    "file": "networkjson/260818-101421_A100_M10_tmax100_op3_F_seed354_gpt_t10.json",
+    "timestamp": "260818-101421",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3804,8 +3804,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260818-1014_A100_M10_tmax100_op3_F_seed354_gpt_t20.json",
-    "timestamp": "260818-1014",
+    "file": "networkjson/260818-101421_A100_M10_tmax100_op3_F_seed354_gpt_t20.json",
+    "timestamp": "260818-101421",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3816,8 +3816,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260818-1014_A100_M10_tmax100_op3_F_seed354_gpt_t50.json",
-    "timestamp": "260818-1014",
+    "file": "networkjson/260818-101421_A100_M10_tmax100_op3_F_seed354_gpt_t50.json",
+    "timestamp": "260818-101421",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3828,8 +3828,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260818-1014_A100_M10_tmax100_op3_F_seed354_gpt_t100.json",
-    "timestamp": "260818-1014",
+    "file": "networkjson/260818-101421_A100_M10_tmax100_op3_F_seed354_gpt_t100.json",
+    "timestamp": "260818-101421",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3840,8 +3840,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260818-1239_A100_M10_tmax100_op3_F_seed354_gpt_t5.json",
-    "timestamp": "260818-1239",
+    "file": "networkjson/260818-123952_A100_M10_tmax100_op3_F_seed354_gpt_t5.json",
+    "timestamp": "260818-123952",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3852,8 +3852,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260818-1239_A100_M10_tmax100_op3_F_seed354_gpt_t10.json",
-    "timestamp": "260818-1239",
+    "file": "networkjson/260818-123952_A100_M10_tmax100_op3_F_seed354_gpt_t10.json",
+    "timestamp": "260818-123952",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3864,8 +3864,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260818-1239_A100_M10_tmax100_op3_F_seed354_gpt_t20.json",
-    "timestamp": "260818-1239",
+    "file": "networkjson/260818-123952_A100_M10_tmax100_op3_F_seed354_gpt_t20.json",
+    "timestamp": "260818-123952",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3876,8 +3876,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260818-1239_A100_M10_tmax100_op3_F_seed354_gpt_t50.json",
-    "timestamp": "260818-1239",
+    "file": "networkjson/260818-123952_A100_M10_tmax100_op3_F_seed354_gpt_t50.json",
+    "timestamp": "260818-123952",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3888,8 +3888,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260818-1239_A100_M10_tmax100_op3_F_seed354_gpt_t100.json",
-    "timestamp": "260818-1239",
+    "file": "networkjson/260818-123952_A100_M10_tmax100_op3_F_seed354_gpt_t100.json",
+    "timestamp": "260818-123952",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3900,8 +3900,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260818-1537_A100_M10_tmax100_op3_F_seed354_gpt_t5.json",
-    "timestamp": "260818-1537",
+    "file": "networkjson/260818-153734_A100_M10_tmax100_op3_F_seed354_gpt_t5.json",
+    "timestamp": "260818-153734",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3912,8 +3912,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260818-1537_A100_M10_tmax100_op3_F_seed354_gpt_t10.json",
-    "timestamp": "260818-1537",
+    "file": "networkjson/260818-153734_A100_M10_tmax100_op3_F_seed354_gpt_t10.json",
+    "timestamp": "260818-153734",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3924,8 +3924,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260818-1537_A100_M10_tmax100_op3_F_seed354_gpt_t20.json",
-    "timestamp": "260818-1537",
+    "file": "networkjson/260818-153734_A100_M10_tmax100_op3_F_seed354_gpt_t20.json",
+    "timestamp": "260818-153734",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3936,8 +3936,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260818-1537_A100_M10_tmax100_op3_F_seed354_gpt_t50.json",
-    "timestamp": "260818-1537",
+    "file": "networkjson/260818-153734_A100_M10_tmax100_op3_F_seed354_gpt_t50.json",
+    "timestamp": "260818-153734",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3948,8 +3948,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260818-1537_A100_M10_tmax100_op3_F_seed354_gpt_t100.json",
-    "timestamp": "260818-1537",
+    "file": "networkjson/260818-153734_A100_M10_tmax100_op3_F_seed354_gpt_t100.json",
+    "timestamp": "260818-153734",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3960,8 +3960,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260818-1825_A100_M10_tmax100_op3_F_seed355_gpt_t5.json",
-    "timestamp": "260818-1825",
+    "file": "networkjson/260818-182547_A100_M10_tmax100_op3_F_seed355_gpt_t5.json",
+    "timestamp": "260818-182547",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3972,8 +3972,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260818-1825_A100_M10_tmax100_op3_F_seed355_gpt_t10.json",
-    "timestamp": "260818-1825",
+    "file": "networkjson/260818-182547_A100_M10_tmax100_op3_F_seed355_gpt_t10.json",
+    "timestamp": "260818-182547",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3984,8 +3984,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260818-1825_A100_M10_tmax100_op3_F_seed355_gpt_t20.json",
-    "timestamp": "260818-1825",
+    "file": "networkjson/260818-182547_A100_M10_tmax100_op3_F_seed355_gpt_t20.json",
+    "timestamp": "260818-182547",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -3996,8 +3996,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260818-1825_A100_M10_tmax100_op3_F_seed355_gpt_t50.json",
-    "timestamp": "260818-1825",
+    "file": "networkjson/260818-182547_A100_M10_tmax100_op3_F_seed355_gpt_t50.json",
+    "timestamp": "260818-182547",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -4008,8 +4008,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260818-1825_A100_M10_tmax100_op3_F_seed355_gpt_t100.json",
-    "timestamp": "260818-1825",
+    "file": "networkjson/260818-182547_A100_M10_tmax100_op3_F_seed355_gpt_t100.json",
+    "timestamp": "260818-182547",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -4020,8 +4020,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260818-2026_A100_M10_tmax100_op3_F_seed355_gpt_t5.json",
-    "timestamp": "260818-2026",
+    "file": "networkjson/260818-202648_A100_M10_tmax100_op3_F_seed355_gpt_t5.json",
+    "timestamp": "260818-202648",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -4032,8 +4032,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260818-2026_A100_M10_tmax100_op3_F_seed355_gpt_t10.json",
-    "timestamp": "260818-2026",
+    "file": "networkjson/260818-202648_A100_M10_tmax100_op3_F_seed355_gpt_t10.json",
+    "timestamp": "260818-202648",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -4044,8 +4044,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260818-2026_A100_M10_tmax100_op3_F_seed355_gpt_t20.json",
-    "timestamp": "260818-2026",
+    "file": "networkjson/260818-202648_A100_M10_tmax100_op3_F_seed355_gpt_t20.json",
+    "timestamp": "260818-202648",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -4056,8 +4056,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260818-2026_A100_M10_tmax100_op3_F_seed355_gpt_t50.json",
-    "timestamp": "260818-2026",
+    "file": "networkjson/260818-202648_A100_M10_tmax100_op3_F_seed355_gpt_t50.json",
+    "timestamp": "260818-202648",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -4068,8 +4068,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260818-2026_A100_M10_tmax100_op3_F_seed355_gpt_t100.json",
-    "timestamp": "260818-2026",
+    "file": "networkjson/260818-202648_A100_M10_tmax100_op3_F_seed355_gpt_t100.json",
+    "timestamp": "260818-202648",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -4080,8 +4080,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260818-2227_A100_M10_tmax100_op3_F_seed355_gpt_t5.json",
-    "timestamp": "260818-2227",
+    "file": "networkjson/260818-222720_A100_M10_tmax100_op3_F_seed355_gpt_t5.json",
+    "timestamp": "260818-222720",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -4092,8 +4092,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260818-2227_A100_M10_tmax100_op3_F_seed355_gpt_t10.json",
-    "timestamp": "260818-2227",
+    "file": "networkjson/260818-222720_A100_M10_tmax100_op3_F_seed355_gpt_t10.json",
+    "timestamp": "260818-222720",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -4104,8 +4104,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260818-2227_A100_M10_tmax100_op3_F_seed355_gpt_t20.json",
-    "timestamp": "260818-2227",
+    "file": "networkjson/260818-222720_A100_M10_tmax100_op3_F_seed355_gpt_t20.json",
+    "timestamp": "260818-222720",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -4116,8 +4116,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260818-2227_A100_M10_tmax100_op3_F_seed355_gpt_t50.json",
-    "timestamp": "260818-2227",
+    "file": "networkjson/260818-222720_A100_M10_tmax100_op3_F_seed355_gpt_t50.json",
+    "timestamp": "260818-222720",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -4128,8 +4128,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260818-2227_A100_M10_tmax100_op3_F_seed355_gpt_t100.json",
-    "timestamp": "260818-2227",
+    "file": "networkjson/260818-222720_A100_M10_tmax100_op3_F_seed355_gpt_t100.json",
+    "timestamp": "260818-222720",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -4140,8 +4140,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260819-1001_A100_M10_tmax100_op3_F_seed400_gpt_t5.json",
-    "timestamp": "260819-1001",
+    "file": "networkjson/260819-100109_A100_M10_tmax100_op3_F_seed400_gpt_t5.json",
+    "timestamp": "260819-100109",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -4152,8 +4152,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260819-1001_A100_M10_tmax100_op3_F_seed400_gpt_t10.json",
-    "timestamp": "260819-1001",
+    "file": "networkjson/260819-100109_A100_M10_tmax100_op3_F_seed400_gpt_t10.json",
+    "timestamp": "260819-100109",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -4164,8 +4164,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260819-1001_A100_M10_tmax100_op3_F_seed400_gpt_t20.json",
-    "timestamp": "260819-1001",
+    "file": "networkjson/260819-100109_A100_M10_tmax100_op3_F_seed400_gpt_t20.json",
+    "timestamp": "260819-100109",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -4176,8 +4176,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260819-1001_A100_M10_tmax100_op3_F_seed400_gpt_t50.json",
-    "timestamp": "260819-1001",
+    "file": "networkjson/260819-100109_A100_M10_tmax100_op3_F_seed400_gpt_t50.json",
+    "timestamp": "260819-100109",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -4188,8 +4188,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260819-1001_A100_M10_tmax100_op3_F_seed400_gpt_t100.json",
-    "timestamp": "260819-1001",
+    "file": "networkjson/260819-100109_A100_M10_tmax100_op3_F_seed400_gpt_t100.json",
+    "timestamp": "260819-100109",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -4200,8 +4200,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260819-1218_A100_M10_tmax100_op3_F_seed400_gpt_t5.json",
-    "timestamp": "260819-1218",
+    "file": "networkjson/260819-121819_A100_M10_tmax100_op3_F_seed400_gpt_t5.json",
+    "timestamp": "260819-121819",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -4212,8 +4212,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260819-1218_A100_M10_tmax100_op3_F_seed400_gpt_t10.json",
-    "timestamp": "260819-1218",
+    "file": "networkjson/260819-121819_A100_M10_tmax100_op3_F_seed400_gpt_t10.json",
+    "timestamp": "260819-121819",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -4224,8 +4224,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260819-1218_A100_M10_tmax100_op3_F_seed400_gpt_t20.json",
-    "timestamp": "260819-1218",
+    "file": "networkjson/260819-121819_A100_M10_tmax100_op3_F_seed400_gpt_t20.json",
+    "timestamp": "260819-121819",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -4236,8 +4236,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260819-1218_A100_M10_tmax100_op3_F_seed400_gpt_t50.json",
-    "timestamp": "260819-1218",
+    "file": "networkjson/260819-121819_A100_M10_tmax100_op3_F_seed400_gpt_t50.json",
+    "timestamp": "260819-121819",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -4248,8 +4248,8 @@
     "t": 50
   },
   {
-    "file": "networkjson/260819-1218_A100_M10_tmax100_op3_F_seed400_gpt_t100.json",
-    "timestamp": "260819-1218",
+    "file": "networkjson/260819-121819_A100_M10_tmax100_op3_F_seed400_gpt_t100.json",
+    "timestamp": "260819-121819",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -4260,8 +4260,8 @@
     "t": 100
   },
   {
-    "file": "networkjson/260819-1423_A100_M10_tmax100_op3_F_seed400_gpt_t5.json",
-    "timestamp": "260819-1423",
+    "file": "networkjson/260819-142352_A100_M10_tmax100_op3_F_seed400_gpt_t5.json",
+    "timestamp": "260819-142352",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -4272,8 +4272,8 @@
     "t": 5
   },
   {
-    "file": "networkjson/260819-1423_A100_M10_tmax100_op3_F_seed400_gpt_t10.json",
-    "timestamp": "260819-1423",
+    "file": "networkjson/260819-142352_A100_M10_tmax100_op3_F_seed400_gpt_t10.json",
+    "timestamp": "260819-142352",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -4284,8 +4284,8 @@
     "t": 10
   },
   {
-    "file": "networkjson/260819-1423_A100_M10_tmax100_op3_F_seed400_gpt_t20.json",
-    "timestamp": "260819-1423",
+    "file": "networkjson/260819-142352_A100_M10_tmax100_op3_F_seed400_gpt_t20.json",
+    "timestamp": "260819-142352",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -4296,8 +4296,8 @@
     "t": 20
   },
   {
-    "file": "networkjson/260819-1423_A100_M10_tmax100_op3_F_seed400_gpt_t50.json",
-    "timestamp": "260819-1423",
+    "file": "networkjson/260819-142352_A100_M10_tmax100_op3_F_seed400_gpt_t50.json",
+    "timestamp": "260819-142352",
     "N": 100,
     "M": 10,
     "tmax": 100,
@@ -4308,13 +4308,2173 @@
     "t": 50
   },
   {
-    "file": "networkjson/260819-1423_A100_M10_tmax100_op3_F_seed400_gpt_t100.json",
-    "timestamp": "260819-1423",
+    "file": "networkjson/260819-142352_A100_M10_tmax100_op3_F_seed400_gpt_t100.json",
+    "timestamp": "260819-142352",
     "N": 100,
     "M": 10,
     "tmax": 100,
     "openmindedness": 3,
     "post": "F",
+    "seed": 400,
+    "model": "gpt",
+    "t": 100
+  },
+  {
+    "file": "networkjson/260916-135331_A100_M5_tmax100_op1_S_seed354_gpt_t5.json",
+    "timestamp": "260916-135331",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 5
+  },
+  {
+    "file": "networkjson/260916-135331_A100_M5_tmax100_op1_S_seed354_gpt_t10.json",
+    "timestamp": "260916-135331",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 10
+  },
+  {
+    "file": "networkjson/260916-135331_A100_M5_tmax100_op1_S_seed354_gpt_t20.json",
+    "timestamp": "260916-135331",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 20
+  },
+  {
+    "file": "networkjson/260916-135331_A100_M5_tmax100_op1_S_seed354_gpt_t50.json",
+    "timestamp": "260916-135331",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 50
+  },
+  {
+    "file": "networkjson/260916-135331_A100_M5_tmax100_op1_S_seed354_gpt_t100.json",
+    "timestamp": "260916-135331",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 100
+  },
+  {
+    "file": "networkjson/260916-143552_A100_M5_tmax100_op1_S_seed354_gpt_t5.json",
+    "timestamp": "260916-143552",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 5
+  },
+  {
+    "file": "networkjson/260916-143552_A100_M5_tmax100_op1_S_seed354_gpt_t10.json",
+    "timestamp": "260916-143552",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 10
+  },
+  {
+    "file": "networkjson/260916-143552_A100_M5_tmax100_op1_S_seed354_gpt_t20.json",
+    "timestamp": "260916-143552",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 20
+  },
+  {
+    "file": "networkjson/260916-143552_A100_M5_tmax100_op1_S_seed354_gpt_t50.json",
+    "timestamp": "260916-143552",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 50
+  },
+  {
+    "file": "networkjson/260916-143552_A100_M5_tmax100_op1_S_seed354_gpt_t100.json",
+    "timestamp": "260916-143552",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 100
+  },
+  {
+    "file": "networkjson/260916-153022_A100_M5_tmax100_op1_S_seed354_gpt_t5.json",
+    "timestamp": "260916-153022",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 5
+  },
+  {
+    "file": "networkjson/260916-153022_A100_M5_tmax100_op1_S_seed354_gpt_t10.json",
+    "timestamp": "260916-153022",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 10
+  },
+  {
+    "file": "networkjson/260916-153022_A100_M5_tmax100_op1_S_seed354_gpt_t20.json",
+    "timestamp": "260916-153022",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 20
+  },
+  {
+    "file": "networkjson/260916-153022_A100_M5_tmax100_op1_S_seed354_gpt_t50.json",
+    "timestamp": "260916-153022",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 50
+  },
+  {
+    "file": "networkjson/260916-153022_A100_M5_tmax100_op1_S_seed354_gpt_t100.json",
+    "timestamp": "260916-153022",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 100
+  },
+  {
+    "file": "networkjson/260916-163703_A100_M5_tmax100_op1_S_seed355_gpt_t5.json",
+    "timestamp": "260916-163703",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 5
+  },
+  {
+    "file": "networkjson/260916-163703_A100_M5_tmax100_op1_S_seed355_gpt_t10.json",
+    "timestamp": "260916-163703",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 10
+  },
+  {
+    "file": "networkjson/260916-163703_A100_M5_tmax100_op1_S_seed355_gpt_t20.json",
+    "timestamp": "260916-163703",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 20
+  },
+  {
+    "file": "networkjson/260916-163703_A100_M5_tmax100_op1_S_seed355_gpt_t50.json",
+    "timestamp": "260916-163703",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 50
+  },
+  {
+    "file": "networkjson/260916-163703_A100_M5_tmax100_op1_S_seed355_gpt_t100.json",
+    "timestamp": "260916-163703",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 100
+  },
+  {
+    "file": "networkjson/260916-184423_A100_M5_tmax100_op1_S_seed355_gpt_t5.json",
+    "timestamp": "260916-184423",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 5
+  },
+  {
+    "file": "networkjson/260916-184423_A100_M5_tmax100_op1_S_seed355_gpt_t10.json",
+    "timestamp": "260916-184423",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 10
+  },
+  {
+    "file": "networkjson/260916-184423_A100_M5_tmax100_op1_S_seed355_gpt_t20.json",
+    "timestamp": "260916-184423",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 20
+  },
+  {
+    "file": "networkjson/260916-184423_A100_M5_tmax100_op1_S_seed355_gpt_t50.json",
+    "timestamp": "260916-184423",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 50
+  },
+  {
+    "file": "networkjson/260916-184423_A100_M5_tmax100_op1_S_seed355_gpt_t100.json",
+    "timestamp": "260916-184423",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 100
+  },
+  {
+    "file": "networkjson/260917-092437_A100_M5_tmax100_op1_S_seed355_gpt_t5.json",
+    "timestamp": "260917-092437",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 5
+  },
+  {
+    "file": "networkjson/260917-092437_A100_M5_tmax100_op1_S_seed355_gpt_t10.json",
+    "timestamp": "260917-092437",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 10
+  },
+  {
+    "file": "networkjson/260917-092437_A100_M5_tmax100_op1_S_seed355_gpt_t20.json",
+    "timestamp": "260917-092437",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 20
+  },
+  {
+    "file": "networkjson/260917-092437_A100_M5_tmax100_op1_S_seed355_gpt_t50.json",
+    "timestamp": "260917-092437",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 50
+  },
+  {
+    "file": "networkjson/260917-092437_A100_M5_tmax100_op1_S_seed355_gpt_t100.json",
+    "timestamp": "260917-092437",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 100
+  },
+  {
+    "file": "networkjson/260917-115644_A100_M5_tmax100_op1_S_seed400_gpt_t5.json",
+    "timestamp": "260917-115644",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 5
+  },
+  {
+    "file": "networkjson/260917-115644_A100_M5_tmax100_op1_S_seed400_gpt_t10.json",
+    "timestamp": "260917-115644",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 10
+  },
+  {
+    "file": "networkjson/260917-115644_A100_M5_tmax100_op1_S_seed400_gpt_t20.json",
+    "timestamp": "260917-115644",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 20
+  },
+  {
+    "file": "networkjson/260917-115644_A100_M5_tmax100_op1_S_seed400_gpt_t50.json",
+    "timestamp": "260917-115644",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 50
+  },
+  {
+    "file": "networkjson/260917-115644_A100_M5_tmax100_op1_S_seed400_gpt_t100.json",
+    "timestamp": "260917-115644",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 100
+  },
+  {
+    "file": "networkjson/260917-132134_A100_M5_tmax100_op1_S_seed400_gpt_t5.json",
+    "timestamp": "260917-132134",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 5
+  },
+  {
+    "file": "networkjson/260917-132134_A100_M5_tmax100_op1_S_seed400_gpt_t10.json",
+    "timestamp": "260917-132134",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 10
+  },
+  {
+    "file": "networkjson/260917-132134_A100_M5_tmax100_op1_S_seed400_gpt_t20.json",
+    "timestamp": "260917-132134",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 20
+  },
+  {
+    "file": "networkjson/260917-132134_A100_M5_tmax100_op1_S_seed400_gpt_t50.json",
+    "timestamp": "260917-132134",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 50
+  },
+  {
+    "file": "networkjson/260917-132134_A100_M5_tmax100_op1_S_seed400_gpt_t100.json",
+    "timestamp": "260917-132134",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 100
+  },
+  {
+    "file": "networkjson/260917-150119_A100_M5_tmax100_op1_S_seed400_gpt_t5.json",
+    "timestamp": "260917-150119",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 5
+  },
+  {
+    "file": "networkjson/260917-150119_A100_M5_tmax100_op1_S_seed400_gpt_t10.json",
+    "timestamp": "260917-150119",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 10
+  },
+  {
+    "file": "networkjson/260917-150119_A100_M5_tmax100_op1_S_seed400_gpt_t20.json",
+    "timestamp": "260917-150119",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 20
+  },
+  {
+    "file": "networkjson/260917-150119_A100_M5_tmax100_op1_S_seed400_gpt_t50.json",
+    "timestamp": "260917-150119",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 50
+  },
+  {
+    "file": "networkjson/260917-150119_A100_M5_tmax100_op1_S_seed400_gpt_t100.json",
+    "timestamp": "260917-150119",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 100
+  },
+  {
+    "file": "networkjson/260917-165641_A100_M5_tmax100_op3_S_seed354_gpt_t5.json",
+    "timestamp": "260917-165641",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 5
+  },
+  {
+    "file": "networkjson/260917-165641_A100_M5_tmax100_op3_S_seed354_gpt_t10.json",
+    "timestamp": "260917-165641",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 10
+  },
+  {
+    "file": "networkjson/260917-165641_A100_M5_tmax100_op3_S_seed354_gpt_t20.json",
+    "timestamp": "260917-165641",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 20
+  },
+  {
+    "file": "networkjson/260917-165641_A100_M5_tmax100_op3_S_seed354_gpt_t50.json",
+    "timestamp": "260917-165641",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 50
+  },
+  {
+    "file": "networkjson/260917-165641_A100_M5_tmax100_op3_S_seed354_gpt_t100.json",
+    "timestamp": "260917-165641",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 100
+  },
+  {
+    "file": "networkjson/260917-172649_A100_M5_tmax100_op3_S_seed354_gpt_t5.json",
+    "timestamp": "260917-172649",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 5
+  },
+  {
+    "file": "networkjson/260917-172649_A100_M5_tmax100_op3_S_seed354_gpt_t10.json",
+    "timestamp": "260917-172649",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 10
+  },
+  {
+    "file": "networkjson/260917-172649_A100_M5_tmax100_op3_S_seed354_gpt_t20.json",
+    "timestamp": "260917-172649",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 20
+  },
+  {
+    "file": "networkjson/260917-172649_A100_M5_tmax100_op3_S_seed354_gpt_t50.json",
+    "timestamp": "260917-172649",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 50
+  },
+  {
+    "file": "networkjson/260917-172649_A100_M5_tmax100_op3_S_seed354_gpt_t100.json",
+    "timestamp": "260917-172649",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 100
+  },
+  {
+    "file": "networkjson/260917-184138_A100_M5_tmax100_op3_S_seed354_gpt_t5.json",
+    "timestamp": "260917-184138",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 5
+  },
+  {
+    "file": "networkjson/260917-184138_A100_M5_tmax100_op3_S_seed354_gpt_t10.json",
+    "timestamp": "260917-184138",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 10
+  },
+  {
+    "file": "networkjson/260917-184138_A100_M5_tmax100_op3_S_seed354_gpt_t20.json",
+    "timestamp": "260917-184138",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 20
+  },
+  {
+    "file": "networkjson/260917-184138_A100_M5_tmax100_op3_S_seed354_gpt_t50.json",
+    "timestamp": "260917-184138",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 50
+  },
+  {
+    "file": "networkjson/260917-184138_A100_M5_tmax100_op3_S_seed354_gpt_t100.json",
+    "timestamp": "260917-184138",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 100
+  },
+  {
+    "file": "networkjson/260918-100343_A100_M5_tmax100_op3_S_seed355_gpt_t5.json",
+    "timestamp": "260918-100343",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 5
+  },
+  {
+    "file": "networkjson/260918-100343_A100_M5_tmax100_op3_S_seed355_gpt_t10.json",
+    "timestamp": "260918-100343",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 10
+  },
+  {
+    "file": "networkjson/260918-100343_A100_M5_tmax100_op3_S_seed355_gpt_t20.json",
+    "timestamp": "260918-100343",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 20
+  },
+  {
+    "file": "networkjson/260918-100343_A100_M5_tmax100_op3_S_seed355_gpt_t50.json",
+    "timestamp": "260918-100343",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 50
+  },
+  {
+    "file": "networkjson/260918-100343_A100_M5_tmax100_op3_S_seed355_gpt_t100.json",
+    "timestamp": "260918-100343",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 100
+  },
+  {
+    "file": "networkjson/260918-115019_A100_M5_tmax100_op3_S_seed355_gpt_t5.json",
+    "timestamp": "260918-115019",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 5
+  },
+  {
+    "file": "networkjson/260918-115019_A100_M5_tmax100_op3_S_seed355_gpt_t10.json",
+    "timestamp": "260918-115019",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 10
+  },
+  {
+    "file": "networkjson/260918-115019_A100_M5_tmax100_op3_S_seed355_gpt_t20.json",
+    "timestamp": "260918-115019",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 20
+  },
+  {
+    "file": "networkjson/260918-115019_A100_M5_tmax100_op3_S_seed355_gpt_t50.json",
+    "timestamp": "260918-115019",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 50
+  },
+  {
+    "file": "networkjson/260918-115019_A100_M5_tmax100_op3_S_seed355_gpt_t100.json",
+    "timestamp": "260918-115019",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 100
+  },
+  {
+    "file": "networkjson/260918-115026_A100_M5_tmax100_op3_S_seed355_gpt_t5.json",
+    "timestamp": "260918-115026",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 5
+  },
+  {
+    "file": "networkjson/260918-115026_A100_M5_tmax100_op3_S_seed355_gpt_t10.json",
+    "timestamp": "260918-115026",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 10
+  },
+  {
+    "file": "networkjson/260918-115026_A100_M5_tmax100_op3_S_seed355_gpt_t20.json",
+    "timestamp": "260918-115026",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 20
+  },
+  {
+    "file": "networkjson/260918-115026_A100_M5_tmax100_op3_S_seed355_gpt_t50.json",
+    "timestamp": "260918-115026",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 50
+  },
+  {
+    "file": "networkjson/260918-115026_A100_M5_tmax100_op3_S_seed355_gpt_t100.json",
+    "timestamp": "260918-115026",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 100
+  },
+  {
+    "file": "networkjson/260918-145647_A100_M5_tmax100_op3_S_seed400_gpt_t5.json",
+    "timestamp": "260918-145647",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 5
+  },
+  {
+    "file": "networkjson/260918-145647_A100_M5_tmax100_op3_S_seed400_gpt_t10.json",
+    "timestamp": "260918-145647",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 10
+  },
+  {
+    "file": "networkjson/260918-145647_A100_M5_tmax100_op3_S_seed400_gpt_t20.json",
+    "timestamp": "260918-145647",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 20
+  },
+  {
+    "file": "networkjson/260918-145647_A100_M5_tmax100_op3_S_seed400_gpt_t50.json",
+    "timestamp": "260918-145647",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 50
+  },
+  {
+    "file": "networkjson/260918-145647_A100_M5_tmax100_op3_S_seed400_gpt_t100.json",
+    "timestamp": "260918-145647",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 100
+  },
+  {
+    "file": "networkjson/260918-165010_A100_M5_tmax100_op3_S_seed400_gpt_t5.json",
+    "timestamp": "260918-165010",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 5
+  },
+  {
+    "file": "networkjson/260918-165010_A100_M5_tmax100_op3_S_seed400_gpt_t10.json",
+    "timestamp": "260918-165010",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 10
+  },
+  {
+    "file": "networkjson/260918-165010_A100_M5_tmax100_op3_S_seed400_gpt_t20.json",
+    "timestamp": "260918-165010",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 20
+  },
+  {
+    "file": "networkjson/260918-165010_A100_M5_tmax100_op3_S_seed400_gpt_t50.json",
+    "timestamp": "260918-165010",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 50
+  },
+  {
+    "file": "networkjson/260918-165010_A100_M5_tmax100_op3_S_seed400_gpt_t100.json",
+    "timestamp": "260918-165010",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 100
+  },
+  {
+    "file": "networkjson/260918-165018_A100_M5_tmax100_op3_S_seed400_gpt_t5.json",
+    "timestamp": "260918-165018",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 5
+  },
+  {
+    "file": "networkjson/260918-165018_A100_M5_tmax100_op3_S_seed400_gpt_t10.json",
+    "timestamp": "260918-165018",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 10
+  },
+  {
+    "file": "networkjson/260918-165018_A100_M5_tmax100_op3_S_seed400_gpt_t20.json",
+    "timestamp": "260918-165018",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 20
+  },
+  {
+    "file": "networkjson/260918-165018_A100_M5_tmax100_op3_S_seed400_gpt_t50.json",
+    "timestamp": "260918-165018",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 50
+  },
+  {
+    "file": "networkjson/260918-165018_A100_M5_tmax100_op3_S_seed400_gpt_t100.json",
+    "timestamp": "260918-165018",
+    "N": 100,
+    "M": 5,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 100
+  },
+  {
+    "file": "networkjson/260921-101925_A100_M10_tmax100_op1_S_seed354_gpt_t5.json",
+    "timestamp": "260921-101925",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 5
+  },
+  {
+    "file": "networkjson/260921-101925_A100_M10_tmax100_op1_S_seed354_gpt_t10.json",
+    "timestamp": "260921-101925",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 10
+  },
+  {
+    "file": "networkjson/260921-101925_A100_M10_tmax100_op1_S_seed354_gpt_t20.json",
+    "timestamp": "260921-101925",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 20
+  },
+  {
+    "file": "networkjson/260921-101925_A100_M10_tmax100_op1_S_seed354_gpt_t50.json",
+    "timestamp": "260921-101925",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 50
+  },
+  {
+    "file": "networkjson/260921-101925_A100_M10_tmax100_op1_S_seed354_gpt_t100.json",
+    "timestamp": "260921-101925",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 100
+  },
+  {
+    "file": "networkjson/260921-111838_A100_M10_tmax100_op1_S_seed354_gpt_t5.json",
+    "timestamp": "260921-111838",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 5
+  },
+  {
+    "file": "networkjson/260921-111838_A100_M10_tmax100_op1_S_seed354_gpt_t10.json",
+    "timestamp": "260921-111838",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 10
+  },
+  {
+    "file": "networkjson/260921-111838_A100_M10_tmax100_op1_S_seed354_gpt_t20.json",
+    "timestamp": "260921-111838",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 20
+  },
+  {
+    "file": "networkjson/260921-111838_A100_M10_tmax100_op1_S_seed354_gpt_t50.json",
+    "timestamp": "260921-111838",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 50
+  },
+  {
+    "file": "networkjson/260921-111838_A100_M10_tmax100_op1_S_seed354_gpt_t100.json",
+    "timestamp": "260921-111838",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 100
+  },
+  {
+    "file": "networkjson/260921-123659_A100_M10_tmax100_op1_S_seed354_gpt_t5.json",
+    "timestamp": "260921-123659",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 5
+  },
+  {
+    "file": "networkjson/260921-123659_A100_M10_tmax100_op1_S_seed354_gpt_t10.json",
+    "timestamp": "260921-123659",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 10
+  },
+  {
+    "file": "networkjson/260921-123659_A100_M10_tmax100_op1_S_seed354_gpt_t20.json",
+    "timestamp": "260921-123659",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 20
+  },
+  {
+    "file": "networkjson/260921-123659_A100_M10_tmax100_op1_S_seed354_gpt_t50.json",
+    "timestamp": "260921-123659",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 50
+  },
+  {
+    "file": "networkjson/260921-123659_A100_M10_tmax100_op1_S_seed354_gpt_t100.json",
+    "timestamp": "260921-123659",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 100
+  },
+  {
+    "file": "networkjson/260921-150723_A100_M10_tmax100_op1_S_seed355_gpt_t5.json",
+    "timestamp": "260921-150723",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 5
+  },
+  {
+    "file": "networkjson/260921-150723_A100_M10_tmax100_op1_S_seed355_gpt_t10.json",
+    "timestamp": "260921-150723",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 10
+  },
+  {
+    "file": "networkjson/260921-150723_A100_M10_tmax100_op1_S_seed355_gpt_t20.json",
+    "timestamp": "260921-150723",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 20
+  },
+  {
+    "file": "networkjson/260921-150723_A100_M10_tmax100_op1_S_seed355_gpt_t50.json",
+    "timestamp": "260921-150723",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 50
+  },
+  {
+    "file": "networkjson/260921-150723_A100_M10_tmax100_op1_S_seed355_gpt_t100.json",
+    "timestamp": "260921-150723",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 100
+  },
+  {
+    "file": "networkjson/260921-173716_A100_M10_tmax100_op1_S_seed355_gpt_t5.json",
+    "timestamp": "260921-173716",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 5
+  },
+  {
+    "file": "networkjson/260921-173716_A100_M10_tmax100_op1_S_seed355_gpt_t10.json",
+    "timestamp": "260921-173716",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 10
+  },
+  {
+    "file": "networkjson/260921-173716_A100_M10_tmax100_op1_S_seed355_gpt_t20.json",
+    "timestamp": "260921-173716",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 20
+  },
+  {
+    "file": "networkjson/260921-173716_A100_M10_tmax100_op1_S_seed355_gpt_t50.json",
+    "timestamp": "260921-173716",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 50
+  },
+  {
+    "file": "networkjson/260921-173716_A100_M10_tmax100_op1_S_seed355_gpt_t100.json",
+    "timestamp": "260921-173716",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 100
+  },
+  {
+    "file": "networkjson/260921-195912_A100_M10_tmax100_op1_S_seed355_gpt_t5.json",
+    "timestamp": "260921-195912",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 5
+  },
+  {
+    "file": "networkjson/260921-195912_A100_M10_tmax100_op1_S_seed355_gpt_t10.json",
+    "timestamp": "260921-195912",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 10
+  },
+  {
+    "file": "networkjson/260921-195912_A100_M10_tmax100_op1_S_seed355_gpt_t20.json",
+    "timestamp": "260921-195912",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 20
+  },
+  {
+    "file": "networkjson/260921-195912_A100_M10_tmax100_op1_S_seed355_gpt_t50.json",
+    "timestamp": "260921-195912",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 50
+  },
+  {
+    "file": "networkjson/260921-195912_A100_M10_tmax100_op1_S_seed355_gpt_t100.json",
+    "timestamp": "260921-195912",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 100
+  },
+  {
+    "file": "networkjson/260922-105148_A100_M10_tmax100_op1_S_seed400_gpt_t5.json",
+    "timestamp": "260922-105148",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 5
+  },
+  {
+    "file": "networkjson/260922-105148_A100_M10_tmax100_op1_S_seed400_gpt_t10.json",
+    "timestamp": "260922-105148",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 10
+  },
+  {
+    "file": "networkjson/260922-105148_A100_M10_tmax100_op1_S_seed400_gpt_t20.json",
+    "timestamp": "260922-105148",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 20
+  },
+  {
+    "file": "networkjson/260922-105148_A100_M10_tmax100_op1_S_seed400_gpt_t50.json",
+    "timestamp": "260922-105148",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 50
+  },
+  {
+    "file": "networkjson/260922-105148_A100_M10_tmax100_op1_S_seed400_gpt_t100.json",
+    "timestamp": "260922-105148",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 100
+  },
+  {
+    "file": "networkjson/260922-123851_A100_M10_tmax100_op1_S_seed400_gpt_t5.json",
+    "timestamp": "260922-123851",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 5
+  },
+  {
+    "file": "networkjson/260922-123851_A100_M10_tmax100_op1_S_seed400_gpt_t10.json",
+    "timestamp": "260922-123851",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 10
+  },
+  {
+    "file": "networkjson/260922-123851_A100_M10_tmax100_op1_S_seed400_gpt_t20.json",
+    "timestamp": "260922-123851",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 20
+  },
+  {
+    "file": "networkjson/260922-123851_A100_M10_tmax100_op1_S_seed400_gpt_t50.json",
+    "timestamp": "260922-123851",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 50
+  },
+  {
+    "file": "networkjson/260922-123851_A100_M10_tmax100_op1_S_seed400_gpt_t100.json",
+    "timestamp": "260922-123851",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 100
+  },
+  {
+    "file": "networkjson/260922-135438_A100_M10_tmax100_op1_S_seed400_gpt_t5.json",
+    "timestamp": "260922-135438",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 5
+  },
+  {
+    "file": "networkjson/260922-135438_A100_M10_tmax100_op1_S_seed400_gpt_t10.json",
+    "timestamp": "260922-135438",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 10
+  },
+  {
+    "file": "networkjson/260922-135438_A100_M10_tmax100_op1_S_seed400_gpt_t20.json",
+    "timestamp": "260922-135438",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 20
+  },
+  {
+    "file": "networkjson/260922-135438_A100_M10_tmax100_op1_S_seed400_gpt_t50.json",
+    "timestamp": "260922-135438",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 50
+  },
+  {
+    "file": "networkjson/260922-135438_A100_M10_tmax100_op1_S_seed400_gpt_t100.json",
+    "timestamp": "260922-135438",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 1,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 100
+  },
+  {
+    "file": "networkjson/260922-161124_A100_M10_tmax100_op3_S_seed354_gpt_t5.json",
+    "timestamp": "260922-161124",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 5
+  },
+  {
+    "file": "networkjson/260922-161124_A100_M10_tmax100_op3_S_seed354_gpt_t10.json",
+    "timestamp": "260922-161124",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 10
+  },
+  {
+    "file": "networkjson/260922-161124_A100_M10_tmax100_op3_S_seed354_gpt_t20.json",
+    "timestamp": "260922-161124",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 20
+  },
+  {
+    "file": "networkjson/260922-161124_A100_M10_tmax100_op3_S_seed354_gpt_t50.json",
+    "timestamp": "260922-161124",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 50
+  },
+  {
+    "file": "networkjson/260922-161124_A100_M10_tmax100_op3_S_seed354_gpt_t100.json",
+    "timestamp": "260922-161124",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 100
+  },
+  {
+    "file": "networkjson/260923-105533_A100_M10_tmax100_op3_S_seed354_gpt_t5.json",
+    "timestamp": "260923-105533",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 5
+  },
+  {
+    "file": "networkjson/260923-105533_A100_M10_tmax100_op3_S_seed354_gpt_t10.json",
+    "timestamp": "260923-105533",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 10
+  },
+  {
+    "file": "networkjson/260923-105533_A100_M10_tmax100_op3_S_seed354_gpt_t20.json",
+    "timestamp": "260923-105533",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 20
+  },
+  {
+    "file": "networkjson/260923-105533_A100_M10_tmax100_op3_S_seed354_gpt_t50.json",
+    "timestamp": "260923-105533",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 50
+  },
+  {
+    "file": "networkjson/260923-105533_A100_M10_tmax100_op3_S_seed354_gpt_t100.json",
+    "timestamp": "260923-105533",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 100
+  },
+  {
+    "file": "networkjson/260923-124945_A100_M10_tmax100_op3_S_seed354_gpt_t5.json",
+    "timestamp": "260923-124945",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 5
+  },
+  {
+    "file": "networkjson/260923-124945_A100_M10_tmax100_op3_S_seed354_gpt_t10.json",
+    "timestamp": "260923-124945",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 10
+  },
+  {
+    "file": "networkjson/260923-124945_A100_M10_tmax100_op3_S_seed354_gpt_t20.json",
+    "timestamp": "260923-124945",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 20
+  },
+  {
+    "file": "networkjson/260923-124945_A100_M10_tmax100_op3_S_seed354_gpt_t50.json",
+    "timestamp": "260923-124945",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 50
+  },
+  {
+    "file": "networkjson/260923-124945_A100_M10_tmax100_op3_S_seed354_gpt_t100.json",
+    "timestamp": "260923-124945",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 354,
+    "model": "gpt",
+    "t": 100
+  },
+  {
+    "file": "networkjson/260923-151805_A100_M10_tmax100_op3_S_seed355_gpt_t5.json",
+    "timestamp": "260923-151805",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 5
+  },
+  {
+    "file": "networkjson/260923-151805_A100_M10_tmax100_op3_S_seed355_gpt_t10.json",
+    "timestamp": "260923-151805",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 10
+  },
+  {
+    "file": "networkjson/260923-151805_A100_M10_tmax100_op3_S_seed355_gpt_t20.json",
+    "timestamp": "260923-151805",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 20
+  },
+  {
+    "file": "networkjson/260923-151805_A100_M10_tmax100_op3_S_seed355_gpt_t50.json",
+    "timestamp": "260923-151805",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 50
+  },
+  {
+    "file": "networkjson/260923-151805_A100_M10_tmax100_op3_S_seed355_gpt_t100.json",
+    "timestamp": "260923-151805",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 100
+  },
+  {
+    "file": "networkjson/260923-151839_A100_M10_tmax100_op3_S_seed355_gpt_t5.json",
+    "timestamp": "260923-151839",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 5
+  },
+  {
+    "file": "networkjson/260923-151839_A100_M10_tmax100_op3_S_seed355_gpt_t10.json",
+    "timestamp": "260923-151839",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 10
+  },
+  {
+    "file": "networkjson/260923-151839_A100_M10_tmax100_op3_S_seed355_gpt_t20.json",
+    "timestamp": "260923-151839",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 20
+  },
+  {
+    "file": "networkjson/260923-151839_A100_M10_tmax100_op3_S_seed355_gpt_t50.json",
+    "timestamp": "260923-151839",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 50
+  },
+  {
+    "file": "networkjson/260923-151839_A100_M10_tmax100_op3_S_seed355_gpt_t100.json",
+    "timestamp": "260923-151839",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 100
+  },
+  {
+    "file": "networkjson/260923-151911_A100_M10_tmax100_op3_S_seed355_gpt_t5.json",
+    "timestamp": "260923-151911",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 5
+  },
+  {
+    "file": "networkjson/260923-151911_A100_M10_tmax100_op3_S_seed355_gpt_t10.json",
+    "timestamp": "260923-151911",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 10
+  },
+  {
+    "file": "networkjson/260923-151911_A100_M10_tmax100_op3_S_seed355_gpt_t20.json",
+    "timestamp": "260923-151911",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 20
+  },
+  {
+    "file": "networkjson/260923-151911_A100_M10_tmax100_op3_S_seed355_gpt_t50.json",
+    "timestamp": "260923-151911",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 50
+  },
+  {
+    "file": "networkjson/260923-151911_A100_M10_tmax100_op3_S_seed355_gpt_t100.json",
+    "timestamp": "260923-151911",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 355,
+    "model": "gpt",
+    "t": 100
+  },
+  {
+    "file": "networkjson/260924-135157_A100_M10_tmax100_op3_S_seed400_gpt_t5.json",
+    "timestamp": "260924-135157",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 5
+  },
+  {
+    "file": "networkjson/260924-135157_A100_M10_tmax100_op3_S_seed400_gpt_t10.json",
+    "timestamp": "260924-135157",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 10
+  },
+  {
+    "file": "networkjson/260924-135157_A100_M10_tmax100_op3_S_seed400_gpt_t20.json",
+    "timestamp": "260924-135157",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 20
+  },
+  {
+    "file": "networkjson/260924-135157_A100_M10_tmax100_op3_S_seed400_gpt_t50.json",
+    "timestamp": "260924-135157",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 50
+  },
+  {
+    "file": "networkjson/260924-135157_A100_M10_tmax100_op3_S_seed400_gpt_t100.json",
+    "timestamp": "260924-135157",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 100
+  },
+  {
+    "file": "networkjson/260924-181344_A100_M10_tmax100_op3_S_seed400_gpt_t5.json",
+    "timestamp": "260924-181344",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 5
+  },
+  {
+    "file": "networkjson/260924-181344_A100_M10_tmax100_op3_S_seed400_gpt_t10.json",
+    "timestamp": "260924-181344",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 10
+  },
+  {
+    "file": "networkjson/260924-181344_A100_M10_tmax100_op3_S_seed400_gpt_t20.json",
+    "timestamp": "260924-181344",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 20
+  },
+  {
+    "file": "networkjson/260924-181344_A100_M10_tmax100_op3_S_seed400_gpt_t50.json",
+    "timestamp": "260924-181344",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 50
+  },
+  {
+    "file": "networkjson/260924-181344_A100_M10_tmax100_op3_S_seed400_gpt_t100.json",
+    "timestamp": "260924-181344",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 100
+  },
+  {
+    "file": "networkjson/260924-210228_A100_M10_tmax100_op3_S_seed400_gpt_t5.json",
+    "timestamp": "260924-210228",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 5
+  },
+  {
+    "file": "networkjson/260924-210228_A100_M10_tmax100_op3_S_seed400_gpt_t10.json",
+    "timestamp": "260924-210228",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 10
+  },
+  {
+    "file": "networkjson/260924-210228_A100_M10_tmax100_op3_S_seed400_gpt_t20.json",
+    "timestamp": "260924-210228",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 20
+  },
+  {
+    "file": "networkjson/260924-210228_A100_M10_tmax100_op3_S_seed400_gpt_t50.json",
+    "timestamp": "260924-210228",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
+    "seed": 400,
+    "model": "gpt",
+    "t": 50
+  },
+  {
+    "file": "networkjson/260924-210228_A100_M10_tmax100_op3_S_seed400_gpt_t100.json",
+    "timestamp": "260924-210228",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "openmindedness": 3,
+    "post": "S",
     "seed": 400,
     "model": "gpt",
     "t": 100

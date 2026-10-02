@@ -66,6 +66,7 @@ class NetworkViz {
     this.weightedForces = false;
     this.attractBeforeWeightOn = null;
     this.minWeight = 1;
+    this.selectedNode = null;   // persistent highlight while pane is open
 
     // DOM references
     this.svg = null;
@@ -346,14 +347,36 @@ class NetworkViz {
   onOut() {
     const cursorTip = document.getElementById("cursor-tooltip");
     if (cursorTip) cursorTip.style.display = "none";
-    if (this.linkSel) this.linkSel.classed("edge--highlighted", false);
-    if (this.nodeSel) this.nodeSel.classed("node--highlighted", false).classed("node--dimmed", false);
+    // Restore persistent selection highlight instead of clearing
+    this.applySelectionHighlight();
     const worldviewList = document.getElementById("worldview-list");
     if (worldviewList) {
       worldviewList.querySelectorAll(".worldview-pane__item").forEach(el =>
         el.classList.remove("worldview-pane__item--highlighted")
       );
     }
+  }
+
+  /** Apply persistent highlight for the currently selected node, or clear if none. */
+  applySelectionHighlight() {
+    if (this.selectedNode) {
+      const d = this.selectedNode;
+      const nb = new Set([d.id, ...(this.neighbours[d.id] || [])]);
+      if (this.linkSel) this.linkSel.classed("edge--highlighted", l => l._s === d.id || l._t === d.id);
+      if (this.linkSel) this.linkSel.filter(function() { return d3.select(this).classed("edge--highlighted"); }).raise();
+      if (this.nodeSel) this.nodeSel.classed("node--highlighted", n => nb.has(n.id))
+        .classed("node--dimmed", n => !nb.has(n.id));
+    } else {
+      if (this.linkSel) this.linkSel.classed("edge--highlighted", false);
+      if (this.nodeSel) this.nodeSel.classed("node--highlighted", false).classed("node--dimmed", false);
+    }
+  }
+
+  /** Clear selection and remove all highlighting. */
+  clearSelection() {
+    this.selectedNode = null;
+    if (this.linkSel) this.linkSel.classed("edge--highlighted", false);
+    if (this.nodeSel) this.nodeSel.classed("node--highlighted", false).classed("node--dimmed", false);
   }
 
   openWorldview(d) {
@@ -377,21 +400,15 @@ class NetworkViz {
         return `<div class="worldview-pane__item" data-id="${n.id}"><span class="worldview-pane__item-id">${n.id}</span><span class="worldview-pane__item-text">${n.label}${sub}</span></div>`;
       }).join("");
 
-    // Hover over agent title
+    // Hover over agent title — temporarily shows full neighborhood (same as selection)
     worldviewTitle.onmouseenter = () => {
-      const nb = new Set([d.id, ...(this.neighbours[d.id] || [])]);
-      this.nodeSel.classed("node--highlighted", n => nb.has(n.id))
-        .classed("node--dimmed", n => !nb.has(n.id));
-      this.linkSel.classed("edge--highlighted", l => l._s === d.id || l._t === d.id);
-      this.linkSel.filter(function() { return d3.select(this).classed("edge--highlighted"); }).raise();
+      this.applySelectionHighlight();
     };
-
     worldviewTitle.onmouseleave = () => {
-      this.nodeSel.classed("node--highlighted", false).classed("node--dimmed", false);
-      this.linkSel.classed("edge--highlighted", false);
+      this.applySelectionHighlight();
     };
 
-    // Hover over items
+    // Hover over items — temporarily highlight single statement + agent
     worldviewList.querySelectorAll(".worldview-pane__item").forEach(el => {
       el.onmouseenter = () => {
         const sid = el.dataset.id;
@@ -402,8 +419,7 @@ class NetworkViz {
         this.linkSel.filter(function() { return d3.select(this).classed("edge--highlighted"); }).raise();
       };
       el.onmouseleave = () => {
-        this.nodeSel.classed("node--highlighted", false).classed("node--dimmed", false);
-        this.linkSel.classed("edge--highlighted", false);
+        this.applySelectionHighlight();
       };
       const idSpan = el.querySelector(".worldview-pane__item-id");
       if (idSpan) {
@@ -412,6 +428,8 @@ class NetworkViz {
           const stmtNode = this.nodeById[el.dataset.id];
           if (stmtNode) {
             worldviewPane.classList.remove("worldview-pane--visible");
+            this.selectedNode = stmtNode;
+            this.applySelectionHighlight();
             this.openStatementPane(stmtNode);
           }
         };
@@ -445,16 +463,10 @@ class NetworkViz {
       ).join('')}</div>`);
 
     titleEl.onmouseenter = () => {
-      const nb = new Set([d.id, ...(this.neighbours[d.id] || [])]);
-      this.nodeSel.classed("node--highlighted", n => nb.has(n.id))
-        .classed("node--dimmed", n => !nb.has(n.id));
-      this.linkSel.classed("edge--highlighted", l => l._s === d.id || l._t === d.id);
-      this.linkSel.filter(function() { return d3.select(this).classed("edge--highlighted"); }).raise();
+      this.applySelectionHighlight();
     };
-
     titleEl.onmouseleave = () => {
-      this.nodeSel.classed("node--highlighted", false).classed("node--dimmed", false);
-      this.linkSel.classed("edge--highlighted", false);
+      this.applySelectionHighlight();
     };
 
     statementList.querySelectorAll(".agent-id").forEach(el => {
@@ -467,14 +479,15 @@ class NetworkViz {
         this.linkSel.filter(function() { return d3.select(this).classed("edge--highlighted"); }).raise();
       };
       el.onmouseleave = () => {
-        this.nodeSel.classed("node--highlighted", false).classed("node--dimmed", false);
-        this.linkSel.classed("edge--highlighted", false);
+        this.applySelectionHighlight();
       };
       el.onclick = (event) => {
         event.stopPropagation();
         const agentNode = this.nodeById[el.dataset.agentId];
         if (agentNode) {
           statementPane.classList.remove("worldview-pane--visible");
+          this.selectedNode = agentNode;
+          this.applySelectionHighlight();
           this.openWorldview(agentNode);
         }
       };
@@ -486,6 +499,11 @@ class NetworkViz {
   onClick(event, d) {
     event.stopPropagation();
     if (this.netType !== "AS") return;
+
+    // Set persistent selection
+    this.selectedNode = d;
+    this.applySelectionHighlight();
+
     if (d.type === "agent") {
       const stmtPane = document.getElementById("statement-pane");
       if (stmtPane) stmtPane.classList.remove("worldview-pane--visible");
