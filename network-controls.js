@@ -285,6 +285,23 @@ const INITIAL_NETWORK_FILTERS = {
 let allManifestEntries = [];
 let viz = null; // Will be set by initControls()
 
+// ── URL Query Param Override ─────────────────────────────────────────
+// Allows linking directly to a specific network via e.g.
+// networkexplorer.html?net=260924-210228_A100_M10_tmax100_op3_S_seed400_gpt_t100
+// (filename without the "networkjson/" path prefix or ".json" extension).
+function getRequestedNetworkName() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get("net");
+}
+
+function findEntryByName(name) {
+  if (!name) return null;
+  return allManifestEntries.find(e => {
+    const base = e.file.split("/").pop().replace(/\.json$/i, "");
+    return base === name;
+  }) || null;
+}
+
 // ── Manifest Loading ───────────────────────────────────────────────
 function loadManifest(manifestPath) {
   fetch(manifestPath)
@@ -406,6 +423,17 @@ function updateRunOptions(autoLoad = true) {
 }
 
 function loadInitialNetwork() {
+  const requestedName = getRequestedNetworkName();
+  if (requestedName) {
+    const requestedEntry = findEntryByName(requestedName);
+    if (requestedEntry) {
+      syncFiltersToEntry(requestedEntry);
+      fetchAndLoad(requestedEntry);
+      return;
+    }
+    console.warn(`No network matching ?net=${requestedName} found; falling back to INITIAL_NETWORK_FILTERS.`);
+  }
+
   const entry = allManifestEntries.find(matchesInitialFilters);
   if (entry) {
     syncFiltersToEntry(entry);
