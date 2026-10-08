@@ -7,6 +7,110 @@
  * Requires: NetworkViz instance (passed as `viz` parameter)
  */
 
+// ── Pane → native SVG ───────────────────────────────────────────────
+// Draws the open worldview/statement pane as plain SVG <rect>/<text>.
+// Unlike <foreignObject>, this renders in browsers AND in Inkscape,
+// Illustrator, Figma, etc., and does not depend on CSS classes/variables.
+function buildPaneSVG(pane, colors, width) {
+  const NS = "http://www.w3.org/2000/svg";
+  const FONT = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+  const ctx = document.createElement("canvas").getContext("2d");
+  const measure = (t, size, weight) => { ctx.font = `${weight} ${size}px ${FONT}`; return ctx.measureText(t).width; };
+  const C = {
+    bg: colors["--color-panel-bg"] || "#ffffff",
+    border: colors["--color-border"] || "#cccccc",
+    text: colors["--color-text"] || "#222222",
+    muted: colors["--color-muted"] || "#777777",
+    accent: colors["--color-accent"] || "#2255aa",
+    stmt: colors["--color-stmt"] || "#2255aa",
+    agent: colors["--color-agent"] || "#aa5522",
+  };
+  const PAD = 12, innerW = width - 2 * PAD;
+  const g = document.createElementNS(NS, "g");
+  const el = (tag, attrs, parent) => {
+    const e = document.createElementNS(NS, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    (parent || g).appendChild(e);
+    return e;
+  };
+  const wrap = (text, size, weight, firstOffset) => {
+    const words = String(text).replace(/\s+/g, " ").trim().split(" ").filter(Boolean);
+    const lines = []; let line = "";
+    words.forEach(w => {
+      const limit = innerW - (lines.length === 0 ? firstOffset : 0);
+      const test = line ? line + " " + w : w;
+      if (line && measure(test, size, weight) > limit) { lines.push(line); line = w; }
+      else line = test;
+    });
+    if (line || !lines.length) lines.push(line);
+    return lines;
+  };
+  // "ID  text…" block with a bold coloured ID and wrapped text; returns new y
+  const idBlock = (y, id, text, size, idColor, textColor, textWeight) => {
+    const lh = size + 4;
+    const off = id ? measure(id, size, 700) + 5 : 0;
+    const lines = wrap(text, size, textWeight, off);
+    lines.forEach((ln, i) => {
+      const t = el("text", { x: PAD, y: y + lh * (i + 1) - 3, "font-family": FONT, "font-size": size, fill: textColor });
+      if (i === 0 && id) {
+        const a = el("tspan", { "font-weight": 700, fill: idColor }, t); a.textContent = id;
+        const b = el("tspan", { dx: 5, "font-weight": textWeight }, t); b.textContent = ln;
+      } else t.textContent = ln;
+      if (i > 0 && id) t.setAttribute("x", PAD);
+    });
+    return y + lh * lines.length;
+  };
+
+  let y = 8;
+  const isStmt = pane.id === "statement-pane";
+  const titleEl = pane.querySelector(".worldview-pane__title, [id$='-title']");
+  if (titleEl) {
+    const sid = titleEl.querySelector(".statement-id");
+    const stx = titleEl.querySelector(".statement-text");
+    if (isStmt && (sid || stx)) {
+      y = idBlock(y, sid ? sid.textContent.trim() : "", stx ? stx.textContent.trim() : "", 11, C.stmt, C.stmt, 400);
+    } else {
+      y = idBlock(y, "", titleEl.textContent.trim(), 11, C.accent, C.accent, 600);
+    }
+  }
+  y += 6;
+  el("line", { x1: 0, x2: width, y1: y, y2: y, stroke: C.border, "stroke-width": 1 });
+  y += 8;
+
+  const info = pane.querySelector(".statement-agents-info");
+  if (info) {
+    y = idBlock(y, "", info.textContent.trim(), 10, C.muted, C.muted, 400) + 4;
+  }
+  const chips = pane.querySelectorAll(".statement-agents-list .agent-id");
+  if (chips.length) {
+    let x = PAD; const H = 16, GAP = 6;
+    chips.forEach(c => {
+      const label = c.textContent.trim();
+      const w = measure(label, 10, 600) + 12;
+      if (x > PAD && x + w > PAD + innerW) { x = PAD; y += H + GAP; }
+      el("rect", { x, y, width: w, height: H, rx: 3, fill: C.agent, "fill-opacity": 0.12 });
+      const t = el("text", { x: x + 6, y: y + 11.5, "font-family": FONT, "font-size": 10, "font-weight": 600, fill: C.agent });
+      t.textContent = label;
+      x += w + GAP;
+    });
+    y += H + 6;
+  }
+  pane.querySelectorAll(".worldview-pane__item").forEach(item => {
+    const id = (item.querySelector(".worldview-pane__item-id") || {}).textContent || "";
+    const tx = (item.querySelector(".worldview-pane__item-text") || {}).textContent || item.textContent;
+    y = idBlock(y, id.trim(), tx.trim(), 10, C.stmt, C.text, 400) + 2;
+  });
+  const empty = pane.querySelector(".worldview-pane__empty");
+  if (empty) y = idBlock(y, "", empty.textContent.trim(), 10, C.muted, C.muted, 400);
+
+  const height = y + 10;
+  const box = document.createElementNS(NS, "rect");
+  [["x", 0.5], ["y", 0.5], ["width", width - 1], ["height", height - 1], ["rx", 6],
+   ["fill", C.bg], ["stroke", C.border], ["stroke-width", 1]].forEach(([k, v]) => box.setAttribute(k, v));
+  g.insertBefore(box, g.firstChild);
+  return { g, height };
+}
+
 // ── SVG Download ────────────────────────────────────────────────────
 function downloadSVG(viz) {
   const svgEl = viz.svg.node();
@@ -56,9 +160,11 @@ function downloadSVG(viz) {
   // Measure pane position relative to the canvas wrapper (same coord space as the SVG)
   let paneRect = null;
   let canvasRect = null;
+  let paneSvg = null;
   if (activePane) {
     canvasRect = svgEl.getBoundingClientRect();
     paneRect = activePane.getBoundingClientRect();
+    paneSvg = buildPaneSVG(activePane, colorMap, paneRect.width);
   }
 
   // ── Build the output viewBox ──
@@ -68,9 +174,7 @@ function downloadSVG(viz) {
   if (paneRect && canvasRect) {
     const paneLeft = paneRect.left - canvasRect.left;
     const paneTop = paneRect.top - canvasRect.top;
-    const paneBorderPx = parseFloat(getComputedStyle(activePane).borderTopWidth) +
-                         parseFloat(getComputedStyle(activePane).borderBottomWidth);
-    const paneH = Math.max(paneRect.height, activePane.scrollHeight + paneBorderPx);
+    const paneH = paneSvg.height;
 
     vbX = Math.min(netX, paneLeft);
     vbY = Math.min(netY, paneTop);
@@ -152,102 +256,11 @@ function downloadSVG(viz) {
     g.setAttribute("display", "none");
   });
 
-  // ── Add pane as foreignObject at its actual screen position ──
-  if (activePane && paneRect && canvasRect) {
-    const paneLeft = paneRect.left - canvasRect.left;
-    const paneTop = paneRect.top - canvasRect.top;
-    // Use the larger of rendered height (includes border) and scroll content height + border
-    const paneBorder = parseFloat(getComputedStyle(activePane).borderTopWidth) +
-                       parseFloat(getComputedStyle(activePane).borderBottomWidth);
-    const paneFullH = Math.max(paneRect.height, activePane.scrollHeight + paneBorder);
-
-    // Oversized foreignObject so it never clips; viewBox handles tight crop
-    const foBuffer = 40;
-    const fo = document.createElementNS("http://www.w3.org/2000/svg", "foreignObject");
-    fo.setAttribute("x", paneLeft);
-    fo.setAttribute("y", paneTop);
-    fo.setAttribute("width", paneRect.width + foBuffer);
-    fo.setAttribute("height", paneFullH + foBuffer);
-
-    const paneClone = activePane.cloneNode(true);
-    paneClone.setAttribute("xmlns", "http://www.w3.org/1999/xhtml");
-    paneClone.style.cssText = `
-      display: flex; flex-direction: column; position: static;
-      width: ${paneRect.width}px;
-      box-sizing: border-box;
-      overflow: visible; margin: 0; padding: 0;
-      background: ${colorMap["--color-panel-bg"]};
-      border: 1px solid ${colorMap["--color-border"]};
-      border-radius: 6px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      color: ${colorMap["--color-text"]};
-    `;
-
-    // Remove close button
-    const closeBtn = paneClone.querySelector(".worldview-pane__close");
-    if (closeBtn) closeBtn.remove();
-
-    // Inline styles on pane children
-    const header = paneClone.querySelector(".worldview-pane__header");
-    if (header) {
-      header.style.cssText = `
-        padding: 8px 12px 6px; border-bottom: 1px solid ${colorMap["--color-border"]};
-        flex-shrink: 0;
-      `;
-    }
-    const title = paneClone.querySelector(".worldview-pane__title");
-    if (title) {
-      const isStatement = activePane.id === "statement-pane";
-      title.style.cssText = `
-        font-size: 11px; font-weight: 600;
-        color: ${isStatement ? colorMap["--color-text"] : colorMap["--color-accent"]};
-      `;
-      paneClone.querySelectorAll(".statement-id, .statement-text").forEach(s => {
-        s.style.color = colorMap["--color-stmt"];
-        s.style.fontWeight = "400";
-      });
-    }
-    const list = paneClone.querySelector(".worldview-pane__list");
-    if (list) {
-      list.style.cssText = `
-        overflow: visible; padding: 8px 10px 12px; flex: 1; min-height: 0;
-      `;
-    }
-    paneClone.querySelectorAll(".worldview-pane__item").forEach(item => {
-      item.style.cssText = `
-        font-size: 10px; color: ${colorMap["--color-text"]};
-        padding: 1px 1px; display: block;
-      `;
-    });
-    paneClone.querySelectorAll(".worldview-pane__item-id").forEach(el => {
-      el.style.cssText = `
-        color: ${colorMap["--color-stmt"]}; font-weight: 700; display: inline;
-      `;
-    });
-    paneClone.querySelectorAll(".worldview-pane__item-text").forEach(el => {
-      el.style.cssText = `
-        font-weight: 400; display: inline; padding-left: 5px;
-      `;
-    });
-    paneClone.querySelectorAll(".agent-id").forEach(el => {
-      el.style.cssText = `
-        font-size: 10px; font-weight: 600; color: ${colorMap["--color-agent"]};
-        padding: 2px 6px; border-radius: 3px; white-space: nowrap; display: inline-block;
-      `;
-    });
-    paneClone.querySelectorAll(".statement-agents-info").forEach(el => {
-      el.style.cssText = `
-        font-size: 10px; color: ${colorMap["--color-muted"]};
-        padding: 0 0 8px 0; margin-bottom: 4px;
-        border-bottom: 1px solid ${colorMap["--color-border"]};
-      `;
-    });
-    paneClone.querySelectorAll(".statement-agents-list").forEach(el => {
-      el.style.cssText = `display: flex; flex-wrap: wrap; gap: 6px;`;
-    });
-
-    fo.appendChild(paneClone);
-    clone.appendChild(fo);
+  // ── Add pane (native SVG) at its on-screen position ──
+  if (paneSvg && paneRect && canvasRect) {
+    paneSvg.g.setAttribute("transform",
+      `translate(${paneRect.left - canvasRect.left}, ${paneRect.top - canvasRect.top})`);
+    clone.appendChild(paneSvg.g);
   }
 
   // ── Serialize and trigger download ──
