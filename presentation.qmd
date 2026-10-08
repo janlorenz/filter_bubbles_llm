@@ -21,15 +21,16 @@ author:
         city: Bremen
         state: Germany
         url: https://www.constructor.university
-thanks: "Special thanks to Tiancheng Hu"
 format: 
   revealjs:
-    smaller: true
+    smaller: false
+    footer: "Part of the Horizon Europe Project EuropeanCitySquared ![](img/EC2logo.png)"
+    logo: img/2logos.png
     include-in-header:
       text: |
         <style>
         #title-slide::after {
-          content: "Thanks to Tiancheng Hu for help on design and prompting strategies.";
+          content: "Thanks to Tiancheng Hu for help on design and prompting strategies. ";
           position: absolute;
           bottom: -50px; /* Pulls it down below the flex container boundary */
           left: 5%;
@@ -49,12 +50,29 @@ library(tidyverse)
 library(arrow)
 ```
 
+## Agent-based Opinion Dynamics Model with LLMs
+
+::: {.columns}
+::: {.column}
+- Numerical Model $\to$
+
+- Abstract numerical opinion space $\to$ **list of statements**
+- Make artifical agent interact
+- Use **LLMs** to mimic **cognitive reasoning**
+:::
+::: {.column}
+![](img/GeschkeEtAl_Snapshot.png)
+:::
+:::
+
+
 ## AI Augmented Deliberation
 
-::: {.incremental}
-- The vision of **deliberative democracy**: People with different preferences, *beliefs* and *values* exchange arguments $\to$ better solutions for societal problem.
+::: {}
+- The vision of **deliberative democracy**
+<!-- : People with different preferences, *beliefs* and *values* exchange arguments $\to$ better solutions for societal problem. -->
 - LLM Agents could help: Summary/Evaluation of Arguments, Negotiation, Finding common ground, ...
-- Another Vision: Citizens have a digital twins doing deliberation work for them
+- Another Vision: **Citizens have a digital twin doing deliberation work for them**
 :::
 
 . . .
@@ -65,9 +83,6 @@ People deliberate $\to$ interaction $\to$ also *beliefs* and *values* (their **w
 
 [Simulate **worldview formation** with statements relatable to the **World Value Survey**]{.text-red}
 
-## Building the Simulation
-
-![](img/filter_bubbles_llm_abm_diagram.png)
 
 ## 100 Statements from the WVS (Top 50)
 
@@ -104,6 +119,12 @@ read_parquet("sttmts.parquet") |>
 First principle components off all 97,220 WVS respondents 2018.   
 In color: Progressive/Conservative coding by an LLM (not the simulation yet). 
 :::
+
+
+## Building the Simulation
+
+![](img/filter_bubbles_llm_abm_diagram.png)
+
 
 
 ## Network Example: t=5
@@ -160,7 +181,7 @@ In color: Progressive/Conservative coding by an LLM (not the simulation yet).
   style="width:100%; height:500px; border:none;">
 </iframe>
 ```
-
+<!-- dd
 ## Statement Popularity
 
 ```{r}
@@ -177,19 +198,20 @@ read_parquet("stats_pop.parquet") |>
   facet_wrap(~name) +
   labs(y = "", x = "") +
   theme_minimal()
-```
+``` -->
 
 ## Preliminary Conclusions
 
 ::: {.incremental}
-- Filter bubble formation occurs with LLM agents
-- We find clear tendencies for two bubbles: A conservative and a progressive
-- They can both exists and separate or only one wins
-- These bubbles emerge consistently with almost the same popular statements
+- Also LLM agents form filter bubbles
+- Emergence of two bubbles
+- Both bubbles can exists separately or only one wins
+- Bubbles emerge consistently with the same core statements
 - Progressive/conservative differs from the first PC in WVS PCA
 :::
 
 . . .
 
-[More systematic simulation and WVS validation needed.]{.text-red}
+[More systematic simulation and WVS validation needed.]{.text-red}   
+[Many systematic extension are on our list.]{.text-green}
 

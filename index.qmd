@@ -51,6 +51,7 @@ library(glue)
 library(patchwork)
 library(ggh4x) # Hacks for ggplot, here to make facets different widths
 library(gt)
+library(ggiraph)
 
 memory <- read_parquet("parquet/memory.parquet")
 runs_core <- read_parquet("parquet/runs_core.parquet")
@@ -174,6 +175,42 @@ Example network:
 
 # Analysis
 
+## Statement Ideology based on WVS
+
+```{r}
+load("parquet/PCAall.Rdata")
+sttmts <- read_parquet("sttmts.parquet")
+```
+
+A principal component analysis of the 100 statements based on the responses of all respondents of the World Value Survey 2018 with complete data (N = `r nrow(PCAall$x)`) shows a clear left-right ideological dimension. The first principal component (PC1) explains 13.5% of the variance in the data and is highly correlated with the left-right self-placement of respondents (r = 0.82). The statements can be ordered along this dimension, and we can classify them as progressive or conservative based on their position on PC1.
+
+```{r}
+#| label: fig-PCA-WVS-statements
+#| fig-cap: "1st Prinicple component for all statement based on World Values Survey data. "
+gg <- sttmts |>
+  arrange(desc(WVS_PC1)) |>
+  mutate(Worldview_Statement_fct = fct_inorder(Worldview_Statement)) |>
+  ggplot(aes(
+    x = WVS_PC1,
+    y = Worldview_Statement_fct,
+    color = worldview,
+    fill = WVS_PC1,
+    tooltip = Worldview_Statement
+  )) +
+  geom_col_interactive() +
+  labs(x = "", y = "", color = "Ideology LLM coded", fill = "WVS PC1") +
+  scale_fill_continuous(palette = "RdYlBu", limits = c(-1, 1)) +
+  scale_color_manual(values = c("blue", "red")) +
+  theme_minimal(base_size = 8) +
+  theme(axis.text.y = element_blank())
+girafe(ggobj = gg, options = list(opts_toolbar(position = "top", fixed = TRUE)))
+```
+
+
+## Statement Popularity
+
+
+
 ```{r}
 #| label: fig-statement-popularity
 #| fig-cap: "Popularity of statements at time step 100."
@@ -192,9 +229,11 @@ stats_pop <- memory |>
   )
 
 stats_pop_total <- stats_pop |>
+  filter(M == 5) |>
   summarize(popularity = sum(popularity), .by = c(S_id, Worldview_Statement)) |>
   mutate(label = glue("{S_id} {Worldview_Statement}")) |>
-  arrange(desc(popularity))
+  arrange(desc(popularity)) |>
+  left_join(sttmts |> select(S_id, WVS_PC1, worldview), by = join_by(S_id))
 df <- stats_pop_total |>
   slice(1:100) |>
   mutate(
@@ -207,27 +246,41 @@ df <- stats_pop_total |>
     S_id_ordered = fct_inorder(S_id_ordered) |> fct_rev()
   )
 
-pad <- 200 # data-unit space reserved for outside labels, same in both panels
+pad <- 400 # data-unit space reserved for outside labels, same in both panels
 p <- df |>
-  ggplot(aes(y = S_id_ordered, x = popularity, label = popularity)) +
-  geom_col() +
+  ggplot(aes(
+    y = S_id_ordered,
+    x = popularity,
+    label = popularity,
+    tooltip = Worldview_Statement
+  )) +
+  geom_col_interactive(aes(
+    color = worldview,
+    fill = WVS_PC1,
+  )) +
   geom_text(
     aes(
-      hjust = ifelse(popularity > 1000, 1.1, -0.1),
-      color = ifelse(popularity > 1000, "white", "black")
+      hjust = ifelse(popularity > 1000, 1.1, -0.1)
     ),
+    color = "black",
     size = 3
   ) +
-  scale_color_identity() +
   scale_y_discrete(labels = \(x) sub("___.*$", "", x)) +
   facet_wrap(~group, scales = "free", nrow = 1) +
   scale_x_continuous(
     breaks = c(),
     expand = expansion(mult = 0, add = c(0, pad))
   ) +
-  labs(y = "", x = "") +
+  scale_fill_continuous(palette = "RdYlBu", limits = c(-1, 1)) +
+  scale_color_manual(values = c("blue", "red", "grey")) +
+  labs(y = "", x = "", fill = "WVS PC1", color = "Ideology LLM coded") +
   theme_minimal() +
-  theme(panel.grid = element_blank())
+  theme(
+    panel.grid = element_blank(),
+    legend.position = "inside",
+    legend.position.inside = c(0.5, 0.5),
+    legend.justification.inside = c(0.5, 0.5)
+  )
 
 ranges <- df |>
   group_by(group) |>
@@ -235,9 +288,190 @@ ranges <- df |>
   pull(xmax)
 widths <- ranges + pad # matches the actual displayed range now, not an arbitrary offset
 
-p + force_panelsizes(cols = unit(widths, "null"))
+girafe(
+  ggobj = p + force_panelsizes(cols = unit(widths, "null")),
+  options = list(
+    opts_toolbar(position = "top", fixed = TRUE)
+  )
+)
 ```
 
+
+
+
+```{r}
+#| label: fig-numstatements-per-run
+#| tbl-cap: "Number of statements per run at t=100."
+
+bubbles <- memory |>
+  filter(t == 100) |>
+  left_join(runs_core, by = join_by(run_id)) |>
+  count(run_id_desc, M, openmindedness, post, S_id, seed)
+
+bubbles_summary <- bubbles |>
+  summarize(
+    num_statements = n(),
+    num_shared5_statements = sum(n >= 5),
+    num_shared30_statements = sum(n >= 30),
+    num_shared40_statements = sum(n > 40),
+    num_shared50_statements = sum(n >= 50),
+    num_shared70_statements = sum(n >= 70),
+    .by = c(run_id_desc, M, openmindedness, post, seed)
+  ) |>
+  arrange(M, openmindedness, post)
+
+# bubbles_summary |>
+#   summarize(
+#     avg_num_statements = mean(num_statements),
+#     avg_num_shared5_statements = mean(num_shared5_statements),
+#     avg_num_shared30_statements = mean(num_shared30_statements),
+#     avg_num_shared40_statements = mean(num_shared40_statements),
+#     avg_num_shared50_statements = mean(num_shared50_statements),
+#     avg_num_shared70_statements = mean(num_shared70_statements),
+#     .by = c(M, openmindedness, post)
+#   ) |>
+#   arrange(M, openmindedness, post) |>
+#   gt() |>
+#   fmt_number(decimal = 2) |>
+#   opt_interactive(
+#     use_sorting = TRUE,
+#     use_highlight = TRUE,
+#     use_compact_mode = TRUE,
+#     use_text_wrapping = TRUE,
+#     use_pagination = FALSE
+#   ) |>
+#   cols_width(
+#     M ~ px(60),
+#     openmindedness ~ px(120),
+#     post ~ px(90)
+#   )
+```
+
+
+## Number of surviving statements per run
+
+```{r}
+#| label: fig-numstatements-per-run-plot
+#| fig-cap: "Number of statements per simulation run at t=100. The top row of facets shows for all runs the total number of statements in the worldviews of all agents. The bottom row shows for the same runs the number of very popular statements which are shared by more than 40 agents (that means is 40% in all runs). Clicking on a point opens the network explorer for the corresponding run."
+#| fig-height: 6
+#| message: false
+max_width <- 0.9 # total width available per category slot
+step_max <- 0.18 # never space wider than this
+
+gb_data <- bubbles_summary |>
+  pivot_longer(
+    c(num_statements, num_shared40_statements),
+    names_to = "variable",
+    values_to = "num"
+  ) |>
+  mutate(
+    variable = fct_recode(
+      variable,
+      "#statements shared by >40 agents" = "num_shared40_statements",
+      "#statements" = "num_statements"
+    ) |>
+      fct_rev(),
+    onclick = paste0(
+      'window.open("networkexplorer.html?net=',
+      run_id_desc,
+      '_t100")'
+    ),
+    xcat = interaction(openmindedness, post),
+    x_num = as.numeric(xcat)
+  ) |>
+  mutate(
+    n_tied = n(),
+    step = pmin(step_max, max_width / pmax(n_tied - 1, 1)),
+    x_pos = x_num + (row_number() - (n_tied + 1) / 2) * step,
+    .by = c(M, variable, xcat, num)
+  ) |>
+  mutate(
+    xcat = fct_recode(
+      xcat,
+      "Feed\nOp. 1" = "1.F",
+      "Feed\nOp. 3" = "3.F",
+      "Both\nOp. 1" = "1.FS",
+      "Both\nOp. 3" = "3.FS",
+      "Social\nOp. 1" = "1.S",
+      "Social\nOp. 3" = "3.S"
+    ),
+    M = fct_recode(
+      factor(M),
+      "5 Statements per agent" = "5",
+      "10 Statements per agent" = "10"
+    )
+  )
+
+gb <- gb_data |>
+  ggplot(
+    aes(
+      x = x_pos,
+      y = num,
+      fill = post,
+      shape = variable,
+      alpha = variable,
+      tooltip = run_id_desc,
+      onclick = onclick,
+      data_id = run_id_desc
+    )
+  ) +
+  geom_point_interactive(size = 1.6, stroke = 0.3) +
+  scale_x_continuous(
+    breaks = seq_along(levels(gb_data$xcat)),
+    labels = levels(gb_data$xcat),
+    minor_breaks = NULL
+  ) +
+  scale_y_continuous(minor_breaks = seq(0, 66, 2), breaks = seq(0, 66, 10)) +
+  scale_shape_manual(values = c(21, 22)) +
+  scale_fill_manual(values = c("red", "green", "blue")) +
+  scale_alpha_manual(values = c(1, 0.5)) +
+  #facet_wrap(~M) +
+  facet_grid(variable ~ M, scales = "free_y") +
+  labs(
+    x = "Posting and Openmindedness",
+    y = "",
+    shape = "",
+    fill = "Posting"
+  ) +
+  theme_minimal() +
+  guides(alpha = "none", fill = "none", shape = "none") +
+  theme(
+    panel.border = element_rect(color = "black", fill = NA),
+    legend.position = "bottom"
+  )
+girafe(
+  ggobj = gb,
+  options = list(
+    opts_toolbar(position = "top", fixed = TRUE)
+  )
+)
+```
+
+
+
+
+
+
+
+
+
+# Conclusion
+
+*To do*
+
+
+# Acknowledgements {.unnumbered}
+
+We acknowledge the support of the European City Squared project, funded by the European Union's Horizon Europe research and innovation programme under grant agreement DOI: [10.3030/101178170](https://doi.org/10.3030/101178170). We also thank our colleagues in the project for their valuable feedback and discussions on this work.
+
+We thank Alua Aldaniyaz and Asmae Nakib for their enlightening data analysis of World Value Survey data with the goal of quantifying worldviews of individuals in their student project on Visual Communication and Data Storytelling at Constructor University. Their work also built the basis of the selection of statements from the World Value Survey questionnaire for our model.
+
+We thank Betül Yurtman for her work on assessing the empirical plausibility of emerging worldviews in the LLM-based agent-based model.  
+
+# Appendix
+
+
+## All Statements
 
 ```{r}
 #| label: tbl-statements
@@ -277,7 +511,7 @@ statements_meta |>
   )
 ```
 
-The outcome networks show typical characteristics like being one tighly connected bubble with few statements, being compused of two such tighly connected bubbles with very few bridges, or more diverse networks without or not very pronounced "bubbleness". 
+## Eye-balled network types
 
 Before turning to a mathematical network metrics to quantify different types we made a manual coding using eye-bulling on three different aspects: *number of bubbles* quantifies if the network is better quantified to be 1, 2, or 3 bubbles. A *bubble* is similar to what is also called a module or a cluster. It is supposed to be a group of nodes which are more connected among each other than to the other nodes. In our manual coding a we consider a diverse network without a clear bubble structure to be one bubble. As this classification can not distinguish between tightly connected bubbles and wide stread structures, the next aspect is bubbleness. *Bubbleness* has a value of 0, 0.25, 0.5, 0.75, or 1 where 1 means that all bubbles have not many statements and are therefore tightly connected and 0 means that the number of statements is still very large and bubble structure if not visible. Finally, *parity* takes also the values 0, 0.25, 0.5, 0.75, or 1. A network with one bubble always receives the value 0. For networks with two or three bubbles 1 specifies that the bubbles are almost equal in size with respect to the number of agents, while 0 stands for a network where one of the bubbles includes almost all nodes.
 
@@ -344,64 +578,3 @@ runs_analysis |>
     Filename ~ px(500)
   )
 ```
-
-
-```{r}
-#| label: tbl-network-analysis
-#| tbl-cap: "Average over different configuration."
-
-runs_analysis |>
-  summarize(
-    Number_Bubbles = mean(Number_Bubbles),
-    Bubbleness = mean(Bubbleness),
-    Parity = mean(Parity),
-    num_statements = mean(num_statements),
-    num_shared5_statements = mean(num_shared5_statements),
-    num_shared30_statements = mean(num_shared30_statements),
-    num_shared50_statements = mean(num_shared50_statements),
-    num_shared70_statements = mean(num_shared70_statements),
-    .by = c(M, Openminded, Posting)
-  ) |>
-  select(Posting, Openminded, M, everything()) |>
-  arrange(M, Posting, Openminded) |>
-  gt() |>
-  fmt_number(decimal = 2) |>
-  opt_interactive(
-    use_sorting = TRUE,
-    use_highlight = TRUE,
-    use_compact_mode = TRUE,
-    use_text_wrapping = TRUE,
-  ) |>
-  cols_width(
-    M ~ px(60),
-    Openminded ~ px(120),
-    Posting ~ px(90),
-    Number_Bubbles ~ px(140),
-    Bubbleness ~ px(100),
-    Parity ~ px(90)
-  )
-```
-
-
-
-
-```{r}
-#| label: fig-network-types
-
-```
-
-
-# Conclusion
-
-*To do*
-
-
-# Acknowledgements {.unnumbered}
-
-We acknowledge the support of the European City Squared project, funded by the European Union's Horizon Europe research and innovation programme under grant agreement DOI: [10.3030/101178170](https://doi.org/10.3030/101178170). We also thank our colleagues in the project for their valuable feedback and discussions on this work.
-
-We thank Alua Aldaniyaz and Asmae Nakib for their enlightening data analysis of World Value Survey data with the goal of quantifying worldviews of individuals in their student project on Visual Communication and Data Storytelling at Constructor University. Their work also built the basis of the selection of statements from the World Value Survey questionnaire for our model.
-
-We thank Betül Yurtman for her work on assessing the empirical plausibility of emerging worldviews in the LLM-based agent-based model.  
-
-# References
