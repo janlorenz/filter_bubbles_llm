@@ -46,7 +46,9 @@ runs_core <- runs |>
     model_name,
     run_folder,
     datetime
-  )
+  ) |>
+  mutate(across(c(N, M, openmindedness, seed), as.integer))
+
 runs_core |> write_parquet("parquet/runs_core.parquet")
 
 # Make parquets of decisions, memory, and social networks
