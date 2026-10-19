@@ -1,0 +1,37 @@
+[
+  {
+    "file": "networkjson/jev_t5.json",
+    "t": 5,
+    "N": 100,
+    "M": 10,
+    "num_statements": 68
+  },
+  {
+    "file": "networkjson/jev_t10.json",
+    "t": 10,
+    "N": 100,
+    "M": 10,
+    "num_statements": 65
+  },
+  {
+    "file": "networkjson/jev_t20.json",
+    "t": 20,
+    "N": 100,
+    "M": 10,
+    "num_statements": 61
+  },
+  {
+    "file": "networkjson/jev_t50.json",
+    "t": 50,
+    "N": 100,
+    "M": 10,
+    "num_statements": 41
+  },
+  {
+    "file": "networkjson/jev_t100.json",
+    "t": 100,
+    "N": 100,
+    "M": 10,
+    "num_statements": 33
+  }
+]
