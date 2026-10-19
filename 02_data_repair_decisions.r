@@ -56,7 +56,8 @@ write_parquet_decisions_from_json <- function(f) {
           decision,
           selected_statement_id,
           dropped_statement_id
-        )
+        ) |>
+        mutate(incoming = list(NULL), .before = shown_candidates)
     },
     if (length(d[[1]]$network) == 0) {
       NULL
@@ -72,6 +73,7 @@ write_parquet_decisions_from_json <- function(f) {
           time_step,
           source,
           memory_ids,
+          incoming,
           shown_candidates,
           decision,
           selected_statement_id = chosen_statement_id,
@@ -82,6 +84,10 @@ write_parquet_decisions_from_json <- function(f) {
     mutate(
       time_step = time_step |> as.integer(),
       agent_id = agent_id |> as.integer(),
+      incoming = map(incoming, function(x) {
+        x_int <- suppressWarnings(as.integer(x))
+        x_int[!is.na(x_int)]
+      }),
       memory_ids = pmap(
         list(memory_ids, selected_statement_id, dropped_statement_id),
         \(x, y, z) x |> setdiff(y) |> union(z) |> discard(is.na)
@@ -91,6 +97,7 @@ write_parquet_decisions_from_json <- function(f) {
     write_parquet(glue("rawdata/experiments/{f}/decisions_from_json.parquet"))
 }
 runs_core$run_folder |> walk(\(f) write_parquet_decisions_from_json(f))
+
 
 r <- runs_core |>
   mutate(
@@ -103,17 +110,8 @@ r <- runs_core |>
   )
 
 decision_all <- unnest(r, cols = c(decision)) |>
-  select(-run_id, -time_stamp, -model_name, -run_folder, -date_time)
-
-# # Test
-# test <- df |>
-#   mutate(
-#     new_mem = pmap(
-#       list(memory_ids, selected_statement_id, dropped_statement_id),
-#       \(x, y, z) x |> union(y) |> discard(is.na) |> setdiff(z)
-#     ) |> lag(),
-#     test = map2(memory_ids, new_mem, \(x,y) setequal(x,y))
-#   )
+  select(-run_id, -timestamp, -model_name, -run_folder, -datetime) |>
+  write_parquet("parquet/decisions_from_json.parquet")
 
 # # Documentation:
 # # incoming: matrix with col1 agent-id, col2 statement-id, it shows which statements come from which network neighbor
@@ -123,7 +121,7 @@ decision_all <- unnest(r, cols = c(decision)) |>
 # d <- read_malformed_jsonl(
 #   "rawdata/experiments/20260924-210228_N100_T100_Mem10_Model-gpt-oss-20b_feed-shared_13dffd96/simulation.jsonl"
 # )
-# # Just Feed
+# Just Feed
 # d <- read_malformed_jsonl(
 #   "rawdata/experiments/20260814-104605_N100_T100_Mem10_Model-gpt-oss-20b_feed-shared_049f0582/simulation.jsonl"
 # )

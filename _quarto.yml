@@ -20,6 +20,7 @@ website:
       - networkexplorer.qmd
       - href: presentation.qmd
         text: Presentation
+      - networkexplorer_jev.qmd
 
 bibliography: ABM-LLM.bib
 

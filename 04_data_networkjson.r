@@ -4,6 +4,7 @@ library(arrow)
 library(glue)
 
 ## Network Data in json
+runs_core <- read_parquet("parquet/runs_core.parquet")
 memory <- read_parquet("parquet/memory.parquet")
 statements <- read_parquet("parquet/statements.parquet") |>
   filter(run_id %in% runs_core$run_id[nrow(runs_core)]) |>
@@ -92,7 +93,7 @@ manifest <- tibble(
     M = as.numeric(str_extract(filename, "(?<=_M)\\d+(?=_)")),
     tmax = as.numeric(str_extract(filename, "(?<=tmax)\\d+")),
     openmindedness = as.numeric(str_extract(filename, "(?<=op)\\d+")),
-    post = str_extract(filename, "(?<=_)(FS|F|S)(?=_)"),
+    post = str_extract(filename, "(?<=_)(FS|F|Ffix|S)(?=_)"),
     seed = as.numeric(str_extract(filename, "(?<=seed)\\d+")),
     model = str_extract(filename, "(?<=_)[a-z]+(?=_t)"),
     t = as.numeric(str_extract(filename, "(?<=_t)\\d+(?=\\.json)"))

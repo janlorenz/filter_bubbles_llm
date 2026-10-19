@@ -16,16 +16,19 @@ runs <- read_csv("rawdata/experiments/runs_config.csv") |>
     feed_posting,
     social_posting,
     model_name,
+    fixed_feed,
     run_id,
     run_folder
   ) |>
   mutate(
+    fixed_feed = fixed_feed |> replace_na(FALSE),
     model_short = word(model_name, sep = "/", start = 2) |>
       word(sep = "-", start = 1),
     post = paste0(
       ifelse(feed_posting == TRUE, "F", ""),
       ifelse(social_posting == TRUE, "S", "")
     ),
+    post = if_else(fixed_feed, "Ffix", post),
     timestamp = str_sub(timestamp, 3, 15),
     datetime = as.POSIXct(timestamp, format = "%y%m%d-%H%M%S", tz = "UTC"),
     run_id_desc = glue(
@@ -44,6 +47,7 @@ runs_core <- runs |>
     seed,
     timestamp,
     model_name,
+    fixed_feed,
     run_folder,
     datetime
   ) |>
