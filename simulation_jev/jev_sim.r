@@ -1,15 +1,8 @@
-source("simulation_jev/simulation_jev_functions.r")
-
-statements <- read_parquet("parquet/statements_meta.parquet") |>
-  select(S_id, text = Worldview_Statement)
+source("simulation_jev/jev_functions.r")
 
 dec <- prepare_data_sim_run(
   "260326-112135_A100_M10_tmax100_op1_FS_seed355_gpt"
 )
-
-
-# sdec$source[1] <- "social"
-# sdec$incoming <- dec$incoming[101:200]
 
 sim_agent_timestep <- function(decs, t, s) {
   decs <- decs |> filter(time_step == t, source == s)
@@ -38,7 +31,8 @@ sim_agent_timestep <- function(decs, t, s) {
           if (length(cand) == 0) {
             NULL
           } else {
-            payload_integrate_decision(mem, cand, statements) |> call_jev()
+            create_payload_integrate_decision(mem, cand, statements) |>
+              call_jev()
           }
         }
       )
@@ -209,7 +203,7 @@ run_simulation <- function(
 # t = 1. This makes re-sourcing the script after a hang/crash safe.
 # To force a manual rollback (e.g. redo from t = 23 because you don't trust
 # the last checkpointed step), set start_t explicitly below.
-checkpoint_file <- "MyFirstJevSim.parquet"
+checkpoint_file <- "MyJevSim.parquet"
 d <- run_simulation(
   dec,
   tmax = 100,

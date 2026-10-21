@@ -406,7 +406,7 @@ gb_data <- bubbles_summary |>
       run_id_desc,
       '_t100")'
     ),
-    xcat = interaction(openmindedness, post),
+    xcat = interaction(openmindedness, post, drop = TRUE),
     x_num = as.numeric(xcat)
   ) |>
   mutate(
@@ -420,6 +420,7 @@ gb_data <- bubbles_summary |>
       xcat,
       "Feed\nOp. 1" = "1.F",
       "Feed\nOp. 3" = "3.F",
+      "Ffix\nOp. 1" = "1.Ffix",
       "Both\nOp. 1" = "1.FS",
       "Both\nOp. 3" = "3.FS",
       "Social\nOp. 1" = "1.S",
@@ -453,10 +454,10 @@ gb <- gb_data |>
   ) +
   scale_y_continuous(minor_breaks = seq(0, 66, 2), breaks = seq(0, 66, 10)) +
   scale_shape_manual(values = c(21, 22)) +
-  scale_fill_manual(values = c("red", "green", "blue")) +
+  scale_fill_manual(values = c("red", "darkred", "green", "blue")) +
   scale_alpha_manual(values = c(1, 0.5)) +
   #facet_wrap(~M) +
-  facet_grid(variable ~ M, scales = "free_y") +
+  facet_grid(variable ~ M, scales = "free") +
   labs(
     x = "Posting and Openmindedness",
     y = "",
