@@ -66,18 +66,19 @@ create_payload_integrate_decision <- function(
   candidates,
   statements,
   openmindedness = NA,
-  state_form = "conditions"
+  state_form = "pure",
+  model = "jev-latest"
 ) {
   memory_text <- tibble(S_id = memory) |>
     left_join(statements, by = join_by(S_id)) |>
     pull(text) |>
     str_glue("{num}. {s}", s = _, num = 1:length(memory)) |>
-    paste0(collapse = "\\n")
+    paste0(collapse = "\n")
   openmindedness_text <- ifelse(
     is.na(openmindedness),
     "",
     glue(
-      "\\nOn a scale from 0 to 10, where 0 means you almost never accept new statements and 10 means you almost always accept new statements, your openmindedness is {openmindedness}."
+      "\nOn a scale from 0 to 10, where 0 means you almost never accept new statements and 10 means you almost always accept new statements, your openmindedness is {openmindedness}."
     )
   )
   num_statements_text <- if_else(
@@ -88,13 +89,13 @@ create_payload_integrate_decision <- function(
   if (state_form == "condition") {
     state <- list(
       condition = glue(
-        "You are an individual with a worldview represented by {num_statements_text}: \\n {memory_text}{openmindedness_text}"
+        "You are an individual with a worldview represented by {num_statements_text}: \n {memory_text}{openmindedness_text}"
       )
     )
   }
   if (state_form == "pure") {
     state <- glue(
-      "You are an individual with a worldview represented by {num_statements_text}: \\n {memory_text}{openmindedness_text}"
+      "You are an individual with a worldview represented by {num_statements_text}: \n {memory_text}{openmindedness_text}"
     )
   }
   if (state_form == "structured") {
@@ -110,12 +111,12 @@ create_payload_integrate_decision <- function(
   questions <- tibble(S_id = candidates) |>
     left_join(statements, by = join_by(S_id)) |>
     pull(text) |>
-    str_glue("Does this statement fit into your worldview?\\n{s}", s = _) |>
+    str_glue("Does this statement fit into your worldview?\n{s}", s = _) |>
     as.list() |>
     map(\(x) list(type = "noul", instructions = x)) |>
     set_names(paste0("Integrate", seq(1, length(candidates))))
   payload <- list(
-    model = "jev-latest",
+    model = model,
     state = state,
     questions = questions
   )
@@ -127,10 +128,16 @@ create_payload_integrate_decision_mult <- function(
   candidates, # must be a list of candidate vectors
   statements,
   openmindedness = NA,
-  state_form = "pure"
+  state_form = "pure",
+  agent_ids = seq_along(memory), # used to build the named state keys
+  model = "jev-latest"
 ) {
   stopifnot(length(memory) == length(candidates))
-  n_agents <- length(memory)
+  stopifnot(length(agent_ids) == length(memory), !anyDuplicated(agent_ids))
+
+  # Named keys (agent_<id>) resolve far more reliably than array positions
+  # when many similar agents share one state.
+  agent_keys <- paste0("agent_", agent_ids)
 
   agent_entry <- function(mem) {
     texts <- tibble(S_id = mem) |>
@@ -145,46 +152,46 @@ create_payload_integrate_decision_mult <- function(
       ""
     } else {
       glue(
-        " On a scale from 0 to 10, where 0 means you almost never accept new statements and 10 means you almost always accept new statements, your openmindedness is {openmindedness}."
+        "\nOn a scale from 0 to 10, where 0 means you almost never accept new statements and 10 means you almost always accept new statements, your openmindedness is {openmindedness}."
       )
     }
     if (state_form == "structured") {
       list(
         identity = as.character(glue(
-          "An individual with a worldview represented by {num_statements_text}.{openmindedness_text}"
+          "You are an individual with a worldview represented by {num_statements_text}.{openmindedness_text}"
         )),
         statements = as.list(texts)
       )
     } else {
       numbered <- paste0(seq_along(texts), ". ", texts, collapse = "\n")
       as.character(glue(
-        "An individual with a worldview represented by {num_statements_text}:\n{numbered}{openmindedness_text}"
+        "You are an individual with a worldview represented by {num_statements_text}: \n {numbered}{openmindedness_text}"
       ))
     }
   }
 
-  state <- list(agents = map(memory, agent_entry))
+  state <- list(agents = set_names(map(memory, agent_entry), agent_keys))
 
-  # One noul question per agent x candidate; the agent is referenced by its
-  # 0-based state path in backticks, e.g. `agents[0]`.
+  # One noul question per agent x candidate; the instruction points at the
+  # agent's state entry via a backticked path. Question ids stay positional
+  # (Integrate_a<row>_c<k>); they are not seen by the model.
   questions <- imap(candidates, \(cand, i) {
     texts <- tibble(S_id = cand) |>
       left_join(statements, by = join_by(S_id)) |>
       pull(text)
+    path <- paste0("`agents.", agent_keys[i], "`")
     qs <- map(texts, \(s) {
-      list(
-        type = "noul",
-        instructions = as.character(glue(
-          "Does this statement fit into the worldview of `agents[{i - 1}]`? Statement: {s}"
-        ))
-      )
+      instructions <- as.character(glue(
+        "Does this statement fit into the worldview of {path}? Statement: {s}"
+      ))
+      list(type = "noul", instructions = instructions)
     })
     set_names(qs, paste0("Integrate_a", i, "_c", seq_along(cand)))
   }) |>
     list_flatten(name_spec = "{inner}")
 
   list(
-    model = "jev-latest",
+    model = model,
     state = state,
     questions = questions
   )
@@ -193,7 +200,8 @@ create_payload_integrate_decision_mult <- function(
 
 create_payload_drop_decision <- function(
   memory,
-  statments
+  statements,
+  model = "jev-latest"
 ) {
   state <- list(
     condition = glue(
@@ -212,7 +220,7 @@ create_payload_drop_decision <- function(
         set_names(memory)
     )
   payload <- list(
-    model = "jev-latest",
+    model = model,
     state = state,
     questions = questions
   )
@@ -231,7 +239,7 @@ call_jev <- function(payload) {
   result <- resp_body_json(response)
 }
 
-df_mutate_jev_result <- function(df, state_form = "pure") {
+df_mutate_jev_result <- function(df, state_form = "pure", model = "jev-latest") {
   df |>
     mutate(
       jev_result = map2(
@@ -246,7 +254,8 @@ df_mutate_jev_result <- function(df, state_form = "pure") {
               cand,
               statements,
               openmindedness = NA,
-              state_form = state_form
+              state_form = state_form,
+              model = model
             ) |>
               call_jev()
           }
