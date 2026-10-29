@@ -11,15 +11,15 @@ statements <- read_parquet("parquet/statements_meta.parquet") |>
 ## Data preparation functions
 
 #' Prepare an existing dataset for a jev simulation
-#' It loads an existing decisions table from a run identified in runs_core 
+#' It loads an existing decisions table from a run identified in runs_core
 #'
 #' @param r The run_id_desc in runs_core
 #'
-#' @returns A decsion dataframe cleaned from the existing entries leaving only 
+#' @returns A decsion dataframe cleaned from the existing entries leaving only
 #' - the initialized agent statements
-#' - the incoming order from the network partners (in social posting), and  
+#' - the incoming order from the network partners (in social posting), and
 #' - the feed posted statements in place
-#' @example 
+#' @example
 #' d <- prepare_data_sim_run("260630-120838_A100_M5_tmax100_op1_FS_seed354_gpt")
 prepare_data_sim_run <- function(r) {
   runs_core <- read_parquet("parquet/runs_core.parquet")
@@ -67,7 +67,7 @@ prepare_data_sim_run <- function(r) {
     # Initialize memory_prompt and add memory_new
     mutate(
       memory_prompt = ifelse(
-        time_step == 1 & source == "feed",
+        time_step == 1 & source == first(source),
         memory_prompt,
         list(character())
       ),
@@ -80,9 +80,10 @@ prepare_data_sim_run <- function(r) {
 
 #' Run a simulation built on a prepared decision data frame
 #' The decision dataframe is produced with prepare_data_sim_run
-#' 
+#'
 #' @param dec The decision table produced with prepare_data_sim_run
-#' @param probability_acceptance_threshold 
+#' @param max_memory The run's M: maximal number of statements per agent
+#' @param probability_acceptance_threshold
 #' @param openmindedness The openmindedness parameter encoded in prompt, not use so far, replaced by probability_acceptance_threshold
 #' @param verbose
 #' @param checkpoint_path Where data is or should be saved
@@ -95,25 +96,34 @@ prepare_data_sim_run <- function(r) {
 #' @param max_tokens Maximal extimated number of tokens in one batch before a force split
 #' @param model jev model id tag
 #'
-#' @returns
+#' @returns A filled decision data frame
 #'
 #' @export
 #' @examples
 run_simulation <- function(
   dec,
+  max_memory,
   probability_acceptance_threshold = 0.5,
-  openmindedness = NA, 
+  openmindedness = NA,
   verbose = TRUE,
   checkpoint_path = NULL,
   checkpoint_every = 1,
-  resume = FALSE, 
-  start_t = NULL, 
-  state_form = "pure", 
-  use_mult = FALSE, 
+  resume = FALSE,
+  start_t = NULL,
+  state_form = "pure",
+  use_mult = FALSE,
   batch_size = NULL,
   max_tokens = 40000,
   model = "jev-latest"
 ) {
+  # Runs may have only a feed phase (F), only a social phase (S), or both (FS)
+  has_feed <- "feed" %in% dec$source
+  has_social <- "social" %in% dec$source
+  # Source that receives memory at the start of a time step
+  first_phase <- if (has_feed) "feed" else "social"
+  # Source whose memory_new carries over to the next time step
+  last_phase <- if (has_social) "social" else "feed"
+
   if (resume) {
     if (is.null(checkpoint_path)) {
       stop(
@@ -139,15 +149,11 @@ run_simulation <- function(
       # manual rollback) may have an empty or stale feed memory for start_t.
       dec <- dec |>
         rows_update(
-          dec |>
-            filter(time_step == start_t - 1, source == "social") |>
-            mutate(
-              time_step = start_t,
-              agent_id = agent_id,
-              source = "feed",
-              memory_prompt = map(memory_new, sample),
-              .keep = "none"
-            ),
+          handoff_memory(
+            dec |> filter(time_step == start_t - 1, source == last_phase),
+            start_t,
+            first_phase
+          ),
           by = c("time_step", "agent_id", "source")
         )
     }
@@ -172,76 +178,75 @@ run_simulation <- function(
 
   for (t in seq(start_t, tmax)) {
     t_start <- Sys.time()
+    tokens <- 0
 
-    # --- feed phase ---
-    dec_feed <- sim_agent_timestep(
-      dec,
-      t,
-      "feed",
-      probability_acceptance_threshold = probability_acceptance_threshold,
-      openmindedness = openmindedness,
-      state_form = state_form,
-      use_mult = use_mult,
-      batch_size = batch_size,
-      max_tokens = max_tokens,
-      model = model
-    )
-    dec <- dec |>
-      rows_update(dec_feed, by = c("time_step", "agent_id", "source"))
-
-    # feed's memory_new becomes social's (shuffled) memory_prompt, same time step
-    dec <- dec |>
-      rows_update(
-        dec_feed |>
-          mutate(
-            time_step = time_step,
-            agent_id = agent_id,
-            source = "social",
-            memory_prompt = map(memory_new, sample),
-            .keep = "none"
-          ),
-        by = c("time_step", "agent_id", "source")
+    if (has_feed) {
+      # --- feed phase ---
+      dec_feed <- sim_agent_timestep(
+        dec,
+        t,
+        "feed",
+        max_memory = max_memory,
+        probability_acceptance_threshold = probability_acceptance_threshold,
+        openmindedness = openmindedness,
+        state_form = state_form,
+        use_mult = use_mult,
+        batch_size = batch_size,
+        max_tokens = max_tokens,
+        model = model
       )
-
-    # --- social phase ---
-    dec_social <- sim_agent_timestep(
-      dec,
-      t,
-      "social",
-      probability_acceptance_threshold = probability_acceptance_threshold,
-      openmindedness = openmindedness,
-      state_form = state_form,
-      use_mult = use_mult,
-      batch_size = batch_size,
-      max_tokens = max_tokens,
-      model = model
-    )
-    dec <- dec |>
-      rows_update(dec_social, by = c("time_step", "agent_id", "source"))
-
-    # social's memory_new becomes next time step's (shuffled) feed memory_prompt
-    if (t < tmax) {
       dec <- dec |>
-        rows_update(
-          dec_social |>
-            mutate(
-              time_step = t + 1,
-              agent_id = agent_id,
-              source = "feed",
-              memory_prompt = map(memory_new, sample),
-              .keep = "none"
-            ),
-          by = c("time_step", "agent_id", "source")
-        )
+        rows_update(dec_feed, by = c("time_step", "agent_id", "source"))
+      tokens <- tokens + sum(dec_feed$jev_input_token, na.rm = TRUE)
+
+      if (has_social) {
+        # feed's memory_new becomes social's (shuffled) memory_prompt, same time step
+        dec <- dec |>
+          rows_update(
+            handoff_memory(dec_feed, t, "social"),
+            by = c("time_step", "agent_id", "source")
+          )
+      } else if (t < tmax) {
+        # feed-only run: feed's memory_new becomes next step's feed memory_prompt
+        dec <- dec |>
+          rows_update(
+            handoff_memory(dec_feed, t + 1, "feed"),
+            by = c("time_step", "agent_id", "source")
+          )
+      }
+    }
+
+    if (has_social) {
+      # --- social phase ---
+      dec_social <- sim_agent_timestep(
+        dec,
+        t,
+        "social",
+        max_memory = max_memory,
+        probability_acceptance_threshold = probability_acceptance_threshold,
+        openmindedness = openmindedness,
+        state_form = state_form,
+        use_mult = use_mult,
+        batch_size = batch_size,
+        max_tokens = max_tokens,
+        model = model
+      )
+      dec <- dec |>
+        rows_update(dec_social, by = c("time_step", "agent_id", "source"))
+      tokens <- tokens + sum(dec_social$jev_input_token, na.rm = TRUE)
+
+      # social's memory_new becomes next step's memory_prompt (feed if present, else social)
+      if (t < tmax) {
+        dec <- dec |>
+          rows_update(
+            handoff_memory(dec_social, t + 1, first_phase),
+            by = c("time_step", "agent_id", "source")
+          )
+      }
     }
 
     if (verbose) {
       elapsed <- round(difftime(Sys.time(), t_start, units = "secs"), 1)
-      tokens <- sum(
-        dec_feed$jev_input_token,
-        dec_social$jev_input_token,
-        na.rm = TRUE
-      )
       message(glue(
         "Time step {t}/{tmax} done in {elapsed}s ({tokens} input tokens)"
       ))
@@ -264,12 +269,13 @@ run_simulation <- function(
 #' Computes one (part of a) simulation time step specified by time_step and source
 #' Can use multiple agent jev calls (cheaper), or individual jev calls
 #' The non-jev decsion if a statement is selected and which happens based on the parameter prob probability_acceptance_threshold
-#' The function takes in the full decision dataframe in 
-#' It returns a decision dataframe only with the new decisions 
+#' The function takes in the full decision dataframe in
+#' It returns a decision dataframe only with the new decisions
 #'
 #' @param decs
 #' @param t
 #' @param s
+#' @param max_memory The run's M: maximal number of statements per agent
 #' @param probability_acceptance_threshold
 #' @param openmindedness
 #' @param state_form
@@ -283,6 +289,7 @@ sim_agent_timestep <- function(
   decs,
   t,
   s,
+  max_memory,
   probability_acceptance_threshold = 0.5,
   openmindedness = NA,
   state_form = "pure",
@@ -340,7 +347,7 @@ sim_agent_timestep <- function(
     ) |>
     mutate(
       dropped_statement_id = if_else(
-        decision == "selected" & map_dbl(memory_prompt, length) == 10,
+        decision == "selected" & map_dbl(memory_prompt, length) == max_memory,
         map_chr(memory_prompt, \(x) sample(x, 1)),
         NA
       ),
@@ -352,7 +359,7 @@ sim_agent_timestep <- function(
 }
 
 #' The multi agent in one time step jev-call (batched if specified or forced)
-#' 
+#'
 #' Agents of this time step / source are sent to jev in batches (one call per
 #' batch). Batches are capped by batch_size (NULL = no agent cap) and by an
 #' estimated max_tokens input budget; the API rejects requests above 64k
@@ -472,18 +479,18 @@ jev_single_timestep <- function(
 }
 
 #' Create a payload as nested list as needed for call_jev
-#' using jsonlite to produce json and httr2 to pass it to TypeSafe.at API 
+#' using jsonlite to produce json and httr2 to pass it to TypeSafe.at API
 #'
 #' This is the version for a single decision!
-#' 
-#' @param memory 
-#' @param candidates 
-#' @param statements 
+#'
+#' @param memory
+#' @param candidates
+#' @param statements
 #' @param openmindedness
 #' @param state_form
 #' @param model
 #'
-#' @returns Nested list to parse to json 
+#' @returns Nested list to parse to json
 create_payload_integrate_decision <- function(
   memory,
   candidates,
@@ -546,7 +553,7 @@ create_payload_integrate_decision <- function(
 }
 
 #' Create a payload as nested list as needed for call_jev
-#' using jsonlite to produce json and httr2 to pass it to TypeSafe.at API 
+#' using jsonlite to produce json and httr2 to pass it to TypeSafe.at API
 #'
 #' This is the version for decisions of multiple agents !
 #'
@@ -560,8 +567,8 @@ create_payload_integrate_decision <- function(
 #'
 #' @returns Nested list to parse to json
 create_payload_integrate_decision_mult <- function(
-  memory, 
-  candidates, 
+  memory,
+  candidates,
   statements,
   openmindedness = NA,
   state_form = "pure",
@@ -629,12 +636,12 @@ create_payload_integrate_decision_mult <- function(
 }
 
 #' Send a payload as a list to jev using typesafe.ai API
-#' payload to be created by create_payload_integrate_decision or 
+#' payload to be created by create_payload_integrate_decision or
 #' create_payload_integrate_decision_mult
 #'
 #' @param payload
 #'
-#' @returns The jev resonse already in reparsed json into an R objects 
+#' @returns The jev resonse already in reparsed json into an R objects
 #'
 #' @export
 #' @examples
@@ -651,7 +658,7 @@ call_jev <- function(payload) {
   result <- resp_body_json(response)
 }
 
-#' Still a stub. Planned to implement a drop decision using jev. Not used so far. 
+#' Still a stub. Planned to implement a drop decision using jev. Not used so far.
 #'
 #' @param memory
 #' @param statements
@@ -687,7 +694,20 @@ create_payload_drop_decision <- function(
 }
 
 
-## Helpers 
+## Helpers
+
+# Turns the memory_new of a phase's rows into memory_prompt rows for another
+# time step / source, with the memory shuffled
+handoff_memory <- function(rows, to_t, to_s) {
+  rows |>
+    mutate(
+      time_step = to_t,
+      agent_id = agent_id,
+      source = to_s,
+      memory_prompt = map(memory_new, sample),
+      .keep = "none"
+    )
+}
 
 # Rough input-token cost of one agent (worldview + all its questions) inside a
 # mult payload, from the text jev actually reads (JSON keys and punctuation do
@@ -734,7 +754,7 @@ pack_batches <- function(costs, batch_size, max_tokens) {
 #'
 #' @param d The decision form data frame
 #'
-#' @returns A data frame with the final memory of with each timestep-agent-statement combination as obs 
+#' @returns A data frame with the final memory of with each timestep-agent-statement combination as obs
 decisions_to_memory <- function(d) {
   bind_rows(
     d |>
@@ -747,9 +767,6 @@ decisions_to_memory <- function(d) {
   ) |>
     unnest(cols = c(memory))
 }
-
-
-
 
 #### Check if these are needed!! Probably not
 
@@ -780,7 +797,7 @@ decisions_to_memory <- function(d) {
 
 # #' Unnests a jev_results list column into a few more columns
 # #'
-# #' @param df A data frame with a list column jev_results 
+# #' @param df A data frame with a list column jev_results
 # #' @param probability_acceptance_threshold The probability acceptance threshold used for the call
 # #'
 # #' @returns The same df with some jev result based columns remove the jev_results column
