@@ -756,76 +756,16 @@ pack_batches <- function(costs, batch_size, max_tokens) {
 #'
 #' @returns A data frame with the final memory of with each timestep-agent-statement combination as obs
 decisions_to_memory <- function(d) {
+  only_feed <- all(d$source == "feed")
   bind_rows(
     d |>
       filter(time_step == 1, source == "feed") |>
-      select(time_step, agent_id, memory = memory_prompt) |>
+      select(run_id_desc, time_step, agent_id, memory = memory_prompt) |>
       mutate(time_step = 0),
     d |>
-      filter(source == "social") |>
-      select(time_step, agent_id, memory = memory_new)
+      filter(source == if (only_feed) "feed" else "social") |>
+      select(run_id_desc, time_step, agent_id, memory = memory_new)
   ) |>
-    unnest(cols = c(memory))
+    unnest(cols = c(memory)) |>
+    rename(t = time_step, A_id = agent_id, S_id = memory)
 }
-
-#### Check if these are needed!! Probably not
-
-# df_mutate_jev_result <- function(df, state_form = "pure", model = "jev-latest") {
-#   df |>
-#     mutate(
-#       jev_result = map2(
-#         memory_prompt,
-#         shown_candidates,
-#         \(mem, cand) {
-#           if (length(cand) == 0) {
-#             NULL
-#           } else {
-#             create_payload_integrate_decision(
-#               mem,
-#               cand,
-#               statements,
-#               openmindedness = NA,
-#               state_form = state_form,
-#               model = model
-#             ) |>
-#               call_jev()
-#           }
-#         }
-#       )
-#     )
-# }
-
-# #' Unnests a jev_results list column into a few more columns
-# #'
-# #' @param df A data frame with a list column jev_results
-# #' @param probability_acceptance_threshold The probability acceptance threshold used for the call
-# #'
-# #' @returns The same df with some jev result based columns remove the jev_results column
-# df_unnest_jev_results <- function(df, probability_acceptance_threshold) {
-#   df |>
-#     mutate(
-#       jev_model = jev_result |>
-#         map_chr(\(x) if (is.null(x)) NA_character_ else x$model),
-#       jev_input_token = jev_result |>
-#         map_dbl(\(x) if (is.null(x)) NA_real_ else x$usage$input_tokens),
-#       jev_output_token = jev_result |>
-#         map_dbl(\(x) if (is.null(x)) NA_real_ else x$usage$output_tokens),
-#       jev_probs = jev_result |>
-#         map(\(x) if (is.null(x)) numeric() else map_dbl(x$answers, "noul")),
-#       decision = map_chr(jev_probs, \(y) {
-#         case_when(
-#           length(y) == 0 ~ "already_in_memory",
-#           all(y < 0.5) ~ "none_selected",
-#           .default = "selected"
-#         )
-#       }),
-#       selected_statement_id = if_else(
-#         decision == "selected",
-#         map2_chr(shown_candidates, jev_probs, \(x, y) {
-#           if (length(y) == 0) NA_character_ else x[which.max(y)]
-#         }),
-#         NA_character_
-#       )
-#     ) |>
-#     select(-jev_result)
-# }

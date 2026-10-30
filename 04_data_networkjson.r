@@ -81,7 +81,8 @@ for (id in runs_core$run_id) {
 # Generate manifest by scanning actual JSON files and extracting parameters from filenames
 # Pattern: {timestamp}_A{N}_M{M}_tmax{tmax}_op{openmindedness}_seed{seed}_{model}_t{t}.json
 
-json_files <- dir("networkjson/", full.names = FALSE)
+json_files <- dir("networkjson/", full.names = FALSE) |>
+  str_subset("jev", negate = TRUE)
 manifest <- tibble(
   filename = json_files,
   file = paste0("networkjson/", json_files)

@@ -3,9 +3,11 @@ project:
   render:
     - "*.qmd"
     - "!AGENTS.md"
+    - "!networkexplorer_jev_Backup.qmd"
   resources:
     - networkjson/
     - manifest.json
+    - manifest_jev.json
     - network-embed.html
     - network-core.js
     - network-embedded.js

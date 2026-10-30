@@ -295,6 +295,10 @@ const INITIAL_NETWORK_FILTERS = {
   timestamp: "260630-120838"
 };
 
+// Manifest key and select-element id of the third filter (configurable via initControls options)
+let PARAM_KEY = "openmindedness";
+let PARAM_ID = "filter-openmindedness";
+
 let allManifestEntries = [];
 let viz = null; // Will be set by initControls()
 
@@ -363,7 +367,7 @@ function getTopFilters() {
   return {
     N: v("filter-N"),
     M: v("filter-M"),
-    open: v("filter-openmindedness"),
+    open: v(PARAM_ID),
     post: v("filter-post"),
     seed: v("filter-seed"),
     t: v("filter-t")
@@ -373,7 +377,7 @@ function getTopFilters() {
 function matchesTopFilters(e, f) {
   return (f.N === "" || e.N == f.N) &&
     (f.M === "" || e.M == f.M) &&
-    (f.open === "" || e.openmindedness == f.open) &&
+    (f.open === "" || e[PARAM_KEY] == f.open) &&
     (f.post === "" || e.post === f.post) &&
     (f.seed === "" || e.seed == f.seed) &&
     (f.t === "" || e.t == f.t);
@@ -383,7 +387,7 @@ function matchesInitialFilters(entry) {
   const f = INITIAL_NETWORK_FILTERS;
   if (f.N !== undefined && f.N !== null && entry.N !== f.N) return false;
   if (f.M !== undefined && f.M !== null && entry.M !== f.M) return false;
-  if (f.openmindedness !== undefined && f.openmindedness !== null && entry.openmindedness !== f.openmindedness) return false;
+  if (f[PARAM_KEY] !== undefined && f[PARAM_KEY] !== null && entry[PARAM_KEY] !== f[PARAM_KEY]) return false;
   if (f.seed !== undefined && f.seed !== null && entry.seed !== f.seed) return false;
   if (f.t !== undefined && f.t !== null && entry.t !== f.t) return false;
   if (f.post !== undefined && f.post !== null && entry.post !== f.post) return false;
@@ -396,7 +400,7 @@ function populateFilters() {
 
   fillSelect("filter-N", uniq("N"), null);
   fillSelect("filter-M", uniq("M"), null);
-  fillSelect("filter-openmindedness", uniq("openmindedness"), null);
+  fillSelect(PARAM_ID, uniq(PARAM_KEY), null);
   fillSelect("filter-seed", uniq("seed"), null);
   fillSelect("filter-t", uniq("t"), null);
   
@@ -404,7 +408,7 @@ function populateFilters() {
   const postValues = [...new Set(allManifestEntries.map(e => e.post))].sort();
   fillSelect("filter-post", postValues, postValues.length > 0 ? postValues[0] : null);
 
-  ["filter-N", "filter-M", "filter-openmindedness", "filter-post", "filter-seed", "filter-t"].forEach(id => {
+  ["filter-N", "filter-M", PARAM_ID, "filter-post", "filter-seed", "filter-t"].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.addEventListener("change", () => updateRunOptions(true));
   });
@@ -493,9 +497,9 @@ function syncFiltersToEntry(entry) {
     const el = document.getElementById("filter-M");
     if (el) el.value = entry.M;
   }
-  if (entry.openmindedness !== undefined) {
-    const el = document.getElementById("filter-openmindedness");
-    if (el) el.value = entry.openmindedness;
+  if (entry[PARAM_KEY] !== undefined) {
+    const el = document.getElementById(PARAM_ID);
+    if (el) el.value = entry[PARAM_KEY];
   }
   if (entry.seed !== undefined) {
     const el = document.getElementById("filter-seed");
@@ -755,8 +759,11 @@ function setupButtons() {
 }
 
 // ── Main Initialization ────────────────────────────────────────────
-function initControls(vizInstance, manifestPath = "manifest.json") {
+function initControls(vizInstance, manifestPath = "manifest.json", options = {}) {
   viz = vizInstance;
+  if (options.paramKey) PARAM_KEY = options.paramKey;
+  if (options.paramId) PARAM_ID = options.paramId;
+  if (options.initialFilters) Object.assign(INITIAL_NETWORK_FILTERS, options.initialFilters);
 
   // Measure header height
   document.addEventListener("DOMContentLoaded", () => {
