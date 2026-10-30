@@ -11,27 +11,27 @@
     "t": 10,
     "N": 100,
     "M": 10,
-    "num_statements": 65
+    "num_statements": 66
   },
   {
     "file": "networkjson/jev_t20.json",
     "t": 20,
     "N": 100,
     "M": 10,
-    "num_statements": 61
+    "num_statements": 72
   },
   {
     "file": "networkjson/jev_t50.json",
     "t": 50,
     "N": 100,
     "M": 10,
-    "num_statements": 41
+    "num_statements": 74
   },
   {
     "file": "networkjson/jev_t100.json",
     "t": 100,
     "N": 100,
     "M": 10,
-    "num_statements": 33
+    "num_statements": 69
   }
 ]
