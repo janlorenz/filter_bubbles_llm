@@ -4,42 +4,145 @@
  * Handles D3 visualization, force-directed simulation, user interactions (hover/click),
  * and state management. Can be used standalone or with control modules.
  */
+function connectedComponents(nodes, links) {
+  const idx = new Map(nodes.map((d, i) => [d.id, i]));
+  const parent = nodes.map((_, i) => i);
+  const find = i => { while (parent[i] !== i) i = parent[i] = parent[parent[i]]; return i; };
+  const key = n => idx.get(typeof n === "object" ? n.id : n);
+  for (const l of links) {
+    const a = key(l.source), b = key(l.target);
+    if (a !== undefined && b !== undefined) parent[find(a)] = find(b);
+  }
+  const groups = new Map();
+  nodes.forEach((d, i) => {
+    const r = find(i);
+    if (!groups.has(r)) groups.set(r, []);
+    groups.get(r).push(d);
+  });
+  return [...groups.values()];
+}
+
+/**
+ * Rotates each connected component about its own centroid so its major axis
+ * becomes horizontal. Per component (not global), so a large component never
+ * sweeps through the surrounding smaller ones.
+ */
 function forceHorizontalBias(strength = 0.08) {
-  let nodes;
+  let nodes, links = [];
 
-  function force(alpha) {
-    if (!nodes || nodes.length < 2) return;
-
-    // Weighted centroid
+  function rotate(members) {
+    if (members.length < 3) return;
     let cx = 0, cy = 0;
-    for (const d of nodes) { cx += d.x; cy += d.y; }
-    cx /= nodes.length; cy /= nodes.length;
+    for (const d of members) { cx += d.x; cy += d.y; }
+    cx /= members.length; cy /= members.length;
 
-    // Covariance matrix
     let Sxx = 0, Syy = 0, Sxy = 0;
-    for (const d of nodes) {
+    for (const d of members) {
       const dx = d.x - cx, dy = d.y - cy;
       Sxx += dx * dx; Syy += dy * dy; Sxy += dx * dy;
     }
 
-    // Skip near-circular layouts — angle is noisy/meaningless there
+    // Skip near-circular layouts: angle is noisy there
     const eccentricity = Math.abs(Sxx - Syy) / (Sxx + Syy + 1e-6);
     if (eccentricity < 0.05) return;
 
-    // Angle of major axis, already smallest-rotation form (range -90°..90°)
     const theta = 0.5 * Math.atan2(2 * Sxy, Sxx - Syy);
+    // Clamped step; exact rotation (not tangential Euler step, which inflates radius)
+    const dtheta = Math.max(-0.05, Math.min(0.05, -theta * strength));
+    const cos = Math.cos(dtheta), sin = Math.sin(dtheta);
 
-    // Small rotation step toward theta = 0 (horizontal)
-    const dtheta = -theta * strength;
-
-    for (const d of nodes) {
+    for (const d of members) {
       const dx = d.x - cx, dy = d.y - cy;
-      d.vx += -dtheta * dy;
-      d.vy += dtheta * dx;
+      d.vx += dx * cos - dy * sin - dx;
+      d.vy += dx * sin + dy * cos - dy;
     }
   }
 
-  force.initialize = (_nodes) => { nodes = _nodes; };
+  function force() {
+    if (!nodes || nodes.length < 2) return;
+    for (const members of connectedComponents(nodes, links)) rotate(members);
+  }
+
+  force.initialize = _nodes => { nodes = _nodes; };
+  force.links = _ => (_ === undefined ? links : (links = _, force));
+  return force;
+}
+
+/**
+ * Treats each connected component as a rigid disc: pulls discs toward a common
+ * point and pushes overlapping discs apart (rigid translation, so internal
+ * layout is untouched). Keeps disconnected components close but not overlapping.
+ */
+function forceComponentGravity(getCenter, strength = 0.1, padding = 33) {
+  let nodes, links = [];
+
+  function force() {
+    if (!nodes || nodes.length < 2) return;
+    const idx = new Map(nodes.map((d, i) => [d.id, i]));
+    const parent = nodes.map((_, i) => i);
+    const find = i => { while (parent[i] !== i) i = parent[i] = parent[parent[i]]; return i; };
+    const key = n => idx.get(typeof n === "object" ? n.id : n);
+    for (const l of links) {
+      const a = key(l.source), b = key(l.target);
+      if (a !== undefined && b !== undefined) parent[find(a)] = find(b);
+    }
+    const map = new Map();
+    nodes.forEach((d, i) => {
+      const r = find(i);
+      const c = map.get(r) || { x: 0, y: 0, n: 0, members: [], dx: 0, dy: 0, r: 0 };
+      c.x += d.x; c.y += d.y; c.n++; c.members.push(d);
+      map.set(r, c);
+    });
+    if (map.size < 2) return;
+    const comps = [...map.values()];
+    for (const c of comps) {
+      c.x /= c.n; c.y /= c.n;
+      for (const d of c.members) c.r = Math.max(c.r, Math.hypot(d.x - c.x, d.y - c.y));
+      c.r += padding;
+    }
+    // Gravity: capped velocity nudge toward the center
+    const [cx, cy] = getCenter();
+    const maxStep = 20;
+    for (const c of comps) {
+      // Larger components are repelled harder by the charge force, so pull them harder too
+      const k = Math.min(0.9, strength * (1 + Math.log2(c.n)));
+      let dx = (cx - c.x) * k, dy = (cy - c.y) * k;
+      const m = Math.hypot(dx, dy);
+      if (m > maxStep) { dx *= maxStep / m; dy *= maxStep / m; }
+      for (const d of c.members) { d.vx += dx; d.vy += dy; }
+    }
+
+    // Separation: hard position correction (rigid shifts), applied last and
+    // iterated so gravity can never leave discs overlapping
+    for (let iter = 0; iter < 5; iter++) {
+      let moved = false;
+      for (let i = 0; i < comps.length; i++) {
+        for (let j = i + 1; j < comps.length; j++) {
+          const a = comps[i], b = comps[j];
+          let dx = b.x - a.x, dy = b.y - a.y;
+          let dist = Math.hypot(dx, dy);
+          const overlap = a.r + b.r - dist;
+          if (overlap <= 0) continue;
+          if (dist < 1e-6) { dx = Math.random() - 0.5; dy = Math.random() - 0.5; dist = Math.hypot(dx, dy); }
+          const ux = dx / dist, uy = dy / dist;
+          // Smaller disc moves more
+          const wa = b.r / (a.r + b.r), wb = a.r / (a.r + b.r);
+          shift(a, -ux * overlap * wa, -uy * overlap * wa);
+          shift(b, ux * overlap * wb, uy * overlap * wb);
+          moved = true;
+        }
+      }
+      if (!moved) break;
+    }
+  }
+
+  function shift(c, dx, dy) {
+    c.x += dx; c.y += dy;
+    for (const d of c.members) { d.x += dx; d.y += dy; }
+  }
+
+  force.initialize = _nodes => { nodes = _nodes; };
+  force.links = _ => (_ === undefined ? links : (links = _, force));
   return force;
 }
 
@@ -190,10 +293,13 @@ class NetworkViz {
         .id(d => d.id)
         .distance(this.getSliderValue("sl-edgelen"))
         .strength(this.linkStrength.bind(this)))
-      .force("charge", d3.forceManyBody().strength(-this.getSliderValue("sl-spread")))
+      .force("charge", d3.forceManyBody().strength(-this.getSliderValue("sl-spread")).distanceMax(350))
       .force("center", d3.forceCenter(W / 2, H / 2))
       .force("collide", d3.forceCollide(d => this.nodeR(d, this.sizeByDeg) + 2))
-      .force("aspect", forceHorizontalBias(0.9))   // <-- add here
+      .force("aspect", forceHorizontalBias(0.9).links(this.DATA.links))
+      .force("compgravity", forceComponentGravity(
+        () => { const [w, h] = this.getCanvasDimensions(); return [w / 2, h / 2]; }
+      ).links(this.DATA.links))
       .on("tick", () => this.onTick())
       .on("end", () => {
         const statusBar = this.getStatusBar();
@@ -522,6 +628,14 @@ class NetworkViz {
     const loadedName = document.getElementById("loaded-name");
     if (loadedName) loadedName.textContent = filename.replace(/\.json$/i, "");
 
+    const loadedInfo = document.getElementById("loaded-info");
+    if (loadedInfo) {
+      const hasInfo = sourceEntry && sourceEntry.model_name !== undefined;
+      loadedInfo.textContent = hasInfo
+        ? `Model: ${sourceEntry.model_name} Token: $${sourceEntry.token_cost}`
+        : "";
+    }
+
     const worldviewPane = document.getElementById("worldview-pane");
     const statementPane = document.getElementById("statement-pane");
     if (worldviewPane) worldviewPane.classList.remove("worldview-pane--visible");
@@ -643,6 +757,8 @@ class NetworkViz {
       .id(d => d.id)
       .distance(this.getSliderValue("sl-edgelen"))
       .strength(this.linkStrength.bind(this)));
+    this.sim.force("compgravity").links(this.DATA.links);
+    this.sim.force("aspect").links(this.DATA.links);
     this.sim.alpha(0.3).restart();
   }
 

@@ -1,5 +1,305 @@
 [
   {
+    "file": "networkjson/260325-124922_A100_M10_tmax100_ac0_FS_seed354_1_jev_t5.json",
+    "timestamp": "260325-124922",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0,
+    "post": "FS",
+    "seed": 354,
+    "model": "jev",
+    "t": 5,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260325-124922_A100_M10_tmax100_ac0_FS_seed354_1_jev_t10.json",
+    "timestamp": "260325-124922",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0,
+    "post": "FS",
+    "seed": 354,
+    "model": "jev",
+    "t": 10,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260325-124922_A100_M10_tmax100_ac0_FS_seed354_1_jev_t20.json",
+    "timestamp": "260325-124922",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0,
+    "post": "FS",
+    "seed": 354,
+    "model": "jev",
+    "t": 20,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260325-124922_A100_M10_tmax100_ac0_FS_seed354_1_jev_t50.json",
+    "timestamp": "260325-124922",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0,
+    "post": "FS",
+    "seed": 354,
+    "model": "jev",
+    "t": 50,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260325-124922_A100_M10_tmax100_ac0_FS_seed354_1_jev_t100.json",
+    "timestamp": "260325-124922",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0,
+    "post": "FS",
+    "seed": 354,
+    "model": "jev",
+    "t": 100,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260325-124922_A100_M10_tmax100_ac25_FS_seed354_1_jev_t5.json",
+    "timestamp": "260325-124922",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.25,
+    "post": "FS",
+    "seed": 354,
+    "model": "jev",
+    "t": 5,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260325-124922_A100_M10_tmax100_ac25_FS_seed354_1_jev_t10.json",
+    "timestamp": "260325-124922",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.25,
+    "post": "FS",
+    "seed": 354,
+    "model": "jev",
+    "t": 10,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260325-124922_A100_M10_tmax100_ac25_FS_seed354_1_jev_t20.json",
+    "timestamp": "260325-124922",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.25,
+    "post": "FS",
+    "seed": 354,
+    "model": "jev",
+    "t": 20,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260325-124922_A100_M10_tmax100_ac25_FS_seed354_1_jev_t50.json",
+    "timestamp": "260325-124922",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.25,
+    "post": "FS",
+    "seed": 354,
+    "model": "jev",
+    "t": 50,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260325-124922_A100_M10_tmax100_ac25_FS_seed354_1_jev_t100.json",
+    "timestamp": "260325-124922",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.25,
+    "post": "FS",
+    "seed": 354,
+    "model": "jev",
+    "t": 100,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260325-124922_A100_M10_tmax100_ac50_FS_seed354_1_jev_t5.json",
+    "timestamp": "260325-124922",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.5,
+    "post": "FS",
+    "seed": 354,
+    "model": "jev",
+    "t": 5,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260325-124922_A100_M10_tmax100_ac50_FS_seed354_1_jev_t10.json",
+    "timestamp": "260325-124922",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.5,
+    "post": "FS",
+    "seed": 354,
+    "model": "jev",
+    "t": 10,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260325-124922_A100_M10_tmax100_ac50_FS_seed354_1_jev_t20.json",
+    "timestamp": "260325-124922",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.5,
+    "post": "FS",
+    "seed": 354,
+    "model": "jev",
+    "t": 20,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260325-124922_A100_M10_tmax100_ac50_FS_seed354_1_jev_t50.json",
+    "timestamp": "260325-124922",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.5,
+    "post": "FS",
+    "seed": 354,
+    "model": "jev",
+    "t": 50,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260325-124922_A100_M10_tmax100_ac50_FS_seed354_1_jev_t100.json",
+    "timestamp": "260325-124922",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.5,
+    "post": "FS",
+    "seed": 354,
+    "model": "jev",
+    "t": 100,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260325-124922_A100_M10_tmax100_ac75_FS_seed354_1_jev_t5.json",
+    "timestamp": "260325-124922",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.75,
+    "post": "FS",
+    "seed": 354,
+    "model": "jev",
+    "t": 5,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260325-124922_A100_M10_tmax100_ac75_FS_seed354_1_jev_t10.json",
+    "timestamp": "260325-124922",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.75,
+    "post": "FS",
+    "seed": 354,
+    "model": "jev",
+    "t": 10,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260325-124922_A100_M10_tmax100_ac75_FS_seed354_1_jev_t20.json",
+    "timestamp": "260325-124922",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.75,
+    "post": "FS",
+    "seed": 354,
+    "model": "jev",
+    "t": 20,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260325-124922_A100_M10_tmax100_ac75_FS_seed354_1_jev_t50.json",
+    "timestamp": "260325-124922",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.75,
+    "post": "FS",
+    "seed": 354,
+    "model": "jev",
+    "t": 50,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260325-124922_A100_M10_tmax100_ac75_FS_seed354_1_jev_t100.json",
+    "timestamp": "260325-124922",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.75,
+    "post": "FS",
+    "seed": 354,
+    "model": "jev",
+    "t": 100,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
     "file": "networkjson/260630-101930_A100_M5_tmax100_ac0_FS_seed354_1_jev_t5.json",
     "timestamp": "260630-101930",
     "N": 100,
@@ -9,7 +309,10 @@
     "post": "FS",
     "seed": 354,
     "model": "jev",
-    "t": 5
+    "t": 5,
+    "model_name": "jev-1.14.0",
+    "total_token": 4406532,
+    "token_cost": 0.1851
   },
   {
     "file": "networkjson/260630-101930_A100_M5_tmax100_ac0_FS_seed354_1_jev_t10.json",
@@ -21,7 +324,10 @@
     "post": "FS",
     "seed": 354,
     "model": "jev",
-    "t": 10
+    "t": 10,
+    "model_name": "jev-1.14.0",
+    "total_token": 4406532,
+    "token_cost": 0.1851
   },
   {
     "file": "networkjson/260630-101930_A100_M5_tmax100_ac0_FS_seed354_1_jev_t20.json",
@@ -33,7 +339,10 @@
     "post": "FS",
     "seed": 354,
     "model": "jev",
-    "t": 20
+    "t": 20,
+    "model_name": "jev-1.14.0",
+    "total_token": 4406532,
+    "token_cost": 0.1851
   },
   {
     "file": "networkjson/260630-101930_A100_M5_tmax100_ac0_FS_seed354_1_jev_t50.json",
@@ -45,7 +354,10 @@
     "post": "FS",
     "seed": 354,
     "model": "jev",
-    "t": 50
+    "t": 50,
+    "model_name": "jev-1.14.0",
+    "total_token": 4406532,
+    "token_cost": 0.1851
   },
   {
     "file": "networkjson/260630-101930_A100_M5_tmax100_ac0_FS_seed354_1_jev_t100.json",
@@ -57,7 +369,10 @@
     "post": "FS",
     "seed": 354,
     "model": "jev",
-    "t": 100
+    "t": 100,
+    "model_name": "jev-1.14.0",
+    "total_token": 4406532,
+    "token_cost": 0.1851
   },
   {
     "file": "networkjson/260630-101930_A100_M5_tmax100_ac25_FS_seed354_1_jev_t5.json",
@@ -69,7 +384,10 @@
     "post": "FS",
     "seed": 354,
     "model": "jev",
-    "t": 5
+    "t": 5,
+    "model_name": "jev-1.14.0",
+    "total_token": 4610592,
+    "token_cost": 0.1936
   },
   {
     "file": "networkjson/260630-101930_A100_M5_tmax100_ac25_FS_seed354_1_jev_t10.json",
@@ -81,7 +399,10 @@
     "post": "FS",
     "seed": 354,
     "model": "jev",
-    "t": 10
+    "t": 10,
+    "model_name": "jev-1.14.0",
+    "total_token": 4610592,
+    "token_cost": 0.1936
   },
   {
     "file": "networkjson/260630-101930_A100_M5_tmax100_ac25_FS_seed354_1_jev_t20.json",
@@ -93,7 +414,10 @@
     "post": "FS",
     "seed": 354,
     "model": "jev",
-    "t": 20
+    "t": 20,
+    "model_name": "jev-1.14.0",
+    "total_token": 4610592,
+    "token_cost": 0.1936
   },
   {
     "file": "networkjson/260630-101930_A100_M5_tmax100_ac25_FS_seed354_1_jev_t50.json",
@@ -105,7 +429,10 @@
     "post": "FS",
     "seed": 354,
     "model": "jev",
-    "t": 50
+    "t": 50,
+    "model_name": "jev-1.14.0",
+    "total_token": 4610592,
+    "token_cost": 0.1936
   },
   {
     "file": "networkjson/260630-101930_A100_M5_tmax100_ac25_FS_seed354_1_jev_t100.json",
@@ -117,7 +444,10 @@
     "post": "FS",
     "seed": 354,
     "model": "jev",
-    "t": 100
+    "t": 100,
+    "model_name": "jev-1.14.0",
+    "total_token": 4610592,
+    "token_cost": 0.1936
   },
   {
     "file": "networkjson/260630-101930_A100_M5_tmax100_ac50_FS_seed354_1_jev_t5.json",
@@ -129,7 +459,10 @@
     "post": "FS",
     "seed": 354,
     "model": "jev",
-    "t": 5
+    "t": 5,
+    "model_name": "jev-1.14.0",
+    "total_token": 4605241,
+    "token_cost": 0.1934
   },
   {
     "file": "networkjson/260630-101930_A100_M5_tmax100_ac50_FS_seed354_1_jev_t10.json",
@@ -141,7 +474,10 @@
     "post": "FS",
     "seed": 354,
     "model": "jev",
-    "t": 10
+    "t": 10,
+    "model_name": "jev-1.14.0",
+    "total_token": 4605241,
+    "token_cost": 0.1934
   },
   {
     "file": "networkjson/260630-101930_A100_M5_tmax100_ac50_FS_seed354_1_jev_t20.json",
@@ -153,7 +489,10 @@
     "post": "FS",
     "seed": 354,
     "model": "jev",
-    "t": 20
+    "t": 20,
+    "model_name": "jev-1.14.0",
+    "total_token": 4605241,
+    "token_cost": 0.1934
   },
   {
     "file": "networkjson/260630-101930_A100_M5_tmax100_ac50_FS_seed354_1_jev_t50.json",
@@ -165,7 +504,10 @@
     "post": "FS",
     "seed": 354,
     "model": "jev",
-    "t": 50
+    "t": 50,
+    "model_name": "jev-1.14.0",
+    "total_token": 4605241,
+    "token_cost": 0.1934
   },
   {
     "file": "networkjson/260630-101930_A100_M5_tmax100_ac50_FS_seed354_1_jev_t100.json",
@@ -177,7 +519,10 @@
     "post": "FS",
     "seed": 354,
     "model": "jev",
-    "t": 100
+    "t": 100,
+    "model_name": "jev-1.14.0",
+    "total_token": 4605241,
+    "token_cost": 0.1934
   },
   {
     "file": "networkjson/260630-101930_A100_M5_tmax100_ac75_FS_seed354_1_jev_t5.json",
@@ -189,7 +534,10 @@
     "post": "FS",
     "seed": 354,
     "model": "jev",
-    "t": 5
+    "t": 5,
+    "model_name": "jev-1.14.0",
+    "total_token": 5183023,
+    "token_cost": 0.2177
   },
   {
     "file": "networkjson/260630-101930_A100_M5_tmax100_ac75_FS_seed354_1_jev_t10.json",
@@ -201,7 +549,10 @@
     "post": "FS",
     "seed": 354,
     "model": "jev",
-    "t": 10
+    "t": 10,
+    "model_name": "jev-1.14.0",
+    "total_token": 5183023,
+    "token_cost": 0.2177
   },
   {
     "file": "networkjson/260630-101930_A100_M5_tmax100_ac75_FS_seed354_1_jev_t20.json",
@@ -213,7 +564,10 @@
     "post": "FS",
     "seed": 354,
     "model": "jev",
-    "t": 20
+    "t": 20,
+    "model_name": "jev-1.14.0",
+    "total_token": 5183023,
+    "token_cost": 0.2177
   },
   {
     "file": "networkjson/260630-101930_A100_M5_tmax100_ac75_FS_seed354_1_jev_t50.json",
@@ -225,7 +579,10 @@
     "post": "FS",
     "seed": 354,
     "model": "jev",
-    "t": 50
+    "t": 50,
+    "model_name": "jev-1.14.0",
+    "total_token": 5183023,
+    "token_cost": 0.2177
   },
   {
     "file": "networkjson/260630-101930_A100_M5_tmax100_ac75_FS_seed354_1_jev_t100.json",
@@ -237,7 +594,10 @@
     "post": "FS",
     "seed": 354,
     "model": "jev",
-    "t": 100
+    "t": 100,
+    "model_name": "jev-1.14.0",
+    "total_token": 5183023,
+    "token_cost": 0.2177
   },
   {
     "file": "networkjson/260812-102221_A100_M5_tmax100_ac0_F_seed354_1_jev_t5.json",
@@ -249,7 +609,10 @@
     "post": "F",
     "seed": 354,
     "model": "jev",
-    "t": 5
+    "t": 5,
+    "model_name": "jev-1.14.0",
+    "total_token": 1886416,
+    "token_cost": 0.0792
   },
   {
     "file": "networkjson/260812-102221_A100_M5_tmax100_ac0_F_seed354_1_jev_t10.json",
@@ -261,7 +624,10 @@
     "post": "F",
     "seed": 354,
     "model": "jev",
-    "t": 10
+    "t": 10,
+    "model_name": "jev-1.14.0",
+    "total_token": 1886416,
+    "token_cost": 0.0792
   },
   {
     "file": "networkjson/260812-102221_A100_M5_tmax100_ac0_F_seed354_1_jev_t20.json",
@@ -273,7 +639,10 @@
     "post": "F",
     "seed": 354,
     "model": "jev",
-    "t": 20
+    "t": 20,
+    "model_name": "jev-1.14.0",
+    "total_token": 1886416,
+    "token_cost": 0.0792
   },
   {
     "file": "networkjson/260812-102221_A100_M5_tmax100_ac0_F_seed354_1_jev_t50.json",
@@ -285,7 +654,10 @@
     "post": "F",
     "seed": 354,
     "model": "jev",
-    "t": 50
+    "t": 50,
+    "model_name": "jev-1.14.0",
+    "total_token": 1886416,
+    "token_cost": 0.0792
   },
   {
     "file": "networkjson/260812-102221_A100_M5_tmax100_ac0_F_seed354_1_jev_t100.json",
@@ -297,7 +669,10 @@
     "post": "F",
     "seed": 354,
     "model": "jev",
-    "t": 100
+    "t": 100,
+    "model_name": "jev-1.14.0",
+    "total_token": 1886416,
+    "token_cost": 0.0792
   },
   {
     "file": "networkjson/260812-102221_A100_M5_tmax100_ac25_F_seed354_1_jev_t5.json",
@@ -309,7 +684,10 @@
     "post": "F",
     "seed": 354,
     "model": "jev",
-    "t": 5
+    "t": 5,
+    "model_name": "jev-1.14.0",
+    "total_token": 1884708,
+    "token_cost": 0.0792
   },
   {
     "file": "networkjson/260812-102221_A100_M5_tmax100_ac25_F_seed354_1_jev_t10.json",
@@ -321,7 +699,10 @@
     "post": "F",
     "seed": 354,
     "model": "jev",
-    "t": 10
+    "t": 10,
+    "model_name": "jev-1.14.0",
+    "total_token": 1884708,
+    "token_cost": 0.0792
   },
   {
     "file": "networkjson/260812-102221_A100_M5_tmax100_ac25_F_seed354_1_jev_t20.json",
@@ -333,7 +714,10 @@
     "post": "F",
     "seed": 354,
     "model": "jev",
-    "t": 20
+    "t": 20,
+    "model_name": "jev-1.14.0",
+    "total_token": 1884708,
+    "token_cost": 0.0792
   },
   {
     "file": "networkjson/260812-102221_A100_M5_tmax100_ac25_F_seed354_1_jev_t50.json",
@@ -345,7 +729,10 @@
     "post": "F",
     "seed": 354,
     "model": "jev",
-    "t": 50
+    "t": 50,
+    "model_name": "jev-1.14.0",
+    "total_token": 1884708,
+    "token_cost": 0.0792
   },
   {
     "file": "networkjson/260812-102221_A100_M5_tmax100_ac25_F_seed354_1_jev_t100.json",
@@ -357,7 +744,10 @@
     "post": "F",
     "seed": 354,
     "model": "jev",
-    "t": 100
+    "t": 100,
+    "model_name": "jev-1.14.0",
+    "total_token": 1884708,
+    "token_cost": 0.0792
   },
   {
     "file": "networkjson/260812-102221_A100_M5_tmax100_ac50_F_seed354_1_jev_t5.json",
@@ -369,7 +759,10 @@
     "post": "F",
     "seed": 354,
     "model": "jev",
-    "t": 5
+    "t": 5,
+    "model_name": "jev-1.14.0",
+    "total_token": 1851870,
+    "token_cost": 0.0778
   },
   {
     "file": "networkjson/260812-102221_A100_M5_tmax100_ac50_F_seed354_1_jev_t10.json",
@@ -381,7 +774,10 @@
     "post": "F",
     "seed": 354,
     "model": "jev",
-    "t": 10
+    "t": 10,
+    "model_name": "jev-1.14.0",
+    "total_token": 1851870,
+    "token_cost": 0.0778
   },
   {
     "file": "networkjson/260812-102221_A100_M5_tmax100_ac50_F_seed354_1_jev_t20.json",
@@ -393,7 +789,10 @@
     "post": "F",
     "seed": 354,
     "model": "jev",
-    "t": 20
+    "t": 20,
+    "model_name": "jev-1.14.0",
+    "total_token": 1851870,
+    "token_cost": 0.0778
   },
   {
     "file": "networkjson/260812-102221_A100_M5_tmax100_ac50_F_seed354_1_jev_t50.json",
@@ -405,7 +804,10 @@
     "post": "F",
     "seed": 354,
     "model": "jev",
-    "t": 50
+    "t": 50,
+    "model_name": "jev-1.14.0",
+    "total_token": 1851870,
+    "token_cost": 0.0778
   },
   {
     "file": "networkjson/260812-102221_A100_M5_tmax100_ac50_F_seed354_1_jev_t100.json",
@@ -417,7 +819,10 @@
     "post": "F",
     "seed": 354,
     "model": "jev",
-    "t": 100
+    "t": 100,
+    "model_name": "jev-1.14.0",
+    "total_token": 1851870,
+    "token_cost": 0.0778
   },
   {
     "file": "networkjson/260812-102221_A100_M5_tmax100_ac75_F_seed354_1_jev_t5.json",
@@ -429,7 +834,10 @@
     "post": "F",
     "seed": 354,
     "model": "jev",
-    "t": 5
+    "t": 5,
+    "model_name": "jev-1.14.0",
+    "total_token": 1624043,
+    "token_cost": 0.0682
   },
   {
     "file": "networkjson/260812-102221_A100_M5_tmax100_ac75_F_seed354_1_jev_t10.json",
@@ -441,7 +849,10 @@
     "post": "F",
     "seed": 354,
     "model": "jev",
-    "t": 10
+    "t": 10,
+    "model_name": "jev-1.14.0",
+    "total_token": 1624043,
+    "token_cost": 0.0682
   },
   {
     "file": "networkjson/260812-102221_A100_M5_tmax100_ac75_F_seed354_1_jev_t20.json",
@@ -453,7 +864,10 @@
     "post": "F",
     "seed": 354,
     "model": "jev",
-    "t": 20
+    "t": 20,
+    "model_name": "jev-1.14.0",
+    "total_token": 1624043,
+    "token_cost": 0.0682
   },
   {
     "file": "networkjson/260812-102221_A100_M5_tmax100_ac75_F_seed354_1_jev_t50.json",
@@ -465,7 +879,10 @@
     "post": "F",
     "seed": 354,
     "model": "jev",
-    "t": 50
+    "t": 50,
+    "model_name": "jev-1.14.0",
+    "total_token": 1624043,
+    "token_cost": 0.0682
   },
   {
     "file": "networkjson/260812-102221_A100_M5_tmax100_ac75_F_seed354_1_jev_t100.json",
@@ -477,7 +894,310 @@
     "post": "F",
     "seed": 354,
     "model": "jev",
-    "t": 100
+    "t": 100,
+    "model_name": "jev-1.14.0",
+    "total_token": 1624043,
+    "token_cost": 0.0682
+  },
+  {
+    "file": "networkjson/260813-151858_A100_M10_tmax100_ac0_F_seed354_1_jev_t5.json",
+    "timestamp": "260813-151858",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0,
+    "post": "F",
+    "seed": 354,
+    "model": "jev",
+    "t": 5,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260813-151858_A100_M10_tmax100_ac0_F_seed354_1_jev_t10.json",
+    "timestamp": "260813-151858",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0,
+    "post": "F",
+    "seed": 354,
+    "model": "jev",
+    "t": 10,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260813-151858_A100_M10_tmax100_ac0_F_seed354_1_jev_t20.json",
+    "timestamp": "260813-151858",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0,
+    "post": "F",
+    "seed": 354,
+    "model": "jev",
+    "t": 20,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260813-151858_A100_M10_tmax100_ac0_F_seed354_1_jev_t50.json",
+    "timestamp": "260813-151858",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0,
+    "post": "F",
+    "seed": 354,
+    "model": "jev",
+    "t": 50,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260813-151858_A100_M10_tmax100_ac0_F_seed354_1_jev_t100.json",
+    "timestamp": "260813-151858",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0,
+    "post": "F",
+    "seed": 354,
+    "model": "jev",
+    "t": 100,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260813-151858_A100_M10_tmax100_ac25_F_seed354_1_jev_t5.json",
+    "timestamp": "260813-151858",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.25,
+    "post": "F",
+    "seed": 354,
+    "model": "jev",
+    "t": 5,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260813-151858_A100_M10_tmax100_ac25_F_seed354_1_jev_t10.json",
+    "timestamp": "260813-151858",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.25,
+    "post": "F",
+    "seed": 354,
+    "model": "jev",
+    "t": 10,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260813-151858_A100_M10_tmax100_ac25_F_seed354_1_jev_t20.json",
+    "timestamp": "260813-151858",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.25,
+    "post": "F",
+    "seed": 354,
+    "model": "jev",
+    "t": 20,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260813-151858_A100_M10_tmax100_ac25_F_seed354_1_jev_t50.json",
+    "timestamp": "260813-151858",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.25,
+    "post": "F",
+    "seed": 354,
+    "model": "jev",
+    "t": 50,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260813-151858_A100_M10_tmax100_ac25_F_seed354_1_jev_t100.json",
+    "timestamp": "260813-151858",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.25,
+    "post": "F",
+    "seed": 354,
+    "model": "jev",
+    "t": 100,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260813-151858_A100_M10_tmax100_ac50_F_seed354_1_jev_t5.json",
+    "timestamp": "260813-151858",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.5,
+    "post": "F",
+    "seed": 354,
+    "model": "jev",
+    "t": 5,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260813-151858_A100_M10_tmax100_ac50_F_seed354_1_jev_t10.json",
+    "timestamp": "260813-151858",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.5,
+    "post": "F",
+    "seed": 354,
+    "model": "jev",
+    "t": 10,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260813-151858_A100_M10_tmax100_ac50_F_seed354_1_jev_t20.json",
+    "timestamp": "260813-151858",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.5,
+    "post": "F",
+    "seed": 354,
+    "model": "jev",
+    "t": 20,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260813-151858_A100_M10_tmax100_ac50_F_seed354_1_jev_t50.json",
+    "timestamp": "260813-151858",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.5,
+    "post": "F",
+    "seed": 354,
+    "model": "jev",
+    "t": 50,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260813-151858_A100_M10_tmax100_ac50_F_seed354_1_jev_t100.json",
+    "timestamp": "260813-151858",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.5,
+    "post": "F",
+    "seed": 354,
+    "model": "jev",
+    "t": 100,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260813-151858_A100_M10_tmax100_ac75_F_seed354_1_jev_t5.json",
+    "timestamp": "260813-151858",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.75,
+    "post": "F",
+    "seed": 354,
+    "model": "jev",
+    "t": 5,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260813-151858_A100_M10_tmax100_ac75_F_seed354_1_jev_t10.json",
+    "timestamp": "260813-151858",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.75,
+    "post": "F",
+    "seed": 354,
+    "model": "jev",
+    "t": 10,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260813-151858_A100_M10_tmax100_ac75_F_seed354_1_jev_t20.json",
+    "timestamp": "260813-151858",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.75,
+    "post": "F",
+    "seed": 354,
+    "model": "jev",
+    "t": 20,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260813-151858_A100_M10_tmax100_ac75_F_seed354_1_jev_t50.json",
+    "timestamp": "260813-151858",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.75,
+    "post": "F",
+    "seed": 354,
+    "model": "jev",
+    "t": 50,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260813-151858_A100_M10_tmax100_ac75_F_seed354_1_jev_t100.json",
+    "timestamp": "260813-151858",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.75,
+    "post": "F",
+    "seed": 354,
+    "model": "jev",
+    "t": 100,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
   },
   {
     "file": "networkjson/260916-135331_A100_M5_tmax100_ac0_S_seed354_1_jev_t5.json",
@@ -489,7 +1209,10 @@
     "post": "S",
     "seed": 354,
     "model": "jev",
-    "t": 5
+    "t": 5,
+    "model_name": "jev-1.14.0",
+    "total_token": 2577991,
+    "token_cost": 0.1083
   },
   {
     "file": "networkjson/260916-135331_A100_M5_tmax100_ac0_S_seed354_1_jev_t10.json",
@@ -501,7 +1224,10 @@
     "post": "S",
     "seed": 354,
     "model": "jev",
-    "t": 10
+    "t": 10,
+    "model_name": "jev-1.14.0",
+    "total_token": 2577991,
+    "token_cost": 0.1083
   },
   {
     "file": "networkjson/260916-135331_A100_M5_tmax100_ac0_S_seed354_1_jev_t20.json",
@@ -513,7 +1239,10 @@
     "post": "S",
     "seed": 354,
     "model": "jev",
-    "t": 20
+    "t": 20,
+    "model_name": "jev-1.14.0",
+    "total_token": 2577991,
+    "token_cost": 0.1083
   },
   {
     "file": "networkjson/260916-135331_A100_M5_tmax100_ac0_S_seed354_1_jev_t50.json",
@@ -525,7 +1254,10 @@
     "post": "S",
     "seed": 354,
     "model": "jev",
-    "t": 50
+    "t": 50,
+    "model_name": "jev-1.14.0",
+    "total_token": 2577991,
+    "token_cost": 0.1083
   },
   {
     "file": "networkjson/260916-135331_A100_M5_tmax100_ac0_S_seed354_1_jev_t100.json",
@@ -537,7 +1269,10 @@
     "post": "S",
     "seed": 354,
     "model": "jev",
-    "t": 100
+    "t": 100,
+    "model_name": "jev-1.14.0",
+    "total_token": 2577991,
+    "token_cost": 0.1083
   },
   {
     "file": "networkjson/260916-135331_A100_M5_tmax100_ac25_S_seed354_1_jev_t5.json",
@@ -549,7 +1284,10 @@
     "post": "S",
     "seed": 354,
     "model": "jev",
-    "t": 5
+    "t": 5,
+    "model_name": "jev-1.14.0",
+    "total_token": 2517627,
+    "token_cost": 0.1057
   },
   {
     "file": "networkjson/260916-135331_A100_M5_tmax100_ac25_S_seed354_1_jev_t10.json",
@@ -561,7 +1299,10 @@
     "post": "S",
     "seed": 354,
     "model": "jev",
-    "t": 10
+    "t": 10,
+    "model_name": "jev-1.14.0",
+    "total_token": 2517627,
+    "token_cost": 0.1057
   },
   {
     "file": "networkjson/260916-135331_A100_M5_tmax100_ac25_S_seed354_1_jev_t20.json",
@@ -573,7 +1314,10 @@
     "post": "S",
     "seed": 354,
     "model": "jev",
-    "t": 20
+    "t": 20,
+    "model_name": "jev-1.14.0",
+    "total_token": 2517627,
+    "token_cost": 0.1057
   },
   {
     "file": "networkjson/260916-135331_A100_M5_tmax100_ac25_S_seed354_1_jev_t50.json",
@@ -585,7 +1329,10 @@
     "post": "S",
     "seed": 354,
     "model": "jev",
-    "t": 50
+    "t": 50,
+    "model_name": "jev-1.14.0",
+    "total_token": 2517627,
+    "token_cost": 0.1057
   },
   {
     "file": "networkjson/260916-135331_A100_M5_tmax100_ac25_S_seed354_1_jev_t100.json",
@@ -597,7 +1344,10 @@
     "post": "S",
     "seed": 354,
     "model": "jev",
-    "t": 100
+    "t": 100,
+    "model_name": "jev-1.14.0",
+    "total_token": 2517627,
+    "token_cost": 0.1057
   },
   {
     "file": "networkjson/260916-135331_A100_M5_tmax100_ac50_S_seed354_1_jev_t5.json",
@@ -609,7 +1359,10 @@
     "post": "S",
     "seed": 354,
     "model": "jev",
-    "t": 5
+    "t": 5,
+    "model_name": "jev-1.14.0",
+    "total_token": 2846140,
+    "token_cost": 0.1195
   },
   {
     "file": "networkjson/260916-135331_A100_M5_tmax100_ac50_S_seed354_1_jev_t10.json",
@@ -621,7 +1374,10 @@
     "post": "S",
     "seed": 354,
     "model": "jev",
-    "t": 10
+    "t": 10,
+    "model_name": "jev-1.14.0",
+    "total_token": 2846140,
+    "token_cost": 0.1195
   },
   {
     "file": "networkjson/260916-135331_A100_M5_tmax100_ac50_S_seed354_1_jev_t20.json",
@@ -633,7 +1389,10 @@
     "post": "S",
     "seed": 354,
     "model": "jev",
-    "t": 20
+    "t": 20,
+    "model_name": "jev-1.14.0",
+    "total_token": 2846140,
+    "token_cost": 0.1195
   },
   {
     "file": "networkjson/260916-135331_A100_M5_tmax100_ac50_S_seed354_1_jev_t50.json",
@@ -645,7 +1404,10 @@
     "post": "S",
     "seed": 354,
     "model": "jev",
-    "t": 50
+    "t": 50,
+    "model_name": "jev-1.14.0",
+    "total_token": 2846140,
+    "token_cost": 0.1195
   },
   {
     "file": "networkjson/260916-135331_A100_M5_tmax100_ac50_S_seed354_1_jev_t100.json",
@@ -657,7 +1419,10 @@
     "post": "S",
     "seed": 354,
     "model": "jev",
-    "t": 100
+    "t": 100,
+    "model_name": "jev-1.14.0",
+    "total_token": 2846140,
+    "token_cost": 0.1195
   },
   {
     "file": "networkjson/260916-135331_A100_M5_tmax100_ac75_S_seed354_1_jev_t5.json",
@@ -669,7 +1434,10 @@
     "post": "S",
     "seed": 354,
     "model": "jev",
-    "t": 5
+    "t": 5,
+    "model_name": "jev-1.14.0",
+    "total_token": 3436835,
+    "token_cost": 0.1443
   },
   {
     "file": "networkjson/260916-135331_A100_M5_tmax100_ac75_S_seed354_1_jev_t10.json",
@@ -681,7 +1449,10 @@
     "post": "S",
     "seed": 354,
     "model": "jev",
-    "t": 10
+    "t": 10,
+    "model_name": "jev-1.14.0",
+    "total_token": 3436835,
+    "token_cost": 0.1443
   },
   {
     "file": "networkjson/260916-135331_A100_M5_tmax100_ac75_S_seed354_1_jev_t20.json",
@@ -693,7 +1464,10 @@
     "post": "S",
     "seed": 354,
     "model": "jev",
-    "t": 20
+    "t": 20,
+    "model_name": "jev-1.14.0",
+    "total_token": 3436835,
+    "token_cost": 0.1443
   },
   {
     "file": "networkjson/260916-135331_A100_M5_tmax100_ac75_S_seed354_1_jev_t50.json",
@@ -705,7 +1479,10 @@
     "post": "S",
     "seed": 354,
     "model": "jev",
-    "t": 50
+    "t": 50,
+    "model_name": "jev-1.14.0",
+    "total_token": 3436835,
+    "token_cost": 0.1443
   },
   {
     "file": "networkjson/260916-135331_A100_M5_tmax100_ac75_S_seed354_1_jev_t100.json",
@@ -717,6 +1494,309 @@
     "post": "S",
     "seed": 354,
     "model": "jev",
-    "t": 100
+    "t": 100,
+    "model_name": "jev-1.14.0",
+    "total_token": 3436835,
+    "token_cost": 0.1443
+  },
+  {
+    "file": "networkjson/260921-101925_A100_M10_tmax100_ac0_S_seed354_1_jev_t5.json",
+    "timestamp": "260921-101925",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0,
+    "post": "S",
+    "seed": 354,
+    "model": "jev",
+    "t": 5,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260921-101925_A100_M10_tmax100_ac0_S_seed354_1_jev_t10.json",
+    "timestamp": "260921-101925",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0,
+    "post": "S",
+    "seed": 354,
+    "model": "jev",
+    "t": 10,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260921-101925_A100_M10_tmax100_ac0_S_seed354_1_jev_t20.json",
+    "timestamp": "260921-101925",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0,
+    "post": "S",
+    "seed": 354,
+    "model": "jev",
+    "t": 20,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260921-101925_A100_M10_tmax100_ac0_S_seed354_1_jev_t50.json",
+    "timestamp": "260921-101925",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0,
+    "post": "S",
+    "seed": 354,
+    "model": "jev",
+    "t": 50,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260921-101925_A100_M10_tmax100_ac0_S_seed354_1_jev_t100.json",
+    "timestamp": "260921-101925",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0,
+    "post": "S",
+    "seed": 354,
+    "model": "jev",
+    "t": 100,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260921-101925_A100_M10_tmax100_ac25_S_seed354_1_jev_t5.json",
+    "timestamp": "260921-101925",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.25,
+    "post": "S",
+    "seed": 354,
+    "model": "jev",
+    "t": 5,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260921-101925_A100_M10_tmax100_ac25_S_seed354_1_jev_t10.json",
+    "timestamp": "260921-101925",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.25,
+    "post": "S",
+    "seed": 354,
+    "model": "jev",
+    "t": 10,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260921-101925_A100_M10_tmax100_ac25_S_seed354_1_jev_t20.json",
+    "timestamp": "260921-101925",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.25,
+    "post": "S",
+    "seed": 354,
+    "model": "jev",
+    "t": 20,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260921-101925_A100_M10_tmax100_ac25_S_seed354_1_jev_t50.json",
+    "timestamp": "260921-101925",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.25,
+    "post": "S",
+    "seed": 354,
+    "model": "jev",
+    "t": 50,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260921-101925_A100_M10_tmax100_ac25_S_seed354_1_jev_t100.json",
+    "timestamp": "260921-101925",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.25,
+    "post": "S",
+    "seed": 354,
+    "model": "jev",
+    "t": 100,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260921-101925_A100_M10_tmax100_ac50_S_seed354_1_jev_t5.json",
+    "timestamp": "260921-101925",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.5,
+    "post": "S",
+    "seed": 354,
+    "model": "jev",
+    "t": 5,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260921-101925_A100_M10_tmax100_ac50_S_seed354_1_jev_t10.json",
+    "timestamp": "260921-101925",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.5,
+    "post": "S",
+    "seed": 354,
+    "model": "jev",
+    "t": 10,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260921-101925_A100_M10_tmax100_ac50_S_seed354_1_jev_t20.json",
+    "timestamp": "260921-101925",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.5,
+    "post": "S",
+    "seed": 354,
+    "model": "jev",
+    "t": 20,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260921-101925_A100_M10_tmax100_ac50_S_seed354_1_jev_t50.json",
+    "timestamp": "260921-101925",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.5,
+    "post": "S",
+    "seed": 354,
+    "model": "jev",
+    "t": 50,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260921-101925_A100_M10_tmax100_ac50_S_seed354_1_jev_t100.json",
+    "timestamp": "260921-101925",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.5,
+    "post": "S",
+    "seed": 354,
+    "model": "jev",
+    "t": 100,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260921-101925_A100_M10_tmax100_ac75_S_seed354_1_jev_t5.json",
+    "timestamp": "260921-101925",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.75,
+    "post": "S",
+    "seed": 354,
+    "model": "jev",
+    "t": 5,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260921-101925_A100_M10_tmax100_ac75_S_seed354_1_jev_t10.json",
+    "timestamp": "260921-101925",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.75,
+    "post": "S",
+    "seed": 354,
+    "model": "jev",
+    "t": 10,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260921-101925_A100_M10_tmax100_ac75_S_seed354_1_jev_t20.json",
+    "timestamp": "260921-101925",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.75,
+    "post": "S",
+    "seed": 354,
+    "model": "jev",
+    "t": 20,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260921-101925_A100_M10_tmax100_ac75_S_seed354_1_jev_t50.json",
+    "timestamp": "260921-101925",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.75,
+    "post": "S",
+    "seed": 354,
+    "model": "jev",
+    "t": 50,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
+  },
+  {
+    "file": "networkjson/260921-101925_A100_M10_tmax100_ac75_S_seed354_1_jev_t100.json",
+    "timestamp": "260921-101925",
+    "N": 100,
+    "M": 10,
+    "tmax": 100,
+    "probability_acceptance_threshold": 0.75,
+    "post": "S",
+    "seed": 354,
+    "model": "jev",
+    "t": 100,
+    "model_name": "jev-1.14.0",
+    "total_token": 0,
+    "token_cost": 0
   }
 ]

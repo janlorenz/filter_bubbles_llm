@@ -118,7 +118,7 @@
 #network-root .control-group__value {
   font-size: 10px;
   color: var(--color-text);
-  min-width: 32px;
+  min-width: 10px;
   text-align: right;
 }
 
@@ -185,6 +185,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  padding: 0px 5px;
 }
 
 #network-root .network-select {

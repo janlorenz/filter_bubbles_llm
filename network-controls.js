@@ -554,7 +554,7 @@ function bindSlider(slId, vlId, dec, fn) {
 function setupSliders() {
   bindSlider("sl-spread", "vl-spread", 0, v => {
     if (viz.sim) {
-      viz.sim.force("charge", d3.forceManyBody().strength(-v));
+      viz.sim.force("charge", d3.forceManyBody().strength(-v).distanceMax(350));
       viz.sim.alpha(0.4).restart();
     }
   });
@@ -698,7 +698,7 @@ function setupButtons() {
       viz.setSliders({ ...d, attract });
       viz.attractBeforeWeightOn = viz.weightedForces ? d.attract : null;
       if (viz.sim) {
-        viz.sim.force("charge", d3.forceManyBody().strength(-d.spread));
+        viz.sim.force("charge", d3.forceManyBody().strength(-d.spread).distanceMax(350));
         viz.sim.force("link").distance(d.edgelen).strength(viz.linkStrength.bind(viz)());
         viz.sim.alpha(0.4).restart();
       }
