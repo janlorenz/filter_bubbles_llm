@@ -1,0 +1,25 @@
+Deliberation is a democratic process helping to translate citizen
+preferences to policy not by aggregating preferences but through
+preference changes ideally towards a consensus. Nowadays, AI-augmented
+human deliberators can be assisted by Large-Language Models (LLMs).
+However, deliberation can also contribute to separating deliberators
+into groups with opposing worldviews even more than before deliberation.
+We study such deliberation processes using an agent-based model where
+core decisions about changes in worldview are made by LLMs. In the
+model, agents continually encounter new worldview statements through a
+joint news channel or their social networks. They decide what to accept,
+remember, reject, or share. Over time, these choices reshape individual
+worldviews and generate collective patterns such as consensus,
+polarization, or filter bubbles. Unlike persona-based simulations,
+agents are not assigned demographic profiles or ideological labels, but
+their worldviews develop through repeated exposure, integration,
+replacement of worldview statements. In this first version of the model
+we work with a limited set of hundred statements which are all derived
+from the World Values Survey 2018 questionnaire. Preliminary results
+produce collective patterns, including convergence around common
+statements, concentration of attention on a narrow subset of the
+statement pool, and separation into rival worldview clusters. Early
+comparisons suggest that information sharing modes and memory capacity
+may shape whether collective attention narrows around a few statements
+or preserves diversity for competing clusters. These findings connect
+individual information choices to emergent population level worldviews.

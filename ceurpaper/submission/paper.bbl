@@ -1,0 +1,69 @@
+\begin{thebibliography}{12}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\href}[2]{#2}
+\providecommand{\path}[1]{#1}
+\providecommand{\DOIprefix}{doi:}
+\providecommand{\ArXivprefix}{arXiv:}
+\providecommand{\URLprefix}{URL: }
+\providecommand{\Pubmedprefix}{pmid:}
+\providecommand{\doi}[1]{\href{http://dx.doi.org/#1}{\path{#1}}}
+\providecommand{\Pubmed}[1]{\href{pmid:#1}{\path{#1}}}
+\providecommand{\bibinfo}[2]{#2}
+\ifx\xfnm\relax \def\xfnm[#1]{\unskip,\space#1}\fi
+%Type = Article
+\bibitem[{Geschke et~al.(2019)Geschke, Lorenz, and Holtz}]{GeschkeEtAl2019TriplefilterBubbleUsing}
+\bibinfo{author}{D.~Geschke}, \bibinfo{author}{J.~Lorenz}, \bibinfo{author}{P.~Holtz},
+\newblock \bibinfo{title}{The triple-filter bubble: {{Using}} agent-based modelling to test a meta-theoretical framework for the emergence of filter bubbles and echo chambers},
+\newblock \bibinfo{journal}{British Journal of Social Psychology} \bibinfo{volume}{58} (\bibinfo{year}{2019}) \bibinfo{pages}{129--149}. \DOIprefix\doi{10.1111/bjso.12286}.
+%Type = Article
+\bibitem[{Argyle et~al.(2023)Argyle, Busby, Fulda, Gubler, Rytting, and Wingate}]{ArgyleEtAl2023OutOneMany}
+\bibinfo{author}{L.~P. Argyle}, \bibinfo{author}{E.~C. Busby}, \bibinfo{author}{N.~Fulda}, \bibinfo{author}{J.~R. Gubler}, \bibinfo{author}{C.~Rytting}, \bibinfo{author}{D.~Wingate},
+\newblock \bibinfo{title}{Out of {{One}}, {{Many}}: {{Using Language Models}} to {{Simulate Human Samples}}},
+\newblock \bibinfo{journal}{Political Analysis} \bibinfo{volume}{31} (\bibinfo{year}{2023}) \bibinfo{pages}{337--351}. \DOIprefix\doi{10.1017/pan.2023.2}.
+%Type = Misc
+\bibitem[{Proma et~al.(2026)Proma, Pate, Druckman, Ghoshal, He, and Hoque}]{PromaEtAl2026CanLLMsEmulate}
+\bibinfo{author}{A.~M. Proma}, \bibinfo{author}{N.~Pate}, \bibinfo{author}{J.~N. Druckman}, \bibinfo{author}{G.~Ghoshal}, \bibinfo{author}{H.~He}, \bibinfo{author}{E.~Hoque}, \bibinfo{title}{Can {{LLMs Emulate Human Belief Dynamics}}?}, \bibinfo{year}{2026}. \DOIprefix\doi{10.48550/arXiv.2605.18781}. \href{http://arxiv.org/abs/2605.18781}{{\tt arXiv:2605.18781}}.
+%Type = Article
+\bibitem[{Flache et~al.(2017)Flache, M{\"a}s, Feliciani, {Chattoe-Brown}, Deffuant, Huet, and Lorenz}]{FlacheEtAl2017ModelsSocialInfluence}
+\bibinfo{author}{A.~Flache}, \bibinfo{author}{M.~M{\"a}s}, \bibinfo{author}{T.~Feliciani}, \bibinfo{author}{E.~{Chattoe-Brown}}, \bibinfo{author}{G.~Deffuant}, \bibinfo{author}{S.~Huet}, \bibinfo{author}{J.~Lorenz},
+\newblock \bibinfo{title}{Models of {{Social Influence}}: {{Towards}} the {{Next Frontiers}}},
+\newblock \bibinfo{journal}{Journal of Artificial Societies and Social Simulation} \bibinfo{volume}{20} (\bibinfo{year}{2017}) \bibinfo{pages}{2}. \DOIprefix\doi{10.18564/jasss.3521}.
+%Type = Article
+\bibitem[{Lorenz et~al.(2021)Lorenz, Neumann, and Schr{\"o}der}]{LorenzEtAl2021IndividualAttitudeChange}
+\bibinfo{author}{J.~Lorenz}, \bibinfo{author}{M.~Neumann}, \bibinfo{author}{T.~Schr{\"o}der},
+\newblock \bibinfo{title}{Individual attitude change and societal dynamics: {{Computational}} experiments with psychological theories.},
+\newblock \bibinfo{journal}{Psychological Review} \bibinfo{volume}{128} (\bibinfo{year}{2021}) \bibinfo{pages}{623--642}. \DOIprefix\doi{10.1037/rev0000291}.
+%Type = Article
+\bibitem[{Keijzer and M{\"a}s(2022)}]{KeijzerMaes2022ComplexLinkFilter}
+\bibinfo{author}{M.~A. Keijzer}, \bibinfo{author}{M.~M{\"a}s},
+\newblock \bibinfo{title}{{The complex link between filter bubbles and opinion polarization}},
+\newblock \bibinfo{journal}{Data Science} \bibinfo{volume}{5} (\bibinfo{year}{2022}) \bibinfo{pages}{139}. \URLprefix \url{https://publikationen.bibliothek.kit.edu/1000164788}.
+%Type = Book
+\bibitem[{Keijzer et~al.(2026)Keijzer, Lorenz, and Bojanowski}]{KeijzerEtAl2026ComputationalSocialScience}
+\bibinfo{editor}{M.~A. Keijzer}, \bibinfo{editor}{J.~Lorenz}, \bibinfo{editor}{M.~Bojanowski} (Eds.), \bibinfo{title}{Computational {{Social Science}} of {{Social Cohesion}} and {{Polarization}}}, Computational {{Social Sciences}}, \bibinfo{publisher}{Springer Nature Switzerland}, \bibinfo{address}{Cham}, \bibinfo{year}{2026}. \DOIprefix\doi{10.1007/978-3-032-01373-6}.
+%Type = Incollection
+\bibitem[{Lorenz(2025)}]{Lorenz2025ExploringTheoryAgentbased}
+\bibinfo{author}{J.~Lorenz},
+\newblock \bibinfo{title}{Exploring theory with agent-based modeling and simulation},
+\newblock in: \bibinfo{booktitle}{Handbook of {{Computational Social Science}}}, \bibinfo{publisher}{Edward Elgar Publishing Limited}, \bibinfo{year}{2025}, pp. \bibinfo{pages}{236--257}. \URLprefix \url{https://www.elgaronline.com/edcollchap/book/9781802207309/chapter18.xml}.
+%Type = Article
+\bibitem[{Banisch and Olbrich(2019)}]{BanischOlbrich2019OpinionPolarizationLearning}
+\bibinfo{author}{S.~Banisch}, \bibinfo{author}{E.~Olbrich},
+\newblock \bibinfo{title}{Opinion polarization by learning from social feedback},
+\newblock \bibinfo{journal}{The Journal of Mathematical Sociology} \bibinfo{volume}{43} (\bibinfo{year}{2019}) \bibinfo{pages}{76--103}.
+%Type = Article
+\bibitem[{Lorenz and Gunes(2025)}]{LorenzGunes2025FilterBubblesAgentbased}
+\bibinfo{author}{J.~Lorenz}, \bibinfo{author}{E.~Gunes},
+\newblock \bibinfo{title}{Filter bubbles in an agent-based model where agents update their worldviews with {{LLMs}}},
+\newblock \bibinfo{journal}{ESWC 2025 Workshops and Tutorials Joint Proceedings}  (\bibinfo{year}{2025}). \URLprefix \url{https://ceur-ws.org/Vol-3977/SemGenAge-3.pdf}.
+%Type = Misc
+\bibitem[{Haerpfer et~al.(2022)Haerpfer, Inglehart, Moreno, Welzel, Kizilova, {Diez-Medrano}, Lagos, Norris, Ponarin, Puranen, Haerpfer, Inglehart, Moreno, Welzel, Kizilova, {Diez-Medrano}, Lagos, Norris, Ponarin, and Puranen}]{HaerpferEtAl2022WorldValuesSurvey}
+\bibinfo{author}{C.~Haerpfer}, \bibinfo{author}{R.~Inglehart}, \bibinfo{author}{A.~Moreno}, \bibinfo{author}{C.~Welzel}, \bibinfo{author}{K.~Kizilova}, \bibinfo{author}{J.~{Diez-Medrano}}, \bibinfo{author}{M.~Lagos}, \bibinfo{author}{P.~Norris}, \bibinfo{author}{E.~Ponarin}, \bibinfo{author}{B.~Puranen}, \bibinfo{author}{C.~Haerpfer}, \bibinfo{author}{R.~Inglehart}, \bibinfo{author}{A.~Moreno}, \bibinfo{author}{C.~Welzel}, \bibinfo{author}{K.~Kizilova}, \bibinfo{author}{J.~{Diez-Medrano}}, \bibinfo{author}{M.~Lagos}, \bibinfo{author}{P.~Norris}, \bibinfo{author}{E.~Ponarin}, \bibinfo{author}{B.~Puranen}, \bibinfo{title}{World {{Values Survey}}: {{Round Seven}} -- {{Country-Pooled Datafile}}}, \bibinfo{year}{2022}. \DOIprefix\doi{10.14281/18241.24}.
+%Type = Article
+\bibitem[{Fruchterman and Reingold(1991)}]{FruchtermanReingold1991GraphDrawingForcedirected}
+\bibinfo{author}{T.~M.~J. Fruchterman}, \bibinfo{author}{E.~M. Reingold},
+\newblock \bibinfo{title}{Graph drawing by force-directed placement},
+\newblock \bibinfo{journal}{Software: Practice and Experience} \bibinfo{volume}{21} (\bibinfo{year}{1991}) \bibinfo{pages}{1129--1164}. \DOIprefix\doi{10.1002/spe.4380211102}.
+
+\end{thebibliography}
