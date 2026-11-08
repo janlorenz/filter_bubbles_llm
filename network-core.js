@@ -171,6 +171,13 @@ class NetworkViz {
     this.minWeight = 1;
     this.selectedNode = null;   // persistent highlight while pane is open
 
+    // Node coloring (see "Coloring" section). colorBy: null = default type color.
+    this.colorBy = { agent: null, statement: null };
+    this.colorState = { agent: null, statement: null };  // { key, scale, legend }
+    this.computedFields = {};   // key -> { label, types, value(node, viz) }
+    this.fieldStyles = {};      // key -> { kind, scheme, domain, colors, label }
+    this.reservedNodeKeys = ["id", "label", "type", "index", "x", "y", "vx", "vy", "fx", "fy"];
+
     // DOM references
     this.svg = null;
     this.root = null;
@@ -387,10 +394,11 @@ class NetworkViz {
       .on("mouseout", () => this.onOut())
       .on("click", (e, d) => this.onClick(e, d));
 
+    this.rebuildColorScales();
     this.circles = this.nodeSel.append("circle")
       .attr("class", "node__circle")
       .attr("r", d => this.nodeR(d, this.sizeByDeg))
-      .attr("fill", d => d.type === "agent" ? "var(--color-agent)" : "var(--color-stmt)")
+      .attr("fill", d => this.nodeFill(d))
       .attr("stroke", d => d.type === "agent" ? "var(--color-agent-stroke)" : "var(--color-stmt-stroke)");
 
     this.nodeSel.append("text")
@@ -406,6 +414,126 @@ class NetworkViz {
 
     this.nodeSel.classed("node--labels-hidden", !this.labelsOn);
     this.updateLegend();
+    this.renderColorLegend();
+  }
+
+  // ── Coloring ───────────────────────────────────────────────────────
+  // Any node attribute in the JSON (beyond reservedNodeKeys) or any entry in
+  // computedFields can be selected per node type via setColorBy(type, key).
+  // Color definitions live in network-config.js (fieldStyles).
+
+  fieldLabel(key) {
+    return (this.fieldStyles[key] && this.fieldStyles[key].label)
+      || (this.computedFields[key] && this.computedFields[key].label) || key;
+  }
+
+  fieldValue(d, key) {
+    const c = this.computedFields[key];
+    return c ? c.value(d, this) : d[key];
+  }
+
+  /** Fields offered for a node type: [{ key, label }] */
+  nodeFields(type) {
+    const keys = new Set();
+    (this.rawData.nodes || []).forEach(n => {
+      if (n.type !== type) return;
+      Object.keys(n).forEach(k => {
+        if (!this.reservedNodeKeys.includes(k) && !k.startsWith("_") && n[k] != null) keys.add(k);
+      });
+    });
+    Object.entries(this.computedFields).forEach(([k, c]) => {
+      if (!c.types || c.types.includes(type)) keys.add(k);
+    });
+    return [...keys].map(key => ({ key, label: this.fieldLabel(key) }));
+  }
+
+  setColorBy(type, key) {
+    this.colorBy[type] = key || null;
+    this.rebuildColorScales();
+    if (this.circles) {
+      this.circles.filter(d => d.type === type)
+        .transition().duration(300)
+        .attr("fill", d => this.nodeFill(d));
+    }
+    this.renderColorLegend();
+  }
+
+  nodeFill(d) {
+    const st = this.colorState[d.type];
+    if (!st) return d.type === "agent" ? "var(--color-agent)" : "var(--color-stmt)";
+    const v = this.fieldValue(d, st.key);
+    return v == null ? "var(--color-missing, #bbb)" : st.scale(v);
+  }
+
+  rebuildColorScales() {
+    ["agent", "statement"].forEach(type => {
+      const key = this.colorBy[type];
+      this.colorState[type] = key ? this.buildColorScale(type, key) : null;
+    });
+  }
+
+  buildColorScale(type, key) {
+    const style = this.fieldStyles[key] || {};
+    const vals = this.DATA.nodes.filter(n => n.type === type)
+      .map(n => this.fieldValue(n, key)).filter(v => v != null);
+    const numeric = style.kind ? style.kind === "numeric"
+      : vals.length > 0 && vals.every(v => typeof v === "number");
+
+    if (numeric) {
+      const domain = style.domain || (vals.length ? d3.extent(vals) : [0, 1]);
+      const interp = d3["interpolate" + (style.scheme || "Viridis")] || d3.interpolateViridis;
+      return { key, scale: d3.scaleSequential(interp).domain(domain),
+               legend: { kind: "numeric", domain, interp } };
+    }
+    const cats = [...new Set(vals)].sort((a, b) => String(a).localeCompare(String(b), undefined, { numeric: true }));
+    const range = style.colors
+      ? cats.map(c => style.colors[c] || "#999999")
+      : cats.map((_, i) => d3.schemeTableau10[i % 10]);
+    return { key, scale: d3.scaleOrdinal().domain(cats).range(range),
+             legend: { kind: "categorical", cats, colors: range } };
+  }
+
+  /** Fill #legend-colors (if present) for the active color fields. */
+  renderColorLegend() {
+    const el = document.getElementById("legend-colors");
+    if (!el) return;
+    el.innerHTML = "";
+    const MAX_CATS = 8;
+    const titles = { agent: "Agents", statement: "Statements" };
+    ["agent", "statement"].forEach(type => {
+      const st = this.colorState[type];
+      if (!st) return;
+      const g = document.createElement("span");
+      g.className = "legend-colors__group";
+      const title = document.createElement("span");
+      title.className = "legend-colors__title";
+      title.textContent = `${titles[type]}: ${this.fieldLabel(st.key)}`;
+      g.appendChild(title);
+
+      const L = st.legend;
+      if (L.kind === "numeric") {
+        const stops = d3.range(0, 1.01, 0.125).map(t => L.interp(t)).join(",");
+        const fmt = d3.format(".3~g");
+        const lo = document.createElement("span"); lo.textContent = fmt(L.domain[0]);
+        const ramp = document.createElement("span");
+        ramp.className = "legend-colors__ramp";
+        ramp.style.background = `linear-gradient(to right, ${stops})`;
+        const hi = document.createElement("span"); hi.textContent = fmt(L.domain[1]);
+        g.append(lo, ramp, hi);
+      } else {
+        L.cats.slice(0, MAX_CATS).forEach((c, i) => {
+          const sw = document.createElement("span");
+          sw.className = "legend-colors__swatch";
+          const dot = document.createElement("i");
+          dot.style.background = L.colors[i];
+          sw.append(dot, document.createTextNode(String(c)));
+          g.appendChild(sw);
+        });
+        if (L.cats.length > MAX_CATS) g.appendChild(document.createTextNode(`+${L.cats.length - MAX_CATS} more`));
+      }
+      el.appendChild(g);
+    });
+    el.hidden = !el.children.length;
   }
 
   // ── Hover & Interaction ────────────────────────────────────────────
@@ -650,6 +778,7 @@ class NetworkViz {
 
     if (sourceEntry) this.syncFiltersToEntry(sourceEntry);
     this.updateNetworkType("AS");
+    window.dispatchEvent(new CustomEvent("network:loaded", { detail: { entry: sourceEntry, viz: this } }));
   }
 
   syncFiltersToEntry(entry) {
