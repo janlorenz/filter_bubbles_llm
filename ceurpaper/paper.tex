@@ -9,6 +9,13 @@
 \providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \providecommand{\pandocbounded}[1]{#1}
 \usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{longtable}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{anyfontsize}
+\usepackage{multirow}
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
@@ -119,32 +126,34 @@ bubbles \sep opinion dynamics
 
 Deliberative processes are essential to ensuring the effective
 translation of citizen preferences to policy. Studying the dynamics of
-opinion change and stability at micro and macro scales can help identify
-the conditions under which deliberation produces informed and coherent
-collective outcomes. This project focuses on how individuals' views may
-change, stabilize, or become more isolated as they encounter opinionated
-statements through different information channels. We are particularly
-interested in the emergence of filter bubbles and polarization as a
-result of repeated exposure to statements flowing into an agent's feed
-from news media and social networks.
+opinion change and stability at micro and macro scales can help
+identifying the conditions under which deliberation produces informed
+and coherent collective outcomes. This project focuses on how
+individuals' views may change, stabilize, or become more isolated as
+they encounter opinionated statements through different information
+channels. We are particularly interested in the emergence of filter
+bubbles and polarization as a result of repeated exposure to statements
+flowing into an agent's feed from news media and social networks. We use
+LLMs to mimic human behavior in a simplified way. In an AI-augmented
+democracy, human deliberators may be assisted by LLMs, or deliberation
+may be fully outsourced to LLMs representatives. Therefore, it is also
+of interest to understand the dynamics of deliberating LLMs.
 
-In an AI-augmented democracy, human deliberators may be assisted by
-LLMs. Therefore, it is of interest to understand the dynamics of
-deliberation of LLMs. Agent-based models (ABM) are useful tools for
-studying opinion dynamics and implications for deliberative processes,
-especially for explaining the emergence of macro level phenomena such as
-filter bubbles. Conventional opinion dynamics ABMs often represent
-opinions as points in a low-dimensional numerical space where distance
-between two points measures the difference of opinion
+Agent-based models (ABM) are useful tools for studying opinion dynamics
+and implications for deliberative processes, especially for explaining
+the emergence of macro level phenomena such as filter bubbles.
+Conventional opinion dynamics ABMs often represent opinions as points in
+a low-dimensional numerical space where distance between two points
+measures the difference of opinion
 \citet{GeschkeEtAl2019TriplefilterBubbleUsing}. Our approach in this
 project instead uses natural language opinion statements, and agents
 that can understand and act on natural language statements. Statements
 transform from points in two-dimensional numerical space to textual
 statements. Instead of linking to numerical positions, agents maintain a
 list of statements as their worldview. The behavioral mechanisms of
-integrating and dropping statements are instructed to an agent using an
-LLM prompt, and the agent returns its integration and dropping decisions
-as a structured output.
+integrating and dropping statements are prompted to an LLM. The LLM
+responds with a structured output and the agent's integration and
+dropping decisions can be executed in the simulation timeline.
 
 Technically, the model consists of agents embedded in a social network
 where all agents are initialized with a fixed number of opinion
@@ -152,15 +161,15 @@ statements. Each agent has a bounded memory containing a limited number
 of opinion statements, which together represent that agent's worldview.
 Statements originate from a statement pool, which is built using the
 World Values Survey questionnaire as the basis. At each time step,
-agents are exposed to statements from a shared feed and to statements
-circulated by their network neighbors. They then decide whether to
-integrate one of these statements into memory or reject the candidates.
-If memory is full, adopting a new statement requires dropping an
-existing one. Agents can also share statements from their own memory
-with their neighbors.~
+agents are exposed to statements from a shared feed and/or to statements
+circulated by their network neighbors. In both cases they then decide
+whether to integrate one of these statements into memory or reject all
+candidate statements. If their memory is full, adopting a new statement
+requires dropping an existing one. Agents can share statements from
+their own memory with their neighbors.~
 
-Our approach also differs from persona-based LLM simulations, which has
-been the preferred approach to simulating human behavior with LLMs
+Our approach differs from persona-based LLM simulations, which has been
+the preferred approach to simulating human behavior with LLMs
 \citep{ArgyleEtAl2023OutOneMany, PromaEtAl2026CanLLMsEmulate}. Rather
 than assigning agents fixed demographic profiles or ideological labels,
 and instructing them to return responses to a set of behavioral
@@ -198,13 +207,12 @@ expert assessments using theory-driven classification to data-driven
 approaches measuring positions in latent dimensions of
 higher-dimensional spaces using roll-call, co-voting data, survey data,
 or texts using dimensionality reduction and natural language processing.
-
 The well-known models of continuous opinion dynamics
 \citep[see][]{Lorenz2025ExploringTheoryAgentbased} make use of such
 abstract low-dimensional opinion spaces and define how individuals
 change their opinion on that scale when confronted with the opinions of
-others. However, an attitude change does not occur based on the exchange
-of numerical numbers but through verbalization of arguments
+others. However, in reality, an attitude change does not occur based on
+the exchange of numerical numbers but through verbalization of arguments
 \citep{BanischOlbrich2019OpinionPolarizationLearning}, persuasive
 messages, and emotional emphasis, whether written or spoken language, or
 other media such as images. While it is plausible that the attitudes of
@@ -221,49 +229,49 @@ we build such a model inspired by the filter bubble model of
 \citet{GeschkeEtAl2019TriplefilterBubbleUsing}. The main entities in
 their model are agents positioned in a two-dimensional numerical opinion
 space, and opinionated statements represented by \emph{bits of
-information} positioned in the same opinion space. Agents are linked to
-a limited number of statements which together represent their worldview.
-Their positions are defined by the coordinates in the opinion space that
-correspond to the average position of their worldview. Further on,
-agents maintain a social network of bidirectional friendship links.
-Based on this setup, agents have a few behavioral mechanisms
-implemented. When they are presented with a new statement, either from a
-central media channel or their friends, they decide whether to integrate
-it into their worldview or not. If they integrate it they drop another
-statement. With a change of statements they adjust their position in
-opinion space to the new worldview average. They can share a statement
+information} which are also points in the the same opinion space. Agents
+are linked to a limited number of bits of information which together
+represent their worldview. Their positions are defined by the
+coordinates in the opinion space that correspond to the average position
+of their worldview. Further on, agents maintain a social network of
+bidirectional friendship links. Based on this setup, agents have a few
+behavioral mechanisms implemented. When they are presented with a new
+point in opinion space, either from a central media channel or their
+friends, they decide whether to integrate it into their worldview or
+not. If they integrate it they drop another bit of information. With a
+change of bits of information they adjust their position in opinion
+space to the new worldview average. They can share a bit of information
 of their worldview along all their friendship links, mimicking its
 posting on social media.
 
 The macroscopic opinion landscape of agents and statements in the model
 is thus a bipartite network of agents and statements, where agents are
-linked to the statements of their worldview, and statements are linked
-to the agents that have them in their worldview. In such an opinion
-landscape, a \emph{bubble} is a set of agents whose worldviews have a
-high overlap of statements while the overlap with all other agents is
-low or non-existent.
+linked to the bits of information of their worldview, and bits of
+information are linked to the agents that have them in their worldview.
+In such an opinion landscape, a \emph{bubble} is a set of agents whose
+worldviews have a high overlap of statements while the overlap with all
+other agents is low or non-existent.
 
-The model shows some emergent phenomena and how they depend on some
-model parameters. Firstly, when a new statement comes in from a central
-media source which every agent can see, the opinion landscape develops a
-structure characterized by high and low density regions but the network
-remains fully connected without strong bubbles. Secondly, when agents
-are able to see statements shared by friends, the opinion landscape
-develops a structure characterized by bubbles. Thirdly, how many bubbles
-emerge depends to a large extent on a parameter called latitude of
-acceptance which defines how far away a statement can be from the
-average position of an agent's worldview to be integrated. When this
-latitude is small, many small bubbles emerge. When it is large enough,
-only one large bubble emerges.
+The model shows emergent phenomena and how they depend on model
+parameters. Firstly, when new bits of information comes in from a
+central media source which every agent can see, the opinion landscape
+develops a structure characterized by high and low density regions but
+the network remains fully connected without strong bubbles. Secondly,
+when agents are able to see statements shared by friends, the opinion
+landscape develops a structure characterized by bubbles. Thirdly, how
+many bubbles emerge depends to a large extent on a parameter called
+latitude of acceptance which defines how far away a statement can be
+from the average position of an agent's worldview to be integrated. When
+this latitude is small, many small bubbles emerge. When it is large
+enough, only one large bubble emerges.
 
-This model setup can be transformed into a text-based setup without a
-numerical opinion space. Statements transform from dots
-(i.e.~information bits) in two-dimensional numerical space to textual
-opinionated statements. Instead of linking to numerical positions,
-agents maintain a list of statements in their memory as their worldview.
-The behavioral mechanisms of integrating and dropping statements are
-performed by LLM agents based on instructions passed to them through
-their system prompt.
+We transform this model into a text-based setup without a numerical
+opinion space. Statements transform from dots (information bits) in
+two-dimensional numerical space to textual opinionated statements.
+Instead of linking to numerical positions, agents maintain a list of
+statements in their memory as their worldview. The behavioral mechanisms
+of integrating and dropping statements are performed by LLM agents based
+on instructions passed to them through their system prompt.
 
 In this study, we use a limited set of 100 statements extracted from the
 World Values Survey questionnaire. Each statement is directly related to
@@ -310,8 +318,9 @@ from friends. In this work, we study scenarios where one or both of
 these channels are activated.
 
 In the initialization stage, agents are assigned a memory with a single
-random statement from a statement pool with 100 statements, where each
-item is a statement from the questionnaire of World Values Survey Wave 7
+random statement from a statement pool with 100 statements as listed in
+Table~\ref{tbl-statements}, where each item is a statement derived from
+the questionnaire of World Values Survey Wave 7
 \citep{HaerpferEtAl2022WorldValuesSurvey}. Initialization also
 determines agents' friendship network and what statements they will see
 in the central feed of the first time step. They are initialized with on
@@ -323,29 +332,29 @@ random statements are randomly selected in each time step from the same
 statement pool and presented to agents as feed statements.
 
 Some other important configuration parameter that we vary across our
-experimental runs are open mindedness and memory size. We include an
-open mindedness description in the system prompt which tells the agent
+experimental runs are openmindedness and memory size. We include an
+openmindedness description in the system prompt which tells the agent
 how strict its integration behavior must be when it sees a new statement
 which does not exist in its memory. This parameter ranges from 0 to 10,
-where 0 represents full closed mindedness and 10 represents full open
-mindedness. Agents are presented the list of statements they ended up
-with at time step \emph{t -1} as their memory in time step \emph{t}. We
-control the number of statements they can hold in their memory with the
-memory size parameter, which we hold constant across agents within an
-experimental run, but can vary across runs.
+where 0 represents full closed mindedness and 10 represents full
+openmindedness. Agents are presented the list of statements they ended
+up with at time step \emph{t -1} as their memory in time step \emph{t}.
+We control the number of statements they can hold in their memory with
+the memory size parameter, which we hold constant across agents within
+an experimental run, but can vary across runs.
 
 Agents get information about task instructions and statements in a
-system prompt. We present an example system prompt in the Appendix A.
-The structure of prompts remains the same across all LLM calls, but only
-the statements in agents' memory and what set of statements they get
-from central feed and their friends change. They process the information
-passed to them in the system prompt, and they return a JSON object
-containing structured output about their integration and dropping
-decisions.
+system prompt. We present an example system prompt in
+Section~\ref{sec-prompt}. The structure of prompts remains the same
+across all LLM calls, but only the statements in agents' memory and what
+set of statements they get from central feed and their friends change.
+They process the information passed to them in the system prompt, and
+they return a JSON object containing structured output about their
+integration and dropping decisions.
 
-Statement pool is where the statements in circulation originate from. We
-used a collection of statements derived from the World Values Survey
-(WVS) questionnaire, which covers a wide range of topics and contains
+Statement pool is where the statements originate from. We used a
+collection of statements derived from the World Values Survey (WVS)
+questionnaire, which covers a wide range of topics and contains
 questions transformable into a worldview statement. In some cases, we
 generated multiple statements from a single WVS question. For example,
 for some questions, we generated statements representing the two
@@ -354,7 +363,8 @@ statements from a rank order question. In total, we derived 100
 statements from 88 questions. Each statement is linked to a specific
 question in the WVS questionnaire, so that we can compare simulation
 outcomes to the empirical survey data. The full list of statements is
-available in the Appendix along with corresponding WVS question IDs.
+shown in Table~\ref{tbl-statements} along with corresponding WVS
+question IDs.
 
 We capture simulation output in several structured datasets and a log
 file which contains all raw information generated during a simulation
@@ -368,9 +378,9 @@ simulations and the individual choices that produce them.
 
 In this section, we present results from 108 simulation runs, covering a
 systematic set of parameter configurations. Each run features at least
-one of the information channels (i.e.~central feed or social posting) or
-both. Each of the three feed posting and social posting combinations has
-36 runs. Within these runs with identical information channel
+one of the information channels: central feed, social postings, or both.
+Each of the three feed posting and social posting combinations has 36
+runs. Within these runs with identical information channel
 configurations, we vary memory size and openmindedness parameters. For
 each unique information channel, memory size, and openmindedness
 configuration, we execute nine simulations, where we use three different
@@ -411,8 +421,8 @@ this statement to its worldview. A \emph{bubble} is a group of agents
 with very similar worldviews, built from a few statements that agents
 outside the group rarely hold. Figure~\ref{fig-twobubbles} shows the
 agent-statement network at the final step of a simulation run in which
-agents could hold up to five statements in their memory and open
-mindedness parameter set to 1. This result features a two-bubbles
+agents could hold up to five statements in their memory and
+openmindedness parameter set to 1. This result features a two-bubbles
 situation where two groups of agents with different ideological leanings
 (conservative/traditional vs.~liberal/progressive) emerged during the
 simulation and persisted until the end of the run.
@@ -421,7 +431,7 @@ simulation and persisted until the end of the run.
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{paper_files/mediabag/figures/260630-101930_A100_M5_tmax100_op1_FS_seed354_gpt_t100.pdf}
+\includegraphics[width=0.7\linewidth,height=\textheight,keepaspectratio]{paper_files/mediabag/figures/260630-101930_A100_M5_tmax100_op1_FS_seed354_gpt_t100.pdf}
 
 }
 
@@ -447,7 +457,9 @@ statements. While these two runs with identical parameters both ended up
 in a consensus-like situation, a closeup look to a specific agent's
 memory (agent 30) shows that in one of the runs this agent finished with
 a freedom and equality oriented liberal worldview, while it finished
-with a more security oriented conservative worldview.
+with a more security oriented conservative worldview. Snapshots of all
+our simulations are available
+\citep{LorenzGunes2026JanlorenzFilter_bubbles_llmLogging}.
 
 \begin{figure}[!h]
 
@@ -588,10 +600,10 @@ original numerical model \citep{GeschkeEtAl2019TriplefilterBubbleUsing}.
 We observe the emergence of worldview bubbles, which are groups of
 agents sharing very similar statements that other agents rarely hold.
 Social posting spurs their formation. Bubbles also appear under feed
-posting alone but are less pronounced. Higher open mindedness makes a
+posting alone but are less pronounced. Higher openmindedness makes a
 single bubble more likely, but its effect on the number of surviving
 statements is small, possibly because the model gives little weight to
-our numerical operationalization of open mindedness.
+our numerical operationalization of openmindedness.
 
 The LLM version of the opinion dynamics simulation adds some features
 and capabilities that numerical models lack. In the LLM version, agents
@@ -599,32 +611,16 @@ read statements in natural language and decide based on their meaning.
 The LLM-based simulation shows not only whether bubbles form, but also
 which worldviews they contain and which topics they cover. Linking each
 statement to a survey question also allows comparing the emerging
-worldviews with human attitudes.
-
-\section*{Acknowledgements}\label{acknowledgements}
-\addcontentsline{toc}{section}{Acknowledgements}
-
-We acknowledge the support of the European City Squared project, funded
-by the European Union's Horizon Europe research and innovation programme
-under grant agreement DOI:
-\href{https://doi.org/10.3030/101178170}{10.3030/101178170}. We also
-thank our colleagues in the project for their valuable feedback and
-discussions on this work.
-
-We thank Alua Aldaniyaz and Asmae Nakib for their enlightening data
-analysis of World Value Survey data with the goal of quantifying
-worldviews of individuals in their student project on Visual
-Communication and Data Storytelling at Constructor University. Their
-work also built the basis of the selection of statements from the World
-Value Survey questionnaire for our model.
-
-We thank Betül Yurtman for her work on assessing the empirical
-plausibility of emerging worldviews in the LLM-based agent-based model.
+worldviews with human attitudes. A future analysis in this direction
+should clarify to what degree the emerging worldview distributions match
+what we see in the in the World Values Survey, and if deviations are
+caused by LLM biases or our simulation setup. Later, we plan to extend
+the model to include statement generation.
 
 \section*{Appendix}\label{appendix}
 \addcontentsline{toc}{section}{Appendix}
 
-\subsection{Prompt Example}\label{prompt-example}
+\subsection{Prompt Example}\label{sec-prompt}
 
 \begin{quote}
 You are an individual with a worldview represented by a list of
@@ -698,6 +694,148 @@ easier, and more comfortable''
 
 Agent dropped: ``The government should not monitor emails and Internet
 communication''
+
+\subsection{Statement Pool}\label{statement-pool}
+
+\begingroup
+\setlength\LTleft{0\linewidth}
+\setlength\LTright{0\linewidth}\fontsize{12.0pt}{14.0pt}\selectfont
+
+\begin{longtable}{@{\extracolsep{\fill}}l>{\raggedright\arraybackslash}p{\dimexpr 0.70\linewidth -2\tabcolsep-1.5\arrayrulewidth}l}
+
+\caption{\label{tbl-statements}The hundred statements used as statement
+pools. \emph{id} refers to the question code in the World Values Survey
+questionaire. The numeric suffix of \emph{id} labels different
+statements derived from the same question.}
+
+\tabularnewline
+
+\toprule
+id & statement & worldview \\ 
+\midrule\addlinespace[2.5pt]
+Q22 & I would not like to have homosexuals as neighbors. & conservative \\ 
+Q28\_1 & When a mother works for pay, children suffer. & conservative \\ 
+Q28\_2 & When a mother works for pay, children benefit. & progressive \\ 
+Q36 & Homosexual couples are as good parents as other couples. & progressive \\ 
+Q41 & Work should always come first, even if it means less spare time. & conservative \\ 
+Q42 & Our society must be radically changed by revolutionary action. & progressive \\ 
+Q43 & Less importance placed on work in the future would be a good thing & progressive \\ 
+Q45 & Greater respect for authority in the future would be a good thing & conservative \\ 
+Q57\_1 & Most people can be trusted & progressive \\ 
+Q57\_2 & I am very careful in putting trust in other people. & conservative \\ 
+Q61\_1 & I trust people I meet for the first time & progressive \\ 
+Q61\_2 & I do not trust people I meet for the first time & conservative \\ 
+Q106\_1 & Larger income differences should be accepted to reward individual effort & conservative \\ 
+Q106\_2 & Incomes should be more equal & progressive \\ 
+Q107\_1 & Government ownership of business should be increased & progressive \\ 
+Q107\_2 & Private ownership of business should be increased & conservative \\ 
+Q108\_1 & People should take more responsibility to provide for themselves & conservative \\ 
+Q108\_2 & Government should take more responsibility to ensure everyone is provided for & progressive \\ 
+Q109\_1 & Competition is harmful & progressive \\ 
+Q109\_2 & Competition is good & conservative \\ 
+Q110\_1 & Success in life depends more on luck and connections than hard work & progressive \\ 
+Q110\_2 & Hard work brings a better life & conservative \\ 
+Q111\_1 & Economic growth should be prioritized even if it harms the environment & conservative \\ 
+Q111\_2 & Environmental protection should be prioritized even if it harms economic growth & progressive \\ 
+Q113 & Most state authorities are involved in corruption & progressive \\ 
+Q114 & Most or all business executives are involved in corruption & progressive \\ 
+Q121 & Immigrants have a positive impact on the development of the country & progressive \\ 
+Q123 & Immigrants strengthen cultural diversity & progressive \\ 
+Q124 & Immigrants increase the crime rate & conservative \\ 
+Q126 & Immigrants increase the risks of terrorism & conservative \\ 
+Q128 & Immigrants increase unemployment & conservative \\ 
+Q129 & Immigrants lead to social conflict & conservative \\ 
+Q130\_1 & The government should let anyone from other countries come here who wants to work & progressive \\ 
+Q130\_2 & The government should prohibit people from other countries coming here & conservative \\ 
+Q141 & I carry a knife, gun, or weapon for protection & conservative \\ 
+Q142 & I am worried about losing or not finding a job & progressive \\ 
+Q143 & I am worried about not giving my children a good education & progressive \\ 
+Q148 & I am very worried about a civil war & progressive \\ 
+Q149\_1 & Freedom is more important than equality & conservative \\ 
+Q149\_2 & Equality is more important than freedom & progressive \\ 
+Q150\_1 & Freedom is more important than security & progressive \\ 
+Q150\_2 & Security is more important than freedom & conservative \\ 
+Q151\_1 & I would be willing to fight for my country & conservative \\ 
+Q151\_2 & I am not willing to fight for my country & progressive \\ 
+Q152\_2 & The most important aim for the country is high economic growth & conservative \\ 
+Q152\_3 & The most important aim is to make sure the country has strong defense forces & conservative \\ 
+Q152\_4 & The most important aim for the country is that people have more say about how things are\newline done at their jobs and in their communities & progressive \\ 
+Q152\_5 & The most important aim for the country is to make cities and countryside more beautiful & progressive \\ 
+Q154\_2 & My most imporant personal goal is to maintain order in the country & conservative \\ 
+Q154\_3 & My most imporant personal goal is to have more say in important government decisions & progressive \\ 
+Q154\_4 & My most imporant personal goal is fighting rising prices & conservative \\ 
+Q154\_5 & My most imporant personal goal is protecting freedom of speech & progressive \\ 
+Q156\_3 & The most important national goal is a stable economy & conservative \\ 
+Q156\_4 & The most important national goal a more humane society & progressive \\ 
+Q156\_5 & The most important national goal is that ideas count more than money & progressive \\ 
+Q156\_6 & The most important national goal is to fight against crime & conservative \\ 
+Q158 & Science and technology are making our lives healthier, easier, and more comfortable & conservative \\ 
+Q160 & We depend too much on science and not enough on faith & conservative \\ 
+Q161 & One of the bad effects of science is that it breaks down people’s ideas of right and wrong & conservative \\ 
+Q163 & The world is better off because of science and technology & progressive \\ 
+Q164 & God is very important in my life & conservative \\ 
+Q166 & I believe in life after death & conservative \\ 
+Q169 & Whenever science and religion are in conflict, religion is right & conservative \\ 
+Q170 & The only acceptable religion is my religion & conservative \\ 
+Q173\_2 & I consider myself an atheist & progressive \\ 
+Q173\_3 & I consider myself not religious & progressive \\ 
+Q174\_1 & The meaning of religion is to follow norms and ceremonies & conservative \\ 
+Q174\_2 & The meaning of religion is to do good to other people & progressive \\ 
+Q175\_1 & The meaning of religion is to make sense of life after death & conservative \\ 
+Q175\_2 & The meaning of religion is to make sense of life in this world & progressive \\ 
+Q177 & Claiming government benefits to which you are not entitled is justifiable & progressive \\ 
+Q180\_1 & Cheating on taxes if you have a chance is justifiable & progressive \\ 
+Q181\_1 & Accepting a bribe in the course of duties is justifiable & progressive \\ 
+Q182\_1 & Homosexuality should be treated as totally normal & progressive \\ 
+Q182\_2 & Homosexuality is never justifiable & conservative \\ 
+Q183\_1 & Prostitution should be legal & progressive \\ 
+Q184\_1 & Abortion should be legal & progressive \\ 
+Q184\_2 & Abortion is never justifiable & conservative \\ 
+Q186\_2 & Sex before marriage is never justifiable & conservative \\ 
+Q193\_1 & Having casual sex is OK & progressive \\ 
+Q194\_1 & Political violence can be justifiable & progressive \\ 
+Q194\_2 & Political violence is never justifiable & conservative \\ 
+Q195\_1 & Death penalty is justifiable & conservative \\ 
+Q195\_2 & Death penalty is never justifiable & progressive \\ 
+Q198\_1 & The government should have the right to collect information about citizens without their knowledge & conservative \\ 
+Q197\_2 & The government should not monitor emails and Internet communication & progressive \\ 
+Q234 & Honest elections make an important difference in people’s lives & progressive \\ 
+Q235 & Having a strong leader who does not have to bother with parliament and elections is a good way to govern & conservative \\ 
+Q236 & Having experts make decisions instead of government is a good way to govern & conservative \\ 
+Q237 & Having the army rule is a good way to govern & conservative \\ 
+Q239 & Having a system governed by religious law without parties or elections is a good way to govern & conservative \\ 
+Q240\_1 & I place myself on the left side of the political scale & progressive \\ 
+Q240\_2 & I place myself on the right side of political scale & conservative \\ 
+Q241 & In a democracy it is essential that governments tax the rich and subsidize the poor & progressive \\ 
+Q244 & In a democracy it is essential that people receive state aid for unemployment & progressive \\ 
+Q246 & In a democracy it is essential that civil rights protect liberty from state oppression & progressive \\ 
+Q247 & In a democracy it is essential to make people’s incomes equal & progressive \\ 
+Q248 & In a democracy it is essential that people obey their rulers & conservative \\ 
+Q249 & In a democracy it is essential that women have the same rights as men & progressive \\ 
+Q254 & I am proud of my nation & conservative \\ 
+\bottomrule
+
+\end{longtable}
+
+\endgroup
+
+\section*{Acknowledgements}\label{acknowledgements}
+\addcontentsline{toc}{section}{Acknowledgements}
+
+We acknowledge the support of the European City Squared project, funded
+by the European Union's Horizon Europe research and innovation programme
+under grant agreement DOI:
+\href{https://doi.org/10.3030/101178170}{10.3030/101178170}. We thank
+our colleagues in the project for their valuable feedback and
+discussions on this work.
+
+We thank Alua Aldaniyaz and Asmae Nakib for their data analysis of World
+Value Survey. Their work also built the basis of the selection of
+statements from the World Value Survey questionnaire for our model. We
+thank Betül Yurtman for her work on assessing the empirical plausibility
+of emerging worldviews in the LLM-based agent-based model. We thank
+Tiancheng Hu for advise on designing LLM based workflows for simulating
+human behavior.
 
 \bibliographystyle{elsarticle-num-names}
 \bibliography{../ABM-LLM.bib}

@@ -214,23 +214,24 @@ A principal component analysis of the 100 statements based on the responses of a
 
 ```{r}
 #| label: fig-PCA-WVS-statements
-#| fig-cap: "1st Prinicple component for all statement based on World Values Survey data. "
+#| fig-cap: "1st Prinicple component for all statement based on World Values Survey data."
+#| fig-height: 7
 gg <- sttmts |>
   arrange(desc(WVS_PC1)) |>
-  mutate(Worldview_Statement_fct = fct_inorder(Worldview_Statement)) |>
+  mutate(S_id = fct_inorder(S_id)) |>
   ggplot(aes(
     x = WVS_PC1,
-    y = Worldview_Statement_fct,
+    y = S_id,
     color = worldview,
     fill = WVS_PC1,
-    tooltip = Worldview_Statement
+    tooltip = Worldview_Statement,
   )) +
   geom_col_interactive() +
   labs(x = "", y = "", color = "Ideology LLM coded", fill = "WVS PC1") +
   scale_fill_continuous(palette = "RdYlBu", limits = c(-1, 1)) +
   scale_color_manual(values = c("blue", "red")) +
-  theme_minimal(base_size = 8) +
-  theme(axis.text.y = element_blank())
+  theme_minimal(base_size = 6) +
+  theme(axis.text.y = element_text())
 girafe(ggobj = gg, options = list(opts_toolbar(position = "top", fixed = TRUE)))
 ```
 
