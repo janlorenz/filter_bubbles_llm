@@ -185,7 +185,7 @@
 
     &:hover { border-color: var(--color-muted); }
     &:focus { outline: none; border-color: var(--color-accent); }
-    option  { background: var(--color-surface); color: var(--color-text); }
+    & option { background: var(--color-surface); color: var(--color-text); }
   }
 
   /* Buttons */
@@ -484,9 +484,9 @@
 
   .sim-overview__scroll { max-height: 420px; overflow: auto; border: 1px solid var(--color-border); border-radius: var(--radius-md); }
 
-  table { width: 100%; border-collapse: collapse; font-size: 12px; }
-  th, td { padding: 4px 10px; text-align: left; white-space: nowrap; }
-  th {
+  & table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  & th, & td { padding: 4px 10px; text-align: left; white-space: nowrap; }
+  & th {
     position: sticky;
     top: 0;
     background: var(--color-surface);
@@ -497,9 +497,9 @@
     &[data-sort="desc"]::after { content: " \25BC"; font-size: 8px; }
   }
   .is-numeric { text-align: right; }
-  tbody tr { cursor: pointer; border-bottom: 1px solid var(--color-border); }
-  tbody tr:hover { background: var(--color-hover); }
-  tbody tr.is-active { background: var(--color-hover); box-shadow: inset 3px 0 0 var(--color-accent); }
+  & tbody tr { cursor: pointer; border-bottom: 1px solid var(--color-border); }
+  & tbody tr:hover { background: var(--color-hover); }
+  & tbody tr.is-active { background: var(--color-hover); box-shadow: inset 3px 0 0 var(--color-accent); }
 
   .sim-overview__t {
     margin-right: 3px;
