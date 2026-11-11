@@ -36,65 +36,69 @@ read_malformed_jsonl <- function(file_path) {
 runs_core <- read_parquet("parquet/runs_core.parquet")
 
 write_parquet_decisions_from_json <- function(f) {
-  d <- read_malformed_jsonl(glue("rawdata/experiments/{f}/simulation.jsonl"))
-  df <- rbind(
-    if (!as.logical(d[[1]]$feed$enabled)) {
-      NULL
-    } else {
-      d |> # Feed
-        map(\(x) {
-          as_tibble(x$feed$interactions) |>
-            mutate(time_step = x$time_step, source = "feed", .before = 1)
-        }) |>
-        list_rbind() |>
-        select(
-          agent_id,
-          time_step,
-          source,
-          memory_ids,
-          shown_candidates,
-          decision,
-          selected_statement_id,
-          dropped_statement_id
-        ) |>
-        mutate(incoming = list(NULL), .before = shown_candidates)
-    },
-    if (length(d[[1]]$network) == 0) {
-      NULL
-    } else {
-      d |> # Social
-        map(\(x) {
-          as_tibble(x$network) |>
-            mutate(time_step = x$time_step, source = "social", .before = 1)
-        }) |>
-        list_rbind() |>
-        select(
-          agent_id = target_agent_id,
-          time_step,
-          source,
-          memory_ids,
-          incoming,
-          shown_candidates,
-          decision,
-          selected_statement_id = chosen_statement_id,
-          dropped_statement_id
-        )
-    }
-  ) |>
-    mutate(
-      time_step = time_step |> as.integer(),
-      agent_id = agent_id |> as.integer(),
-      incoming = map(incoming, function(x) {
-        x_int <- suppressWarnings(as.integer(x))
-        x_int[!is.na(x_int)]
-      }),
-      memory_ids = pmap(
-        list(memory_ids, selected_statement_id, dropped_statement_id),
-        \(x, y, z) x |> setdiff(y) |> union(z) |> discard(is.na)
-      )
+  if (
+    !file.exists(glue("rawdata/experiments/{f}/decisions_from_json.parquet"))
+  ) {
+    d <- read_malformed_jsonl(glue("rawdata/experiments/{f}/simulation.jsonl"))
+    df <- rbind(
+      if (!as.logical(d[[1]]$feed$enabled)) {
+        NULL
+      } else {
+        d |> # Feed
+          map(\(x) {
+            as_tibble(x$feed$interactions) |>
+              mutate(time_step = x$time_step, source = "feed", .before = 1)
+          }) |>
+          list_rbind() |>
+          select(
+            agent_id,
+            time_step,
+            source,
+            memory_ids,
+            shown_candidates,
+            decision,
+            selected_statement_id,
+            dropped_statement_id
+          ) |>
+          mutate(incoming = list(NULL), .before = shown_candidates)
+      },
+      if (length(d[[1]]$network) == 0) {
+        NULL
+      } else {
+        d |> # Social
+          map(\(x) {
+            as_tibble(x$network) |>
+              mutate(time_step = x$time_step, source = "social", .before = 1)
+          }) |>
+          list_rbind() |>
+          select(
+            agent_id = target_agent_id,
+            time_step,
+            source,
+            memory_ids,
+            incoming,
+            shown_candidates,
+            decision,
+            selected_statement_id = chosen_statement_id,
+            dropped_statement_id
+          )
+      }
     ) |>
-    arrange(agent_id, time_step, source) |>
-    write_parquet(glue("rawdata/experiments/{f}/decisions_from_json.parquet"))
+      mutate(
+        time_step = time_step |> as.integer(),
+        agent_id = agent_id |> as.integer(),
+        incoming = map(incoming, function(x) {
+          x_int <- suppressWarnings(as.integer(x))
+          x_int[!is.na(x_int)]
+        }),
+        memory_ids = pmap(
+          list(memory_ids, selected_statement_id, dropped_statement_id),
+          \(x, y, z) x |> setdiff(y) |> union(z) |> discard(is.na)
+        )
+      ) |>
+      arrange(agent_id, time_step, source) |>
+      write_parquet(glue("rawdata/experiments/{f}/decisions_from_json.parquet"))
+  }
 }
 runs_core$run_folder |> walk(\(f) write_parquet_decisions_from_json(f))
 

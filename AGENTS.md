@@ -17,6 +17,16 @@
 - Reduced networkexplorer.qmd from 999 lines to ~200 lines
 - No breaking changes: explorer works exactly as before
 
+## Joint Network Explorer (Nov 2026)
+
+`networkexplorer_all.qmd` covers both models (gpt + jev) with config-driven controls:
+- `network-config.js`: single place to edit: manifests, filters (with per-model `models`), computed color fields, `fieldStyles`, overview columns
+- `network-explorer.js`: `NetworkExplorer` builds cascading filters + color-by dropdowns; hidden filters (other model) are ignored
+- `simulation-overview.js`: table of all simulations below the explorer; click opens a snapshot
+- `network-core.js`: coloring API `viz.setColorBy(type, key)`; any extra node key in the JSON is auto-offered as color field
+- `network-scoped.css`: restructured (tokens, nesting); old pages still use it unchanged
+- Old `networkexplorer.qmd` / `networkexplorer_jev.qmd` still work (use `initControls`)
+
 ## Research Overview
 
 Agent-based model of opinion dynamics using LLMs. Agents hold a **worldview** (a list of up to `M` textual statements from the World Values Survey). In each time step, agents receive new statements and use an LLM prompt to decide whether to integrate or reject them (optionally dropping an existing statement). The research question: do **filter bubbles** emerge from this process, analogous to numerical opinion dynamics models?

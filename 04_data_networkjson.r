@@ -16,65 +16,70 @@ agents <- tibble(
   type = "agent",
 )
 for (id in runs_core$run_id) {
-  for (t in c(5, 10, 20, 50, 100)) {
-    memory_run <- memory |> filter(run_id == id, .data$t == {{ t }})
-    statements_run <- memory_run |>
-      select(S_id) |>
-      distinct() |>
-      left_join(statements, by = c("S_id" = "id")) |>
-      rename(id = S_id)
-    agents_run <- agents |>
-      filter(id %in% paste0("A", unique(memory_run$A_id))) |>
-      mutate(label = id)
-    # Overlap links for Statement and Agent projection networks
-    overlap_agents_run <- memory_run |>
-      select(S_id, A_id) |>
-      inner_join(memory_run, by = "S_id", relationship = "many-to-many") |>
-      filter(A_id.x < A_id.y) |> # avoid self-pairs & duplicate (a,b)/(b,a)
-      count(A_id.x, A_id.y, name = "weight") |>
-      mutate(
-        source = paste0("A", A_id.x),
-        target = paste0("A", A_id.y),
-        type = "AA",
-        weight,
-        .keep = "none"
-      )
-    overlap_statements_run <- memory_run |>
-      select(S_id, A_id) |>
-      inner_join(memory_run, by = "A_id", relationship = "many-to-many") |>
-      filter(S_id.x < S_id.y) |> # avoid self-pairs & duplicate (a,b)/(b,a), this also works for character via lexicographic ordering
-      count(S_id.x, S_id.y, name = "weight") |>
-      rename(source = S_id.x, target = S_id.y) |>
-      mutate(type = "SS")
-    # ---- 2. PREPARE NODES AND EDGES -------------------------------
-    nodes <- bind_rows(agents_run, statements_run) |>
-      mutate(across(everything(), as.character)) |>
-      mutate(across(everything(), \(x) replace_na(x, "")))
-    edges <- memory_run |>
-      mutate(
-        source = paste0("A", A_id),
-        target = S_id,
-        type = "AS",
-        weight = 1,
-        .keep = "none"
-      ) |>
-      rbind(overlap_agents_run, overlap_statements_run)
-    message(
-      "Nodes: ",
-      nrow(nodes),
-      " | Edges: ",
-      nrow(edges),
-      " | t: ",
-      t
-    ) # ---- 4. SERIALISE ------------------------------------------
-    graph_json <- toJSON(
-      list(nodes = nodes, links = edges),
-      auto_unbox = TRUE,
-      pretty = FALSE
-    )
+  for (t in c(5, 10, 20, 50, 100, 200, 400)) {
     run_id_desc <- runs_core |> filter(run_id == id) |> pull(run_id_desc)
-    output_file <- glue("networkjson/{run_id_desc}_t{t}.json")
-    write_file(graph_json, output_file)
+    if (!file.exists(glue("networkjson/{run_id_desc}_t{t}.json"))) {
+      tmax <- memory |> filter(run_id == id) |> pull(t) |> max()
+      if (t <= tmax) {
+        memory_run <- memory |> filter(run_id == id, .data$t == {{ t }})
+        statements_run <- memory_run |>
+          select(S_id) |>
+          distinct() |>
+          left_join(statements, by = c("S_id" = "id")) |>
+          rename(id = S_id)
+        agents_run <- agents |>
+          filter(id %in% paste0("A", unique(memory_run$A_id))) |>
+          mutate(label = id)
+        # Overlap links for Statement and Agent projection networks
+        overlap_agents_run <- memory_run |>
+          select(S_id, A_id) |>
+          inner_join(memory_run, by = "S_id", relationship = "many-to-many") |>
+          filter(A_id.x < A_id.y) |> # avoid self-pairs & duplicate (a,b)/(b,a)
+          count(A_id.x, A_id.y, name = "weight") |>
+          mutate(
+            source = paste0("A", A_id.x),
+            target = paste0("A", A_id.y),
+            type = "AA",
+            weight,
+            .keep = "none"
+          )
+        overlap_statements_run <- memory_run |>
+          select(S_id, A_id) |>
+          inner_join(memory_run, by = "A_id", relationship = "many-to-many") |>
+          filter(S_id.x < S_id.y) |> # avoid self-pairs & duplicate (a,b)/(b,a), this also works for character via lexicographic ordering
+          count(S_id.x, S_id.y, name = "weight") |>
+          rename(source = S_id.x, target = S_id.y) |>
+          mutate(type = "SS")
+        # ---- 2. PREPARE NODES AND EDGES -------------------------------
+        nodes <- bind_rows(agents_run, statements_run) |>
+          mutate(across(everything(), as.character)) |>
+          mutate(across(everything(), \(x) replace_na(x, "")))
+        edges <- memory_run |>
+          mutate(
+            source = paste0("A", A_id),
+            target = S_id,
+            type = "AS",
+            weight = 1,
+            .keep = "none"
+          ) |>
+          rbind(overlap_agents_run, overlap_statements_run)
+        message(
+          "Nodes: ",
+          nrow(nodes),
+          " | Edges: ",
+          nrow(edges),
+          " | t: ",
+          t
+        ) # ---- 4. SERIALISE ------------------------------------------
+        graph_json <- toJSON(
+          list(nodes = nodes, links = edges),
+          auto_unbox = TRUE,
+          pretty = FALSE
+        )
+        output_file <- glue("networkjson/{run_id_desc}_t{t}.json")
+        write_file(graph_json, output_file)
+      }
+    }
   }
 }
 

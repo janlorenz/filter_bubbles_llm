@@ -116,7 +116,7 @@ function initEmbedded(containerId, config) {
       // Apply configured layout forces directly, bypassing missing slider elements
       if (viz.sim && cfg.layout) {
         const { spread, edgelen, attract } = cfg.layout;
-        viz.sim.force("charge", d3.forceManyBody().strength(-spread));
+        viz.sim.force("charge", d3.forceManyBody().strength(-spread).distanceMax(350));
         viz.sim.force("link", d3.forceLink(viz.DATA.links)
             .id(d => d.id)
             .distance(edgelen)

@@ -6,8 +6,9 @@ source("simulation_jev/jev_functions.r")
 
 ## Network Data in json
 runs_core_jev <- read_parquet(
-  "simulation_jev/runs/runs_core_jev_batch1.parquet"
+  "simulation_jev/runs/runs_core_jev_batch.parquet"
 )
+time_steps <- c(5, 10, 20, 50, 100)
 statements <- read_parquet("parquet/statements_meta.parquet") |>
   select(id = S_id, label = Worldview_Statement) |>
   mutate(type = "statement") |>
@@ -17,7 +18,7 @@ dec_files <- list.files(
   pattern = "\\.parquet$",
   full.names = TRUE
 ) |>
-  keep(\(f) !str_detect(f, "runs_core_jev_batch1"))
+  keep(\(f) !str_detect(f, "runs_core_jev_batch"))
 decisions <- open_dataset(dec_files, unify_schemas = TRUE) |>
   mutate(source_file = add_filename()) |>
   collect() |>
@@ -33,7 +34,7 @@ agents <- tibble(
   type = "agent",
 )
 for (id in runs_core_jev$run_id_desc) {
-  for (t in c(5, 10, 20, 50, 100)) {
+  for (t in time_steps) {
     memory_run <- memory |> filter(run_id_desc == id, .data$t == {{ t }})
     statements_run <- memory_run |>
       select(S_id) |>
@@ -97,26 +98,46 @@ for (id in runs_core_jev$run_id_desc) {
 # Generate manifest by scanning actual JSON files and extracting parameters from filenames
 # Pattern: {timestamp}_A{N}_M{M}_tmax{tmax}_op{openmindedness}_seed{seed}_{model}_t{t}.json
 
-json_files <- dir("networkjson/", full.names = FALSE) |> str_subset("jev")
-manifest <- tibble(
-  filename = json_files,
-  file = paste0("networkjson/", json_files)
-) |>
+# json_files <- dir("networkjson/", full.names = FALSE) |> str_subset("jev")
+# manifest <- tibble(
+#   filename = json_files,
+#   file = paste0("networkjson/", json_files)
+# ) |>
+#   mutate(
+#     # Extract parameters from filename using regex
+#     timestamp = str_extract(filename, "^[0-9]{6}-[0-9]{6}"),
+#     N = as.numeric(str_extract(filename, "(?<=_A)\\d+")),
+#     M = as.numeric(str_extract(filename, "(?<=_M)\\d+(?=_)")),
+#     tmax = as.numeric(str_extract(filename, "(?<=tmax)\\d+")),
+#     probability_acceptance_threshold = as.numeric(str_extract(
+#       filename,
+#       "(?<=ac)\\d+"
+#     )) /
+#       100,
+#     post = str_extract(filename, "(?<=_)(FS|F|Ffix|S)(?=_)"),
+#     seed = as.numeric(str_extract(filename, "(?<=seed)\\d+")),
+#     model = str_extract(filename, "(?<=_)[a-z]+(?=_t)"),
+#     t = as.numeric(str_extract(filename, "(?<=_t)\\d+(?=\\.json)"))
+#   ) |>
+#   select(
+#     file,
+#     timestamp,
+#     N,
+#     M,
+#     tmax,
+#     probability_acceptance_threshold,
+#     post,
+#     seed,
+#     model,
+#     t
+#   ) |>
+#   arrange(timestamp, N, M, probability_acceptance_threshold, post, seed, t)
+
+manifest <- runs_core_jev |>
+  cross_join(tibble(t = time_steps)) |>
   mutate(
-    # Extract parameters from filename using regex
-    timestamp = str_extract(filename, "^[0-9]{6}-[0-9]{6}"),
-    N = as.numeric(str_extract(filename, "(?<=_A)\\d+")),
-    M = as.numeric(str_extract(filename, "(?<=_M)\\d+(?=_)")),
-    tmax = as.numeric(str_extract(filename, "(?<=tmax)\\d+")),
-    probability_acceptance_threshold = as.numeric(str_extract(
-      filename,
-      "(?<=ac)\\d+"
-    )) /
-      100,
-    post = str_extract(filename, "(?<=_)(FS|F|Ffix|S)(?=_)"),
-    seed = as.numeric(str_extract(filename, "(?<=seed)\\d+")),
-    model = str_extract(filename, "(?<=_)[a-z]+(?=_t)"),
-    t = as.numeric(str_extract(filename, "(?<=_t)\\d+(?=\\.json)"))
+    file = glue("networkjson/{run_id_desc}_t{t}.json"),
+    model = word(model_name, 1, sep = "-")
   ) |>
   select(
     file,
@@ -128,7 +149,10 @@ manifest <- tibble(
     post,
     seed,
     model,
-    t
+    t,
+    model_name,
+    total_token,
+    token_cost
   ) |>
   arrange(timestamp, N, M, probability_acceptance_threshold, post, seed, t)
 

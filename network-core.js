@@ -4,42 +4,145 @@
  * Handles D3 visualization, force-directed simulation, user interactions (hover/click),
  * and state management. Can be used standalone or with control modules.
  */
+function connectedComponents(nodes, links) {
+  const idx = new Map(nodes.map((d, i) => [d.id, i]));
+  const parent = nodes.map((_, i) => i);
+  const find = i => { while (parent[i] !== i) i = parent[i] = parent[parent[i]]; return i; };
+  const key = n => idx.get(typeof n === "object" ? n.id : n);
+  for (const l of links) {
+    const a = key(l.source), b = key(l.target);
+    if (a !== undefined && b !== undefined) parent[find(a)] = find(b);
+  }
+  const groups = new Map();
+  nodes.forEach((d, i) => {
+    const r = find(i);
+    if (!groups.has(r)) groups.set(r, []);
+    groups.get(r).push(d);
+  });
+  return [...groups.values()];
+}
+
+/**
+ * Rotates each connected component about its own centroid so its major axis
+ * becomes horizontal. Per component (not global), so a large component never
+ * sweeps through the surrounding smaller ones.
+ */
 function forceHorizontalBias(strength = 0.08) {
-  let nodes;
+  let nodes, links = [];
 
-  function force(alpha) {
-    if (!nodes || nodes.length < 2) return;
-
-    // Weighted centroid
+  function rotate(members) {
+    if (members.length < 3) return;
     let cx = 0, cy = 0;
-    for (const d of nodes) { cx += d.x; cy += d.y; }
-    cx /= nodes.length; cy /= nodes.length;
+    for (const d of members) { cx += d.x; cy += d.y; }
+    cx /= members.length; cy /= members.length;
 
-    // Covariance matrix
     let Sxx = 0, Syy = 0, Sxy = 0;
-    for (const d of nodes) {
+    for (const d of members) {
       const dx = d.x - cx, dy = d.y - cy;
       Sxx += dx * dx; Syy += dy * dy; Sxy += dx * dy;
     }
 
-    // Skip near-circular layouts — angle is noisy/meaningless there
+    // Skip near-circular layouts: angle is noisy there
     const eccentricity = Math.abs(Sxx - Syy) / (Sxx + Syy + 1e-6);
     if (eccentricity < 0.05) return;
 
-    // Angle of major axis, already smallest-rotation form (range -90°..90°)
     const theta = 0.5 * Math.atan2(2 * Sxy, Sxx - Syy);
+    // Clamped step; exact rotation (not tangential Euler step, which inflates radius)
+    const dtheta = Math.max(-0.05, Math.min(0.05, -theta * strength));
+    const cos = Math.cos(dtheta), sin = Math.sin(dtheta);
 
-    // Small rotation step toward theta = 0 (horizontal)
-    const dtheta = -theta * strength;
-
-    for (const d of nodes) {
+    for (const d of members) {
       const dx = d.x - cx, dy = d.y - cy;
-      d.vx += -dtheta * dy;
-      d.vy += dtheta * dx;
+      d.vx += dx * cos - dy * sin - dx;
+      d.vy += dx * sin + dy * cos - dy;
     }
   }
 
-  force.initialize = (_nodes) => { nodes = _nodes; };
+  function force() {
+    if (!nodes || nodes.length < 2) return;
+    for (const members of connectedComponents(nodes, links)) rotate(members);
+  }
+
+  force.initialize = _nodes => { nodes = _nodes; };
+  force.links = _ => (_ === undefined ? links : (links = _, force));
+  return force;
+}
+
+/**
+ * Treats each connected component as a rigid disc: pulls discs toward a common
+ * point and pushes overlapping discs apart (rigid translation, so internal
+ * layout is untouched). Keeps disconnected components close but not overlapping.
+ */
+function forceComponentGravity(getCenter, strength = 0.1, padding = 33) {
+  let nodes, links = [];
+
+  function force() {
+    if (!nodes || nodes.length < 2) return;
+    const idx = new Map(nodes.map((d, i) => [d.id, i]));
+    const parent = nodes.map((_, i) => i);
+    const find = i => { while (parent[i] !== i) i = parent[i] = parent[parent[i]]; return i; };
+    const key = n => idx.get(typeof n === "object" ? n.id : n);
+    for (const l of links) {
+      const a = key(l.source), b = key(l.target);
+      if (a !== undefined && b !== undefined) parent[find(a)] = find(b);
+    }
+    const map = new Map();
+    nodes.forEach((d, i) => {
+      const r = find(i);
+      const c = map.get(r) || { x: 0, y: 0, n: 0, members: [], dx: 0, dy: 0, r: 0 };
+      c.x += d.x; c.y += d.y; c.n++; c.members.push(d);
+      map.set(r, c);
+    });
+    if (map.size < 2) return;
+    const comps = [...map.values()];
+    for (const c of comps) {
+      c.x /= c.n; c.y /= c.n;
+      for (const d of c.members) c.r = Math.max(c.r, Math.hypot(d.x - c.x, d.y - c.y));
+      c.r += padding;
+    }
+    // Gravity: capped velocity nudge toward the center
+    const [cx, cy] = getCenter();
+    const maxStep = 20;
+    for (const c of comps) {
+      // Larger components are repelled harder by the charge force, so pull them harder too
+      const k = Math.min(0.9, strength * (1 + Math.log2(c.n)));
+      let dx = (cx - c.x) * k, dy = (cy - c.y) * k;
+      const m = Math.hypot(dx, dy);
+      if (m > maxStep) { dx *= maxStep / m; dy *= maxStep / m; }
+      for (const d of c.members) { d.vx += dx; d.vy += dy; }
+    }
+
+    // Separation: hard position correction (rigid shifts), applied last and
+    // iterated so gravity can never leave discs overlapping
+    for (let iter = 0; iter < 5; iter++) {
+      let moved = false;
+      for (let i = 0; i < comps.length; i++) {
+        for (let j = i + 1; j < comps.length; j++) {
+          const a = comps[i], b = comps[j];
+          let dx = b.x - a.x, dy = b.y - a.y;
+          let dist = Math.hypot(dx, dy);
+          const overlap = a.r + b.r - dist;
+          if (overlap <= 0) continue;
+          if (dist < 1e-6) { dx = Math.random() - 0.5; dy = Math.random() - 0.5; dist = Math.hypot(dx, dy); }
+          const ux = dx / dist, uy = dy / dist;
+          // Smaller disc moves more
+          const wa = b.r / (a.r + b.r), wb = a.r / (a.r + b.r);
+          shift(a, -ux * overlap * wa, -uy * overlap * wa);
+          shift(b, ux * overlap * wb, uy * overlap * wb);
+          moved = true;
+        }
+      }
+      if (!moved) break;
+    }
+  }
+
+  function shift(c, dx, dy) {
+    c.x += dx; c.y += dy;
+    for (const d of c.members) { d.x += dx; d.y += dy; }
+  }
+
+  force.initialize = _nodes => { nodes = _nodes; };
+  force.links = _ => (_ === undefined ? links : (links = _, force));
   return force;
 }
 
@@ -67,6 +170,13 @@ class NetworkViz {
     this.attractBeforeWeightOn = null;
     this.minWeight = 1;
     this.selectedNode = null;   // persistent highlight while pane is open
+
+    // Node coloring (see "Coloring" section). colorBy: null = default type color.
+    this.colorBy = { agent: null, statement: null };
+    this.colorState = { agent: null, statement: null };  // { key, scale, legend }
+    this.computedFields = {};   // key -> { label, types, value(node, viz) }
+    this.fieldStyles = {};      // key -> { kind, scheme, domain, colors, label }
+    this.reservedNodeKeys = ["id", "label", "type", "index", "x", "y", "vx", "vy", "fx", "fy"];
 
     // DOM references
     this.svg = null;
@@ -190,10 +300,13 @@ class NetworkViz {
         .id(d => d.id)
         .distance(this.getSliderValue("sl-edgelen"))
         .strength(this.linkStrength.bind(this)))
-      .force("charge", d3.forceManyBody().strength(-this.getSliderValue("sl-spread")))
+      .force("charge", d3.forceManyBody().strength(-this.getSliderValue("sl-spread")).distanceMax(350))
       .force("center", d3.forceCenter(W / 2, H / 2))
       .force("collide", d3.forceCollide(d => this.nodeR(d, this.sizeByDeg) + 2))
-      .force("aspect", forceHorizontalBias(0.9))   // <-- add here
+      .force("aspect", forceHorizontalBias(0.9).links(this.DATA.links))
+      .force("compgravity", forceComponentGravity(
+        () => { const [w, h] = this.getCanvasDimensions(); return [w / 2, h / 2]; }
+      ).links(this.DATA.links))
       .on("tick", () => this.onTick())
       .on("end", () => {
         const statusBar = this.getStatusBar();
@@ -281,10 +394,11 @@ class NetworkViz {
       .on("mouseout", () => this.onOut())
       .on("click", (e, d) => this.onClick(e, d));
 
+    this.rebuildColorScales();
     this.circles = this.nodeSel.append("circle")
       .attr("class", "node__circle")
       .attr("r", d => this.nodeR(d, this.sizeByDeg))
-      .attr("fill", d => d.type === "agent" ? "var(--color-agent)" : "var(--color-stmt)")
+      .attr("fill", d => this.nodeFill(d))
       .attr("stroke", d => d.type === "agent" ? "var(--color-agent-stroke)" : "var(--color-stmt-stroke)");
 
     this.nodeSel.append("text")
@@ -300,6 +414,126 @@ class NetworkViz {
 
     this.nodeSel.classed("node--labels-hidden", !this.labelsOn);
     this.updateLegend();
+    this.renderColorLegend();
+  }
+
+  // ── Coloring ───────────────────────────────────────────────────────
+  // Any node attribute in the JSON (beyond reservedNodeKeys) or any entry in
+  // computedFields can be selected per node type via setColorBy(type, key).
+  // Color definitions live in network-config.js (fieldStyles).
+
+  fieldLabel(key) {
+    return (this.fieldStyles[key] && this.fieldStyles[key].label)
+      || (this.computedFields[key] && this.computedFields[key].label) || key;
+  }
+
+  fieldValue(d, key) {
+    const c = this.computedFields[key];
+    return c ? c.value(d, this) : d[key];
+  }
+
+  /** Fields offered for a node type: [{ key, label }] */
+  nodeFields(type) {
+    const keys = new Set();
+    (this.rawData.nodes || []).forEach(n => {
+      if (n.type !== type) return;
+      Object.keys(n).forEach(k => {
+        if (!this.reservedNodeKeys.includes(k) && !k.startsWith("_") && n[k] != null) keys.add(k);
+      });
+    });
+    Object.entries(this.computedFields).forEach(([k, c]) => {
+      if (!c.types || c.types.includes(type)) keys.add(k);
+    });
+    return [...keys].map(key => ({ key, label: this.fieldLabel(key) }));
+  }
+
+  setColorBy(type, key) {
+    this.colorBy[type] = key || null;
+    this.rebuildColorScales();
+    if (this.circles) {
+      this.circles.filter(d => d.type === type)
+        .transition().duration(300)
+        .attr("fill", d => this.nodeFill(d));
+    }
+    this.renderColorLegend();
+  }
+
+  nodeFill(d) {
+    const st = this.colorState[d.type];
+    if (!st) return d.type === "agent" ? "var(--color-agent)" : "var(--color-stmt)";
+    const v = this.fieldValue(d, st.key);
+    return v == null ? "var(--color-missing, #bbb)" : st.scale(v);
+  }
+
+  rebuildColorScales() {
+    ["agent", "statement"].forEach(type => {
+      const key = this.colorBy[type];
+      this.colorState[type] = key ? this.buildColorScale(type, key) : null;
+    });
+  }
+
+  buildColorScale(type, key) {
+    const style = this.fieldStyles[key] || {};
+    const vals = this.DATA.nodes.filter(n => n.type === type)
+      .map(n => this.fieldValue(n, key)).filter(v => v != null);
+    const numeric = style.kind ? style.kind === "numeric"
+      : vals.length > 0 && vals.every(v => typeof v === "number");
+
+    if (numeric) {
+      const domain = style.domain || (vals.length ? d3.extent(vals) : [0, 1]);
+      const interp = d3["interpolate" + (style.scheme || "Viridis")] || d3.interpolateViridis;
+      return { key, scale: d3.scaleSequential(interp).domain(domain),
+               legend: { kind: "numeric", domain, interp } };
+    }
+    const cats = [...new Set(vals)].sort((a, b) => String(a).localeCompare(String(b), undefined, { numeric: true }));
+    const range = style.colors
+      ? cats.map(c => style.colors[c] || "#999999")
+      : cats.map((_, i) => d3.schemeTableau10[i % 10]);
+    return { key, scale: d3.scaleOrdinal().domain(cats).range(range),
+             legend: { kind: "categorical", cats, colors: range } };
+  }
+
+  /** Fill #legend-colors (if present) for the active color fields. */
+  renderColorLegend() {
+    const el = document.getElementById("legend-colors");
+    if (!el) return;
+    el.innerHTML = "";
+    const MAX_CATS = 8;
+    const titles = { agent: "Agents", statement: "Statements" };
+    ["agent", "statement"].forEach(type => {
+      const st = this.colorState[type];
+      if (!st) return;
+      const g = document.createElement("span");
+      g.className = "legend-colors__group";
+      const title = document.createElement("span");
+      title.className = "legend-colors__title";
+      title.textContent = `${titles[type]}: ${this.fieldLabel(st.key)}`;
+      g.appendChild(title);
+
+      const L = st.legend;
+      if (L.kind === "numeric") {
+        const stops = d3.range(0, 1.01, 0.125).map(t => L.interp(t)).join(",");
+        const fmt = d3.format(".3~g");
+        const lo = document.createElement("span"); lo.textContent = fmt(L.domain[0]);
+        const ramp = document.createElement("span");
+        ramp.className = "legend-colors__ramp";
+        ramp.style.background = `linear-gradient(to right, ${stops})`;
+        const hi = document.createElement("span"); hi.textContent = fmt(L.domain[1]);
+        g.append(lo, ramp, hi);
+      } else {
+        L.cats.slice(0, MAX_CATS).forEach((c, i) => {
+          const sw = document.createElement("span");
+          sw.className = "legend-colors__swatch";
+          const dot = document.createElement("i");
+          dot.style.background = L.colors[i];
+          sw.append(dot, document.createTextNode(String(c)));
+          g.appendChild(sw);
+        });
+        if (L.cats.length > MAX_CATS) g.appendChild(document.createTextNode(`+${L.cats.length - MAX_CATS} more`));
+      }
+      el.appendChild(g);
+    });
+    el.hidden = !el.children.length;
   }
 
   // ── Hover & Interaction ────────────────────────────────────────────
@@ -522,6 +756,14 @@ class NetworkViz {
     const loadedName = document.getElementById("loaded-name");
     if (loadedName) loadedName.textContent = filename.replace(/\.json$/i, "");
 
+    const loadedInfo = document.getElementById("loaded-info");
+    if (loadedInfo) {
+      const hasInfo = sourceEntry && sourceEntry.model_name !== undefined;
+      loadedInfo.textContent = hasInfo
+        ? `Model: ${sourceEntry.model_name} Token: $${sourceEntry.token_cost}`
+        : "";
+    }
+
     const worldviewPane = document.getElementById("worldview-pane");
     const statementPane = document.getElementById("statement-pane");
     if (worldviewPane) worldviewPane.classList.remove("worldview-pane--visible");
@@ -536,6 +778,7 @@ class NetworkViz {
 
     if (sourceEntry) this.syncFiltersToEntry(sourceEntry);
     this.updateNetworkType("AS");
+    window.dispatchEvent(new CustomEvent("network:loaded", { detail: { entry: sourceEntry, viz: this } }));
   }
 
   syncFiltersToEntry(entry) {
@@ -643,6 +886,8 @@ class NetworkViz {
       .id(d => d.id)
       .distance(this.getSliderValue("sl-edgelen"))
       .strength(this.linkStrength.bind(this)));
+    this.sim.force("compgravity").links(this.DATA.links);
+    this.sim.force("aspect").links(this.DATA.links);
     this.sim.alpha(0.3).restart();
   }
 

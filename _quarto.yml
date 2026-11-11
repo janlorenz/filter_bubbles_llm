@@ -3,13 +3,18 @@ project:
   render:
     - "*.qmd"
     - "!AGENTS.md"
+    - "!ceurpaper/"
     - "!networkexplorer_jev_Backup.qmd"
   resources:
     - networkjson/
     - manifest.json
     - manifest_jev.json
     - network-embed.html
+    - network-config.js
     - network-core.js
+    - network-controls.js
+    - network-explorer.js
+    - simulation-overview.js
     - network-embedded.js
     - network-scoped.css
 
@@ -19,10 +24,12 @@ website:
     left:
       - text: Outline
         href: index.qmd
-      - networkexplorer.qmd
+#      - networkexplorer.qmd
+#      - networkexplorer_jev.qmd
+      - text: Network Explorer
+        href: networkexplorer_all.qmd
       - href: presentation.qmd
         text: Presentation
-      - networkexplorer_jev.qmd
 
 bibliography: ABM-LLM.bib
 

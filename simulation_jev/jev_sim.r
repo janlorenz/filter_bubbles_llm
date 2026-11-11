@@ -15,7 +15,16 @@ runs_core_jev <- read_parquet("parquet/runs_core.parquet") |>
   filter(post != "Ffix" & openmindedness == 1) |>
   mutate(run_id_origin = run_id_desc, .after = run_id_desc) |>
   cross_join(tibble(
-    probability_acceptance_threshold = c(0, 0.25, 0.5, 0.75)
+    probability_acceptance_threshold = c(
+      0,
+      0.25,
+      0.4,
+      0.45,
+      0.5,
+      0.55,
+      0.6,
+      0.75
+    )
   )) |>
   select(run_id_desc:M, probability_acceptance_threshold, everything()) |>
   select(-openmindedness, -run_id, -run_folder) |>
@@ -23,7 +32,9 @@ runs_core_jev <- read_parquet("parquet/runs_core.parquet") |>
   mutate(
     datetime = "1970-01-01" |> as_datetime(),
     model_short = "jev",
-    model_name = "jev-1.14.0"
+    model_name = "jev-1.14.0",
+    total_token = 0,
+    token_cost = 0
   ) |>
   mutate(
     sameseed_id = as.integer(1),
@@ -36,59 +47,90 @@ runs_core_jev <- read_parquet("parquet/runs_core.parquet") |>
   ) |>
   select(-model_short)
 
-runs_core_jev_batch1 <- runs_core_jev |>
-  filter(post != "FS") |>
-  group_by(post) |>
-  slice(1:4)
+# runs_core_jev_batch_new <- runs_core_jev |>
+#   group_by(post, M) |>
+#   slice(1:4) |>
+#   rows_update(runs_core_jev_batch, unmatched = "ignore")
+# runs_core_jev_batch_new |>
+#   write_parquet("simulation_jev/runs/runs_core_jev_batch.parquet")
 
-# run simulations of batch1
+runs_core_jev_batch <- read_parquet(
+  "simulation_jev/runs/runs_core_jev_batch.parquet"
+)
 
-# for (i in 1:nrow(runs_core_jev_batch1)) {
-for (i in 1:2) {
+# runs_core_jev_batch <- runs_core_jev |>
+#   filter(
+#     seed == 354,
+#     timestamp %in% unique(runs_core_jev_batch$timestamp)
+#   ) |>
+#   rows_update(runs_core_jev_batch, unmatched = "ignore")
+# runs_core_jev_batch |> write_parquet("simulation_jev/runs/runs_core_jev_batch.parquet")
+
+# rrr <- runs_core_jev_batch |>
+#   mutate(
+#     total_token = run_id_desc |>
+#       map_dbl(\(r) {
+#         read_parquet(glue("simulation_jev/runs/{r}.parquet")) |>
+#           pull(jev_input_token) |>
+#           sum(na.rm = T)
+#       })
+#   )
+# rrr |>
+#   mutate(token_cost = total_token * 0.042 / 10^6) |>
+#   write_parquet("simulation_jev/runs/runs_core_jev_batch.parquet")
+
+# run simulations of batch
+
+for (i in 1:nrow(runs_core_jev_batch)) {
   if (
-    !file.exists(paste0(
+    file.exists(paste0(
       "simulation_jev/runs/",
-      runs_core_jev_batch1$run_id_desc[i],
+      runs_core_jev_batch$run_id_desc[i],
       ".parquet"
     ))
   ) {
-    dec <- prepare_data_sim_run(runs_core_jev_batch1$run_id_origin[i])
+    message(paste0(
+      "Skipped because existed: simulation_jev/runs/",
+      runs_core_jev_batch$run_id_desc[i],
+      ".parquet"
+    ))
+  } else {
+    message(paste0(
+      "Start run: simulation_jev/runs/",
+      runs_core_jev_batch$run_id_desc[i]
+    ))
+    dec <- prepare_data_sim_run(runs_core_jev_batch$run_id_origin[i])
     dec_sim <- run_simulation(
       dec,
-      max_memory = runs_core_jev_batch1$M[i],
-      probability_acceptance_threshold = runs_core_jev_batch1$probability_acceptance_threshold[
+      max_memory = runs_core_jev_batch$M[i],
+      probability_acceptance_threshold = runs_core_jev_batch$probability_acceptance_threshold[
         i
       ],
       use_mult = TRUE,
       batch_size = 100,
-      model = runs_core_jev_batch1$model_name[i]
+      model = runs_core_jev_batch$model_name[i]
     )
     dec_sim |>
       write_parquet(paste0(
         "simulation_jev/runs/",
-        runs_core_jev_batch1$run_id_desc[i],
+        runs_core_jev_batch$run_id_desc[i],
         ".parquet"
       ))
-    runs_core_jev_batch1[i, "datetime"] <- now() |> as_datetime()
-    runs_core_jev_batch1 |>
-      write_parquet(paste0(
-        "simulation_jev/runs/runs_core_jev_batch1.parquet"
-      ))
+    runs_core_jev_batch[i, "datetime"] <- now() |> as_datetime()
+    runs_core_jev_batch[i, "total_token"] <- dec_sim$jev_input_token |>
+      sum(na.rm = TRUE)
+    runs_core_jev_batch[i, "token_cost"] <- runs_core_jev_batch[
+      i,
+      "total_token"
+    ] *
+      0.042 /
+      10^6
+    runs_core_jev_batch |>
+      write_parquet(
+        "simulation_jev/runs/runs_core_jev_batch.parquet"
+      )
   }
 }
-
-# dec1 <- prepare_data_sim_run(
-#   "260701-102054_A100_M5_tmax100_op1_FS_seed355_gpt"
-# )
-# dec2 <- prepare_data_sim_run(
-#   "260917-115644_A100_M5_tmax100_op1_S_seed400_gpt"
-# )
-
-# r <- "260917-115644_A100_M5_tmax100_op1_S_seed400_gpt"
-# r <- "260814-165024_A100_M10_tmax100_op1_F_seed400_gpt"
-
-# dec1 |> filter(time_step == 1) |> pull(memory_prompt) |> as_vector()
-# dec2 |> filter(time_step == 1) |> pull(memory_prompt) |> as_vector()
 
 # Guide to checkpointing:
 # Single entry point: if a checkpoint already exists on disk, resume from it

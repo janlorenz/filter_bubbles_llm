@@ -132,6 +132,7 @@ function downloadSVG(viz) {
     "--color-accent": cv("--color-accent"),
     "--color-border": cv("--color-border"),
     "--color-panel-bg": cv("--color-panel-bg"),
+    "--color-missing": cv("--color-missing"),
   };
 
   // ── Compute tight bounding box of the network content in SVG coords ──
@@ -211,7 +212,7 @@ function downloadSVG(viz) {
     const fill = c.getAttribute("fill") || "";
     const stroke = c.getAttribute("stroke") || "";
     for (const [varName, val] of Object.entries(colorMap)) {
-      if (fill.includes(varName)) c.setAttribute("fill", val);
+      if (fill.includes(varName)) c.setAttribute("fill", val || "#bbbbbb");
       if (stroke.includes(varName)) c.setAttribute("stroke", val);
     }
   });
@@ -554,7 +555,7 @@ function bindSlider(slId, vlId, dec, fn) {
 function setupSliders() {
   bindSlider("sl-spread", "vl-spread", 0, v => {
     if (viz.sim) {
-      viz.sim.force("charge", d3.forceManyBody().strength(-v));
+      viz.sim.force("charge", d3.forceManyBody().strength(-v).distanceMax(350));
       viz.sim.alpha(0.4).restart();
     }
   });
@@ -698,7 +699,7 @@ function setupButtons() {
       viz.setSliders({ ...d, attract });
       viz.attractBeforeWeightOn = viz.weightedForces ? d.attract : null;
       if (viz.sim) {
-        viz.sim.force("charge", d3.forceManyBody().strength(-d.spread));
+        viz.sim.force("charge", d3.forceManyBody().strength(-d.spread).distanceMax(350));
         viz.sim.force("link").distance(d.edgelen).strength(viz.linkStrength.bind(viz)());
         viz.sim.alpha(0.4).restart();
       }
@@ -759,6 +760,15 @@ function setupButtons() {
 }
 
 // ── Main Initialization ────────────────────────────────────────────
+// Binds sliders, buttons and file upload only (no manifest / filters).
+// Pages with their own filter logic (network-explorer.js) call this directly.
+function initInteractions(vizInstance) {
+  viz = vizInstance;
+  setupSliders();
+  setupButtons();
+  setupFileUpload();
+}
+
 function initControls(vizInstance, manifestPath = "manifest.json", options = {}) {
   viz = vizInstance;
   if (options.paramKey) PARAM_KEY = options.paramKey;
