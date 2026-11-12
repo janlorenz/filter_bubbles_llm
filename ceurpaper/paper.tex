@@ -68,7 +68,7 @@
 \conference{Proceedings of the Workshop on Augmented Democracies (AuDe),
 co-located with IJCAI-ECAI 2026}
 
-\title{When LLMs agents Deliberate}
+\title{When LLM Agents Deliberate}
 \tnotemark[1]
 \tnotetext[1]{The work benefited from funding in the Horizon Europe
 project ``European City Squared'' (Grant agreement ID:
@@ -91,7 +91,7 @@ email=eguenes@constructor.university,%
 Deliberation is a democratic process helping to translate citizen
 preferences to policy not by aggregating preferences but through
 preference changes ideally towards a consensus. Nowadays, AI-augmented
-human deliberators can be assisted by Large-Language Models (LLMs).
+human deliberators can be assisted by Large Language Models (LLMs).
 However, deliberation can also contribute to separating deliberators
 into groups with opposing worldviews even more than before deliberation.
 We study such deliberation processes using an agent-based model where
@@ -102,9 +102,9 @@ remember, reject, or share. Over time, these choices reshape individual
 worldviews and generate collective patterns such as consensus,
 polarization, or filter bubbles. Unlike persona-based simulations,
 agents are not assigned demographic profiles or ideological labels, but
-their worldviews develop through repeated exposure, integration,
+their worldviews develop through repeated exposure, integration, and
 replacement of worldview statements. In this first version of the model
-we work with a limited set of hundred statements which are all derived
+we work with a limited set of 100 statements, all of which are derived
 from the World Values Survey 2018 questionnaire. Preliminary results
 produce collective patterns, including convergence around common
 statements, concentration of attention on a narrow subset of the
@@ -126,20 +126,20 @@ bubbles \sep opinion dynamics
 
 Deliberative processes are essential to ensuring the effective
 translation of citizen preferences to policy. Studying the dynamics of
-opinion change and stability at micro and macro scales can help
-identifying the conditions under which deliberation produces informed
-and coherent collective outcomes. This project focuses on how
-individuals' views may change, stabilize, or become more isolated as
-they encounter opinionated statements through different information
-channels. We are particularly interested in the emergence of filter
-bubbles and polarization as a result of repeated exposure to statements
-flowing into an agent's feed from news media and social networks. We use
-LLMs to mimic human behavior in a simplified way. In an AI-augmented
-democracy, human deliberators may be assisted by LLMs, or deliberation
-may be fully outsourced to LLMs representatives. Therefore, it is also
-of interest to understand the dynamics of deliberating LLMs.
+opinion change and stability at micro and macro scales can help identify
+the conditions under which deliberation produces informed and coherent
+collective outcomes. This project focuses on how individuals' views may
+change, stabilize, or become more isolated as they encounter opinionated
+statements through different information channels. We are particularly
+interested in the emergence of filter bubbles and polarization as a
+result of repeated exposure to statements flowing into an agent's feed
+from news media and social networks. We use LLMs to mimic human behavior
+in a simplified way. In an AI-augmented democracy, human deliberators
+may be assisted by LLMs, or deliberation may be fully outsourced to LLM
+representatives. Therefore, it is also of interest to understand the
+dynamics of deliberating LLMs.
 
-Agent-based models (ABM) are useful tools for studying opinion dynamics
+Agent-based models (ABMs) are useful tools for studying opinion dynamics
 and implications for deliberative processes, especially for explaining
 the emergence of macro level phenomena such as filter bubbles.
 Conventional opinion dynamics ABMs often represent opinions as points in
@@ -168,7 +168,7 @@ candidate statements. If their memory is full, adopting a new statement
 requires dropping an existing one. Agents can share statements from
 their own memory with their neighbors.~
 
-Our approach differs from persona-based LLM simulations, which has been
+Our approach differs from persona-based LLM simulations, which have been
 the preferred approach to simulating human behavior with LLMs
 \citep{ArgyleEtAl2023OutOneMany, PromaEtAl2026CanLLMsEmulate}. Rather
 than assigning agents fixed demographic profiles or ideological labels,
@@ -182,8 +182,8 @@ replacement, and sharing. This matters for deliberation research because
 deliberation is precisely a process through which preferences and
 identities may change.
 
-Opinion dynamics is an established and a prominent approach to
-agent-based modeling of socio-political systems
+Opinion dynamics is an established and prominent approach to agent-based
+modeling of socio-political systems
 \citep{FlacheEtAl2017ModelsSocialInfluence, LorenzEtAl2021IndividualAttitudeChange}.
 Models of opinion dynamics have been used to understand the mechanisms
 of societal radicalization and polarization, and the emergence of filter
@@ -194,7 +194,7 @@ as complex as the opinion of a human being has to be boiled down to one
 number or to a vector of few numbers in an abstract numerical opinion
 space such as the left-right political continuum.
 
-While numerical opinion spaces may seem disconnected with the reality of
+While numerical opinion spaces may seem disconnected from the reality of
 how opinions exist in the real world, they are not arbitrary model
 design choices. Researchers measure individuals' attitudes through
 representative surveys, where individuals self-assess their attitudes on
@@ -211,8 +211,8 @@ The well-known models of continuous opinion dynamics
 \citep[see][]{Lorenz2025ExploringTheoryAgentbased} make use of such
 abstract low-dimensional opinion spaces and define how individuals
 change their opinion on that scale when confronted with the opinions of
-others. However, in reality, an attitude change does not occur based on
-the exchange of numerical numbers but through verbalization of arguments
+others. However, in reality, an attitude change does not occur through
+the exchange of numbers but through verbalization of arguments
 \citep{BanischOlbrich2019OpinionPolarizationLearning}, persuasive
 messages, and emotional emphasis, whether written or spoken language, or
 other media such as images. While it is plausible that the attitudes of
@@ -229,8 +229,8 @@ we build such a model inspired by the filter bubble model of
 \citet{GeschkeEtAl2019TriplefilterBubbleUsing}. The main entities in
 their model are agents positioned in a two-dimensional numerical opinion
 space, and opinionated statements represented by \emph{bits of
-information} which are also points in the the same opinion space. Agents
-are linked to a limited number of bits of information which together
+information} which are also points in the same opinion space. Agents are
+linked to a limited number of bits of information which together
 represent their worldview. Their positions are defined by the
 coordinates in the opinion space that correspond to the average position
 of their worldview. Further on, agents maintain a social network of
@@ -241,7 +241,7 @@ friends, they decide whether to integrate it into their worldview or
 not. If they integrate it they drop another bit of information. With a
 change of bits of information they adjust their position in opinion
 space to the new worldview average. They can share a bit of information
-of their worldview along all their friendship links, mimicking its
+from their worldview along all their friendship links, mimicking its
 posting on social media.
 
 The macroscopic opinion landscape of agents and statements in the model
@@ -253,17 +253,17 @@ worldviews have a high overlap of statements while the overlap with all
 other agents is low or non-existent.
 
 The model shows emergent phenomena and how they depend on model
-parameters. Firstly, when new bits of information comes in from a
-central media source which every agent can see, the opinion landscape
-develops a structure characterized by high and low density regions but
-the network remains fully connected without strong bubbles. Secondly,
-when agents are able to see statements shared by friends, the opinion
-landscape develops a structure characterized by bubbles. Thirdly, how
-many bubbles emerge depends to a large extent on a parameter called
-latitude of acceptance which defines how far away a statement can be
-from the average position of an agent's worldview to be integrated. When
-this latitude is small, many small bubbles emerge. When it is large
-enough, only one large bubble emerges.
+parameters. Firstly, when new bits of information come in from a central
+media source which every agent can see, the opinion landscape develops a
+structure characterized by high and low density regions but the network
+remains fully connected without strong bubbles. Secondly, when agents
+are able to see statements shared by friends, the opinion landscape
+develops a structure characterized by bubbles. Thirdly, how many bubbles
+emerge depends to a large extent on a parameter called latitude of
+acceptance which defines how far away a statement can be from the
+average position of an agent's worldview to be integrated. When this
+latitude is small, many small bubbles emerge. When it is large enough,
+only one large bubble emerges.
 
 We transform this model into a text-based setup without a numerical
 opinion space. Statements transform from dots (information bits) in
@@ -282,25 +282,25 @@ simulations with real survey responses.
 The phenomena we aim to study with this model are on different levels.
 On macro level phenomena our main questions focus on whether the textual
 representation of opinions and the use of LLMs for integration and
-dropping decisions lead to a similar bubble formation phenomena as the
+dropping decisions lead to a similar bubble formation phenomenon as the
 numerical model, whether the presence or absence of social posting of
 statements by friends is similarly relevant for the emergence of
 bubbles, and whether we can observe new phenomena emerging in the
 text-based model which were not present in the numerical model. On the
 micro level (i.e.~agents and statements), we investigate which
-statements do LLM agents prefer to integrate into their worldview, to
-which worldviews do LLM agents converge when they interact with each
-other, and whether they have ideological or thematic biases when they
-evaluate opinionated statements.
+statements LLM agents prefer to integrate into their worldview, to which
+worldviews LLM agents converge when they interact with each other, and
+whether they have ideological or thematic biases when they evaluate
+opinionated statements.
 
 Our preliminary results from 108 runs covering a large range of
 experimental configuration space show that bubbles of worldviews can
-also emerge in LLM based opinion dynamics simulations. Bubbles can
+also emerge in LLM-based opinion dynamics simulations. Bubbles can
 appear when there is only feed posting in a simulation run, but their
 bubbleness becomes more pronounced when agents can share statements with
 other agents through social posting. Our statement level analysis
-indicates that agents' attention to statements depends on how
-information sharing mode (i.e.~feed posting vs.~social posting) and
+indicates that agents' attention to statements depends on the
+information sharing mode (i.e.~feed posting vs.~social posting) and the
 thematic content of statements.
 
 \section{Simulation Setup and Data}\label{simulation-setup-and-data}
@@ -308,7 +308,7 @@ thematic content of statements.
 The implementation of the agent-based model using LLMs for agents'
 worldview integration decisions mostly follows the outline by
 \citet{LorenzGunes2025FilterBubblesAgentbased}. We developed a
-simulation setup in which LLM agents are repeatedly presented some
+simulation setup in which LLM agents are repeatedly presented with
 statements coming from feed posting and social posting channels, and
 asked to make decisions on whether to accept, reject, and what statement
 to drop if the memory is full. Our setup allows us to control through
@@ -327,21 +327,21 @@ in the central feed of the first time step. They are initialized with on
 average 10 random friendship links, which remain constant throughout the
 simulation. When social posting is activated, in each time step agents
 will also share a random statement from their memory with linked agents.
-Before starting LLMs interaction with statements and other agents, three
-random statements are randomly selected in each time step from the same
+Before starting LLM interaction with statements and other agents, three
+statements are randomly selected in each time step from the same
 statement pool and presented to agents as feed statements.
 
-Some other important configuration parameter that we vary across our
+Some other important configuration parameters that we vary across our
 experimental runs are openmindedness and memory size. We include an
 openmindedness description in the system prompt which tells the agent
 how strict its integration behavior must be when it sees a new statement
 which does not exist in its memory. This parameter ranges from 0 to 10,
 where 0 represents full closed mindedness and 10 represents full
-openmindedness. Agents are presented the list of statements they ended
-up with at time step \emph{t -1} as their memory in time step \emph{t}.
-We control the number of statements they can hold in their memory with
-the memory size parameter, which we hold constant across agents within
-an experimental run, but can vary across runs.
+openmindedness. Agents are presented with the list of statements they
+ended up with at time step \emph{t - 1} as their memory in time step
+\emph{t}. We control the number of statements they can hold in their
+memory with the memory size parameter, which we hold constant across
+agents within an experimental run, but can vary across runs.
 
 Agents get information about task instructions and statements in a
 system prompt. We present an example system prompt in
@@ -352,13 +352,13 @@ They process the information passed to them in the system prompt, and
 they return a JSON object containing structured output about their
 integration and dropping decisions.
 
-Statement pool is where the statements originate from. We used a
+The statement pool is where the statements originate from. We used a
 collection of statements derived from the World Values Survey (WVS)
 questionnaire, which covers a wide range of topics and contains
-questions transformable into a worldview statement. In some cases, we
-generated multiple statements from a single WVS question. For example,
-for some questions, we generated statements representing the two
-opposing ends of the response scale, or we generated different
+questions that can be transformed into worldview statements. In some
+cases, we generated multiple statements from a single WVS question. For
+example, for some questions, we generated statements representing the
+two opposing ends of the response scale, or we generated different
 statements from a rank order question. In total, we derived 100
 statements from 88 questions. Each statement is linked to a specific
 question in the WVS questionnaire, so that we can compare simulation
@@ -378,21 +378,21 @@ simulations and the individual choices that produce them.
 
 In this section, we present results from 108 simulation runs, covering a
 systematic set of parameter configurations. Each run features at least
-one of the information channels: central feed, social postings, or both.
+one of the information channels: central feed, social posting, or both.
 Each of the three feed posting and social posting combinations has 36
 runs. Within these runs with identical information channel
 configurations, we vary memory size and openmindedness parameters. For
 each unique information channel, memory size, and openmindedness
-configuration, we execute nine simulations, where we use three different
-random seeds and three executions with each random seed.
+configuration, we execute nine simulations, using three different random
+seeds with three executions each.
 
 In all experimental runs, we used \emph{gpt-oss-20b} model via
 OpenRouter. All the results in this section summarize this model's
-behavior under different experimental configurations it was asked to
-perform the task. All runs had 100 agents performing the instructed task
-for 100 time steps. Agents started with a single random statement in the
-first time step, and grew their memory up to the maximum allowed number
-of statements.
+behavior under the different experimental configurations in which it was
+asked to perform the task. All runs had 100 agents performing the
+instructed task for 100 time steps. Agents started with a single random
+statement in the first time step, and grew their memory up to the
+maximum allowed number of statements.
 
 \begin{figure}[!h]
 
@@ -421,8 +421,8 @@ this statement to its worldview. A \emph{bubble} is a group of agents
 with very similar worldviews, built from a few statements that agents
 outside the group rarely hold. Figure~\ref{fig-twobubbles} shows the
 agent-statement network at the final step of a simulation run in which
-agents could hold up to five statements in their memory and
-openmindedness parameter set to 1. This result features a two-bubbles
+agents could hold up to five statements in their memory and the
+openmindedness parameter set to 1. This result features a two-bubble
 situation where two groups of agents with different ideological leanings
 (conservative/traditional vs.~liberal/progressive) emerged during the
 simulation and persisted until the end of the run.
@@ -444,17 +444,17 @@ worldview of agent 30. (Run ID:
 \end{figure}%
 
 Figure~\ref{fig-libbubble} and Figure~\ref{fig-authbubble} show a
-closeup look to a specific agent's memory in two runs with identical
+close-up look at a specific agent's memory in two runs with identical
 experimental configurations and initial conditions. An agent's worldview
-trajectory may differ across such constant configuration and initial
-conditions settings, because LLMs are not deterministic. Different LLM
-decisions in early time steps may cause divergence between agent's
-behaviors across two identical runs. Because of that, we execute three
-runs with the same random seed and unique experimental configuration.
-The societies in these two examples can be essentially characterized as
-a consensus bubble where almost all agents are linked to a small set of
+trajectory may differ across identical configurations and initial
+conditions, because LLMs are not deterministic. Different LLM decisions
+in early time steps may cause divergence between agent's behaviors
+across two identical runs. Because of that, we execute three runs with
+the same random seed and unique experimental configuration. The
+societies in these two examples can be essentially characterized as a
+consensus bubble where almost all agents are linked to a small set of
 statements. While these two runs with identical parameters both ended up
-in a consensus-like situation, a closeup look to a specific agent's
+in a consensus-like situation, a close-up look at a specific agent's
 memory (agent 30) shows that in one of the runs this agent finished with
 a freedom and equality oriented liberal worldview, while it finished
 with a more security oriented conservative worldview. Snapshots of all
@@ -473,7 +473,7 @@ our simulations are available
 analog to Figure~\ref{fig-twobubbles} using the same initial condition
 but different random feed and social posting. Highlighted is the
 worldview of agent 30. (Run ID:
-260630-120838\_A100\_M5\_tmax100\_op1\_FS\_seed354\_gpt\_t100)}
+260630-141000\_A100\_M5\_tmax100\_op1\_FS\_seed354\_gpt)}
 
 \end{figure}%
 
@@ -493,12 +493,13 @@ LLM classification can be seen in Figure~\ref{fig-PCA-WVS-statements}.
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures/fig-PCA-WVS-statements.png}
+\pandocbounded{\includegraphics[keepaspectratio]{paper_files/figure-pdf/fig-PCA-WVS-statements-1.pdf}}
 
 }
 
-\caption{\label{fig-PCA-WVS-statements}1st Principal component for all
-statement based on World Values Survey data.}
+\caption{\label{fig-PCA-WVS-statements}1st Prinicple component for all
+statement based on World Values Survey data (explained variance
+13.4\%).}
 
 \end{figure}%
 
@@ -517,7 +518,7 @@ religion and traditional morality are rarely retained.
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures/fig-statement-popularity.png}
+\pandocbounded{\includegraphics[keepaspectratio]{paper_files/figure-pdf/fig-statement-popularity-1.pdf}}
 
 }
 
@@ -529,19 +530,19 @@ time step 100.}
 Figure~\ref{fig-numstatements-per-run-plot} shows two indicators of
 convergence: the number of distinct statements left at the final time
 step, and the number of statements held by more than 40 agents. Social
-posting clearly drives convergence, as evidenced by the drop in distinct
-number of statements. With feed posting only, 47.5 statements survive on
-average, compared to 24.8 with both channels and 12.6 with social
-posting only. Social posting-only yields the most statements shared by
-more than 40 agents, especially with memory size 10. Feed-only runs keep
-a long tail of statements that vanish entirely under social posting-only
-configuration.
+posting clearly drives convergence, as evidenced by the drop in the
+number of distinct statements. With feed posting only, 47.5 statements
+survive on average, compared to 24.8 with both channels and 12.6 with
+social posting only. Social-posting-only yields the most statements
+shared by more than 40 agents, especially with memory size 10. Feed-only
+runs keep a long tail of statements that vanish entirely under social
+posting-only configuration.
 
 \begin{figure}[!h]
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures/fig-numstatements-per-run-plot.png}
+\pandocbounded{\includegraphics[keepaspectratio]{paper_files/figure-pdf/fig-numstatements-per-run-plot-1.pdf}}
 
 }
 
@@ -558,13 +559,13 @@ sections of their source question and tracks each section's share of
 memory slots over 100 time steps. These sections divide questions into
 thematic categories, such as economic values, religious values, or
 political culture and regimes, and our statements cover 12 of the 13
-sections available in the WVS questionnaire. At the initialization,
+sections available in the WVS questionnaire. At initialization,
 statements are drawn randomly in all posting modes, so the shares of
 thematic categories mirror their distribution in the statement pool.
 Political culture and regimes grows from 13\% of the pool to 28\% of
 memory slots at the final time step, the post-materialist values theme
-from 12\% to 21\%, and political participation from 1\% to 9\%. On the
-other hand, religious values category shrinks from 10\% to 1.5\%, and
+from 12\% to 21\%, and political participation from 1\% to 9\%. In
+contrast, the religious values category shrinks from 10\% to 1.5\%, and
 some categories almost vanish.
 
 \begin{figure}[!h]
@@ -583,10 +584,10 @@ settings. Rows show memory size 5 (top) and 10 (bottom).}
 \end{figure}%
 
 This shift hints at a thematic bias exhibited by the gpt-oss-20b model.
-This bias appears even with feed-posting only, where all agents see same
-statements, drawn randomly with equal probability from the statement
-pool. Social posting amplifies the effect, and it is linked to the
-convergence shown in Figure~\ref{fig-numstatements-per-run-plot}. As
+This bias appears even with feed-posting only, where all agents see the
+same statements, drawn randomly with equal probability from the
+statement pool. Social posting amplifies the effect, and it is linked to
+the convergence shown in Figure~\ref{fig-numstatements-per-run-plot}. As
 social posting reduces the number of statements in circulation over time
 steps, themes that the model rarely selects disappear first. For
 example, religious values disappear in all runs with social
@@ -613,14 +614,17 @@ which worldviews they contain and which topics they cover. Linking each
 statement to a survey question also allows comparing the emerging
 worldviews with human attitudes. A future analysis in this direction
 should clarify to what degree the emerging worldview distributions match
-what we see in the in the World Values Survey, and if deviations are
-caused by LLM biases or our simulation setup. Later, we plan to extend
-the model to include statement generation.
+what we see in the World Values Survey, and if deviations are caused by
+LLM biases or our simulation setup. Later, we plan to extend the model
+to include statement generation.
 
 \section*{Appendix}\label{appendix}
 \addcontentsline{toc}{section}{Appendix}
 
 \subsection{Prompt Example}\label{sec-prompt}
+
+The following prompt example is for a simulation with memory size 10 and
+openmindedness 3.
 
 \begin{quote}
 You are an individual with a worldview represented by a list of
@@ -666,7 +670,7 @@ Here is the list of your existing worldview statements:
 \item
   ``Homosexuality should be treated as totally normal''
 \item
-  ``My most imporant personal goal is protecting freedom of speech''
+  ``My most important personal goal is protecting freedom of speech''
 \item
   ``Political violence is never justifiable''
 \item
@@ -687,7 +691,7 @@ Here is the list of your existing worldview statements:
 \end{enumerate}
 \end{quote}
 
-This particular prompt resulted in the outcome:
+This particular prompt resulted in the following outcome:
 
 Agent selected: ``Science and technology are making our lives healthier,
 easier, and more comfortable''
@@ -704,8 +708,8 @@ communication''
 \begin{longtable}{@{\extracolsep{\fill}}l>{\raggedright\arraybackslash}p{\dimexpr 0.70\linewidth -2\tabcolsep-1.5\arrayrulewidth}l}
 
 \caption{\label{tbl-statements}The hundred statements used as statement
-pools. \emph{id} refers to the question code in the World Values Survey
-questionaire. The numeric suffix of \emph{id} labels different
+pool. \emph{id} refers to the question code in the World Values Survey
+questionnaire. The numeric suffix of \emph{id} labels different
 statements derived from the same question.}
 
 \tabularnewline
@@ -829,12 +833,12 @@ under grant agreement DOI:
 our colleagues in the project for their valuable feedback and
 discussions on this work.
 
-We thank Alua Aldaniyaz and Asmae Nakib for their data analysis of World
-Value Survey. Their work also built the basis of the selection of
-statements from the World Value Survey questionnaire for our model. We
+We thank Alua Aldaniyaz and Asmae Nakib for their data analysis of the
+World Values Survey. Their work also built the basis of the selection of
+statements from the World Values Survey questionnaire for our model. We
 thank Betül Yurtman for her work on assessing the empirical plausibility
 of emerging worldviews in the LLM-based agent-based model. We thank
-Tiancheng Hu for advise on designing LLM based workflows for simulating
+Tiancheng Hu for advice on designing LLM-based workflows for simulating
 human behavior.
 
 \bibliographystyle{elsarticle-num-names}
